@@ -1,0 +1,1598 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="robots" content="noindex,nofollow" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="<? echo base_url(); ?>assets/frontend/css/style.css">
+    <link rel="stylesheet" href="<? echo base_url(); ?>assets/css/select2.min.css">
+    <link rel="stylesheet" type="text/css" href="<? echo base_url(); ?>assets/css/slick.css">
+    <link rel="stylesheet" type="text/css" href="<? echo base_url(); ?>assets/css/slick-theme.css">
+    <link rel="stylesheet" href="<? echo base_url(); ?>assets/frontend/css/style_d.css">
+    <link rel="stylesheet" href="<? echo base_url(); ?>assets/frontend/css/style_header_d.css">
+    <title>Danh sách dự án nổi bật</title>
+
+</head>
+
+<body>
+    <div id="tong_du_an">
+
+        <div class="link_header">
+            <? require_once APPPATH.'views/site/includes/da_header.php' ?>
+        </div>
+
+        <div class="khoi_all_noidung">
+
+            <div class="select_them">
+                <div class="select_them_padding">
+                    <div class="select_them_padding_select">
+                        <select class="select_option js-states form-control">
+                            <option value="">Toàn quốc</option>
+                        </select>
+                    </div>
+                    <div class="select_them_padding_select">
+                        <select class="select_option js-states form-control">
+                            <option value="">Quận huyện</option>
+                        </select>
+                    </div>
+                    <div class="select_them_padding_select">
+                        <select class="select_option js-states form-control">
+                            <option value="">Loại bất động sản</option>
+                        </select>
+                    </div>
+                    <div class="select_them_padding_select">
+                        <select class="select_option js-states form-control">
+                            <option value="">Khoảng giá</option>
+                        </select>
+                    </div>
+                    <div class="select_them_padding_select">
+                        <select class="select_option js-states form-control">
+                            <option value="">Trạng thái</option>
+                        </select>
+                    </div>
+                    <div class="select_them_padding_select">
+                        <select class="select_option js-states form-control">
+                            <option value="">Tiến độ</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- body DỰ ÁN NỔI BẬT -->
+            <div class="body">
+                <div class="body_text">
+
+                    <div class="text_sub1 pd_b24px">
+                        <div class="them_div_480 flex align_items m_b15px">
+                            <a href="">Trang Chủ</a>
+                            <div class="text_sub1_fig_icon">
+                                <img src="<? echo base_url(); ?>assets/images/img_du_an/duy_ic_right.png" alt="">
+                            </div>
+                            <span class="main_color">Dự án</span>
+                        </div>
+                        <div class="them_div_480_suv">
+                            <div class="loc_480 flex align_items">
+                                <div class="loc_480_1 flex align_items mr_r8px">
+                                    <div class="loc_480_1_img">
+                                        <img src="<? echo base_url(); ?>assets/images/img_du_an/loc_20.png" alt="">
+                                    </div>
+                                    <div class="loc_480_1_text">Lọc +</div>
+                                </div>
+                                <div class="loc_480_2">
+                                    <select class="select_option js-states form-control">
+                                        <option value="">Toàn quốc</option>
+                                        <option value="">Hà Nội</option>
+                                        <option value="">Đà Nẵng</option>
+                                        <option value="">TP. Hồ Chí Minh</option>
+                                        <option value="">Hải Phòng</option>
+                                        <option value="">Bà Rịa Vũng Tàu</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="text_sub2">
+                        <div class="border_t_w79px"></div>
+                        <p class="text_dau">Danh sách dự án nổi bật</p>
+                        <p class="text_cuoi">Có 1234 dự án</p>
+                    </div>
+                </div>
+
+                <div class="body_content">
+                    <div class="content_dau">
+                        <div class="content_img">
+                            <img class="img_duan_1" src="<? echo base_url(); ?>assets/images/img_du_an/img1.png" alt="">
+                        </div>
+
+                        <div class="content_text">
+                            <div class="noidung_text">
+                                <h2 class="text_1">The House Plaza 02</h2>
+                                <p class="text_2">Trần Điền, Hoàng Mai, Định Công, Hà Nội</p>
+                                <div class="text_time">
+                                    <p class="text_3">Ngày bàn giao: 20/10/2022</p>
+                                    <p class="text_4">Trạng thái: Đang mở bán</p>
+                                </div>
+                                <p class="text_5">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit ut
+                                    aliquam, purus sit amet luctus venenatis, lectus magna
+                                    fringilla urna, porttitor
+                                </p>
+                                <div class="text_money">
+                                    <div class="text_6">
+                                        <p class="text_6_1">GIá: <span>100 - 150 tỷ</span></p>
+                                    </div>
+                                    <a class="text_show" href="">Xem chi tiết</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content_cuoi">
+                        <div class="show_all">
+
+                            <div class="show_nha">
+                                <div class="show_nha_img">
+                                    <img src="<? echo base_url(); ?>assets/images/img_du_an/img_vitri.png" alt="">
+                                    <div class="abs_view flex">
+                                        <div class="abs_view_img">
+                                            <img src="<? echo base_url(); ?>assets/images/icon_ul_li/eye_white_svg.svg" alt="">
+                                        </div>
+                                        <div class="abs_view_text">13132</div>
+                                    </div>
+                                    <div class="abs_like">
+                                        <img src="<? echo base_url(); ?>assets/images/img_du_an/like.png" alt="">
+                                    </div>
+                                </div>
+                                <div class="show_nha_text">
+                                    <div class="show_nha_text-sub">
+                                        <p class="show_tex1">The Ocean Villas</p>
+                                        <p class="show_tex2">Định Công, Hoàng Mai, Hà Nội</p>
+                                        <div class="show_show">
+                                            <div class="show_tex3">
+                                                <div class="show_icon_text mr_b8px">
+                                                    <div class="show_icon_text_img">
+                                                        <img src="<? echo base_url(); ?>assets/images/icon_ul_li/bad_svg.svg" alt="">
+                                                    </div>
+                                                    <p class="show_text3-1">
+                                                        Công ty CP Xây dựng WHAT
+                                                    </p>
+                                                </div>
+                                                <div class="show_icon_text mr_b16px">
+                                                    <div class="show_icon_text_img">
+                                                        <img src="<? echo base_url(); ?>assets/images/icon_ul_li/dang_xaydung.svg" alt="">
+                                                    </div>
+                                                    <p class="show_text_xd">
+                                                        Đang xây dựng
+                                                    </p>
+                                                </div>
+                                                <div class="show_icon_text">
+                                                    <div class="show_icon_text_img">
+                                                        <img src="<? echo base_url(); ?>assets/images/icon_ul_li/price_svg.svg" alt="">
+                                                    </div>
+                                                    <p class="show_text5-1">
+                                                        100 - 150 tỷ
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="show_tex4">
+                                                <div class="show_icon_text mr_b8px">
+                                                    <div class="show_icon_text_img">
+                                                        <img src="<? echo base_url(); ?>assets/images/icon_ul_li/kich_thuc_svg.svg "alt="">
+                                                    </div>
+                                                    <p class="show_text3-2">
+                                                        2.000 m2
+                                                    </p>
+                                                </div>
+
+                                                <div class="show_icon_text mr_b16px">
+                                                    <div class="show_icon_text_img">
+                                                        <img src="<? echo base_url(); ?>assets/images/icon_ul_li/time_svg.svg" alt="">
+                                                    </div>
+                                                    <p class="show_text4-2 ">
+                                                        20/10/2022
+                                                    </p>
+                                                </div>
+                                                <div class="show_text5-2">
+                                                    <div class="show_icon_text_img">
+                                                        <img src="<? echo base_url(); ?>assets/images/icon_ul_li/so_sanh_svg.svg" alt="">
+                                                    </div>
+                                                    <p>So sánh</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="show_nha">
+                                <div class="show_nha_img">
+                                    <img src="<? echo base_url(); ?>assets/images/img_du_an/img_vitri.png" alt="">
+                                    <div class="abs_view flex">
+                                        <div class="abs_view_img">
+                                            <img src="<? echo base_url(); ?>assets/images/icon_ul_li/eye_white_svg.svg" alt="">
+                                        </div>
+                                        <div class="abs_view_text">13132</div>
+                                    </div>
+                                    <div class="abs_like">
+                                        <img src="<? echo base_url(); ?>assets/images/img_du_an/like.png" alt="">
+                                    </div>
+                                </div>
+                                <div class="show_nha_text">
+                                    <div class="show_nha_text-sub">
+                                        <p class="show_tex1">The Ocean Villas</p>
+                                        <p class="show_tex2">Định Công, Hoàng Mai, Hà Nội</p>
+                                        <div class="show_show">
+                                            <div class="show_tex3">
+                                                <div class="show_icon_text mr_b8px">
+                                                    <div class="show_icon_text_img">
+                                                        <img src="<? echo base_url(); ?>assets/images/icon_ul_li/bad_svg.svg" alt="">
+                                                    </div>
+                                                    <p class="show_text3-1">
+                                                        Công ty CP Xây dựng WHAT
+                                                    </p>
+                                                </div>
+                                                <div class="show_icon_text mr_b16px">
+                                                    <div class="show_icon_text_img">
+                                                        <img src="<? echo base_url(); ?>assets/images/icon_ul_li/dang_xaydung.svg" alt="">
+                                                    </div>
+                                                    <p class="show_text_xd">
+                                                        Đang xây dựng
+                                                    </p>
+                                                </div>
+                                                <div class="show_icon_text">
+                                                    <div class="show_icon_text_img">
+                                                            <img src="<? echo base_url(); ?>assets/images/icon_ul_li/price_svg.svg" alt="">
+                                                    </div>
+                                                    <p class="show_text5-1">
+                                                        100 - 150 tỷ
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="show_tex4">
+                                                <div class="show_icon_text mr_b8px">
+                                                    <div class="show_icon_text_img">
+                                                        <img src="<? echo base_url(); ?>assets/images/icon_ul_li/kich_thuc_svg.svg "alt="">
+                                                    </div>
+                                                    <p class="show_text3-2">
+                                                        2.000 m2
+                                                    </p>
+                                                </div>
+
+                                                <div class="show_icon_text mr_b16px">
+                                                    <div class="show_icon_text_img">
+                                                        <img src="<? echo base_url(); ?>assets/images/icon_ul_li/time_svg.svg" alt="">
+                                                    </div>
+                                                    <p class="show_text4-2 ">
+                                                        20/10/2022
+                                                    </p>
+                                                </div>
+                                                <div class="show_text5-2">
+                                                    <div class="show_icon_text_img">
+                                                        <img src="<? echo base_url(); ?>assets/images/icon_ul_li/so_sanh_svg.svg" alt="">
+                                                    </div>
+                                                    <p>So sánh</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="show_nha">
+                                <div class="show_nha_img">
+                                    <img src="<? echo base_url(); ?>assets/images/img_du_an/img_vitri.png" alt="">
+                                    <div class="abs_view flex">
+                                        <div class="abs_view_img">
+                                            <img src="<? echo base_url(); ?>assets/images/icon_ul_li/eye_white_svg.svg" alt="">
+                                        </div>
+                                        <div class="abs_view_text">13132</div>
+                                    </div>
+                                    <div class="abs_like">
+                                        <img src="<? echo base_url(); ?>assets/images/img_du_an/like.png" alt="">
+                                    </div>
+                                </div>
+                                <div class="show_nha_text">
+                                    <div class="show_nha_text-sub">
+                                        <p class="show_tex1">The Ocean Villas</p>
+                                        <p class="show_tex2">Định Công, Hoàng Mai, Hà Nội</p>
+                                        <div class="show_show">
+                                            <div class="show_tex3">
+                                                <div class="show_icon_text mr_b8px">
+                                                    <div class="show_icon_text_img">
+                                                        <img src="<? echo base_url(); ?>assets/images/icon_ul_li/bad_svg.svg" alt="">
+                                                    </div>
+                                                    <p class="show_text3-1">
+                                                        Công ty CP Xây dựng WHAT
+                                                    </p>
+                                                </div>
+                                                <div class="show_icon_text mr_b16px">
+                                                    <div class="show_icon_text_img">
+                                                        <img src="<? echo base_url(); ?>assets/images/icon_ul_li/dang_xaydung.svg" alt="">
+                                                    </div>
+                                                    <p class="show_text_xd">
+                                                        Đang xây dựng
+                                                    </p>
+                                                </div>
+                                                <div class="show_icon_text">
+                                                    <div class="show_icon_text_img">
+                                                            <img src="<? echo base_url(); ?>assets/images/icon_ul_li/price_svg.svg" alt="">
+                                                    </div>
+                                                    <p class="show_text5-1">
+                                                        100 - 150 tỷ
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="show_tex4">
+                                                <div class="show_icon_text mr_b8px">
+                                                    <div class="show_icon_text_img">
+                                                        <img src="<? echo base_url(); ?>assets/images/icon_ul_li/kich_thuc_svg.svg "alt="">
+                                                    </div>
+                                                    <p class="show_text3-2">
+                                                        2.000 m2
+                                                    </p>
+                                                </div>
+
+                                                <div class="show_icon_text mr_b16px">
+                                                    <div class="show_icon_text_img">
+                                                        <img src="<? echo base_url(); ?>assets/images/icon_ul_li/time_svg.svg" alt="">
+                                                    </div>
+                                                    <p class="show_text4-2 ">
+                                                        20/10/2022
+                                                    </p>
+                                                </div>
+                                                <div class="show_text5-2">
+                                                    <div class="show_icon_text_img">
+                                                        <img src="<? echo base_url(); ?>assets/images/icon_ul_li/so_sanh_svg.svg" alt="">
+                                                    </div>
+                                                    <p>So sánh</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="show_nha">
+                                <div class="show_nha_img">
+                                    <img src="<? echo base_url(); ?>assets/images/img_du_an/img_vitri.png" alt="">
+                                    <div class="abs_view flex">
+                                        <div class="abs_view_img">
+                                            <img src="<? echo base_url(); ?>assets/images/icon_ul_li/eye_white_svg.svg" alt="">
+                                        </div>
+                                        <div class="abs_view_text">13132</div>
+                                    </div>
+                                    <div class="abs_like">
+                                        <img src="<? echo base_url(); ?>assets/images/img_du_an/like.png" alt="">
+                                    </div>
+                                </div>
+                                <div class="show_nha_text">
+                                    <div class="show_nha_text-sub">
+                                        <p class="show_tex1">The Ocean Villas</p>
+                                        <p class="show_tex2">Định Công, Hoàng Mai, Hà Nội</p>
+                                        <div class="show_show">
+                                            <div class="show_tex3">
+                                                <div class="show_icon_text mr_b8px">
+                                                    <div class="show_icon_text_img">
+                                                        <img src="<? echo base_url(); ?>assets/images/icon_ul_li/bad_svg.svg" alt="">
+                                                    </div>
+                                                    <p class="show_text3-1">
+                                                        Công ty CP Xây dựng WHAT
+                                                    </p>
+                                                </div>
+                                                <div class="show_icon_text mr_b16px">
+                                                    <div class="show_icon_text_img">
+                                                        <img src="<? echo base_url(); ?>assets/images/icon_ul_li/dang_xaydung.svg" alt="">
+                                                    </div>
+                                                    <p class="show_text_xd">
+                                                        Đang xây dựng
+                                                    </p>
+                                                </div>
+                                                <div class="show_icon_text">
+                                                    <div class="show_icon_text_img">
+                                                            <img src="<? echo base_url(); ?>assets/images/icon_ul_li/price_svg.svg" alt="">
+                                                    </div>
+                                                    <p class="show_text5-1">
+                                                        100 - 150 tỷ
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="show_tex4">
+                                                <div class="show_icon_text mr_b8px">
+                                                    <div class="show_icon_text_img">
+                                                        <img src="<? echo base_url(); ?>assets/images/icon_ul_li/kich_thuc_svg.svg "alt="">
+                                                    </div>
+                                                    <p class="show_text3-2">
+                                                        2.000 m2
+                                                    </p>
+                                                </div>
+
+                                                <div class="show_icon_text mr_b16px">
+                                                    <div class="show_icon_text_img">
+                                                        <img src="<? echo base_url(); ?>assets/images/icon_ul_li/time_svg.svg" alt="">
+                                                    </div>
+                                                    <p class="show_text4-2 ">
+                                                        20/10/2022
+                                                    </p>
+                                                </div>
+                                                <div class="show_text5-2">
+                                                    <div class="show_icon_text_img">
+                                                        <img src="<? echo base_url(); ?>assets/images/icon_ul_li/so_sanh_svg.svg" alt="">
+                                                    </div>
+                                                    <p>So sánh</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="show_nha">
+                                <div class="show_nha_img">
+                                    <img src="<? echo base_url(); ?>assets/images/img_du_an/img_vitri.png" alt="">
+                                    <div class="abs_view flex">
+                                        <div class="abs_view_img">
+                                            <img src="<? echo base_url(); ?>assets/images/icon_ul_li/eye_white_svg.svg" alt="">
+                                        </div>
+                                        <div class="abs_view_text">13132</div>
+                                    </div>
+                                    <div class="abs_like">
+                                        <img src="<? echo base_url(); ?>assets/images/img_du_an/like.png" alt="">
+                                    </div>
+                                </div>
+                                <div class="show_nha_text">
+                                    <div class="show_nha_text-sub">
+                                        <p class="show_tex1">The Ocean Villas</p>
+                                        <p class="show_tex2">Định Công, Hoàng Mai, Hà Nội</p>
+                                        <div class="show_show">
+                                            <div class="show_tex3">
+                                                <div class="show_icon_text mr_b8px">
+                                                    <div class="show_icon_text_img">
+                                                        <img src="<? echo base_url(); ?>assets/images/icon_ul_li/bad_svg.svg" alt="">
+                                                    </div>
+                                                    <p class="show_text3-1">
+                                                        Công ty CP Xây dựng WHAT
+                                                    </p>
+                                                </div>
+                                                <div class="show_icon_text mr_b16px">
+                                                    <div class="show_icon_text_img">
+                                                        <img src="<? echo base_url(); ?>assets/images/icon_ul_li/dang_xaydung.svg" alt="">
+                                                    </div>
+                                                    <p class="show_text_xd">
+                                                        Đang xây dựng
+                                                    </p>
+                                                </div>
+                                                <div class="show_icon_text">
+                                                    <div class="show_icon_text_img">
+                                                            <img src="<? echo base_url(); ?>assets/images/icon_ul_li/price_svg.svg" alt="">
+                                                    </div>
+                                                    <p class="show_text5-1">
+                                                        100 - 150 tỷ
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="show_tex4">
+                                                <div class="show_icon_text mr_b8px">
+                                                    <div class="show_icon_text_img">
+                                                        <img src="<? echo base_url(); ?>assets/images/icon_ul_li/kich_thuc_svg.svg "alt="">
+                                                    </div>
+                                                    <p class="show_text3-2">
+                                                        2.000 m2
+                                                    </p>
+                                                </div>
+
+                                                <div class="show_icon_text mr_b16px">
+                                                    <div class="show_icon_text_img">
+                                                        <img src="<? echo base_url(); ?>assets/images/icon_ul_li/time_svg.svg" alt="">
+                                                    </div>
+                                                    <p class="show_text4-2 ">
+                                                        20/10/2022
+                                                    </p>
+                                                </div>
+                                                <div class="show_text5-2">
+                                                    <div class="show_icon_text_img">
+                                                        <img src="<? echo base_url(); ?>assets/images/icon_ul_li/so_sanh_svg.svg" alt="">
+                                                    </div>
+                                                    <p>So sánh</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="show_nha">
+                                <div class="show_nha_img">
+                                    <img src="<? echo base_url(); ?>assets/images/img_du_an/img_vitri.png" alt="">
+                                    <div class="abs_view flex">
+                                        <div class="abs_view_img">
+                                            <img src="<? echo base_url(); ?>assets/images/icon_ul_li/eye_white_svg.svg" alt="">
+                                        </div>
+                                        <div class="abs_view_text">13132</div>
+                                    </div>
+                                    <div class="abs_like">
+                                        <img src="<? echo base_url(); ?>assets/images/img_du_an/like.png" alt="">
+                                    </div>
+                                </div>
+                                <div class="show_nha_text">
+                                    <div class="show_nha_text-sub">
+                                        <p class="show_tex1">The Ocean Villas</p>
+                                        <p class="show_tex2">Định Công, Hoàng Mai, Hà Nội</p>
+                                        <div class="show_show">
+                                            <div class="show_tex3">
+                                                <div class="show_icon_text mr_b8px">
+                                                    <div class="show_icon_text_img">
+                                                        <img src="<? echo base_url(); ?>assets/images/icon_ul_li/bad_svg.svg" alt="">
+                                                    </div>
+                                                    <p class="show_text3-1">
+                                                        Công ty CP Xây dựng WHAT
+                                                    </p>
+                                                </div>
+                                                <div class="show_icon_text mr_b16px">
+                                                    <div class="show_icon_text_img">
+                                                        <img src="<? echo base_url(); ?>assets/images/icon_ul_li/dang_xaydung.svg" alt="">
+                                                    </div>
+                                                    <p class="show_text_xd">
+                                                        Đang xây dựng
+                                                    </p>
+                                                </div>
+                                                <div class="show_icon_text">
+                                                    <div class="show_icon_text_img">
+                                                            <img src="<? echo base_url(); ?>assets/images/icon_ul_li/price_svg.svg" alt="">
+                                                    </div>
+                                                    <p class="show_text5-1">
+                                                        100 - 150 tỷ
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="show_tex4">
+                                                <div class="show_icon_text mr_b8px">
+                                                    <div class="show_icon_text_img">
+                                                        <img src="<? echo base_url(); ?>assets/images/icon_ul_li/kich_thuc_svg.svg "alt="">
+                                                    </div>
+                                                    <p class="show_text3-2">
+                                                        2.000 m2
+                                                    </p>
+                                                </div>
+
+                                                <div class="show_icon_text mr_b16px">
+                                                    <div class="show_icon_text_img">
+                                                        <img src="<? echo base_url(); ?>assets/images/icon_ul_li/time_svg.svg" alt="">
+                                                    </div>
+                                                    <p class="show_text4-2 ">
+                                                        20/10/2022
+                                                    </p>
+                                                </div>
+                                                <div class="show_text5-2">
+                                                    <div class="show_icon_text_img">
+                                                        <img src="<? echo base_url(); ?>assets/images/icon_ul_li/so_sanh_svg.svg" alt="">
+                                                    </div>
+                                                    <p>So sánh</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="xemthem">
+                        <div class="xemthem_text">
+                            <a href="danh-sach-du-an-moi-nhat.html">Xem Thêm</a>
+                        </div>
+                        <img src="<? echo base_url(); ?>assets/images/img_du_an/next.png" alt="">
+                    </div>
+                </div>
+            </div>
+            <!-- ------------------ -->
+
+            <!-- body DỰ ÁN THEO KHU VỰC -->
+            <div class="body_DATKV">
+                <div class="body_padding">
+                    <div class="body_padding_noidung">
+                        <div class="body_padding_noidung_text">
+                            <div class="noidung_text_heading">
+                                <div class="noidung_text_heading_border"></div>
+                                Dự án theo khu vực
+                            </div>
+                            <div class="noidung_text_khuvuc">
+                                <div class="noidung_text_khuvuc_1">
+                                    <ul class="noidung_text_khuvuc_sub">
+                                        <li><a href="">Hà Nội (12)</a></li>
+                                        <li><a href="">Bình Dương (20)</a></li>
+                                        <li><a href="">Hải Phòng (123)</a></li>
+                                        <li><a href="">Bà Rịa Vũng Tàu (45)</a></li>
+                                        <li><a href="">Bắc Giang (20)</a></li>
+                                        <li><a href="">Hưng Yên (20)</a></li>
+                                        <li><a href="">Bến Tre (20)</a></li>
+                                        <li><a href="">Bình Phước (20)</a></li>
+                                        <li><a href="">Cà Mau (20)</a></li>
+                                        <li><a href="">Quảng Ninh (20)</a></li>
+                                    </ul>
+                                </div>
+                                <div class="noidung_text_khuvuc_2">
+                                    <ul class="noidung_text_khuvuc_sub">
+                                        <li><a href="">TP Hồ Chí Minh (20)</a></li>
+                                        <li><a href="">Đà Nẵng (20)</a></li>
+                                        <li><a href="">Long An (20)</a></li>
+                                        <li><a href="">An Giang (20)</a></li>
+                                        <li><a href="">Bắc Cạn (20)</a></li>
+                                        <li><a href="">Bắc Ninh (20)</a></li>
+                                        <li><a href="">Nam Định (20)</a></li>
+                                        <li><a href="">Bình Thuận (20)</a></li>
+                                        <li><a href="">Cần Thơ (20)</a></li>
+                                        <li><a href="">Thanh Hóa (20)</a></li>
+                                    </ul>
+                                </div>
+
+                                <div class="noidung_text_khuvuc_1">
+                                    <ul class="noidung_text_khuvuc_sub">
+                                        <li><a href="">Hòa Bình (20)</a></li>
+                                        <li><a href="">Sơn La (20)</a></li>
+                                        <li><a href="">Điện Biên (20)</a></li>
+                                        <li><a href="">Lai Châu (20)</a></li>
+                                        <li><a href="">Lào Cai (20)</a></li>
+                                        <li><a href="">Yên Bái (20)</a></li>
+                                        <li><a href="">Phú Thọ (20)</a></li>
+                                        <li><a href="">Hà Giang (20)</a></li>
+                                        <li><a href="">Tuyên Quang (20)</a></li>
+                                        <li><a href="">Thái Nguyên (20)</a></li>
+                                    </ul>
+                                </div>
+                                <div class="noidung_text_khuvuc_2">
+                                    <ul class="noidung_text_khuvuc_sub">
+                                        <li><a href="">Cao Bằng (20)</a></li>
+                                        <li><a href="">Lạng Sơn (20)</a></li>
+                                        <li><a href="">Ninh Bình (20)</a></li>
+                                        <li><a href="">Hà Nam (20)</a></li>
+                                        <li><a href="">Hải Dương (20)</a></li>
+                                        <li><a href="">Thái Bình (20)</a></li>
+                                        <li><a href="">Vĩnh Phúc (20)</a></li>
+                                        <li><a href="">Nghệ An (20)</a></li>
+                                        <li><a href="">Hà Tĩnh (20)</a></li>
+                                        <li><a href="">Quảng Bình (20)</a></li>
+                                    </ul>
+                                </div>
+
+                                <div class="noidung_text_khuvuc_1">
+                                    <ul class="noidung_text_khuvuc_sub">
+                                        <li><a href="">Quảng Trị (20)</a></li>
+                                        <li><a href="">Thừa Thiên Huế (20)</a></li>
+                                        <li><a href="">Quảng Nam (20)</a></li>
+                                        <li><a href="">Quảng Ngãi (20)</a></li>
+                                        <li><a href="">Bình Định (20)</a></li>
+                                        <li><a href="">Phú Yên (20)</a></li>
+                                        <li><a href="">Khánh Hòa (20)</a></li>
+                                        <li><a href="">Ninh Thuận (20)</a></li>
+                                        <li><a href="">Kon Tum (20)</a></li>
+                                        <li><a href="">Gia Lai (20)</a></li>
+                                    </ul>
+                                </div>
+                                <div class="noidung_text_khuvuc_2">
+                                    <ul class="noidung_text_khuvuc_sub">
+                                        <li><a href="">Đăk Lăk (20)</a></li>
+                                        <li><a href="">Đăk Nông (20)</a></li>
+                                        <li><a href="">Lâm Đồng (20)</a></li>
+                                        <li><a href="">Bình Phước (20)</a></li>
+                                        <li><a href="">Đồng Nai (20)</a></li>
+                                        <li><a href="">Tây Ninh (20)</a></li>
+                                        <li><a href="">Bạc Liêu (20)</a></li>
+                                        <li><a href="">Đồng Tháp (20)</a></li>
+                                        <li><a href="">Hậu Giang (20)</a></li>
+                                        <li><a href="">Kiên Giang (20)</a></li>
+                                    </ul>
+                                </div>
+
+                                <div class="noidung_text_khuvuc_1">
+                                    <ul class="noidung_text_khuvuc_sub">
+                                        <li><a href="">Sóc Trăng (20)</a></li>
+                                        <li><a href="">Tiền Giang (20)</a></li>
+                                        <li><a href="">Trà Vinh (20)</a></li>
+                                        <li><a href="">Vĩnh Long (20)</a></li>
+                                        <li><a href=""></a></li>
+                                        <li><a href=""></a></li>
+                                        <li><a href=""></a></li>
+                                        <li><a href=""></a></li>
+                                        <li><a href=""></a></li>
+                                        <li><a href=""></a></li>
+                                    </ul>
+                                </div>
+                                <div class="noidung_text_khuvuc_2">
+                                    <ul class="noidung_text_khuvuc_sub">
+                                        <li><a href=""></a></li>
+                                        <li><a href=""></a></li>
+                                        <li><a href=""></a></li>
+                                        <li><a href=""></a></li>
+                                        <li><a href=""></a></li>
+                                        <li><a href=""></a></li>
+                                        <li><a href=""></a></li>
+                                        <li><a href=""></a></li>
+                                        <li><a href=""></a></li>
+                                        <li><a href=""></a></li>
+                                    </ul>
+                                </div>
+
+                            </div>
+                        </div>
+                        
+                        <div class="body_padding_noidung_img">
+                            <div class="noidung_img_DATKV1 js_slider_img">
+                                <?php for($i = 0; $i < 8; $i++) :?>
+                                    <div class="fig_da_theokv">
+                                        <img src="<? echo base_url(); ?>assets/images/img_du_an/DATKV1.png" alt="">
+                                        <div class="noidung_img_absolute">
+                                            Grand Sentosa
+                                        </div>
+                                    </div>
+                                <?php endfor;?>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!-- --------------------- -->
+
+            <!-- body DANH SÁCH DỰ ÁN SĂP MỞ BÁN -->
+            <div class="body_DSdasmb">
+                <div class="body_DSdasmb_sub">
+                    <div class="body_DSdasmb_sub_heading">
+                        <div class="noidung_text_heading_border"></div>
+                        Danh sách dự án đang - sắp mở bán
+                    </div>
+
+                    <div class="body_DSdasmb_sub_button">
+                        <div class="DSdasmb_dang_mo_ban">
+                            <div class="DSdasmb_dang_mo_ban_a">Đang mở bán</div>
+                        </div>
+                        <div class="DSdasmb_sap_mo_ban">
+                            <div class="DSdasmb_sap_mo_ban_a">Sắp mở bán</div>
+                        </div>
+                    </div>
+
+                    <div class="body_DSdasmb_image">
+                        <div class="body_DSdasmb_image_bg slick_480_1 w_100">
+
+                            <div class="body_DSdasmb_image_bg_sub">
+                                <div class="body_DSdasmb_img">
+                                    <div class="body_DSdasmb_img_fig">
+                                        <img src="<? echo base_url(); ?>assets/images/img_du_an/fig1.png" alt="">
+                                        <div class="abs_view flex">
+                                            <div class="abs_view_img">
+                                                <img src="<? echo base_url(); ?>assets/images/icon_ul_li/eye_white_svg.svg" alt="">
+                                            </div>
+                                            <div class="abs_view_text">13132</div>
+                                        </div>
+                                        <div class="abs_like">
+                                            <img src="<? echo base_url(); ?>assets/images/img_du_an/like.png" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="body_DSdasmb_position">
+                                        One Piece 1020
+                                    </div>
+                                </div>
+                                <div class="body_DSdasmb_all">
+                                    <div class="body_DSdasmb_text_icon">
+                                        <div class="show_icon_text_img">
+                                            <img src="<? echo base_url(); ?>assets/images/icon_ul_li/vitri_svg.svg" alt="">
+
+                                        </div>
+                                        <div class="body_DSdasmb_text">Định Công, Hoàng Mai, Hà Nội</div>
+                                    </div>
+                                    <div class="not_name">
+                                        <div class="het_ten1">
+                                            <div class="body_DSdasmb_text_icon">
+                                                <div class="show_icon_text_img">
+                                                    <img src="<? echo base_url(); ?>assets/images/icon_ul_li/bad_svg.svg" alt="">
+                                                </div>
+                                                <div class="body_DSdasmb_text">Công ty CP Xây dựng WHAT</div>
+                                            </div>
+                                            <div class="body_DSdasmb_text_icon">
+                                                <div class="show_icon_text_img">
+                                                <img src="<? echo base_url(); ?>assets/images/icon_ul_li/dang_xaydung.svg" alt="">
+                                                </div>
+                                                <div class="body_DSdasmb_text">Đang xây dựng</div>
+                                            </div>
+                                        </div>
+                                        <div class="het_ten2">
+                                            <div class="body_DSdasmb_text_icon">
+                                                <div class="show_icon_text_img">
+                                                    <img src="<? echo base_url(); ?>assets/images/icon_ul_li/kich_thuc_svg.svg "alt="">
+                                                </div>
+                                                <div class="body_DSdasmb_text">200 m2</div>
+                                            </div>
+                                            <div class="body_DSdasmb_text_icon">
+                                                <div class="show_icon_text_img">
+                                                    <img src="<? echo base_url(); ?>assets/images/icon_ul_li/time_svg.svg" alt="">
+                                                </div>
+                                                <div class="body_DSdasmb_text">20/10/2022</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="body_DSdasmb_text_cuoi">
+                                        <div class="show_icon_text_img">
+                                                <img src="<? echo base_url(); ?>assets/images/icon_ul_li/price_svg.svg" alt="">
+                                        </div>
+                                        <div class="body_DSdasmb_text">100 - 150 tỷ</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="body_DSdasmb_image_bg_sub">
+                                <div class="body_DSdasmb_img">
+                                    <div class="body_DSdasmb_img_fig">
+                                        <img src="<? echo base_url(); ?>assets/images/img_du_an/fig1.png" alt="">
+                                        <div class="abs_view flex">
+                                            <div class="abs_view_img">
+                                                <img src="<? echo base_url(); ?>assets/images/icon_ul_li/eye_white_svg.svg" alt="">
+                                            </div>
+                                            <div class="abs_view_text">13132</div>
+                                        </div>
+                                        <div class="abs_like">
+                                            <img src="<? echo base_url(); ?>assets/images/img_du_an/like.png" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="body_DSdasmb_position">
+                                        One Piece 1020
+                                    </div>
+                                </div>
+                                <div class="body_DSdasmb_all">
+                                    <div class="body_DSdasmb_text_icon">
+                                        <div class="show_icon_text_img">
+                                            <img src="<? echo base_url(); ?>assets/images/icon_ul_li/vitri_svg.svg" alt="">
+
+                                        </div>
+                                        <div class="body_DSdasmb_text">Định Công, Hoàng Mai, Hà Nội</div>
+                                    </div>
+                                    <div class="not_name">
+                                        <div class="het_ten1">
+                                            <div class="body_DSdasmb_text_icon">
+                                                <div class="show_icon_text_img">
+                                                    <img src="<? echo base_url(); ?>assets/images/icon_ul_li/bad_svg.svg" alt="">
+                                                </div>
+                                                <div class="body_DSdasmb_text">Công ty CP Xây dựng WHAT</div>
+                                            </div>
+                                            <div class="body_DSdasmb_text_icon">
+                                                <div class="show_icon_text_img">
+                                                <img src="<? echo base_url(); ?>assets/images/icon_ul_li/dang_xaydung.svg" alt="">
+                                                </div>
+                                                <div class="body_DSdasmb_text">Đang xây dựng</div>
+                                            </div>
+                                        </div>
+                                        <div class="het_ten2">
+                                            <div class="body_DSdasmb_text_icon">
+                                                <div class="show_icon_text_img">
+                                                    <img src="<? echo base_url(); ?>assets/images/icon_ul_li/kich_thuc_svg.svg "alt="">
+                                                </div>
+                                                <div class="body_DSdasmb_text">200 m2</div>
+                                            </div>
+                                            <div class="body_DSdasmb_text_icon">
+                                                <div class="show_icon_text_img">
+                                                    <img src="<? echo base_url(); ?>assets/images/icon_ul_li/time_svg.svg" alt="">
+                                                </div>
+                                                <div class="body_DSdasmb_text">20/10/2022</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="body_DSdasmb_text_cuoi">
+                                        <div class="show_icon_text_img">
+                                                <img src="<? echo base_url(); ?>assets/images/icon_ul_li/price_svg.svg" alt="">
+                                        </div>
+                                        <div class="body_DSdasmb_text">100 - 150 tỷ</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="body_DSdasmb_image_bg_sub">
+                                <div class="body_DSdasmb_img">
+                                    <div class="body_DSdasmb_img_fig">
+                                        <img src="<? echo base_url(); ?>assets/images/img_du_an/fig1.png" alt="">
+                                        <div class="abs_view flex">
+                                            <div class="abs_view_img">
+                                                <img src="<? echo base_url(); ?>assets/images/icon_ul_li/eye_white_svg.svg" alt="">
+                                            </div>
+                                            <div class="abs_view_text">13132</div>
+                                        </div>
+                                        <div class="abs_like">
+                                            <img src="<? echo base_url(); ?>assets/images/img_du_an/like.png" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="body_DSdasmb_position">
+                                        One Piece 1020
+                                    </div>
+                                </div>
+                                <div class="body_DSdasmb_all">
+                                    <div class="body_DSdasmb_text_icon">
+                                        <div class="show_icon_text_img">
+                                            <img src="<? echo base_url(); ?>assets/images/icon_ul_li/vitri_svg.svg" alt="">
+
+                                        </div>
+                                        <div class="body_DSdasmb_text">Định Công, Hoàng Mai, Hà Nội</div>
+                                    </div>
+                                    <div class="not_name">
+                                        <div class="het_ten1">
+                                            <div class="body_DSdasmb_text_icon">
+                                                <div class="show_icon_text_img">
+                                                    <img src="<? echo base_url(); ?>assets/images/icon_ul_li/bad_svg.svg" alt="">
+                                                </div>
+                                                <div class="body_DSdasmb_text">Công ty CP Xây dựng WHAT</div>
+                                            </div>
+                                            <div class="body_DSdasmb_text_icon">
+                                                <div class="show_icon_text_img">
+                                                <img src="<? echo base_url(); ?>assets/images/icon_ul_li/dang_xaydung.svg" alt="">
+                                                </div>
+                                                <div class="body_DSdasmb_text">Đang xây dựng</div>
+                                            </div>
+                                        </div>
+                                        <div class="het_ten2">
+                                            <div class="body_DSdasmb_text_icon">
+                                                <div class="show_icon_text_img">
+                                                    <img src="<? echo base_url(); ?>assets/images/icon_ul_li/kich_thuc_svg.svg "alt="">
+                                                </div>
+                                                <div class="body_DSdasmb_text">200 m2</div>
+                                            </div>
+                                            <div class="body_DSdasmb_text_icon">
+                                                <div class="show_icon_text_img">
+                                                    <img src="<? echo base_url(); ?>assets/images/icon_ul_li/time_svg.svg" alt="">
+                                                </div>
+                                                <div class="body_DSdasmb_text">20/10/2022</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="body_DSdasmb_text_cuoi">
+                                        <div class="show_icon_text_img">
+                                                <img src="<? echo base_url(); ?>assets/images/icon_ul_li/price_svg.svg" alt="">
+                                        </div>
+                                        <div class="body_DSdasmb_text">100 - 150 tỷ</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="body_DSdasmb_image_bg_sub">
+                                <div class="body_DSdasmb_img">
+                                    <div class="body_DSdasmb_img_fig">
+                                        <img src="<? echo base_url(); ?>assets/images/img_du_an/fig1.png" alt="">
+                                        <div class="abs_view flex">
+                                            <div class="abs_view_img">
+                                                <img src="<? echo base_url(); ?>assets/images/icon_ul_li/eye_white_svg.svg" alt="">
+                                            </div>
+                                            <div class="abs_view_text">13132</div>
+                                        </div>
+                                        <div class="abs_like">
+                                            <img src="<? echo base_url(); ?>assets/images/img_du_an/like.png" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="body_DSdasmb_position">
+                                        One Piece 1020
+                                    </div>
+                                </div>
+                                <div class="body_DSdasmb_all">
+                                    <div class="body_DSdasmb_text_icon">
+                                        <div class="show_icon_text_img">
+                                            <img src="<? echo base_url(); ?>assets/images/icon_ul_li/vitri_svg.svg" alt="">
+
+                                        </div>
+                                        <div class="body_DSdasmb_text">Định Công, Hoàng Mai, Hà Nội</div>
+                                    </div>
+                                    <div class="not_name">
+                                        <div class="het_ten1">
+                                            <div class="body_DSdasmb_text_icon">
+                                                <div class="show_icon_text_img">
+                                                    <img src="<? echo base_url(); ?>assets/images/icon_ul_li/bad_svg.svg" alt="">
+                                                </div>
+                                                <div class="body_DSdasmb_text">Công ty CP Xây dựng WHAT</div>
+                                            </div>
+                                            <div class="body_DSdasmb_text_icon">
+                                                <div class="show_icon_text_img">
+                                                <img src="<? echo base_url(); ?>assets/images/icon_ul_li/dang_xaydung.svg" alt="">
+                                                </div>
+                                                <div class="body_DSdasmb_text">Đang xây dựng</div>
+                                            </div>
+                                        </div>
+                                        <div class="het_ten2">
+                                            <div class="body_DSdasmb_text_icon">
+                                                <div class="show_icon_text_img">
+                                                    <img src="<? echo base_url(); ?>assets/images/icon_ul_li/kich_thuc_svg.svg "alt="">
+                                                </div>
+                                                <div class="body_DSdasmb_text">200 m2</div>
+                                            </div>
+                                            <div class="body_DSdasmb_text_icon">
+                                                <div class="show_icon_text_img">
+                                                    <img src="<? echo base_url(); ?>assets/images/icon_ul_li/time_svg.svg" alt="">
+                                                </div>
+                                                <div class="body_DSdasmb_text">20/10/2022</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="body_DSdasmb_text_cuoi">
+                                        <div class="show_icon_text_img">
+                                                <img src="<? echo base_url(); ?>assets/images/icon_ul_li/price_svg.svg" alt="">
+                                        </div>
+                                        <div class="body_DSdasmb_text">100 - 150 tỷ</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="body_DSdasmb_image_bg_sub">
+                                <div class="body_DSdasmb_img">
+                                    <div class="body_DSdasmb_img_fig">
+                                        <img src="<? echo base_url(); ?>assets/images/img_du_an/fig1.png" alt="">
+                                        <div class="abs_view flex">
+                                            <div class="abs_view_img">
+                                                <img src="<? echo base_url(); ?>assets/images/icon_ul_li/eye_white_svg.svg" alt="">
+                                            </div>
+                                            <div class="abs_view_text">13132</div>
+                                        </div>
+                                        <div class="abs_like">
+                                            <img src="<? echo base_url(); ?>assets/images/img_du_an/like.png" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="body_DSdasmb_position">
+                                        One Piece 1020
+                                    </div>
+                                </div>
+                                <div class="body_DSdasmb_all">
+                                    <div class="body_DSdasmb_text_icon">
+                                        <div class="show_icon_text_img">
+                                            <img src="<? echo base_url(); ?>assets/images/icon_ul_li/vitri_svg.svg" alt="">
+
+                                        </div>
+                                        <div class="body_DSdasmb_text">Định Công, Hoàng Mai, Hà Nội</div>
+                                    </div>
+                                    <div class="not_name">
+                                        <div class="het_ten1">
+                                            <div class="body_DSdasmb_text_icon">
+                                                <div class="show_icon_text_img">
+                                                    <img src="<? echo base_url(); ?>assets/images/icon_ul_li/bad_svg.svg" alt="">
+                                                </div>
+                                                <div class="body_DSdasmb_text">Công ty CP Xây dựng WHAT</div>
+                                            </div>
+                                            <div class="body_DSdasmb_text_icon">
+                                                <div class="show_icon_text_img">
+                                                <img src="<? echo base_url(); ?>assets/images/icon_ul_li/dang_xaydung.svg" alt="">
+                                                </div>
+                                                <div class="body_DSdasmb_text">Đang xây dựng</div>
+                                            </div>
+                                        </div>
+                                        <div class="het_ten2">
+                                            <div class="body_DSdasmb_text_icon">
+                                                <div class="show_icon_text_img">
+                                                    <img src="<? echo base_url(); ?>assets/images/icon_ul_li/kich_thuc_svg.svg "alt="">
+                                                </div>
+                                                <div class="body_DSdasmb_text">200 m2</div>
+                                            </div>
+                                            <div class="body_DSdasmb_text_icon">
+                                                <div class="show_icon_text_img">
+                                                    <img src="<? echo base_url(); ?>assets/images/icon_ul_li/time_svg.svg" alt="">
+                                                </div>
+                                                <div class="body_DSdasmb_text">20/10/2022</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="body_DSdasmb_text_cuoi">
+                                        <div class="show_icon_text_img">
+                                                <img src="<? echo base_url(); ?>assets/images/icon_ul_li/price_svg.svg" alt="">
+                                        </div>
+                                        <div class="body_DSdasmb_text">100 - 150 tỷ</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="body_DSdasmb_image_bg_sub">
+                                <div class="body_DSdasmb_img">
+                                    <div class="body_DSdasmb_img_fig">
+                                        <img src="<? echo base_url(); ?>assets/images/img_du_an/fig1.png" alt="">
+                                        <div class="abs_view flex">
+                                            <div class="abs_view_img">
+                                                <img src="<? echo base_url(); ?>assets/images/icon_ul_li/eye_white_svg.svg" alt="">
+                                            </div>
+                                            <div class="abs_view_text">13132</div>
+                                        </div>
+                                        <div class="abs_like">
+                                            <img src="<? echo base_url(); ?>assets/images/img_du_an/like.png" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="body_DSdasmb_position">
+                                        One Piece 1020
+                                    </div>
+                                </div>
+                                <div class="body_DSdasmb_all">
+                                    <div class="body_DSdasmb_text_icon">
+                                        <div class="show_icon_text_img">
+                                            <img src="<? echo base_url(); ?>assets/images/icon_ul_li/vitri_svg.svg" alt="">
+
+                                        </div>
+                                        <div class="body_DSdasmb_text">Định Công, Hoàng Mai, Hà Nội</div>
+                                    </div>
+                                    <div class="not_name">
+                                        <div class="het_ten1">
+                                            <div class="body_DSdasmb_text_icon">
+                                                <div class="show_icon_text_img">
+                                                    <img src="<? echo base_url(); ?>assets/images/icon_ul_li/bad_svg.svg" alt="">
+                                                </div>
+                                                <div class="body_DSdasmb_text">Công ty CP Xây dựng WHAT</div>
+                                            </div>
+                                            <div class="body_DSdasmb_text_icon">
+                                                <div class="show_icon_text_img">
+                                                <img src="<? echo base_url(); ?>assets/images/icon_ul_li/dang_xaydung.svg" alt="">
+                                                </div>
+                                                <div class="body_DSdasmb_text">Đang xây dựng</div>
+                                            </div>
+                                        </div>
+                                        <div class="het_ten2">
+                                            <div class="body_DSdasmb_text_icon">
+                                                <div class="show_icon_text_img">
+                                                    <img src="<? echo base_url(); ?>assets/images/icon_ul_li/kich_thuc_svg.svg "alt="">
+                                                </div>
+                                                <div class="body_DSdasmb_text">200 m2</div>
+                                            </div>
+                                            <div class="body_DSdasmb_text_icon">
+                                                <div class="show_icon_text_img">
+                                                    <img src="<? echo base_url(); ?>assets/images/icon_ul_li/time_svg.svg" alt="">
+                                                </div>
+                                                <div class="body_DSdasmb_text">20/10/2022</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="body_DSdasmb_text_cuoi">
+                                        <div class="show_icon_text_img">
+                                                <img src="<? echo base_url(); ?>assets/images/icon_ul_li/price_svg.svg" alt="">
+                                        </div>
+                                        <div class="body_DSdasmb_text">100 - 150 tỷ</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="body_DSdasmb_xemthem">
+                    <a href="" class="xemthem_bao">
+                        <div class="DSdasmb_xemthem main_color">
+                            Xem thêm
+                        </div>
+                        <div class="img_fig_xemthem">
+                            <img src="<? echo base_url(); ?>assets/images/img_du_an/next.png" alt="">
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- --------------------- -->
+
+
+            <!-- body TIN TỨC DỰ ÁN -->
+            <div class="body_tintuc">
+
+                <div class="body_tintuc_duan">
+                    <div class="body_tintuc_duan_sub">
+                        <div class="body_tintuc_duan_tex mr_b24px">
+                            Tin tức dự án
+                        </div>
+                        <div class="khoi_tintuc">
+                            <div class="body_tintuc_duan_img">
+                                <div class="img_fig_duan">
+                                    <img src="<? echo base_url(); ?>assets/images/img_du_an/tt_da_1.png" alt="">
+                                </div>
+                                <div class="khoi_noidung_tintuc">
+                                    <div class="tintuc_duan_text1">Những đặc điểm dự án tại Hà Nội</div>
+                                    <div class="tintuc_duan_text2">
+                                        Chung cư Tràng An Complex là dự án tổ hợp chung cư, thương mại do
+                                        GP Invest làm chủ đầu tư. Dự án tọa lạc tại số 1 Phùng Chí Kiên,
+                                        đây là vị trí đắc địa của quận Cầu Giấy,...
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="body_tintuc_duan_img">
+                                <div class="img_fig_duan">
+                                    <img src="<? echo base_url(); ?>assets/images/img_du_an/tt_da_1.png" alt="">
+                                </div>
+                                <div class="khoi_noidung_tintuc">
+                                    <div class="tintuc_duan_text1">Những đặc điểm dự án tại Hà Nội</div>
+                                    <div class="tintuc_duan_text2">
+                                        Chung cư Tràng An Complex là dự án tổ hợp chung cư, thương mại do
+                                        GP Invest làm chủ đầu tư. Dự án tọa lạc tại số 1 Phùng Chí Kiên,
+                                        đây là vị trí đắc địa của quận Cầu Giấy,...
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="body_tintuc_duan_img">
+                                <div class="img_fig_duan">
+                                    <img src="<? echo base_url(); ?>assets/images/img_du_an/tt_da_1.png" alt="">
+                                </div>
+                                <div class="khoi_noidung_tintuc">
+                                    <div class="tintuc_duan_text1">Những đặc điểm dự án tại Hà Nội</div>
+                                    <div class="tintuc_duan_text2">
+                                        Chung cư Tràng An Complex là dự án tổ hợp chung cư, thương mại do
+                                        GP Invest làm chủ đầu tư. Dự án tọa lạc tại số 1 Phùng Chí Kiên,
+                                        đây là vị trí đắc địa của quận Cầu Giấy,...
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="body_tintuc_duan_img">
+                                <div class="img_fig_duan">
+                                    <img src="<? echo base_url(); ?>assets/images/img_du_an/tt_da_1.png" alt="">
+                                </div>
+                                <div class="khoi_noidung_tintuc">
+                                    <div class="tintuc_duan_text1">Những đặc điểm dự án tại Hà Nội</div>
+                                    <div class="tintuc_duan_text2">
+                                        Chung cư Tràng An Complex là dự án tổ hợp chung cư, thương mại do
+                                        GP Invest làm chủ đầu tư. Dự án tọa lạc tại số 1 Phùng Chí Kiên,
+                                        đây là vị trí đắc địa của quận Cầu Giấy,...
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="body_tintuc_duan_img">
+                                <div class="img_fig_duan">
+                                    <img src="<? echo base_url(); ?>assets/images/img_du_an/tt_da_1.png" alt="">
+                                </div>
+                                <div class="khoi_noidung_tintuc">
+                                    <div class="tintuc_duan_text1">Những đặc điểm dự án tại Hà Nội</div>
+                                    <div class="tintuc_duan_text2">
+                                        Chung cư Tràng An Complex là dự án tổ hợp chung cư, thương mại do
+                                        GP Invest làm chủ đầu tư. Dự án tọa lạc tại số 1 Phùng Chí Kiên,
+                                        đây là vị trí đắc địa của quận Cầu Giấy,...
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="body_tintuc_duan_img">
+                                <div class="img_fig_duan">
+                                    <img src="<? echo base_url(); ?>assets/images/img_du_an/tt_da_1.png" alt="">
+                                </div>
+                                <div class="khoi_noidung_tintuc">
+                                    <div class="tintuc_duan_text1">Những đặc điểm dự án tại Hà Nội</div>
+                                    <div class="tintuc_duan_text2">
+                                        Chung cư Tràng An Complex là dự án tổ hợp chung cư, thương mại do
+                                        GP Invest làm chủ đầu tư. Dự án tọa lạc tại số 1 Phùng Chí Kiên,
+                                        đây là vị trí đắc địa của quận Cầu Giấy,...
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="body_DSdasmb_xemthem">
+                        <div class="xemthem_bao">
+                            <div class="DSdasmb_xemthem main_color">
+                                Xem thêm
+                            </div>
+                            <div class="img_fig_xemthem">
+                                <img src="<? echo base_url(); ?>assets/images/img_du_an/next.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+            <!-- --------------------- -->
+
+
+            <!-- body CHỦ ĐẦU TƯ -->
+            <div class="body_CDT">
+                <div class="body_CDT_content">
+                    <h1 class="body_CDT_content_heading">
+                        <div class="noidung_text_heading_border"></div>
+                        Chủ đầu tư nổi bật
+                    </h1>
+                    <div class="body_CDT_content_img">
+
+                        <div class="body_CDT_content_img_1">
+                            <div class="test_img">
+                                <img src="<? echo base_url(); ?>assets/images/img_du_an/bacsila.jpg" alt="">
+                            </div>
+                            <div class="body_CDT_content_text">
+                                <div class="body_CDT_content_text1 elipsis1">Công ty TNHH Liên doanh Phú</div>
+                                <div class="body_CDT_content_text2">1123 người theo dõi</div>
+                            </div>
+                        </div>
+                        <div class="body_CDT_content_img_1">
+                            <div class="test_img">
+                                <img src="<? echo base_url(); ?>assets/images/img_du_an/CDT_img2.png" alt="">
+                            </div>
+                            <div class="body_CDT_content_text">
+                                <div class="body_CDT_content_text1 elipsis1">Công ty TNHH Liên doanh Phú</div>
+                                <div class="body_CDT_content_text2">1123 người theo dõi</div>
+                            </div>
+                        </div>
+                        <div class="body_CDT_content_img_1">
+                            <div class="test_img">
+                                <img src="<? echo base_url(); ?>assets/images/img_du_an/CDT_img2.png" alt="">
+                            </div>
+                            <div class="body_CDT_content_text">
+                                <div class="body_CDT_content_text1 elipsis1">Công ty TNHH Liên doanh Phú</div>
+                                <div class="body_CDT_content_text2">1123 người theo dõi</div>
+                            </div>
+                        </div>
+                        <div class="body_CDT_content_img_1">
+                            <div class="test_img">
+                                <img src="<? echo base_url(); ?>assets/images/img_du_an/CDT_img2.png" alt="">
+                            </div>
+                            <div class="body_CDT_content_text">
+                                <div class="body_CDT_content_text1 elipsis1">Công ty TNHH Liên doanh Phú</div>
+                                <div class="body_CDT_content_text2">1123 người theo dõi</div>
+                            </div>
+                        </div>
+
+                        <div class="body_CDT_content_img_1">
+                            <div class="test_img">
+                                <img src="<? echo base_url(); ?>assets/images/img_du_an/CDT_img.png" alt="">
+                            </div>
+                            <div class="body_CDT_content_text">
+                                <div class="body_CDT_content_text1 elipsis1">Công ty TNHH Liên doanh Phú</div>
+                                <div class="body_CDT_content_text2">1123 người theo dõi</div>
+                            </div>
+                        </div>
+                        <div class="body_CDT_content_img_1">
+                            <div class="test_img">
+                                <img src="<? echo base_url(); ?>assets/images/img_du_an/CDT_img2.png" alt="">
+                            </div>
+                            <div class="body_CDT_content_text">
+                                <div class="body_CDT_content_text1 elipsis1">Công ty TNHH Liên doanh Phú</div>
+                                <div class="body_CDT_content_text2">1123 người theo dõi</div>
+                            </div>
+                        </div>
+                        <div class="body_CDT_content_img_1">
+                            <div class="test_img">
+                                <img src="<? echo base_url(); ?>assets/images/img_du_an/CDT_img2.png" alt="">
+                            </div>
+                            <div class="body_CDT_content_text">
+                                <div class="body_CDT_content_text1 elipsis1">Công ty TNHH Liên doanh Phú</div>
+                                <div class="body_CDT_content_text2">1123 người theo dõi</div>
+                            </div>
+                        </div>
+                        <div class="body_CDT_content_img_1">
+                            <div class="test_img">
+                                <img src="<? echo base_url(); ?>assets/images/img_du_an/CDT_img2.png" alt="">
+                            </div>
+                            <div class="body_CDT_content_text">
+                                <div class="body_CDT_content_text1 elipsis1">Công ty TNHH Liên doanh Phú</div>
+                                <div class="body_CDT_content_text2">1123 người theo dõi</div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="body_DSdasmb_xemthem">
+                    <div class="xemthem_bao">
+                        <div class="DSdasmb_xemthem main_color">
+                            Xem thêm
+                        </div>
+                        <div class="img_fig_xemthem">
+                            <img src="<? echo base_url(); ?>assets/images/img_du_an/next.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- --------------------- -->
+
+
+            <!-- body KÉT THÚC -->
+            <div class="body_ketthuc">
+                <div class="body_ketthuc_khung">
+                    <div class="body_ketthuc_khung1">
+                        <div class="body_ketthuc_khung1_text">
+                            <div class="body_ketthuc_khung2_img_heading them1class">
+                                <div class="img_fig_mucluc">
+                                    <img src="<? echo base_url(); ?>assets/images/img_du_an/mucluc.png" alt="">
+                                </div>
+                                <div class="body_ketthuc_khung2_heading">
+                                    Mục lục
+                                </div>
+                            </div>
+                            <div class="body_ketthuc_khung1_text1">
+                                Chung cư đang được coi là phân khúc bất động sản cực HOT đi cùng sự
+                                phát triển của xã hội được khá nhiều người quan tâm trong thời điểm
+                                hiện tại. Sản phẩm bất động sản tuyệt vời này giúp xã hội giải được
+                                bài toàn về nhà ở đặc biệt là các thành phố lớn Chung cư cũng được
+                                đánh giá cao với cơ sở hạ tầng hiện đại đầy đủ, với thiết kế hiện đại,
+                                tiện ích, tiện nghi hoàn chỉnh và không gian sống của mình. Vì vậy nó
+                                luôn luôn trở thành một trong những mục tiêu săn lùng của rất nhiều
+                                người giúp họ có được một nơi an cư lý tưởng hay là kênh đầu tư lợi
+                                nhuận sinh lời
+                            </div>
+                            <div class="body_ketthuc_khung1_text2">
+                                <span>1 .Đánh giá tình hình chung cư việt nam hiện nay</span> <br>
+                                Không phải ngẫu nhiên mà thị trường mua bán chung
+                                cư đang trở nên sôi động và nhộn nhịp bởi chung cư
+                                Việt Nam có những ưu điểm vượt trội đáp ứng được những
+                                nhu cầu chính đáng của con người trong xã hội hiện đại
+                                đặc biệt phải kể đến
+                            </div>
+                            <div class="img_xemthem hidden">
+                                <img src="<? echo base_url(); ?>assets/images/img_du_an/img_xemthem.png" alt="">
+                            </div>
+                        </div>
+                        <div class="ketthuc_xemthem">
+                            <p class="show_xemthem">Xem thêm</p>
+                            <p class="show_thugon hidden">Thu gọn</p>
+                        </div>
+                    </div>
+
+
+
+                    <div class="body_ketthuc_khung2">
+                        <div class="body_ketthuc_khung2_them_480">
+                            <div class="body_ketthuc_khung2_img_heading">
+                                <div class="img_fig_mucluc">
+                                    <img src="<? echo base_url(); ?>assets/images/img_du_an/mucluc.png" alt="">
+                                </div>
+                                <div class="body_ketthuc_khung2_heading">
+                                    Mục lục
+                                </div>
+                            </div>
+                            <div class="body_ketthuc_khung2_them_480_sub dong_mucluc">
+                                Đóng
+                            </div>
+                        </div>
+                        <ul class="body_ketthuc_khung_mucluc">
+                            <li><a class="mucluc1" href="">1. Đánh giá tình hình chung cư Việt Nam hiện nay</a></li>
+                            <li><a class="mucluc2" href="">1.1 Cơ sỏ hạ tầng đồng bộ</a></li>
+                            <li><a class="mucluc3" href="">1.2 An ninh tốt</a></li>
+                            <li><a class="mucluc4" href="">1. Thiết kế hiện đại</a></li>
+                            <li><a class="mucluc5" href="">1. Đánh giá tình hình chung cư Việt Nam hiện nay</a></li>
+                            <li><a class="mucluc6" href="">1. Cơ sỏ hạ tầng đồng bộ</a></li>
+                            <li><a class="mucluc7" href="">1. An ninh tốt</a></li>
+                            <li><a class="mucluc8" href="">1. Thiết kế hiện đại</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="khung_footer">
+            <? require_once APPPATH.'views/site/includes/da_footer.php' ?>
+        </div>
+
+
+
+        <!-- POPUP LỌC KẾT QUẢ MÀN 480 -->
+        <div class="popup_locketqua hidden">
+            <div class="popup_locketqua_padding">
+                <div class="popup_locketqua_heading flex align_items justify_content_sb">
+                    <div class="popup_locketqua_heading1">Lọc kết quả</div>
+                    <div class="popup_locketqua_heading2 close_popup_locketqua">Đóng</div>
+                </div>
+                <div class="popup_locketqua_content">
+                    <div class="popup_locketqua_content_select">
+                        <select class="select_option js-states form-control">
+                            <option value="">Toàn quốc</option>
+                        </select>
+                    </div>
+                    <div class="popup_locketqua_content_select">
+                        <select class="select_option js-states form-control">
+                            <option value="">Quận huyện</option>
+                        </select>
+                    </div>
+                    <div class="popup_locketqua_content_select">
+                        <select class="select_option js-states form-control">
+                            <option value="">Loại bất động sản</option>
+                        </select>
+                    </div>
+                    <div class="popup_locketqua_content_select">
+                        <select class="select_option js-states form-control">
+                            <option value="">Khoảng giá</option>
+                        </select>
+                    </div>
+                    <div class="popup_locketqua_content_select">
+                        <select class="select_option js-states form-control">
+                            <option value="">Trạng thái</option>
+                        </select>
+                    </div>
+                    <div class="popup_locketqua_content_select">
+                        <select class="select_option js-states form-control">
+                            <option value="">Tiến độ</option>
+                        </select>
+                    </div>
+                    
+                    <div class="popup_locketqua_content_btn">Áp dụng</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>
+<script type="text/javascript" src="<? echo base_url();?>assets/js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="<? echo base_url();?>assets/js/slick.min.js"></script>
+<script type="text/javascript" src="<? echo base_url();?>assets/js/js_duy.js"></script>
+<script type="text/javascript" src="<? echo base_url();?>assets/js/select2.min.js"></script>
+
+<script>
+$(".select_option").select2({
+    width: "100%",
+});
+</script>
+
+<script>
+$('.ketthuc_xemthem').click(function() {
+    $('.show_xemthem').toggleClass('hidden');
+    $('.show_thugon').toggleClass('hidden');
+    $('.img_xemthem').toggleClass('hidden');
+})
+active_single_header('duan');
+$('.noidung_text_khuvuc').slick({
+    dots: true,
+    slidesToShow: 2,
+    slidesToScroll: 2,
+    arrow: true,
+    prevArrow: '<button class="slick-prev prev-arrow"><img src="<? echo base_url(); ?>assets/images/img_du_an/icon_DATKV_left.png" alt=""></button>',
+    nextArrow: '<button class="slick-next next-arrow"><img src="<? echo base_url(); ?>assets/images/img_du_an/icon_DATKV_right.png" alt=""></button>',
+});
+
+// $('.body_DSdasmb_image_bg').slick({
+//     rows: 2,
+//     dots: true,
+//     slidesToShow: 1,
+//     slidesToScroll: 1,
+//     arrow: true,
+//     responsive: [{
+//         breakpoint: 481,
+//         settings: {
+//             slidesToShow: 2,
+//             slidesToScroll: 2,
+//             infinite: true,
+//             dots: true
+//         }
+//     }]
+// });
+
+$('.body_CDT_content_img').slick({
+    dots: true,
+    slidesToShow: 4,
+    slidesToScroll: 3,
+    arrow: true,
+    responsive: [{
+        breakpoint: 769,
+        settings: {
+            slidesToShow: 3,
+            slidesToScroll: 3,
+            infinite: true,
+            dots: true
+        }
+    }],
+    responsive: [{
+        breakpoint: 481,
+        settings: {
+            slidesToShow: 2,
+            slidesToScroll: 2,
+            infinite: true,
+            dots: true
+        }
+    }]
+
+});
+
+// SLICK ẢNH
+
+
+
+let clientWidth = window.innerWidth;
+let row = 2;
+let showNumber = 2;
+
+if (clientWidth >= 1025 && clientWidth <= 1366) {
+    row = 2;
+    showNumber = 2;
+} else if (clientWidth >= 769 && clientWidth <= 1024) {
+    row = 2;
+    showNumber = 1;
+} else if (clientWidth >= 481 && clientWidth <= 768) {
+    row = 2;
+    showNumber = 1;
+} else if (clientWidth <= 480) {
+    row = 2;
+    showNumber = 1;
+}
+$('.js_slider_img').slick({
+    dots: true,
+    rows: row,
+    slidesToShow: showNumber,
+    slidesToScroll: 2,
+    arrow: true,
+    prevArrow: '<button class="slick-prev prev-arrow"><img src="<? echo base_url(); ?>assets/images/img_du_an/icon_DATKV_left.png" alt=""></button>',
+    nextArrow: '<button class="slick-next next-arrow"><img src="<? echo base_url(); ?>assets/images/img_du_an/icon_DATKV_right.png" alt=""></button>',
+});
+</script>

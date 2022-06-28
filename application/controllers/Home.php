@@ -11,12 +11,13 @@ class Home extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->helper('cookie');
+        $this->load->model('M_Home');
 	}
 	public function index() {
 		$this->_data['page_title']   			= 'Trang chủ';
 		$this->_data['robots']					= 'noindex,nofollow';
 		$this->_data['canonical']				= base_url();
-		$this->load->view('site/home/home', $this->_data);
+		$this->load->view('site/index', $this->_data);
 	}
 }
 ?>
