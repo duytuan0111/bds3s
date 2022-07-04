@@ -61,12 +61,17 @@ $route['trang-dang-ky-nguoi-ban-cho-thue.html'] = 'Account/AccountRegisterSeller
 $route['trang-nhan-ma-otp.html']  				= 'Account/PageOTP';
 $route['quen-mat-khau-nhan-otp.html']  		    = 'Account/ForgotPasswordOTP';
 $route['quen-mat-khau-nhap-email.html']         = 'Account/ForgotPasswordEmail';
-$route['quen-mat-khau-update-mat-khau.html']   = 'Account/UpdatePassword';
+$route['quen-mat-khau-update-mat-khau.html']    = 'Account/UpdatePassword';
+$route['quan-ly-ho-so.html']                    = 'Account/ProfileManagement';
+$route['chi-tiet-nguoi-mua-ban.html']			= 'Account/DetailBuyer';
+$route['thong-tin-nguoi-mua-thue.html']			= 'Account/TenantInformation';
+$route['thong-tin-ca-nhan.html']			    = 'Account/Profile';
 
 //PostNews
 $route['dang-tin-truoc-dang-nhap.html'] 		= 'PostNews/PostNewsBeforeLogin';
 $route['dang-tin-sau-dang-nhap.html'] 		    = 'PostNews/PostNewsAfterLogin';
 $route['tin-dang-du-an.html'] 		            = 'PostNews/PostProjectBeforeLogin';
+
 $route['tin-dang-nha-dep.html'] 		        = 'PostNews/PostHomeDesignBeforeLogin';
 $route['tin-dang-phong-dep.html'] 		        = 'PostNews/PostRoomdesignBeforeLogin';
 $route['loai-dang-tin-sau-dang-nhap.html']		= 'PostNews/PostTypeAfterLogin';
@@ -99,9 +104,6 @@ $route['danh-sach-phong-dep.html']				= 'DesignBeautifull/BeautifulListRooms';
 $route['tin-tuc.html']				            = 'News/News';
 $route['chi-tiet-tin-tuc.html']			        = 'News/DetailsNews';
 
-//chi tiết người mua bán
-$route['chi-tiet-nguoi-mua-ban.html']			= 'DetailBuyer';
-
 // bất động sản gần đây
 $route['bat-dong-san-gan-day.html']		    	= 'RecentRealEstate';
 
@@ -119,6 +121,7 @@ $route['thong-tin-can-biet.html']				= 'Connect/NecessaryInformation';
 $route['thoa-thuan-su-dung.html']				= 'Connect/UsageAgreement';
 $route['quy-dinh-bao-mat.html']				    = 'Connect/PrivacyPolicy';
 $route['quy-trinh-giai-quyet-tranh-chap.html']  = 'Connect/DisputeResolutionProcess';
+$route['dong-gop-y-kien.html']                  = 'Connect/Feedback';
 
 //----------------------------admin-------------------
 
@@ -128,6 +131,7 @@ $route['vi-3s.html']		                    = 'admin/Wallet/Wallet3s';
 $route['nap-tien-vao-vi.html']		            = 'admin/Wallet/WalletDeposit';
 $route['mua-dich-vu.html']		                = 'admin/Wallet/BuyService';
 $route['mua-goi-ghim-tin-dang.html']		    = 'admin/Wallet/BuyPacketNews';
+$route['quan-ly-lich-su-giao-dich.html']		= 'admin/Wallet/TransactionList';
 
 // quản lý tin
 $route['quan-ly-tin-dang-mua-ban.html']		    = 'admin/ManageNews/ManageNewsPurchase';
@@ -135,6 +139,13 @@ $route['quan-ly-tin-dang-cho-thue.html']		= 'admin/ManageNews/ManageNewsLease';
 $route['quan-ly-tin-dang-du-an.html']		    = 'admin/ManageNews/ManageNewsProject';
 $route['quan-ly-tin-dang-thiet-ke.html']		= 'admin/ManageNews/ManageNewsDesign';
 $route['quan-ly-tin-dang-tin-luu.html']		    = 'admin/ManageNews/ManageNewsSave';
+
+// danh sách liên hệ
+$route['danh-sach-lien-he-lai.html']		    = 'admin/ContactList/ContactListAgain';
+$route['danh-sach-lien-he.html']		        = 'admin/ContactList/ContactList';
+
+// quản lý hội nhóm nhân viên
+$route['quan-ly-doi-nhom-nhan-vien.html']		= 'admin/GroupManagement/GroupManagement';
 
 $route['404_override'] 							= '';
 $route['translate_uri_dashes'] 					= FALSE;

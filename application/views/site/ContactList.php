@@ -6,21 +6,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/style_sb_hd_sdn.css">
-    <link rel="stylesheet" href="../css/style_d_sdn.css">
-    <link rel="stylesheet" href="../css/style_header_d.css">
+    <link rel="stylesheet" href="<? echo base_url(); ?>assets/frontend/css/style.css">
+    <link rel="stylesheet" href="<? echo base_url(); ?>assets/frontend/css/style_sb_hd_sdn.css">
+    <link rel="stylesheet" href="<? echo base_url(); ?>assets/frontend/css/style_d_sdn.css">
+    <link rel="stylesheet" href="<? echo base_url(); ?>assets/frontend/css/style_header_d.css">
 </head>
 
 <body>
     <div class="body_lienhe">
         <div class="ds_lienhe flex">
             <div class="lienhe_khoi1">
-                <? include("../includes/sidebar.php") ?>
+                <? require_once APPPATH.'views/site/includes/sidebar.php' ?>
             </div>
             <div class="lienhe_khoi2">
                 <div class="lienhe_khoi2_header">
-                    <? include("../includes/header_sdn.php") ?>
+                    <? require_once APPPATH.'views/site/includes/header_sdn.php' ?>
                 </div>
                 <div class="lienhe_khoi2_noidung">
                     <div class="lienhe_khoi2_noidung_heading fz18_5">Danh sách yêu cầu liên hệ lại</div>
@@ -38,11 +38,11 @@
                                     <td>
                                         <div class="div_lienhe_khung_img flex align_item_c">
                                             <div class="div_lienhe_img mr_r10px">
-                                                <img src="../images/img_sdn/user_lienhe.png" alt="">
+                                                <img src="<? echo base_url(); ?>assets/images/img_sdn/user_lienhe.png" alt="">
                                             </div>
                                             <a href="thong-tin-ca-nhan.html" class="div_lienhe_text mr_r16px">Wade Warren</a>
                                             <div class="div_lienhe_chat currsor_p">
-                                                <img src="../images/img_du_an/chat_30.png" alt="">
+                                                <img src="<? echo base_url(); ?>assets/images/img_du_an/chat_30.png" alt="">
                                             </div>
                                         </div>
                                     </td>
@@ -58,11 +58,11 @@
                                     <td>
                                         <div class="div_lienhe_khung_img flex align_item_c">
                                             <div class="div_lienhe_img mr_r10px">
-                                                <img src="../images/img_sdn/user_lienhe.png" alt="">
+                                                <img src="<? echo base_url(); ?>assets/images/img_sdn/user_lienhe.png" alt="">
                                             </div>
                                             <a href="thong-tin-ca-nhan.html" class="div_lienhe_text mr_r16px">Wade Warren</a>
                                             <div class="div_lienhe_chat currsor_p">
-                                                <img src="../images/img_du_an/chat_30.png" alt="">
+                                                <img src="<? echo base_url(); ?>assets/images/img_du_an/chat_30.png" alt="">
                                             </div>
                                         </div>
                                     </td>
@@ -78,11 +78,11 @@
                                     <td>
                                         <div class="div_lienhe_khung_img flex align_item_c">
                                             <div class="div_lienhe_img mr_r10px">
-                                                <img src="../images/img_sdn/user_lienhe.png" alt="">
+                                                <img src="<? echo base_url(); ?>assets/images/img_sdn/user_lienhe.png" alt="">
                                             </div>
                                             <a href="thong-tin-ca-nhan.html" class="div_lienhe_text mr_r16px">Wade Warren</a>
                                             <div class="div_lienhe_chat currsor_p">
-                                                <img src="../images/img_du_an/chat_30.png" alt="">
+                                                <img src="<? echo base_url(); ?>assets/images/img_du_an/chat_30.png" alt="">
                                             </div>
                                         </div>
                                     </td>
@@ -98,11 +98,11 @@
                                     <td>
                                         <div class="div_lienhe_khung_img flex align_item_c">
                                             <div class="div_lienhe_img mr_r10px">
-                                                <img src="../images/img_sdn/user_lienhe.png" alt="">
+                                                <img src="<? echo base_url(); ?>assets/images/img_sdn/user_lienhe.png" alt="">
                                             </div>
                                             <a href="thong-tin-ca-nhan.html" class="div_lienhe_text mr_r16px">Wade Warren</a>
                                             <div class="div_lienhe_chat currsor_p">
-                                                <img src="../images/img_du_an/chat_30.png" alt="">
+                                                <img src="<? echo base_url(); ?>assets/images/img_du_an/chat_30.png" alt="">
                                             </div>
                                         </div>
                                     </td>
@@ -118,7 +118,7 @@
                         <div class="body_phantrang padding_unset">
                             <div class="body_phantrang_img flex juss_tify_end">
                                 <div class="body_phantrang_img_left mr_r16px">
-                                    <img src="../images/img_du_an/phantrang_left.png" alt="">
+                                    <img src="<? echo base_url(); ?>assets/images/img_du_an/phantrang_left.png" alt="">
                                 </div>
                                 <div class="body_phantrang_number flex">
                                     <div class="phantrang_number mr_r8px main_bg while_color">1</div>
@@ -127,7 +127,7 @@
                                     <div class="phantrang_number mr_r8px">4</div>
                                 </div>
                                 <div class="body_phantrang_img_left mr_l16px">
-                                    <img src="../images/img_du_an/phantrang_right.png" alt="">
+                                    <img src="<? echo base_url(); ?>assets/images/img_du_an/phantrang_right.png" alt="">
                                 </div>
                             </div>
                         </div>
@@ -136,10 +136,10 @@
             </div>
         </div>
         <div class="lienhe_khoi3">
-            <? include("../includes/da_footer.php") ?>
+            <? require_once APPPATH.'views/site/includes/da_footer.php' ?>
         </div>
     </div>
-<script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
-<script type="text/javascript" src="../js/js_duy.js"></script>
+<script type="text/javascript" src="<? echo base_url();?>assets/js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="<? echo base_url();?>assets/js/js_duy.js"></script>
 </body>
 </html>

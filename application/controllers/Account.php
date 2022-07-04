@@ -57,5 +57,21 @@ class Account extends CI_Controller
 		$this->_data['canonical']				= base_url();
 		$this->load->view('site/ForgotPasswordEmail', $this->_data);
 	}
+	public function ProfileManagement() {
+		$this->_data['canonical']				= base_url();
+		$this->load->view('site/ProfileManagement', $this->_data);
+	}
+	public function DetailBuyer() {
+		$this->_data['canonical']				= base_url();
+		$this->load->view('site/DetailBuyer', $this->_data);
+	}
+	public function TenantInformation() {
+		$this->_data['canonical']				= base_url();
+		$this->load->view('site/TenantInformation', $this->_data);
+	}
+	public function Profile() {
+		$this->_data['canonical']				= base_url();
+		$this->load->view('site/Profile', $this->_data);
+	}
 }
 ?>

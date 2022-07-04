@@ -41,5 +41,9 @@ class Connect extends CI_Controller
 		$this->_data['canonical']				= base_url();
 		$this->load->view('site/DisputeResolutionProcess', $this->_data);
 	}
+	public function Feedback() {
+		$this->_data['canonical']				= base_url();
+		$this->load->view('site/Feedback', $this->_data);
+	}
 }
 ?>

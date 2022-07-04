@@ -108,6 +108,7 @@ $('.thongtinctda_tieude_anh').click(function() {
 
 $('.thongtinctda_remove_tieudeanh').click(function() {
     $('.thongtinchitietduan .khoi_mota_img').addClass('hidden');
+    $(this).parents('.khoiduoi').find('.click_img_mota').val('');
 });
 
 var degrees = 0;
@@ -134,10 +135,11 @@ $('.ttctda_img_left').click(function() {
     });
 });
 $('.thongtinctda_remove').click(function() {
-    $('.anh_mota').attr('src', '../images/anh_rong.png');
+    $('.anh_mota').attr('src', 'http://localhost:6969/assets/images/anh_rong.png');
 })
 
 $('.vtda_destext').click(function() {
+    $(this).parents('.vitriduan').find('.vtda_desimg').val('');
     $(this).addClass('active_mota');
     $('.vtda_desimg').removeClass('active_mota');
     $('.vtda_text').removeClass('hidden');
@@ -182,7 +184,8 @@ $('.vitriduan_img_left').click(function() {
 });
 
 $('.vitriduan_remove').click(function() {
-    $('.vtda_post_anh').attr('src', '../images/anh_rong.png');
+    $('.vtda_post_anh').attr('src', 'http://localhost:6969/assets/images/anh_rong.png');
+    $(this).parents('.vitriduan').find('.vtda_click_anh').val("");
 });
 
 $('.vitriduan_tieude_anh').click(function() {
@@ -193,31 +196,6 @@ $('.vtda_remove_tieudeanh').click(function() {
     $('.vitriduan_mota .khoi_mota_img').addClass('hidden');
 });
 
-$('.khoi_add_mbda').click(function() {
-    // $.ajax ({
-    //     type: 'POST',
-    //     url: '../render/tdda_mbda.php',
-    //     data: {
-
-    //     },
-    //     success: function(data) {
-            $('.mbda_noidung').append('<div class="khoi_tieude_mbda">',
-            '<p class="font-medium chuden height-20 top-29">Tiêu đề mặt bằng dự án <span class="chudo">*</span></p>',
-            '<div class="khunginput top-8">',
-                '<input type="text" placeholder="Nhập tiêu đề mặt bằng dự án">',
-            '</div>',
-            '<input onchange="mbda_tieude_click_anh(this)" type="file" class="hidden mbda_tieude_click_anh">',
-            '<div class="mbda_khoi_anh top-24 relative">',
-                '<img src="../images/anh_rong.png" alt="" class="mbda_post_anh">',
-                '<div onclick="mbda_add_anh(this)" class="mbda_add_anh flex center-center absolute">',
-                    '<img src="../images/tan_camera.png" alt="" class="right-8 wh-24">',
-                    '<p class="chuxanh">Thêm ảnh</p>',
-                '</div>',
-            '</div>',
-        '</div>');
-    //     }
-    // })
-});
 function mbda_add_anh(d) {
     $(d).parents('.khoi_tieude_mbda').find('.mbda_tieude_click_anh').click();
 }
@@ -227,6 +205,7 @@ function mbda_tieude_click_anh(f) {
 
 $('.mbda_destext').click(function() {
     $(this).addClass('active_mota');
+    $(this).parents('.mbda_khoi_mota').find('.mbda_click_anh').val("");
     $('.mbda_desimg').removeClass('active_mota');
     $('.mbda_text').removeClass('hidden');
     $('.mbda_khoianh').addClass('hidden');
@@ -269,8 +248,10 @@ $('.mbda_img_left').click(function() {
     });
 });
 
+
 $('.mbda_remove').click(function() {
-    $('.mbda_post_anh_mota').attr('src', '../images/anh_rong.png');
+    $('.mbda_post_anh_mota').attr('src', 'http://localhost:6969/assets/images/anh_rong.png');
+    $(this).parents('.mbda_khoi_mota').find('.mbda_click_anh').val('');
 });
 
 $('.mbda_tieude_anh').click(function() {
@@ -281,6 +262,7 @@ $('.mbda_tieude_remove').click(function() {
 });
 
 $('.tida_destext').click(function() {
+    $(this).parents('.tida_destext').find('.tida_desimg').val('');
     $(this).addClass('active_mota');
     $('.tida_desimg').removeClass('active_mota');
     $('.tida_text').removeClass('hidden');
@@ -322,7 +304,8 @@ $('.tida_img_left').click(function() {
     });
 });
 $('.tida_remove').click(function() {
-    $('.tida_post_anh').attr('src', '../images/anh_rong.png');
+    $(this).parents('.tida_khoimota').find('.tida_click_anh').val('');
+    $('.tida_post_anh').attr('src', 'http://localhost:6969/assets/images/anh_rong.png');
 });
 $('.tida_tieude_anh').click(function() {
     $('.tida_khoi_tieude').removeClass('hidden');
@@ -330,11 +313,6 @@ $('.tida_tieude_anh').click(function() {
 $('.tida_tieude_remove').click(function() {
     $('.tida_khoi_tieude').addClass('hidden');
 });
-
-function gtda_destext(a){
-    $(a).addClass('active_mota');
-    $(a).parents('.type_mota').find('.gtda_desimg').removeClass('active_mota');
-}
 function gtda_desimg(b){
     $(b).addClass('active_mota');
     $(b).parents('.gtda_khoimota').find('.gtda_destext').removeClass('active_mota');
@@ -346,19 +324,6 @@ function gtda_desimg(b){
 function gtda_click_anh(c){
     loadImage(c, $(c).parents('.gtda_khoimota').find('.gtda_post_anh'));
 }
-
-$('.click_gioithieuduan').click(function() {
-    $.ajax ({
-        type: 'POST',
-        url: '../render/add_gioithieuduan.php',
-        data: {
-
-        },
-        success: function(data){
-            $('.khoi_gioithieuduan').append(data);
-        }
-    })
-});
 
 $('.chon').click(function() {
     $('.popup_con').toggleClass('hidden');
@@ -438,6 +403,7 @@ $('.tutorial_phai').click(function() {
 });
 
 $('.khoanggia').click(function() {
+    $('.giamax').attr('name','price_max')
     $(this).addClass('hidden');
     $('.khoi_giamax').removeClass('hidden');
     $('.khoi_gia_min').children('input').attr('placeholder', 'Giá min');
@@ -446,7 +412,8 @@ $('.khoanggia').click(function() {
     $('.dv_max').removeClass('hidden');
 });
 
-$('.del_icon').click(function() {
+$('.del_iconn').click(function() {
+    $('.giamax').attr('name','');
     $('.khoi_giamax').addClass('hidden');
     $('.khoanggia').removeClass('hidden');
     $('.khoi_gia_min').children('input').attr('placeholder', 'Nhập giá cố định');
@@ -496,6 +463,7 @@ $('.ttbd_click_anh').change(function() {
 });
 
 $('.ttbd_des_text').click(function() {
+    $(this).parents('.khoiduoi').find('.des_img').val('');
     $(this).addClass('active_mota');
     $('.ttbd_des_img').removeClass('active_mota');
     $('.tdnd_des_text').removeClass('hidden');
@@ -541,7 +509,7 @@ $('.tdnd_img_left').click(function() {
 });
 
 $('.tdnd_remove').click(function() {
-    $('.tdnd_post_anh').attr('src', '../images/anh_rong.png');
+    $('.tdnd_post_anh').attr('src', 'http://localhost:6969/assets/images/anh_rong.png');
 });
 
 $('.tdnd_tieude_anh').click(function() {
@@ -550,67 +518,13 @@ $('.tdnd_tieude_anh').click(function() {
 $('.tdnd_tieude_remove').click(function() {
     $('.tdnd_mieuta_anh').addClass('hidden');
 });
-
+var sx = 0;
 $('.butt_addanh').click(function() {
-    $('.tdqp_click_addanh').click();
+
+    tdpd_img($(this).find('.tdqp_click_addanh'));
+    sx++;
 });
 var i = 1;
-// $('.tdqp_click_addanh').change(function() {
-//     var img = $(this).val();
-//     if (img != '') {
-//         $.ajax({
-//             type: 'POST',
-//             url: '../render/tdpd_add_anh.php',
-//             data: {
-//                 i: i,
-//                 img: img,
-//             },
-//             success: function(data) {
-//                 $('.tdpd_khoi_to_anh').append(data);
-//             }
-//         })
-//     }
-//     // loadImage(img, $(this).parents('.tdpd_addanh').find('.anh_add'));
-// });
-function tdpd_img(tdpd_img) {
-    var img = $(tdpd_img).val();
-    if (img != '') {
-        $.ajax({
-            type: 'POST',
-            url: '../render/tdpd_add_anh.php',
-            data: {
-                i: i,
-                img: img,
-            },
-            success: function(data) {       
-                $('.tdpd_khoi_to_anh').append(data);
-                var i = 1;
-                $(".tdpd_img").each(function(){
-                    $(this).addClass("preview_img"+i);
-                    i++;
-                })
-                var numItems = $('.tdpd_img').length;
-
-                if (tdpd_img.files && tdpd_img.files[0]) {
-                    var img = document.querySelector('.preview_img'+numItems);       
-                    console.log(img);         
-                    // return;
-                    img.onload = function (e) {
-                        URL.revokeObjectURL(img.src);  // no longer needed, free memory
-                    }
-                    img.src = URL.createObjectURL(tdpd_img.files[0]); // set src to blob url
-                }
-                
-
-            }
-        })
-    }
-
-
-    // loadImage(tdpd_img, $(tdpd_img).parents('.tdpd_addanh').find('.tdpd_img'+ i));
-    i++;
-}
-
 $('.tida_click').click(function() {
     $(this).parents('.tida_thongtin_khoicon').find('svg').toggleClass('arrow_rotate');
     $(this).parents('.tida_thongtin_khoicon').find('.noidung_con').toggleClass('hidden_375');

@@ -6,10 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Danh sách liên hệ lại</title>
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/style_sb_hd_sdn.css">
-    <link rel="stylesheet" href="../css/style_header_d.css">
-    <link rel="stylesheet" href="../css/css_q.css">
+    <link rel="stylesheet" href="<? echo base_url(); ?>assets/frontend/css/style.css">
+    <link rel="stylesheet" href="<? echo base_url(); ?>assets/frontend/css/style_sb_hd_sdn.css">
+    <link rel="stylesheet" href="<? echo base_url(); ?>assets/frontend/css/style_header_d.css">
+    <link rel="stylesheet" href="<? echo base_url(); ?>assets/frontend/css/css_q.css">
 
 </head>
 
@@ -17,11 +17,11 @@
     <div class="body_lienhe">
         <div class="ds_lienhe flex">
             <div class="lienhe_khoi1 back_f7f8fc">
-                <?php include("../includes/sidebar.php") ?>
+                <? require_once APPPATH.'views/site/includes/sidebar.php' ?>
             </div>
             <div class="lienhe_khoi2 lienhe_khoi2_danh_sach back_f7f8fc">
                 <div class="lienhe_khoi2_header">
-                    <?php include("../includes/header_sdn.php") ?>
+                    <? require_once APPPATH.'views/site/includes/header_sdn.php' ?>
                 </div>
                 <div class="contact_again_container">
                     <div class="contact_again-title mr_t_29">
@@ -48,12 +48,12 @@
                                             <div class="d_flex align_c">
                                                 <a href="thong-tin-ca-nhan.html" class=" d_flex align_c cursor_p ">
                                                     <span class="ten_img">
-                                                        <img src="../images/avt_lienhe.png" alt="">
+                                                        <img src="<? echo base_url(); ?>assets/images/avt_lienhe.png" alt="">
                                                     </span>
                                                     <span class="lienhe_table_name font_s15 line_h24 color_grey ml_10 mr_r_22">Wade Warren</span>
                                                 </a>
                                                 <span class="lienhe_table-chat">
-                                                    <img src="../images/chat_xanh.png" alt="">
+                                                    <img src="<? echo base_url(); ?>assets/images/chat_xanh.png" alt="">
                                                 </span>
                                             </div>
                                         </td>
@@ -106,7 +106,7 @@
             </div>
         </div>
         <div class="lienhe_khoi3">
-            <?php include("../includes/da_footer.php") ?>
+            <? require_once APPPATH.'views/site/includes/da_footer.php' ?>
         </div>
     </div>
 </body>

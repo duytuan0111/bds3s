@@ -639,15 +639,21 @@ ul.ul_sidebar::-webkit-scrollbar-track{
 }
 
 /* ---------------------------------------- Validate ---------------- */
-label.error {
+.errors .error {
     color: #FF3333;
     font-size: 12px;
     line-height: 18px;
     font-style: italic;
     font-weight: 500;
+    position: relative;
+    padding: 0;
+    bottom: 0;
 }
 .validate_input .input_infor_tag {
     border: 1px solid #FF0000;
+    background: #FFE8E8;
+}
+.validate_input input,.validate_input textarea {
     background: #FFE8E8;
 }
 .validate_input .select2-container--default .select2-selection--single {

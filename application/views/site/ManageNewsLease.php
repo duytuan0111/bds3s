@@ -1,7 +1,6 @@
 <?
-$month = date('m', time());
-$year = date('Y', time());
-
+    $month = date('m', time());
+    $year = date('Y', time());
 ?>
 <!DOCTYPE html>
 <html lang="vi">

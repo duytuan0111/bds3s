@@ -2,7 +2,7 @@
 /**
 * 
 */
-class M_DetailBuyer extends CI_Model
+class M_GroupManagement extends CI_Model
 {
 	
 	// protected $_table = 'city';

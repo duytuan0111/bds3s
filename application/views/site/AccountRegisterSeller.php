@@ -93,10 +93,11 @@
                                         <input type="text" placeholder="Nhập captcha *">
                                     </div>
                                     <div class="account_nhap-capcha font_s30 text_c color_green font_w_600 mt_15">
-                                        Bb74K0
+                                        <div class="ramdum" id="code"></div>
+                                        <input type="hidden" class="code_input" id="code_input" value="">
                                     </div>
                                     <div class="account_nhap-capcha-img mt_15 d_flex cursor_p">
-                                        <img src="<? echo base_url(); ?>assets/images/load_capcha.png" alt="">
+                                        <img class="img-rest" src="<? echo base_url(); ?>assets/images/load_capcha.png" alt="">
                                     </div>
                                 </div>
 
@@ -120,6 +121,37 @@
     $(".select_option").select2({
         width: "100%",
     });
+    // capcha
+    $(document).ready(function(){
+        var do_xuay = 0;
+
+        $(".img-rest").click(function(){
+            do_xuay += 360; 
+            xoay($(this),do_xuay);
+        })
+
+        function xoay(img,deg){
+            img.css("transform" , "rotate("+deg+"deg)");
+            img.css("transition" , "0.2s");
+        }
+    })
+
+    function ramdumso(length) {
+        var result           = '';
+        var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        var charactersLength = characters.length;
+        for ( var i = 0; i < length; i++ ) {
+            result += characters.charAt(Math.floor(Math.random() * charactersLength));
+        }
+        return result;
+    }
+
+    $(".ramdum").html(ramdumso(6));
+    $('#code_input').val($(".ramdum").html());
+    $(".img-rest").click(function(){
+        $(".ramdum").html(ramdumso(6));
+        $('#code_input').val($(".ramdum").html());
+    }) 
 </script>
 
 </html>
@@ -135,6 +167,5 @@
     .select2-selection__rendered {
         background: #FAFAFA;
     }
-
     /* active_single_header('logoxanh'); */
 </style>

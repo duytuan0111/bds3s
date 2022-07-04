@@ -37,7 +37,7 @@ class Image {
             $this->image  = $image;
             $this->readImageInfo();
         }else{
-            throw new Exception("File does not exist: ".$image);
+            throw new Exception("File does not exist: ".$this->$image);
         }
     }
     

@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quản lý tin đăng tin lưu</title>
-    <link rel="stylesheet" href="<? echo base_url()?>assets/frontend/css/select2.min.css">
+    <link rel="stylesheet" href="<? echo base_url()?>assets/css/select2.min.css">
     <link rel="stylesheet" href="<? echo base_url()?>assets/frontend/css/style_sb_hd_sdn.css">
     <link rel="stylesheet" href="<? echo base_url()?>assets/frontend/css/style_d_sdn.css">
     <link rel="stylesheet" href="<? echo base_url()?>assets/frontend/css/style_header_d.css">

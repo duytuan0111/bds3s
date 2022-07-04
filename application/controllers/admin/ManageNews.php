@@ -15,22 +15,27 @@ class ManageNews extends CI_Controller
 	}
 	public function ManageNewsPurchase() {
 		$this->_data['canonical']				= base_url();
+		$this->load->helper(array('lich','lich2','lich3'));
 		$this->load->view('site/ManageNewsPurchase', $this->_data);
 	}
     public function ManageNewsLease() {
 		$this->_data['canonical']				= base_url();
+		$this->load->helper(array('lich','lich2','lich3'));
 		$this->load->view('site/ManageNewsLease', $this->_data);
 	}
 	public function ManageNewsProject() {
 		$this->_data['canonical']				= base_url();
+		$this->load->helper(array('lich','lich2','lich3'));
 		$this->load->view('site/ManageNewsProject', $this->_data);
 	}
 	public function ManageNewsDesign() {
 		$this->_data['canonical']				= base_url();
+		$this->load->helper(array('lich','lich2','lich3'));
 		$this->load->view('site/ManageNewsDesign', $this->_data);
 	}
     public function ManageNewsSave() {
 		$this->_data['canonical']				= base_url();
+		$this->load->helper(array('lich','lich2','lich3'));
 		$this->load->view('site/ManageNewsSave', $this->_data);
 	}
 }
