@@ -23,27 +23,31 @@
         <div class="main_tt">
             <div class="account qmk_update_password d_flex flex_column gachduoi">
                 <div class="account_back d_flex" onclick="back_page()">
-                    <div class="back_page"><img src="<? echo base_url(); ?>assets/images/back.png" alt=""></div>
+                    <div class="back_page"><img src="<? echo base_url(); ?>assets/images/back.svg" alt=""></div>
                     <p class="font-medium size-14">Quay lại</p>
                 </div>
+				<form method="post">
                 <div class="account_log-in account_otp-beside insert_email_wrapper quen_mk_update w_100">
                     <div class="account_title font_s24 text_c color_green font_w_600">Đặt lại mật khẩu</div>
-                    <div class="khung_input khung_input-email d_flex align_c mr_t_35 qmk_update_nhap">
-                        <input type="password" placeholder="Nhập mật khẩu mới" id="pass_log_id" name="pass">
+					<p class="error_pw mr_t_35 chudo size-12"></p>
+                    <div class="khung_input khung_input-email d_flex align_c qmk_update_nhap no-top">
+                        <input type="password" placeholder="Nhập mật khẩu mới" class="change_pw" id="pass_log_id" name="pass">
                         <div class="account_log_in-input-img icon_email toggle-password" toggle="#password-field">
-                            <img src="<? echo base_url(); ?>assets/images/eye.png" alt="" class="m_r_18 toggle-password_dong">
-                            <img src="<? echo base_url(); ?>assets/images/eye_gray.png" alt="" class="m_r_18 toggle-password_mo hidden">
+                            <img src="<? echo base_url(); ?>assets/images/eye.svg" alt="" class="cursor_p m_r_18 toggle-password_dong">
+                            <img src="<? echo base_url(); ?>assets/images/eye_gray.png" alt="" class="cursor_p m_r_18 toggle-password_mo hidden">
                         </div>
                     </div>
-                    <div class="khung_input khung_input-email d_flex align_c  qmk_update_nhap">
-                        <input type="password" placeholder="Nhập lại mật khẩu mới" id="pass_log_id" name="pass">
+					<p class="error_confirm_pw mr_t_35 chudo size-12"></p>
+                    <div class="khung_input khung_input-email d_flex align_c qmk_update_nhap no-top">
+                        <input type="password" placeholder="Nhập lại mật khẩu mới" class="confirm_change_pw" id="pass_log_id" name="pass">
                         <div class="account_log_in-input-img icon_password toggle-password" toggle="#password-field">
-                            <img src="<? echo base_url(); ?>assets/images/eye.png" alt="" class="m_r_18 toggle-password_dong">
-                            <img src="<? echo base_url(); ?>assets/images/eye_gray.png" alt="" class="m_r_18 toggle-password_mo hidden">
+                            <img src="<? echo base_url(); ?>assets/images/eye.svg" alt="" class="cursor_p m_r_18 toggle-password_dong">
+                            <img src="<? echo base_url(); ?>assets/images/eye_gray.png" alt="" class="cursor_p m_r_18 toggle-password_mo hidden">
                         </div>
                     </div>
-                    <div class="account_otp-btn btn_blue bg_green border_none account_log-in_btn line_h19 mr_t_32">Đổi mật khẩu </div>
+                    <button onclick="otp_form_1(); return false;" class="account_otp-btn btn_blue bg_green border_none line_h19" style="width: 100%">Đổi mật khẩu </button>
                 </div>
+				</form>
             </div>
             <div class="popup_password hidden">
                 <div class="popup_password-close" id="close_update-mk"></div>
@@ -70,6 +74,55 @@
 <script type="text/javascript" src="<? echo base_url();?>assets/js/jquery.validate.min.js"></script>
 <script type="text/javascript" src="<? echo base_url();?>assets/js/js_quang.js"></script>
 <script>
+var base_url 	= '<?php echo base_url(); ?>';
+var regex_password = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(.{8,20}$)/;
+
+function otp_form_1() {
+	var flag = true;
+	var id = <?= $id ?>;
+	var password = $('.change_pw').val();
+	var confirm_pw = $('.confirm_change_pw').val();
+
+	if ($.trim(password) == '') {
+		$('.error_pw').removeClass('mr_t_35').addClass('mr_t_19').addClass('line_h16').html('Mật khẩu mới không được để trống');
+		flag = false;
+	} else if ($.trim(password).length < 8) {
+		$('.error_pw').removeClass('mr_t_35').addClass('mr_t_19').addClass('line_h16').html('Mật khẩu mới phải nhập tối đa 8 ký tự');
+		flag = false;
+	} else if ($.trim(password) !== '' && regex_password.test(password) == false) {
+		$('.error_pw').removeClass('mr_t_35').addClass('mr_t_19').addClass('line_h16').html('MK mới không đủ mạnh (VD: 123!@#Hhp)');
+		flag = false;
+	} else {
+		$('.error_pw').removeClass('mr_t_19').removeClass('line_h16').addClass('mr_t_35').html('');
+	}
+
+	if ($.trim(confirm_pw) == '') {
+		$('.error_confirm_pw').removeClass('mr_t_35').addClass('mr_t_19').addClass('line_h16').html('Nhập lại mật khẩu mới không được để trống');
+		flag = false;
+	} else if ($.trim(confirm_pw) != $.trim(password)) {
+		$('.error_confirm_pw').removeClass('mr_t_35').addClass('mr_t_19').addClass('line_h16').html('Mật khẩu nhập lại không khớp');
+		flag = false;
+	} else {
+		$('.error_confirm_pw').removeClass('mr_t_19').removeClass('line_h16').addClass('mr_t_35').html('');
+	}
+
+	if (flag == true) {
+		$.ajax ({
+			type: 'POST',
+			url: base_url+'account/ForgotPasswordUpdate',
+			data: {
+				id: id,
+				password: password
+			},
+			success: function(response) {
+				$('.popup_password').removeClass('hidden').addClass('flex');
+			},
+			error: function(xhr) {
+				console.log('failed');
+			}
+		})
+	}
+}
 </script>
 
 </html>

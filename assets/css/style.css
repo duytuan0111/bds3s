@@ -40,6 +40,7 @@ a {
 img {
     object-fit: cover;
 }
+.no-top{margin-top:unset !important}
 .header_content_khung_search .input{width:unset}
 .header_content_khung_select .select2-container .selection .select2-selection{border-radius:8px}
 .header_content_khung_select .select2-container .selection .select2-selection .select2-selection__arrow{width:20px !important}
@@ -442,10 +443,7 @@ img {
     height: 100%;
     background: #F7F8FC;
 }
-.center-center {
-    align-items: center;
-    justify-content: center;
-}
+
 .sidebar {
     width: 280px;
     height: 100vh;

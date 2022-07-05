@@ -7,7 +7,7 @@ function back_page() {
 // ------------xem lich 
 // ------- xem lịch trả nợ 
 $('.detail_calendar_no').click(function(){
-  console.log('1234r')
+  // console.log('1234r')
   $('.popup_calendar-over__tong').toggleClass('hidden');
 })
 // 

@@ -313,32 +313,32 @@
             <div class="them_layout_tk_man1024">
                 <div class="them_layout_tk_man102_padding">
                     <a href="danh-sach-du-an-noi-bat.html" class="them_layout_tk_div_icon">
-                        <div class="them_layout_tk_div_icon_img"><img src="<?php echo base_url(); ?>assets/images/img_du_an/ic_dep_1.png" alt="">
+                        <div class="them_layout_tk_div_icon_img"><img src="<?php echo base_url(); ?>assets/images/img_du_an/ic_dep_1.svg" alt="">
                         </div>
                         <div class="them_layout_tk_div_icon_text">dự án</div>
                     </a>
                     <a href="mua-ban-truoc-dang-nhap.html" class="them_layout_tk_div_icon">
-                        <div class="them_layout_tk_div_icon_img"><img src="<?php echo base_url(); ?>assets/images/img_du_an/ic_dep_2.png" alt="">
+                        <div class="them_layout_tk_div_icon_img"><img src="<?php echo base_url(); ?>assets/images/img_du_an/ic_dep_2.svg" alt="">
                         </div>
                         <div class="them_layout_tk_div_icon_text">Mua bán</div>
                     </a>
                     <a href="cho-thue-truoc-dang-nhap.html" class="them_layout_tk_div_icon">
-                        <div class="them_layout_tk_div_icon_img"><img src="<?php echo base_url(); ?>assets/images/img_du_an/ic_dep_3.png" alt="">
+                        <div class="them_layout_tk_div_icon_img"><img src="<?php echo base_url(); ?>assets/images/img_du_an/ic_dep_3.svg" alt="">
                         </div>
                         <div class="them_layout_tk_div_icon_text">Cho thuê</div>
                     </a>
                     <a href="danh-sach-phong-dep.html" class="them_layout_tk_div_icon">
-                        <div class="them_layout_tk_div_icon_img"><img src="<?php echo base_url(); ?>assets/images/img_du_an/ic_dep_4.png" alt="">
+                        <div class="them_layout_tk_div_icon_img"><img src="<?php echo base_url(); ?>assets/images/img_du_an/ic_dep_4.svg" alt="">
                         </div>
                         <div class="them_layout_tk_div_icon_text">Phòng đẹp</div>
                     </a>
                     <a href="thiet-ke-nha-dep.html" class="them_layout_tk_div_icon">
-                        <div class="them_layout_tk_div_icon_img"><img src="<?php echo base_url(); ?>assets/images/img_du_an/ic_dep_5.png" alt="">
+                        <div class="them_layout_tk_div_icon_img"><img src="<?php echo base_url(); ?>assets/images/img_du_an/ic_dep_5.svg" alt="">
                         </div>
                         <div class="them_layout_tk_div_icon_text">Nhà đẹp</div>
                     </a>
                     <a href="tin-tuc.html" class="them_layout_tk_div_icon">
-                        <div class="them_layout_tk_div_icon_img"><img src="<?php echo base_url(); ?>assets/images/img_du_an/ic_dep_6.png" alt="">
+                        <div class="them_layout_tk_div_icon_img"><img src="<?php echo base_url(); ?>assets/images/img_du_an/ic_dep_6.svg" alt="">
                         </div>
                         <div class="them_layout_tk_div_icon_text">Tin tức</div>
                     </a>
@@ -1072,7 +1072,7 @@
                                         <span class="name font_s16 ml_8 duy_font_ct2">Nguyễn Ngọc Tuyết Phương</span>
                                     </div>
                                     <div class="inbox">
-                                        <img src="<?php echo base_url(); ?>assets/images/inbox_green.png" alt="">
+                                        <img src="<?php echo base_url(); ?>assets/images/inbox_green.svg" alt="">
                                     </div>
                                 </div>
                             </div>
@@ -1585,5 +1585,5 @@ $('.btn_filter_click').click(function() {
 function close_popup_filter() {
     $('.duy_select_boloc').toggleClass('hidden')
 }
- 
  </script>
+

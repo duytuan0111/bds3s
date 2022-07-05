@@ -41,6 +41,7 @@ header{background-image:none;min-height:auto}
 .pa_10_0{padding:10px 0}
 .pa_12_8{padding:12px 8px!important}
 .p_10{padding:10px}
+.size-12{font-size:12px}
 .pa_t_b_16{padding:16px 0}
 .color_green{color:#3691D9}
 .color_successful{color:#00AC57}
@@ -161,7 +162,7 @@ header{background-image:none;min-height:auto}
 .btn-nencam-chutrang,.btn_org_white{background-color:#FFA800;color:#FFF;border:1px solid #FFA800}
 .account_back img{margin-right:13px;cursor:pointer}
 .account_back p{display:flex;align-items:center;cursor:pointer;font-size:14px;margin-top:-3px}
-.main_tt{width:100%;background-image:url(http://localhost:6969/assets/images/banner_dangky.png);min-height:768px;background-repeat:no-repeat;background-size:100% 100%;display:flex;padding:0 24px;background-position: center;}
+.main_tt{width:100%;background-image:url(http://localhost:6969/assets/images/banner_dangky.png);height:681px;background-repeat:no-repeat;background-size:100% 100%;display:flex;background-position: center;}
 .account{width:446px;min-height:437px;margin:auto;border:1px solid #fff;border-radius:10px;background-color:rgba(255,255,255,0.8)}
 .account_p{padding:32px 73px 65px}
 .account_title{line-height:28px;margin-top:-4px}
@@ -176,7 +177,7 @@ header{background-image:none;min-height:auto}
 .khung_select,.khung_text,.khung_input{position:relative}
 input[type=number]{-moz-appearance:textfield}
 .khung_select,.khung_input{width:100%;height:40px;background:#FFF;border:1px solid #CCC;box-sizing:border-box;border-radius:10px;margin-top:5px}
-input[type="number"],input[type="text"],input[type="time"],input[type="password"],input[type="date"]{width:100%;height:100%;padding:0 15px;font-size:16px;border:none;outline:none;background-color:unset}
+input[type="number"],input[type="text"],input[type="time"],input[type="password"],input[type="date"]{width:100%;height:100%;padding:0 8px;font-size:16px;border:none;outline:none;background-color:unset}
 input[type="date"]::-webkit-calendar-picker-indicator{background:url(/images/calendar.png) no-repeat;width:24px;height:24px;background-position-x:5px;background-position-y:50%}
 .khung_input-email img{width:24px;height:24px}
 .checkbox-label{display:block;position:relative;cursor:pointer;font-size:22px;line-height:24px;height:20px;width:20px;clear:both}
@@ -218,14 +219,14 @@ input[type="range"]{width:12.5rem}
 .account_log-in_btn{max-width:350px;margin-top:40px}
 .account_otp-beside{padding:0 43px 32px}
 .account_otp_nhap-capcha-img img{width:20px;height:21px;position:absolute;margin-top:-10px;left:-22px}
-.account_otp_number a{padding-right:23px}
+.account_otp_number .resend_OTP{padding-right:23px}
 .prompt{margin-bottom:20px;font-size:20px;color:#fff}
 .digit-group-otp input{width:40px;height:40px;background-color:#FFF;border:1px solid #CCC;line-height:50px;text-align:center;font-size:24px;border-radius:4px;margin:0 12px;box-sizing:border-box;color:#3691D9}
 .digit-group-otp input[type="text"]{padding:0 5px}
 .digit-group-otp input:first-child{margin-left:0}
 .digit-group-otp input:last-child{margin-right:0}
 .account_otp-btn{margin-top:28px}
-.btn:hover{cursor:pointer;color:#3691D9;transition:.3s;font-weight:500}
+.btn:hover{cursor:pointer;color:#3691D9;transition:.3s}
 .account_wish{width:343px;height:390px;margin:auto;border:1px solid #fff;border-radius:10px;background-color:#FFF;z-index:1}
 .account_wish-btn-a{width:140px;height:40px;border:1px solid #3691D9;border-radius:8px}
 .account_wish-wrapper{background-color:#FFF;padding:30px 24px 32px;z-index:2}
@@ -906,10 +907,10 @@ to{transform:translateX(0%);opacity:1}
     height: 30px;
     display: contents;
 }
-.main_tt:hover{    
+/* .main_tt:hover{    
     background-size: 110% 110%;
     transition: ease-in 5s;
-}
+} */
 .huong_dan{margin-left: 0px;padding: 0px;}
 @media screen and (min-width:1367px) {
 .container_home_page{max-width:1520px;margin:auto}

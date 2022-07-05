@@ -196,6 +196,7 @@ $('.vtda_remove_tieudeanh').click(function() {
     $('.vitriduan_mota .khoi_mota_img').addClass('hidden');
 });
 
+
 function mbda_add_anh(d) {
     $(d).parents('.khoi_tieude_mbda').find('.mbda_tieude_click_anh').click();
 }
