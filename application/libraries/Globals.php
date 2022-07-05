@@ -5,42 +5,24 @@
 	class Globals
 	{
 		function sendEmail($to,  $subject, $content) {
-			require_once(APPPATH.'/libraries/phpmailer/class.phpmailer.php');
-			require_once(APPPATH.'/libraries/phpmailer/class.smtp.php');
-			$mail = new PHPMailer();
-		    $mail->IsSMTP(); // set mailer to use SMTP
-		    $name = "Timviec365.com.vn";
-		    $usernameSmtp = 'AKIASP3FAETFWQKSULUF'; //  AKIA4H45CLBRDNNBQ4NW
-		    $passwordSmtp = 'BCOYT02e1Y2OKZCwQAj5nV4HaNsijyt0e8SaB/Vl0nI9';  // amkbkhqvdvjfoojb BBhUIbTmBLQkalYzuYFoRFjnWZRXhzkiyod+qfGtxvME
-		    $host = 'email-smtp.ap-south-1.amazonaws.com';
-		    $port = 587;
-		    $sender = 'no-reply@timviec365.com.vn';
-		    $senderName = 'Timviec365.com.vn';
-
-		    $mail             = new PHPMailer(true);
-
-		    $mail->IsSMTP(); 
-		    $mail->SetFrom($sender, $senderName);
-		    $mail->Username   = $usernameSmtp;  // khai bao dia chi email
-		    $mail->Password   = $passwordSmtp;              // khai bao mat khau   
-		    $mail->Host       = $host;    // sever gui mail.
-		    $mail->Port       = $port;         // cong gui mail de nguyen 
-		    $mail->SMTPAuth   = true;    // enable SMTP authentication
-		    $mail->SMTPSecure = "tls";   // sets the prefix to the servier        
-		    $mail->CharSet  = "utf-8";
-		    $mail->SMTPDebug  = 0;   // enables SMTP debug information (for testing)
-		    // xong phan cau hinh bat dau phan gui mail
-		    $mail->isHTML(true);
-		    $mail->Subject    = $subject;// tieu de email 
-		    $mail->Body       = $content;
-		    $mail->addAddress($to,$name);
-		    if(!$mail->Send()){
-		    	echo $mail->ErrorInfo;
-		    }
-		    else
-		    {
-		    	return true;
-		    }
+			$curl = curl_init();
+			curl_setopt_array($curl, array(
+			CURLOPT_RETURNTRANSFER => 1,
+			CURLOPT_URL => 'https://timviec365.com/api/mail_subdomain.php',
+			CURLOPT_POST => 1,
+				CURLOPT_SSL_VERIFYPEER => false, //Bỏ kiểm SSL
+				CURLOPT_POSTFIELDS => array(
+				'email' => $to,
+				'body'  => $content,
+				'title' => $subject,
+				'name' => "bds.timviec365.com",
+				'site_name' => 'bds.com',
+				)
+			));
+			$resp = curl_exec($curl);
+			$responsive = json_decode($resp);
+			curl_close($curl);
+			return $responsive;
 		}
 		function my_export($name,$title,$th_array,$tr_array){
         // Bước 1:

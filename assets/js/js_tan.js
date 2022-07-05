@@ -194,29 +194,16 @@ $('.vtda_remove_tieudeanh').click(function() {
 });
 
 $('.khoi_add_mbda').click(function() {
-    // $.ajax ({
-    //     type: 'POST',
-    //     url: '../render/tdda_mbda.php',
-    //     data: {
+    $.ajax ({
+        type: 'POST',
+        url: '../render/tdda_mbda.php',
+        data: {
 
-    //     },
-    //     success: function(data) {
-            $('.mbda_noidung').append('<div class="khoi_tieude_mbda">',
-            '<p class="font-medium chuden height-20 top-29">Tiêu đề mặt bằng dự án <span class="chudo">*</span></p>',
-            '<div class="khunginput top-8">',
-                '<input type="text" placeholder="Nhập tiêu đề mặt bằng dự án">',
-            '</div>',
-            '<input onchange="mbda_tieude_click_anh(this)" type="file" class="hidden mbda_tieude_click_anh">',
-            '<div class="mbda_khoi_anh top-24 relative">',
-                '<img src="../images/anh_rong.png" alt="" class="mbda_post_anh">',
-                '<div onclick="mbda_add_anh(this)" class="mbda_add_anh flex center-center absolute">',
-                    '<img src="../images/tan_camera.png" alt="" class="right-8 wh-24">',
-                    '<p class="chuxanh">Thêm ảnh</p>',
-                '</div>',
-            '</div>',
-        '</div>');
-    //     }
-    // })
+        },
+        success: function(data) {
+            $('.mbda_noidung').append(data);
+        }
+    })
 });
 function mbda_add_anh(d) {
     $(d).parents('.khoi_tieude_mbda').find('.mbda_tieude_click_anh').click();
