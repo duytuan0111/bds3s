@@ -7,7 +7,7 @@
                    <img src="<? echo base_url() ?>assets/images/menu_white.png" alt="" class="logotrang">
                 </div>
                 <picture class="logoxanh">
-                <a href="/" class="logo_index"><img src="<? echo base_url() ?>assets/images/logo_xanh.png" class="logoxanhan "></a>
+                <a href="/" class="logo_index"><img src="<? echo base_url() ?>assets/images/logo_xanh.svg" class="logoxanhan "></a>
                 <a href="/" class="logo_index"> <img src="<? echo base_url() ?>assets/images/logobds.png" class="logotrang "></a>
                 </picture>
             </div>

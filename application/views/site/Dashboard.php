@@ -35,7 +35,7 @@
                                 <div class="khoi_noidung_box mr_r24px">
                                     <div class="khoi_noidung_box_div1 flex align_item_c mr_b30px">
                                         <div class="khoi_noidung_box_img mr_r8px">
-                                            <img src="<? echo base_url(); ?>assets/images/img_sdn/tintuc.png" alt="">
+                                            <img src="<? echo base_url(); ?>assets/images/img_sdn/tintuc.svg" alt="">
                                         </div>
                                         <div class="khoi_noidung_box_tex fz18_5">
                                             Tin dự án
@@ -68,7 +68,7 @@
                                 <div class="khoi_noidung_box mr_r24px">
                                     <div class="khoi_noidung_box_div1 flex align_item_c mr_b30px">
                                         <div class="khoi_noidung_box_img mr_r8px">
-                                            <img src="<? echo base_url(); ?>assets/images/img_sdn/tinmua.png" alt="">
+                                            <img src="<? echo base_url(); ?>assets/images/img_sdn/tinmua.svg" alt="">
                                         </div>
                                         <div class="khoi_noidung_box_tex fz18_5">
                                           Tin mua bán
@@ -105,7 +105,7 @@
                                 <div class="khoi_noidung_box">
                                     <div class="khoi_noidung_box_div1 flex align_item_c mr_b30px">
                                         <div class="khoi_noidung_box_img mr_r8px">
-                                            <img src="<? echo base_url(); ?>assets/images/img_sdn/tinthue.png" alt="">
+                                            <img src="<? echo base_url(); ?>assets/images/img_sdn/tinthue.svg" alt="">
                                         </div>
                                         <div class="khoi_noidung_box_tex fz18_5">
                                           Tin cho thuê
@@ -151,7 +151,7 @@
                                       <div class="khoi_noidung_block2_padding_tex_sub1_img flex">
                                         <div class="khoi_noidung_block2_padding_vi3s fz16_5">20.000.000</div>
                                         <div class="khoi_noidung_block2_padding_vi3s_img">
-                                          <img src="<? echo base_url(); ?>assets/images/img_sdn/tienvao.png" alt="">
+                                          <img src="<? echo base_url(); ?>assets/images/img_sdn/tienvao.svg" alt="">
                                         </div>
                                       </div>
                                     </div>
@@ -160,7 +160,7 @@
                                       <div class="khoi_noidung_block2_padding_tex_sub1_img flex">
                                         <div class="khoi_noidung_block2_padding_vi3s fz16_5">20.000</div>
                                         <div class="khoi_noidung_block2_padding_vi3s_img">
-                                          <img src="<? echo base_url(); ?>assets/images/img_sdn/tienra.png" alt="">
+                                          <img src="<? echo base_url(); ?>assets/images/img_sdn/tienra.svg" alt="">
                                         </div>
                                       </div>
                                     </div>
@@ -490,7 +490,7 @@
 
 </html>
 <script>
-$('#tongquan').addClass('color_click')
+$('#tongquan').addClass('color_click');
 (function() {
     circliful.newCircle({
         id: 'circle_sale',

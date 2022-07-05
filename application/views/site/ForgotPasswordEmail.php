@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="vi">
 
@@ -20,28 +19,89 @@
         </header>
     </div>
     <div class="wrapper_all qmk_nhan_email trang_dang_nhap">
-        <div class="main_tt">
-            <div class="account insert_email d_flex flex_column gachduoi">
-                <div class="account_back d_flex" onclick="back_page()">
-                    <div class="back_page"><img src="<? echo base_url(); ?>assets/images/back.png" alt=""></div>
-                    <p class="font-medium size-14">Quay lại</p>
-                </div>
-                <div class="account_log-in account_otp-beside insert_email_wrapper w_100">
-                    <div class="account_title font_s24 text_c color_green font_w_600">Nhập Email</div>
-                    <div class="font_s16 m_t_b_24 text_l font_w500 color_grey line_h19 mr_t_32">Vui lòng nhập Email <span class="color_red">*</span></div>
-                    <div class="khung_input khung_input-email d_flex align_c">
-                        <input type="text" placeholder="Nhập email">
-                        <div class="account_log_in-input-img icon_email">
-                            <img src="<? echo base_url(); ?>assets/images/email.png" alt="" class="m_r_18">
-                        </div>
+        <form id="form_dk1" type="post">
+            <div class="main_tt">
+                <div class="account insert_email d_flex flex_column gachduoi">
+                    <div class="account_back d_flex" onclick="back_page()">
+                        <div class="back_page"><img src="<? echo base_url(); ?>assets/images/back.svg" alt=""></div>
+                        <p class="font-medium size-14">Quay lại</p>
                     </div>
-                    <a href="quen-mat-khau-nhan-otp.html" class="account_otp-btn btn_blue bg_green border_none account_log-in_btn line_h19 mr_t_32">Tiếp theo </a>
+                    <div class="account_log-in account_otp-beside insert_email_wrapper w_100">
+                        <div class="account_title font_s24 text_c color_green font_w_600">Nhập Email</div>
+                        <div class="font_s16 text_l font_w500 color_grey line_h19 mr_t_32">Vui lòng nhập Email
+                            <span class="color_red">*</span></div>
+                        <p class="error_email size-12 chudo mr_t_16"></p>
+                        <div class="khung_input khung_input-email d_flex align_c no-top">
+                            <input type="text" class="email" placeholder="Nhập email">
+                            <div class="account_log_in-input-img icon_email">
+                                <img src="<? echo base_url(); ?>assets/images/email.svg" alt="" class="m_r_18">
+                            </div>
+                        </div>
+                        <button onclick="otp_form_1(); return false;"
+                            class="account_otp-btn btn_blue bg_green border_none account_log-in_btn line_h19 mr_t_32">Tiếp
+                            theo </button>
+                    </div>
                 </div>
             </div>
-        </div>
+        </form>
     </div>
 </body>
 <script type="text/javascript" src="<? echo base_url();?>assets/js/jquery-3.4.1.min.js"></script>
 <script type="text/javascript" src="<? echo base_url();?>assets/js/js_quang.js"></script>
 
 </html>
+
+<script>
+	var base_url = '<?php echo base_url(); ?>';
+	var regex_email = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+	function otp_form_1() {
+		var flag = true;
+		var email = $('.email').val();
+		
+		if ($.trim(email) == '') {
+            $('.error_email').removeClass('mr_t_16').addClass('line_h16').html('Email không được để trống');
+            flag = false;
+        } else if ($.trim(email) !== '' && regex_email.test(email) == false) {
+            $('.error_email').removeClass('mr_t_16').addClass('line_h16').html('Email không đúng định dạng');
+            flag = false;
+        } else {
+			$.ajax ({
+				type: 'POST',
+				url: base_url+'account/checkEmailForgot',
+				data: {email: email},
+				success: function(response) {
+					if (response == 0) {
+						$('.error_email').removeClass('mr_t_16').addClass('line_h16').html('Email không tồn tại');
+						flag = false;
+					} else {
+						$('.error_email').removeClass('line_h16').addClass('mr_t_16').html('');
+					}
+				},
+				error: function (xhr) {
+					console.log('error');
+				}
+			})
+		}
+
+		if (flag == true) {
+			$.ajax ({
+				type: 'POST',
+				url: base_url+'account/sendForgotPasswordOTP',
+				data: {email: email},
+				success: function(response) {
+					if (response > 0) {
+						console.log(response);
+						location.href = "quen-mat-khau-nhan-otp-" + response + ".html";
+					} else {
+						return false;
+						console.log('error 1');
+					}
+				},
+				error: function(xhr) {
+					console.log('error 2');
+				}
+			})
+		}
+	}
+</script>
