@@ -40,6 +40,11 @@ class M_PostNews extends CI_Model
         $this->db->insert($this->_table5, $data);
     	return $this->db->insert_id();
     }
+    public function insertNewsRoom($data)
+    {
+        $this->db->insert($this->_table5, $data);
+    	return $this->db->insert_id();
+    }
     public function insertImgNews($data_img)
     {
         $this->db->insert($this->_table6, $data_img);

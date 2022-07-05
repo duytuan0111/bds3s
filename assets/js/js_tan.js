@@ -451,7 +451,7 @@ $('.giamax').keyup(function() {
         dv = "tỷ VNĐ";
     }
     $('.ngansach_max').html(max);
-    $('.dv_max').html(dv_max)
+    $('.dv_max').html(dv)
 });
 
 $('.ttbd_butt_anh').click(function() {

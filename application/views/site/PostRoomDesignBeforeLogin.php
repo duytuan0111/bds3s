@@ -104,20 +104,20 @@
                         <div class="khoicon top-21 box_input_infor">
                             <p class="chuden font-medium height-20 size-14">Phong cách <span class="chudo">*</span></p>
                             <div class="top-8">
-                                <select name="styles" id="" class="select_option js-states form-control">
+                                <select name="styles" id="" class="select_option styles js-states form-control">
                                     <option selected disabled>Chọn phong cách</option>
-                                    <option value="1">Đương đại</option>
-                                    <option value="2">Hiện đại</option>
-                                    <option value="3">Tối giản</option>
-                                    <option value="4">Truyền thống</option>
-                                    <option value="5">Cổ điển</option>
-                                    <option value="6">Tân cổ điển</option>
-                                    <option value="7">Scanvindinavian</option>
-                                    <option value="8">Vintage</option>
-                                    <option value="9">Retro</option>
-                                    <option value="10">Bohemia</option>
-                                    <option value="11">Indochine</option>
-                                    <option value="12">Khác</option>
+                                    <option value="Đương đại">Đương đại</option>
+                                    <option value="Hiện đại">Hiện đại</option>
+                                    <option value="Tối giản">Tối giản</option>
+                                    <option value="Truyền thống">Truyền thống</option>
+                                    <option value="Cổ điển">Cổ điển</option>
+                                    <option value="Tân cổ điển">Tân cổ điển</option>
+                                    <option value="Scanvindinavian">Scanvindinavian</option>
+                                    <option value="Vintage">Vintage</option>
+                                    <option value="Retro">Retro</option>
+                                    <option value="Bohemia">Bohemia</option>
+                                    <option value="Indochine">Indochine</option>
+                                    <option value="Khác">Khác</option>
                                 </select>
                             </div>
                         </div>
@@ -130,7 +130,7 @@
                                     <option value="2">50 m2 - 100 m2</option>
                                     <option value="3">100 m2 - 150 m2</option>
                                     <option value="4">150 m2 - 300 m2</option>
-                                    <option value="2">300 m2 trở lên</option>
+                                    <option value="5">300 m2 trở lên</option>
                                 </select>
                             </div>
                         </div>
@@ -138,11 +138,11 @@
                             <div class=" top-21  flex center-height">
                                 <p class="chuden font-medium height-20 right-16 size-14">Thực hiện bởi <span class="chudo">*</span></p>
                                 <div class="flex center-center th2">
-                                    <input type="radio" name="Perform" class="right-8">
+                                    <input value = "1" type="radio" name="Perform" class="right-8">
                                     <p class="chuden font-medium height-20 size-14">Tự làm</p>
                                 </div>
                                 <div class="flex center-center">
-                                    <input type="radio" name="Perform" class="right-8">
+                                    <input type="radio" value = "2" name="Perform" class="right-8 Perform">
                                     <p class="chuden font-medium height-20 size-14">Chuyên gia</p>
                                 </div>
                             </div>
@@ -153,43 +153,43 @@
                             <div class="chonmau flex space top-8">
                                 <label for="den" class="cursor_p position_r btn_color">
                                     <div class="den"></div>
-                                    <input type="checkbox" name="color[]" class="den" id="den">
+                                    <input type="checkbox" name="color[]" value="den" class="den" id="den">
                                     <img src="<? echo base_url(); ?>assets/images/check_sussess.png" class="img_success">
                                 </label>
 
                                 <label for="trang" class="cursor_p position_r btn_color">
                                     <div class="trang"></div>
-                                    <input type="checkbox" name="color[]" class="trang" id="trang">
+                                    <input type="checkbox" name="color[]" value="trang" class="trang" id="trang">
                                     <img src="<? echo base_url(); ?>assets/images/check_sussess.png" class="img_success">
                                 </label>
 
                                 <label for="do" class="cursor_p position_r btn_color ">
                                     <div class="do"></div>
-                                    <input type="checkbox" name="color[]" class="do" id="do">
+                                    <input type="checkbox" name="color[]" value="do" class="do" id="do">
                                     <img src="<? echo base_url(); ?>assets/images/check_sussess.png" class="img_success">
                                 </label>
 
                                 <label for="cam" class="cursor_p position_r btn_color">
                                     <div class="cam"></div>
-                                    <input type="checkbox" name="color[]" class="cam" id="cam">
+                                    <input type="checkbox" name="color[]" value="cam" class="cam" id="cam">
                                     <img src="<? echo base_url(); ?>assets/images/check_sussess.png" class="img_success">
                                 </label>
 
                                 <label for="vang" class="cursor_p position_r btn_color">
                                     <div class="vang"></div>
-                                    <input type="checkbox" name="color[]" class="vang" id="vang">
+                                    <input type="checkbox" name="color[]" value="vang" class="vang" id="vang">
                                     <img src="<? echo base_url(); ?>assets/images/check_sussess.png" class="img_success">
                                 </label>
 
                                 <label for="hong" class="cursor_p position_r btn_color">
                                     <div class="hong"></div>
-                                    <input type="checkbox" name="color[]" class="hong" id="hong">
+                                    <input type="checkbox" name="color[]" value="hong" class="hong" id="hong">
                                     <img src="<? echo base_url(); ?>assets/images/check_sussess.png" class="img_success">
                                 </label>
                                 
                                 <label for="xanhluc" class="cursor_p position_r btn_color">
                                     <div class="xanhluc"></div>
-                                    <input type="checkbox" name="color[]" class="xanhluc" id="xanhluc">
+                                    <input type="checkbox" name="color[]" value="xanhluc" class="xanhluc" id="xanhluc">
                                     <img src="<? echo base_url(); ?>assets/images/check_sussess.png" class="img_success">
                                 </label>
                                 
@@ -249,7 +249,7 @@
 
                     <div class="ttpd_tieude  box_input_infor">
                         <div class="khunginput input_infor_tag">
-                            <input type="text" name="title_news" class="" placeholder="Nhập tiêu đề bài viết *">
+                            <input type="text" name="title_news" class="title_news" placeholder="Nhập tiêu đề bài viết *">
                         </div>
                     </div>
                 </div>
@@ -321,14 +321,14 @@
 $(".select_option").select2({
     width: "100%",
 });
-
+var base_url 	= '<?php echo base_url(); ?>'; 
 var html_  = '<div class="khoi_add_anh flex space bot-24">'
 
     html_ += '<div class="tdpd_anh">'
     html_ +=    '<img  src="" alt=""  class="anh_add tdpd_img">'
     html_ += '</div>'
     html_ += '<div class="tdpd_thongtin">'
-    html_ +=    '<select name="room_design" id="" class="select_option room_design">'
+    html_ +=    '<select name="room_design" id="" class="select_option desc_img">'
     html_ +=        '<option value="1">Không gian</option>'
     html_ +=        '<option value="2">Phòng khách</option>'
     html_ +=        '<option value="3">Phòng bếp</option>'
@@ -342,7 +342,7 @@ var html_  = '<div class="khoi_add_anh flex space bot-24">'
     html_ +=        '<option value="11">Khác</option>'
     html_ +=    '</select>'
     html_ +=    '<div class="khoi_text top-16">'
-    html_ +=        '<textarea name="desc_room" id="" cols="30" rows="10" placeholder="Nhập mô tả ảnh"></textarea>'
+    html_ +=        '<textarea name="desc_room" id="" cols="30" class="desc_img" rows="10" placeholder="Nhập mô tả ảnh"></textarea>'
     html_ +=    '</div>'
     html_ +='</div>'
     html_ +='</div>'
@@ -433,11 +433,60 @@ var html_  = '<div class="khoi_add_anh flex space bot-24">'
             $("input[name='color[]']:checked").each(function(){
                 list_color.push($(this).val());
             })
-            console.log(list_color)
+            list_color = JSON.stringify(list_color);    
             var color       = $(".color").val();
-            var price_min   = $(".price_min").val();
+            var price_min   = $(".giamin").val();
             var title_news  = $(".title_news").val();
-            var price_max   = $(".price_max").val();
+            var price_max   = $(".giamax").val();
+
+            var i = 0;
+            var desc_img = [];
+            var input = [];
+            $('.desc_img').each(function(){
+                if(i%2 == 0)
+                {
+                    input = [];
+                }
+                input.push($(this).val());
+                if(i%2 == 1)
+                {
+                    desc_img.push(input);
+                };
+                i++;
+            })
+            desc_img = JSON.stringify(desc_img);
+
+            var data = new FormData();
+            data.append('ctrinh_type', ctrinh_type);
+            data.append('styles', styles);
+            data.append('area', area);
+            data.append('Perform', Perform);
+            data.append('list_color', list_color);
+            data.append('price_min', price_min);
+            data.append('title_news', title_news);
+            data.append('price_max', price_max);
+            $('.tdqp_click_addanh').each(function(){
+                data.append('arr_img[]',$(this)[0].files[0]);
+            })
+            $.ajax({
+			 	url: base_url+'PostNews/addNewsRoom',
+			 	type: 'post',
+			 	cache: false,
+			 	contentType: false,
+			 	processData: false,
+			 	dataType: 'json',
+			 	data:data,
+			 	enctype: 'multipart/form-data',
+			 	success: function(response) {
+                    if (response.status == 1) {
+                        alert(response.msg);
+                        window.location.href = base_url+'admin/ManageNews/ManageNewsProject';
+                    }
+			 	},
+			 	error: function(xhr) {
+			 		alert('Error');
+			 	}
+			});
 		}
     });
 

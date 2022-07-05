@@ -177,7 +177,32 @@ class PostNews extends CI_Controller
 			}	
 			echo json_encode($response);			
 	}
+	public function addNewsRoom() {
 
+		$data_insert = [
+			'room_ctrinh_type'			=> $this->input->post('ctrinh_type'),
+			'room_styles' 				=> $this->input->post('styles'),
+			'room_area' 				=> $this->input->post('area'),
+			'room_perform' 		    	=> $this->input->post('Perform'),
+			'room_list_color' 			=> $this->input->post('list_color'),
+			'room_price_min'			=> $this->input->post('price_min'),
+			'room_title_news' 			=> $this->input->post('title_news'),
+			'room_price_max' 			=> $this->input->post('price_max'),
+			'time_create'				=> time(),
+			'type'						=> 2,
+		];
+
+		if(isset($_FILES['arr_img']))
+		{
+			$data_insert['room_arr_img'] 				= json_encode(upLoadMultipleImg('arr_img'));
+		}	
+		$insert = $this->M_PostNews->insertNewsRoom($data_insert);	
+		if ($insert > 0) {
+			$response['status'] = 1;
+			$response['msg'] 	= 'Đăng tin thành công';
+		}
+		echo json_encode($response);
+	}
     public function PostRoomDesignBeforeLogin() {
 		$this->_data['canonical']				= base_url();
 		$this->load->view('site/PostRoomDesignBeforeLogin', $this->_data);
