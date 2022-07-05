@@ -97,6 +97,7 @@
                                                 class="color_yelow cursor_p Acc_gender"></input></label>
                                         <div class="account_log-in-Memorize-text font_s14 ml_10">Nam</div>
                                     </div>
+
                                     <div class=" d_flex align_c">
                                         <label><input name="radio" type="radio" value="1"
                                                 class="color_yelow cursor_p Acc_gender"></input></label>
@@ -340,7 +341,6 @@ function register_form_1() {
             acc_gender = $(this).val();
         }
     });
-
     if (acc_gender == '') {
         $('.error_gender').removeClass('mr_t_16').addClass('line_h16').html('Giới tính không được để trống');
         flag = false;
@@ -409,6 +409,7 @@ function register_form_1() {
             }
         })
     }
+
 }
 </script>
 
@@ -428,3 +429,4 @@ function register_form_1() {
 
 /* active_single_header('logoxanh'); */
 </style>
+

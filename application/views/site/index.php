@@ -1183,7 +1183,7 @@
                 </div>
                 <div class="project_slider d_flex flex_w pd_lr_80 mt_24 d_themclass_fig34 d_themclass_fig35">
                     <?php for ($i = 0; $i < 20; $i++) : ?>
-                    <a href="chi_tiet_du_an.html" class="project_item hover_img_105">
+                    <a href="chi-tiet-du-an.html" class="project_item hover_img_105">
                         <img src="<?php echo base_url(); ?>assets/images/skyscrapers-sunset 1.png" alt="">
                         <div class="project_item_heading project_item_heading_duy">
                             <span class="project_item_heading-name w100 ellipsis_1 mw_94">Aqua City</span>
@@ -1586,3 +1586,4 @@ function close_popup_filter() {
     $('.duy_select_boloc').toggleClass('hidden')
 }
  </script>
+

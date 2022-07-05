@@ -29,5 +29,9 @@ class Wallet extends CI_Controller
 		$this->_data['canonical']				= base_url();
 		$this->load->view('site/BuyPacketNews', $this->_data);
 	}
+	public function TransactionList() {
+		$this->_data['canonical']				= base_url();
+		$this->load->view('site/TransactionList', $this->_data);
+	}
 }
 ?>

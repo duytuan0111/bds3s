@@ -19,6 +19,7 @@
     <? require_once APPPATH.'views/site/includes/da_header.php' ?>
     <div class="backgroung_chinh">
         <div class="link_trang">
+            <form action="" enctype="multipart/form-data" method="post" onsubmit="return false" id="postNews_Home">
             <div class="bot-24">
                 <div class="body_moigioi_padding_header_tex flex mr_b24px">
                     <div class="body_moigioi_padding_header_tex_tt font_size_14">Trang chủ</div>
@@ -117,10 +118,22 @@
                     <div class="khoicon top-21">
                         <p class="title chuden font-medium height-20">Số phòng ngủ</p>
                         <div class="khoi_phongngu top-8 flex">
-                            <button>1</button>
-                            <button>2</button>
-                            <button>3</button>
-                            <button>4+</button>
+                            <label for='1th_bedroom' class="cursor_p radio_bedroom">
+                                <div>1</div>
+                                <input value="1" id="1th_bedroom" class="hidden" name="bedroom" type="radio">
+                            </label>
+                            <label for='2th_bedroom' class="cursor_p radio_bedroom">
+                                <div>2</div>
+                                <input value="2" id="2th_bedroom" class="hidden" name="bedroom" type="radio">
+                            </label>
+                            <label for='3th_bedroom' class="cursor_p radio_bedroom">
+                                <div>3</div>
+                                <input value="3" id="3th_bedroom" class="hidden" name="bedroom" type="radio">
+                            </label>
+                            <label for='4th_bedroom' class="cursor_p radio_bedroom">
+                                <div>4</div>
+                                <input value="4+" id="4th_bedroom" class="hidden" name="bedroom" type="radio">
+                            </label>
                         </div>
                     </div>
                     <div class="khoicon top-21 flex center-height">
@@ -360,7 +373,7 @@
 
             <!-- butt dang tin -->
             <div class="tdnd_khoibutt">
-                <button class="tdnd_butt_dangtin size-16 font-medium c-pointer">Đăng tin</button>
+                <button type="submit" class="tdnd_butt_dangtin size-16 font-medium c-pointer">Đăng tin</button>
             </div>
             <!-- end butt dang tin -->
 
@@ -374,6 +387,7 @@
                 <div class="top-8 size-14">Đặc biệt là những khách hàng lớn tuổi hoặc những người có khả năng tài chính cao, nhà đất luôn là một trong những sự chọn lựa ưu tiên nhất blah blah blah.</div>
             </div>
             <!-- end doan text duoi -->
+            </form>
         </div>
     </div>
     <? require_once APPPATH.'views/site/includes/da_footer.php' ?>
@@ -387,6 +401,105 @@
 $(".select_option").select2({
     width: "100%",
 });
+
+$("#postNews_Home").validate({
+    errorPlacement: function (error, element) {
+        error.appendTo(element.parents(".box_input_infor"));
+        error.wrap("<span class='errors'>");
+        element.parents('.box_input_infor').addClass('validate_input');
+    },
+    rules: {
+        project_name: "required",
+        introduce: "required",
+        city: "required",
+        bds_type: "required",
+        districts: "required",
+        cdt_come_name: "required",
+        price_min: "required",
+        price_max: "required",
+        title_mb_project: "required",
+        part_name: "required",
+    },
+    messages: {
+        project_name: "Vui lòng nhập tên dự án",
+        introduce: "Vui lòng nhập nội dung giới thiệu",
+        city: "Vui lòng chọn thành phố",
+        bds_type: "Vui lòng chọn loại hình bất động sản",
+        districts: "Vui lòng chọn quận huyện",
+        cdt_come_name: "Vui lòng nhập tên công ty",
+        price_min: "Vui lòng nhập lại khoảng giá",
+        price_max: "Vui lòng nhập lại khoảng giá",
+        title_mb_project: "Vui lòng nhập tiêu đề dự án",
+        part_name: "Vui lòng nhập đầu mục dự án",
+    },
+    submitHandler: function() {
+        hienpopup('popup_thongtin');
+        $(".butt_hoantat").click(function(){
+            var project_name			= $('.project_name').val();
+            var introduce 				= $('.introduce').val();
+            var bds_type 				= $('.bds_type').find(':selected').val();
+            var select_city 		    = $('#select_city').find(':selected').val();
+            var districts 			    = $('.districts').find(':selected').val();
+            var wards 				    = $('.wards').find(':selected').val();
+            var street				    = $('.street').find(':selected').val();
+            var addr_detail 			= $('.addr_detail').val();
+            var post_time 			    = $('.post_time').val();
+            var banner_img 				= $('.banner_img')[0].files[0];
+            var cdt_come_name 			= $('.cdt_come_name').val();
+            var title_img_gtda = [];
+
+
+            var data = new FormData();
+            data.append('project_name', project_name);
+            data.append('introduce', introduce);
+            data.append('bds_type', bds_type);
+            data.append('select_city', select_city);
+            data.append('districts', districts);
+            data.append('wards', wards);
+            data.append('street', street);
+            data.append('addr_detail', addr_detail);
+            data.append('post_time', post_time);
+            data.append('banner_img', banner_img);
+            data.append('cdt_come_name', cdt_come_name);
+            data.append('cdt_founding', cdt_founding);
+            data.append('cdt_phone', cdt_phone);
+            data.append('cdt_addr_com', cdt_addr_com);
+            data.append('cdt_project_num', cdt_project_num);
+
+            $.ajax({
+			 	url: base_url+'PostNews/addNewsProject',
+			 	type: 'post',
+			 	cache: false,
+			 	contentType: false,
+			 	processData: false,
+			 	dataType: 'json',
+			 	data:data,
+			 	enctype: 'multipart/form-data',
+			 	success: function(response) {
+                    if (response.status == 1) {
+                        alert(response.msg);
+                        window.location.href = base_url+'admin/ManageNews/ManageNewsProject';
+                    }
+			 	},
+			 	error: function(xhr) {
+			 		alert('Error');
+			 	}
+			});
+        })
+    }
+});
+
+$('.radio_bedroom').click(function(){
+    $('.radio_bedroom div').each(function(){
+        
+    })
+    $('.radio_bedroom input[type="radio"]').each(function(){
+        if($(this).is(":checked"));
+        {
+            $(this).parents('.radio_bedroom').find('div').addClass('active');
+        }
+    })
+})
 </script>
 
 </html>

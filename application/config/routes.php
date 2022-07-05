@@ -71,6 +71,7 @@ $route['tin-dang-nha-dep.html'] 		        		= 'PostNews/PostHomeDesignBeforeLogi
 $route['tin-dang-phong-dep.html'] 		        		= 'PostNews/PostRoomdesignBeforeLogin';
 $route['loai-dang-tin-sau-dang-nhap.html']				= 'PostNews/PostTypeAfterLogin';
 
+
 //Cho thuê
 $route['cho-thue-truoc-dang-nhap.html']					= 'Lease/LeaseBeforeLogin';
 $route['chi-tiet-cho-thue-truoc-dang-nhap.html']		= 'Lease/DetailLeaseBeforeLogin';
@@ -99,8 +100,6 @@ $route['danh-sach-phong-dep.html']						= 'DesignBeautifull/BeautifulListRooms';
 $route['tin-tuc.html']				            		= 'News/News';
 $route['chi-tiet-tin-tuc.html']			        		= 'News/DetailsNews';
 
-//chi tiết người mua bán
-$route['chi-tiet-nguoi-mua-ban.html']					= 'DetailBuyer';
 
 // bất động sản gần đây
 $route['bat-dong-san-gan-day.html']		    			= 'RecentRealEstate';
@@ -124,6 +123,7 @@ $route['quy-trinh-giai-quyet-tranh-chap.html']  		= 'Connect/DisputeResolutionPr
 
 $route['tong-quan.html']		                		= 'admin/Dashboard';
 // ví tiền
+
 $route['vi-3s.html']		                    		= 'admin/Wallet/Wallet3s';
 $route['nap-tien-vao-vi.html']		            		= 'admin/Wallet/WalletDeposit';
 $route['mua-dich-vu.html']		                		= 'admin/Wallet/BuyService';
@@ -138,4 +138,3 @@ $route['quan-ly-tin-dang-tin-luu.html']		    		= 'admin/ManageNews/ManageNewsSav
 
 $route['404_override'] 									= '';
 $route['translate_uri_dashes'] 							= FALSE;
-

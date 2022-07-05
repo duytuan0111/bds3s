@@ -2,7 +2,7 @@
 /**
 * 
 */
-class M_ContactPage extends CI_Model
+class M_Connect extends CI_Model
 {
 	
 	// protected $_table = 'city';
