@@ -619,7 +619,7 @@ slick-dots li{display:flex;align-items:center;justify-content:center;border-radi
 .dangtin_img,.dangtin_img_input-text{width:100%}
 .dangtin_img-nhap{max-width:591px}
 input[type="file"]{display:none}
-.dangtin_btn-dang{width:182px;height:40px}
+.dangtin_btn-dang{width:182px;height:40px;outline:unset;border:none}
 .dangtin_btn_chon{width:97px;height:40px}
 .dangtin_btn_chon .select2-container--default .select2-selection--single .select2-selection__arrow{top:7px;right:17px}
 .opacity_click{opacity:.4;cursor:default}

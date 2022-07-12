@@ -62,6 +62,7 @@ $route['trang-nhan-ma-otp-(:num).html']  				= 'Account/PageOTP/$1';
 $route['quen-mat-khau-nhan-otp-(:num).html']  			= 'Account/ForgotPasswordOTP/$1/$2';
 $route['quen-mat-khau-nhap-email.html']         		= 'Account/ForgotPasswordEmail';
 $route['quen-mat-khau-update-mat-khau-(:num).html']   	= 'Account/UpdatePassword/$1';
+$route['thong-tin-ca-nhan.html']   	                    = 'Account/UpdatePassword/$1';
 
 //PostNews
 $route['dang-tin-truoc-dang-nhap.html'] 				= 'PostNews/PostNewsBeforeLogin';
@@ -71,6 +72,12 @@ $route['tin-dang-nha-dep.html'] 		        		= 'PostNews/PostHomeDesignBeforeLogi
 $route['tin-dang-phong-dep.html'] 		        		= 'PostNews/PostRoomdesignBeforeLogin';
 $route['loai-dang-tin-sau-dang-nhap.html']				= 'PostNews/PostTypeAfterLogin';
 
+//UpdateNews
+$route['cap-nhat-dang-tin-truoc-dang-nhap-(:num).html'] = 'admin/ManageNews/UpdateNewsBeforeLogin/$1';
+$route['cap-nhat-dang-tin-sau-dang-nhap-(:num).html']   = 'admin/ManageNews/UpdateNewsAfterLogin/$1';
+$route['cap-nhat-tin-dang-du-an-(:num).html'] 		    = 'admin/ManageNews/UpdateNewsProject/$1';
+$route['cap-nhat-tin-dang-nha-dep-(:num).html'] 		= 'admin/ManageNews/UpdateNewsHome/$1';
+$route['cap-nhat-tin-dang-phong-dep-(:num).html'] 		= 'admin/ManageNews/UpdateNewsRoom/$1';
 
 //Cho thuê
 $route['cho-thue-truoc-dang-nhap.html']					= 'Lease/LeaseBeforeLogin';
@@ -131,10 +138,14 @@ $route['mua-goi-ghim-tin-dang.html']		    		= 'admin/Wallet/BuyPacketNews';
 
 // quản lý tin
 $route['quan-ly-tin-dang-mua-ban.html']		    		= 'admin/ManageNews/ManageNewsPurchase';
+$route['quan-ly-tin-dang-mua-ban.html/(:any)']		    = 'admin/ManageNews/ManageNewsPurchase/$1';
 $route['quan-ly-tin-dang-cho-thue.html']				= 'admin/ManageNews/ManageNewsLease';
+$route['quan-ly-tin-dang-cho-thue.html/(:any)']			= 'admin/ManageNews/ManageNewsLease/$1';
 $route['quan-ly-tin-dang-du-an.html']		    		= 'admin/ManageNews/ManageNewsProject';
 $route['quan-ly-tin-dang-thiet-ke.html']				= 'admin/ManageNews/ManageNewsDesign';
+$route['quan-ly-tin-dang-thiet-ke.html/(:any)']			= 'admin/ManageNews/ManageNewsDesign/$1';
 $route['quan-ly-tin-dang-tin-luu.html']		    		= 'admin/ManageNews/ManageNewsSave';
+$route['quan-ly-tin-dang-tin-luu.html/(:any)']		    = 'admin/ManageNews/ManageNewsSave/$1';
 
 $route['404_override'] 									= '';
 $route['translate_uri_dashes'] 							= FALSE;

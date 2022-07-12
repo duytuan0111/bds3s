@@ -18,7 +18,7 @@ class Account extends CI_Controller
 	}
 	public function AccountLogin() {
 		$this->_data['canonical']				= base_url();
-		$this->load->view('site/Login', $this->_data);
+		$this->load->view('site/AccountLogin', $this->_data);
 	}
     public function AccountRegister() {
 		$this->_data['canonical']				= base_url();

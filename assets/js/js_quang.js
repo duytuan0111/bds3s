@@ -63,7 +63,9 @@ $('#clode_overlay').click(function () {
 })
 // --------------------Dang tin radio 
 $('#radio_button').click(function () {
+
   if ($('#radio_button').is(':checked')) {
+    $('#number').removeAttr('name');
     $('#gia_open_khoanggia').off('click');
     $('.btn_opacity').addClass('opacity_click');
     $('.btn_nhap_gia input').attr('readonly', true);
@@ -72,7 +74,9 @@ $('#radio_button').click(function () {
     $('.btn_gia_max').addClass('hidden');
     $('#number').attr('placeholder', 'Nhập giá cố định');
   } else {
+    $('#number').attr('name','giamin');
     $('#gia_open_khoanggia').on('click', function () {
+      $('#number_max').attr('name','giamax');
       $('.btn_tat_khoanggia ').toggleClass('hidden');
       $('.btn_gia_max').toggleClass('hidden');
       $('#number').attr('placeholder', 'Giá min');
@@ -83,12 +87,14 @@ $('#radio_button').click(function () {
 });
 // -------
 $('#gia_open_khoanggia').click(function () {
+  $('#number_max').attr('name','giamax')
   $('.btn_tat_khoanggia ').toggleClass('hidden');
   $('#number').val('')
   $('#number').attr('placeholder', 'Giá min');
   $('.btn_gia_max').toggleClass('hidden');
 });
 $('.img_delete_mo').click(function () {
+  $('#number_max').attr('name','')
   $('#number').val('')
   $('#number').attr('placeholder', 'Nhập giá cố định');
   $('.btn_tat_khoanggia').toggleClass('hidden');
@@ -102,10 +108,12 @@ $('.img_dt_delete').click(function () {
   $('.btn_dt').removeClass('hidden');
   $('.btn_dt_mo').addClass('hidden');
   $('#number_dt_1').val('')
+  $('#number_dt_2').attr('name','')
   $('#number_dt_1').attr('placeholder', 'Nhập diện tích');
   $('#number_dt_2').val('')
 })
 $('#btn_dt_dong').click(function () {
+  $('#number_dt_2').attr('name','area_max')
   $('.btn_dt').addClass('hidden');
   $('.btn_dt_mo').removeClass('hidden');
   $('#number_dt_1').val('')
@@ -477,7 +485,7 @@ function myFunction_quan(x) {
       var value = $(this).val();
       if (value == 1) {
         $('#the-input_quan').addClass('the_input_quan_res')
-      } else if (value == 2) {
+      } else if (value == 2 || value == 3 || value == 4 || value == 5) {
         $('#the-input_quan').addClass('the_input_quan_res')
       }
       else {
@@ -506,7 +514,7 @@ function myFunction(y) {
     var value = $(this).val();
     if (value == 1) {
       $('#the-input--res-mot').addClass('the-input--res')
-    } else if (value == 2) {
+    } else if (value == 2 || value == 3 || value == 4 || value == 5) {
       $('#the-input--res-mot').addClass('the-input--res')
     }
     else {
@@ -556,7 +564,7 @@ $('#onclick_chonloai_after').change(function () {
     $('.dangtin_khunginput_chonloai').addClass('w_50');
     $('.dangtin_khunginput_chonloai').addClass('mr_r_12');
     $('.dangtin_khunginput_chonloai-hien').removeClass('hidden');
-  } else if (value == 2) {
+  } else if (value == 2 || value == 3 || value == 4 || value == 5) {
     $('.dangtin_form-after').removeClass('hidden');
     $('.dangtin_mota-dong8').removeClass('hidden')
     $('.dangtin_mo_ta_dong7').addClass('hidden')
@@ -566,7 +574,7 @@ $('#onclick_chonloai_after').change(function () {
     $('.dangtin_khunginput_chonloai').addClass('mr_r_12');
     $('.dangtin_khunginput_chonloai-hien').removeClass('hidden');
   }
-  else {
+  else if(value == 6 || value == 7 || value == 8) {
     $('.dangtin_form-after').addClass('hidden');
     $('.dangtin_mota-dong9').removeClass('hidden')
     $('.dangtin_mota-dong8').addClass('hidden')

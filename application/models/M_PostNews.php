@@ -35,12 +35,22 @@ class M_PostNews extends CI_Model
         $this->db->where('district_id',$cit_id);
         return $this->db->get($this->_table4)->result_array();
     }
+    public function insertNewsAfterLogin($data)
+    {
+        $this->db->insert($this->_table5, $data);
+    	return $this->db->insert_id();
+    }
     public function insertProjectNews($data)
     {
         $this->db->insert($this->_table5, $data);
     	return $this->db->insert_id();
     }
     public function insertNewsRoom($data)
+    {
+        $this->db->insert($this->_table5, $data);
+    	return $this->db->insert_id();
+    }
+    public function insertNewsHome($data)
     {
         $this->db->insert($this->_table5, $data);
     	return $this->db->insert_id();
