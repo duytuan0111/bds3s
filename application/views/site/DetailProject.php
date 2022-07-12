@@ -1,3 +1,9 @@
+<?
+$y = date('Y', $detail_project['time_create']);
+$m = date('m', $detail_project['time_create']);
+$d = date('d', $detail_project['time_create']);
+$dir = "upload/".$y."/".$m."/".$d."";
+?>
 <!DOCTYPE html>
 <html lang="vi">
 
@@ -72,36 +78,28 @@
                                 <img src="<? echo base_url(); ?>assets/images/img_du_an/bg_duan.png" alt="">
                             </div>
                             <div class="chitiet_khung_text_padding">
-                                <div class="chitiet_khung_text_1 main_color mr_b8px">Merry Land Quy Nhơn</div>
+                                <div class="chitiet_khung_text_1 main_color mr_b8px"><?= $detail_project['project_name'] ?></div>
                                 <div class="chitiet_khung_text_2">
                                     <div class="chitiet_khung_text_3 mr_b16px">
-                                        Lorem ipsum dolor sit
-                                        amet, consectetur adipiscing elit ut aliquam, purus s
-                                        it amet luctus
+                                        <?= $detail_project['introduce'] ?>
                                     </div>
                                     <div class="chitiet_text_diachi flex mr_b8px">
                                         <div class="chitiet_text_diachi1">Địa chỉ</div>
-                                        <div class="chitiet_text_diachi2">Thôn Hải Giang, Xã Nhơn Hải, TP. Quy nhơn,
-                                            Tỉnh
-                                            Bình Định
-                                        </div>
+                                        <div class="chitiet_text_diachi2"><?= $detail_project['addr_detail'] ?></div>
                                     </div>
                                     <div class="chitiet_text_diachi flex mr_b8px">
                                         <div class="chitiet_text_diachi1">Giá Từ</div>
-                                        <div class="chitiet_text_diachi2 color_money">2 - 50 tỷ
+                                        <div class="chitiet_text_diachi2 color_money"><?= ($detail_project['nhapmin'] < 1000000000)?number_format((float)$detail_project['nhapmin']/1000000000, 2, '.', ''):$detail_project['nhapmin']/1000000000 ?> - <?= ($detail_project['nhapmax'] < 1000000000)?number_format((float)$detail_project['nhapmax']/1000000000, 2, '.', ''):$detail_project['nhapmax']/1000000000 ?> tỷ
                                         </div>
                                     </div>
                                     <div class="chitiet_text_diachi flex mr_b8px">
                                         <div class="chitiet_text_diachi1">Quy mô</div>
-                                        <div class="chitiet_text_diachi2">2.000 m2
+                                        <div class="chitiet_text_diachi2"><?= $detail_project['quy_mo'] ?> m2
                                         </div>
                                     </div>
                                     <div class="chitiet_text_diachi flex mr_b73px">
                                         <div class="chitiet_text_diachi1">Loại BĐS</div>
-                                        <div class="chitiet_text_diachi2">Chung cư, Căn hộ, Nhà biệt thự, liền kề, Nhà
-                                            phố
-                                            thương mại, Khách sạn
-                                        </div>
+                                        <div class="chitiet_text_diachi2"><?= $bds_type[$detail_project['bds_type']] ?></div>
                                     </div>
 
 
@@ -112,16 +110,16 @@
                                             </div>
                                             <div class="chitiet_khung_icon_img flex">
                                                 <div class="img_fig_icon_chiase">
-                                                    <img class="" src="<? echo base_url(); ?>assets/images/img_du_an/icon_link.png" alt="">
+                                                    <img class="" src="<? echo base_url(); ?>assets/images/img_du_an/icon_link.svg" alt="">
                                                 </div>
                                                 <div class="img_fig_icon_chiase">
-                                                    <img class="" src="<? echo base_url(); ?>assets/images/img_du_an/icon_twitter.png" alt="">
+                                                    <img class="" src="<? echo base_url(); ?>assets/images/img_du_an/icon_twitter.svg" alt="">
                                                 </div>
                                                 <div class="img_fig_icon_chiase">
-                                                    <img class="" src="<? echo base_url(); ?>assets/images/img_du_an/icon_facebook.png" alt="">
+                                                    <img class="" src="<? echo base_url(); ?>assets/images/img_du_an/icon_facebook.svg" alt="">
                                                 </div>
                                                 <div class="img_fig_icon_chiase">
-                                                    <img class="" src="<? echo base_url(); ?>assets/images/img_du_an/icon_messenger.png" alt="">
+                                                    <img class="" src="<? echo base_url(); ?>assets/images/img_du_an/icon_messenger.svg" alt="">
                                                 </div>
                                             </div>
                                         </div>
@@ -207,13 +205,11 @@
                     <div class="body_chudautu_left1 mr_b56px">
                         <div class="body_chudautu_left1_heading main_color mr_b32px">Chủ đầu tư</div>
                         <div class="body_chudautu_left1_text">
-                            <div class="body_chudautu_tenct mr_b8px">Tên công ty: <span class="main_color_fw_5">Công ty
-                                    CP WHAT</span></div>
-                            <div class="body_chudautu_tenct mr_b8px">Số dự án: <span>20 dự án</span></div>
-                            <div class="body_chudautu_tenct mr_b8px">Thành lập: <span>1984</span></div>
-                            <div class="body_chudautu_tenct mr_b8px">Trụ sở chính: <span>Cẩm Thủy, Cẩm Thành, Thanh
-                                    Hóa</span></div>
-                            <div class="body_chudautu_tenct">Số điện thoại: <span>0321456789</span></div>
+                            <div class="body_chudautu_tenct mr_b8px">Tên công ty: <span class="main_color_fw_5"><?= $detail_project['cdt_come_name'] ?></span></div>
+                            <div class="body_chudautu_tenct mr_b8px">Số dự án: <span><?= $detail_project['cdt_project_num'] ?> dự án</span></div>
+                            <div class="body_chudautu_tenct mr_b8px">Thành lập: <span><?= date('d/m/Y', $detail_project['cdt_founding']) ?></span></div>
+                            <div class="body_chudautu_tenct mr_b8px">Trụ sở chính: <span><?= $detail_project['cdt_addr_com'] ?></span></div>
+                            <div class="body_chudautu_tenct">Số điện thoại: <span><?= $detail_project['cdt_phone'] ?></span></div>
                         </div>
                     </div>
                     <div class="body_chudautu_left2">
@@ -222,85 +218,51 @@
                             <div class="body_chudautu_left2_text flex mr_b32px">
                                 <div class="body_chudautu_left2_text1 mr_r90px">
                                     <div class="body_chudautu_tenct mr_b8px">Thời gian khởi công:
-                                        <span>20/10/2018</span>
+                                        <span><?= date('d/m/Y', $detail_project['time_st']) ?></span>
                                     </div>
-                                    <div class="body_chudautu_tenct mr_b8px">Các loại diện tích: <span>10 x 20, 10 x
-                                            25, 15 x 20</span></div>
-                                    <div class="body_chudautu_tenct mr_b8px">Số tòa nhà: <span>2</span></div>
-                                    <div class="body_chudautu_tenct mr_b8px">Số sản phẩm: <span>80</span></div>
-                                    <div class="body_chudautu_tenct mr_b8px">Quy mô: <span>3000 m2</span></div>
-                                    <div class="body_chudautu_tenct">Diện tích xây dựng: <span>3000 m2</span></div>
+                                    <div class="body_chudautu_tenct mr_b8px">Các loại diện tích: <span><?= $detail_project['area_type'] ?></span></div>
+                                    <div class="body_chudautu_tenct mr_b8px">Số tòa nhà: <span><?= $detail_project['home_num'] ?></span></div>
+                                    <div class="body_chudautu_tenct mr_b8px">Số sản phẩm: <span><?= $detail_project['product_num'] ?></span></div>
+                                    <div class="body_chudautu_tenct mr_b8px">Quy mô: <span><?= $detail_project['quy_mo'] ?> m2</span></div>
+                                    <div class="body_chudautu_tenct">Diện tích xây dựng: <span><?= $detail_project['detail_area'] ?> m2</span></div>
                                 </div>
                                 <div class="body_chudautu_left2_text2">
                                     <div class="body_chudautu_tenct mr_b8px">Thời gian hoàn thành:
-                                        <span>20/10/2023</span>
+                                        <span><?= date('d/m/Y', $detail_project['time_done']) ?></span>
                                     </div>
-                                    <div class="body_chudautu_tenct mr_b8px">Giá từ: <span>5 - 20 tỷ</span></div>
-                                    <div class="body_chudautu_tenct mr_b8px">Tổng số vốn đầu tư: <span>30.000
+                                    <div class="body_chudautu_tenct mr_b8px">Giá từ: <span><?= ($detail_project['nhapmin'] < 1000000000)?number_format((float)$detail_project['nhapmin']/1000000000, 2, '.', ''):$detail_project['nhapmin']/1000000000 ?> - <?= ($detail_project['nhapmax'] < 1000000000)?number_format((float)$detail_project['nhapmax']/1000000000, 2, '.', ''):$detail_project['nhapmax']/1000000000 ?> tỷ</span></div>
+                                    <div class="body_chudautu_tenct mr_b8px">Tổng số vốn đầu tư: <span><?= ($detail_project['total_investment'] < 1000000000)?number_format((float)$detail_project['total_investment']/1000000000, 2, '.', ''):$detail_project['total_investment']/1000000000 ?>
                                             tỷ</span></div>
-                                    <div class="body_chudautu_tenct mr_b8px">Tiến độ: <span>Đang xây dựng</span>
+                                    <div class="body_chudautu_tenct mr_b8px">Tiến độ: <span><?= $progress[$detail_project['progress']] ?></span>
                                     </div>
-                                    <div class="body_chudautu_tenct">Trạng thái: <span>Sắp mở bán</span></div>
+                                    <div class="body_chudautu_tenct">Trạng thái: <span><?= $status[$detail_project['status']] ?></span></div>
                                 </div>
                             </div>
                             <div class="body_chudautu_left2_img1 mr_b16px">
+								<?
+								$img = $dir."/".$detail_project['desc_project'];
+								if (file_exists($img)) {
+								?>
                                 <div class="body_chudautu_left2_img mr_b16px">
                                     <div class="img_fig_imgbig">
-                                        <img src="<? echo base_url(); ?>assets/images/img_du_an/tt_chitiet_duan.png" alt="">
+                                        <img src="<?= $dir ?>/<?= $detail_project['desc_project'] ?>" alt="">
                                     </div>
-                                    <div class="chuthich_img">Phối cảnh tòa nhà</div>
+                                    <div class="chuthich_img"><?= $detail_project['title_img_project'] ?></div>
                                 </div>
-                                <div class="body_chudautu_left2_img_text1 mr_b8px">Khu đô thị của Trung Nguyên tại
-                                    Đắk Lắk có tên đầy đủ là dự án Đô thị
-                                    sinh thái cà phê Suối Xanh được triển khai từ cuối năm 2016 do pháp nhân Công ty
-                                    Cổ phần đầu tư Trung Nguyên
-                                    làm chủ đầu tư.
-                                </div>
-                                <div class="body_chudautu_left2_img_text1">Là Tập đoàn dẫn đầu về ngành Cà Phê Việt
-                                    Nam, khởi nghiệp từ Buôn Ma Thuột,
-                                    có tầm nhìn trở thành nhà lãnh đạo cà phê Toàn Cầu, dự án Đô Thị Sinh Thái Cà
-                                    Phê Suối Xanh là điểm hội tụ của những
-                                    người yêu thích và đam mê cà phê, chứa đựng tâm huyết và tinh thần phụng sự, tri
-                                    ân nơi khai nghiệp của Tập Đoàn Trung
-                                    Nguyên Legend.
-                                </div>
+								<? } else { ?>
+                                <div class="body_chudautu_left2_img_text1 mr_b8px"><?= $detail_project['desc_project'] ?></div>
+								<? } ?>
                             </div>
-                            <div class="body_chudautu_left2_img1 mr_b16px ">
-                                <div class="body_chudautu_left2_img mr_b16px">
-                                    <div class="img_fig_imgbig">
-                                        <img src="<? echo base_url(); ?>assets/images/img_du_an/tt_chitiet_duan.png" alt="">
-                                    </div>
-                                    <div class="chuthich_img">Phối cảnh tòa nhà</div>
-                                </div>
-                                <div class="body_chudautu_left2_img_text1 mr_b8px">Khu đô thị của Trung Nguyên tại
-                                    Đắk Lắk có tên đầy đủ là dự án Đô thị
-                                    sinh thái cà phê Suối Xanh được triển khai từ cuối năm 2016 do pháp nhân Công ty
-                                    Cổ phần đầu tư Trung Nguyên
-                                    làm chủ đầu tư.
-                                </div>
-                                <div class="body_chudautu_left2_img_text1">Là Tập đoàn dẫn đầu về ngành Cà Phê Việt
-                                    Nam, khởi nghiệp từ Buôn Ma Thuột,
-                                    có tầm nhìn trở thành nhà lãnh đạo cà phê Toàn Cầu, dự án Đô Thị Sinh Thái Cà
-                                    Phê Suối Xanh là điểm hội tụ của những
-                                    người yêu thích và đam mê cà phê, chứa đựng tâm huyết và tinh thần phụng sự, tri
-                                    ân nơi khai nghiệp của Tập Đoàn Trung
-                                    Nguyên Legend.
-                                </div>
-                            </div>
-                            <div class="chitiet_thugon">
+                            <div class="chitiet_thugon c_pointer">
                                 <div class="chitiet_thugon_icon flex"
                                     onclick="toggleClass(this,'.body_chudautu_left2_khung_text','over_active','Xem thêm', 'Thu gọn')">
                                     <span>Thu gọn</span>
                                     <div class="img_icon_thugon">
-                                        <img src="<? echo base_url(); ?>assets/images/img_du_an/thugon.png" alt="" class="checked">
+                                        <img src="<? echo base_url(); ?>assets/images/img_du_an/thugon.svg" alt="">
                                     </div>
                                 </div>
                             </div>
-
-
                         </div>
-
-
                     </div>
                 </div>
 
@@ -309,7 +271,7 @@
                         class="body_chudautu_right_button body_chudautu_right_button_man1366 flex align_items mr_b16px">
                         <div class="body_chudautu_right_button_luu flex mr_r16px">
                             <div class="body_chudautu_right_button_luu_img">
-                                <img src="<? echo base_url(); ?>assets/images/img_du_an/luu_30.png" alt="">
+                                <img src="<? echo base_url(); ?>assets/images/img_du_an/luu_30.svg" alt="">
                             </div>
                             <div class="body_chudautu_right_button_luu_text">
                                 Lưu
@@ -317,7 +279,7 @@
                         </div>
                         <div class="body_chudautu_right_button_tai flex">
                             <div class="body_chudautu_right_button_luu_img">
-                                <img src="<? echo base_url(); ?>assets/images/img_du_an/icon_tai.png" alt="">
+                                <img src="<? echo base_url(); ?>assets/images/img_du_an/icon_tai.svg" alt="">
                             </div>
                             <div class="body_chudautu_right_button_luu_text">
                                 Tải tài liệu chi tiết dự án
@@ -357,7 +319,7 @@
                         Vị trí dự án
                     </div>
                     <div class="body_vitri_all_icon icon_rotate1">
-                        <img src="<? echo base_url(); ?>assets/images/img_du_an/icon_vitri.png" alt="">
+                        <img src="<? echo base_url(); ?>assets/images/img_du_an/icon_vitri.svg" alt="">
                     </div>
                 </div>
 
@@ -828,7 +790,7 @@
                         Mặt bằng dự án
                     </div>
                     <div class="body_vitri_all_icon icon_rotate2">
-                        <img src="<? echo base_url(); ?>assets/images/img_du_an/icon_vitri.png" alt="">
+                        <img src="<? echo base_url(); ?>assets/images/img_du_an/icon_vitri.svg" alt="">
                     </div>
                 </div>
             </div>
@@ -868,21 +830,14 @@
                             </div>
                             <div class="duy_scroll_375">
                                 <div class="body_matbang_khoi1_bg_noidung2_img2 thanh_scroll flex flex_w">
+									<?
+									$mb_img = json_decode($detail_project['img_mb_project']);
+									foreach ($mb_img as $val) {
+									?>
                                     <div class="img_fig_notname img_fig_notname_man768">
-                                        <img class="" src="<? echo base_url(); ?>assets/images/img_du_an/img_duan_new.png" alt="">
+                                        <img class="" src="<?= $dir."/".$val ?>" alt="">
                                     </div>
-                                    <div class="img_fig_notname img_fig_notname_man768">
-                                        <img class="" src="<? echo base_url(); ?>assets/images/img_du_an/img_duan_new.png" alt="">
-                                    </div>
-                                    <div class="img_fig_notname img_fig_notname_man768">
-                                        <img class="" src="<? echo base_url(); ?>assets/images/img_du_an/img_duan_new.png" alt="">
-                                    </div>
-                                    <div class="img_fig_notname img_fig_notname_man768">
-                                        <img class="" src="<? echo base_url(); ?>assets/images/img_du_an/img_duan_new.png" alt="">
-                                    </div>
-                                    <div class="img_fig_notname img_fig_notname_man768">
-                                        <img class="" src="<? echo base_url(); ?>assets/images/img_du_an/img_duan_new.png" alt="">
-                                    </div>
+									<? } ?>
                                 </div>
                             </div>
                         </div>
@@ -891,66 +846,36 @@
 
 
                 <div class="body_matbang_khoi2">
+					<?
+					$title = json_decode($detail_project['title_mb_project']);
+					$img = json_decode($detail_project['img_mb_project']);
+					foreach ($title as $key => $val) { ?>
                     <div class="body_matbang_khoi2_padding mr_b55px">
-                        <p class="body_matbang_khoi2_padding_text">Là Tập đoàn dẫn đầu về ngành Cà Phê Việt Nam, khởi
-                            nghiệp từ Buôn Ma Thuột,
-                            có tầm nhìn trở thành nhà lãnh đạo cà phê Toàn Cầu, dự án Đô Thị Sinh Thái Cà Phê Suối Xanh
-                            là điểm hội tụ của
-                            những người yêu thích và đam mê cà phê, chứa đựng tâm huyết và tinh thần phụng sự, tri ân
-                            nơi khai nghiệp của Tập
-                            Đoàn Trung Nguyên Legend.
+                        <p class="body_matbang_khoi2_padding_text"><?= $val ?>
                         </p>
                         <div class="body_matbang_khoi2_padding_img mr_t24px">
-                            <img src="<? echo base_url(); ?>assets/images/img_du_an/mat_bang_duan.png" alt="">
+                            <img src="<?= $dir."/".$img[$key] ?>" alt="">
                         </div>
                         <div class="body_matbang_khoi2_padding_img_mota">
                             Phối cảnh tòa nhà
                         </div>
                     </div>
+					<? } ?>
                     <div class="body_matbang_khoi2_padding">
-                        <p class="body_matbang_khoi2_padding_text mr_b8px">Khu đô thị của Trung Nguyên tại Đắk Lắk có
-                            tên đầy đủ là dự án Đô thị sinh
-                            thái cà phê Suối Xanh được triển khai từ cuối năm 2016 do pháp nhân Công ty Cổ phần đầu tư
-                            Trung Nguyên làm chủ đầu tư.
-
-                        </p>
-                        <p class="body_matbang_khoi2_padding_text mr_b8px">Là Tập đoàn dẫn đầu về ngành Cà Phê Việt Nam,
-                            khởi nghiệp từ Buôn Ma Thuột,
-                            có tầm nhìn trở thành nhà lãnh đạo cà phê Toàn Cầu, dự án Đô Thị Sinh Thái Cà Phê Suối Xanh
-                            là điểm hội tụ của
-                            những người yêu thích và đam mê cà phê, chứa đựng tâm huyết và tinh thần phụng sự, tri ân
-                            nơi khai nghiệp của Tập
-                            Đoàn Trung Nguyên Legend.
-                        </p>
-                        <p class="body_matbang_khoi2_padding_text">Là Tập đoàn dẫn đầu về ngành Cà Phê Việt Nam, khởi
-                            nghiệp từ Buôn Ma Thuột,
-                            có tầm nhìn trở thành nhà lãnh đạo cà phê Toàn Cầu, dự án Đô Thị Sinh Thái Cà Phê Suối Xanh
-                            là điểm hội tụ của
-                            những người yêu thích và đam mê cà phê, chứa đựng tâm huyết và tinh thần phụng sự, tri ân
-                            nơi khai nghiệp của Tập
-                            Đoàn Trung Nguyên Legend.
-                        </p>
+						<?
+						$describe = $dir."/".$detail_project['desc_mb_project'];
+						if (file_exists($describe)) {
+						?>
                         <div class="body_matbang_khoi2_padding_img mr_b8px mr_t24px">
                             <img src="<? echo base_url(); ?>assets/images/img_du_an/mat_bang_duan.png" alt="">
                         </div>
-                        <div class="body_matbang_khoi2_padding_img_mota mr_b24px">
-                            Phối cảnh tòa nhà
-                        </div>
-
+						<? } else { ?>
                         <p class="body_matbang_khoi2_padding_text mr_b8px">Khu đô thị của Trung Nguyên tại Đắk Lắk có
                             tên đầy đủ là dự án Đô thị sinh
                             thái cà phê Suối Xanh được triển khai từ cuối năm 2016 do pháp nhân Công ty Cổ phần đầu tư
                             Trung Nguyên làm chủ đầu tư.
-
                         </p>
-                        <p class="body_matbang_khoi2_padding_text">Là Tập đoàn dẫn đầu về ngành Cà Phê Việt Nam, khởi
-                            nghiệp từ Buôn Ma Thuột,
-                            có tầm nhìn trở thành nhà lãnh đạo cà phê Toàn Cầu, dự án Đô Thị Sinh Thái Cà Phê Suối Xanh
-                            là điểm hội tụ của
-                            những người yêu thích và đam mê cà phê, chứa đựng tâm huyết và tinh thần phụng sự, tri ân
-                            nơi khai nghiệp của Tập
-                            Đoàn Trung Nguyên Legend.
-                        </p>
+						<? } ?>
                     </div>
                 </div>
             </div>
@@ -966,7 +891,7 @@
                         Tiện ích dự án
                     </div>
                     <div class="body_vitri_all_icon icon_rotate3">
-                        <img src="<? echo base_url(); ?>assets/images/img_du_an/icon_vitri.png" alt="">
+                        <img src="<? echo base_url(); ?>assets/images/img_du_an/icon_vitri.svg" alt="">
                     </div>
                 </div>
             </div>
@@ -982,7 +907,7 @@
                                                 <span class="border_l2"></span>Cơ sở vật chất
                                             </div>
                                             <div class="them_div_375 show_toggle_TY_375_1">
-                                                <img src="<? echo base_url(); ?>assets/images/img_du_an/icon_vitri.png" alt="">
+                                                <img src="<? echo base_url(); ?>assets/images/img_du_an/icon_vitri.svg" alt="">
                                             </div>
                                         </div>
                                         <ul class="body_tienich_full_icon_nav_all1_ul hidden_toggle_TY_375_1">
@@ -1030,7 +955,7 @@
                                                 <span class="border_l2"></span>Giải trí
                                             </div>
                                             <div class="them_div_375 show_toggle_TY_375_2">
-                                                <img src="<? echo base_url(); ?>assets/images/img_du_an/icon_vitri.png" alt="">
+                                                <img src="<? echo base_url(); ?>assets/images/img_du_an/icon_vitri.svg" alt="">
                                             </div>
                                         </div>
                                         <ul class="body_tienich_full_icon_nav_all1_ul hidden_toggle_TY_375_2">
@@ -1075,7 +1000,7 @@
                                                 <span class="border_l2"></span>Y tế, giáo dục
                                             </div>
                                             <div class="them_div_375 show_toggle_TY_375_3">
-                                                <img src="<? echo base_url(); ?>assets/images/img_du_an/icon_vitri.png" alt="">
+                                                <img src="<? echo base_url(); ?>assets/images/img_du_an/icon_vitri.svg" alt="">
                                             </div>
                                         </div>
                                         <ul class="body_tienich_full_icon_nav_all1_ul hidden_toggle_TY_375_3">
@@ -1111,7 +1036,7 @@
                                                 <span class="border_l2"></span>Tiêu dùng, ẩm thực
                                             </div>
                                             <div class="them_div_375 show_toggle_TY_375_4">
-                                                <img src="<? echo base_url(); ?>assets/images/img_du_an/icon_vitri.png" alt="">
+                                                <img src="<? echo base_url(); ?>assets/images/img_du_an/icon_vitri.svg" alt="">
                                             </div>
                                         </div>
                                         <ul class="body_tienich_full_icon_nav_all1_ul hidden_toggle_TY_375_4">
@@ -1163,7 +1088,7 @@
                                                 <span class="border_l2"></span>An toàn, vệ sinh
                                             </div>
                                             <div class="them_div_375 show_toggle_TY_375_5">
-                                                <img src="<? echo base_url(); ?>assets/images/img_du_an/icon_vitri.png" alt="">
+                                                <img src="<? echo base_url(); ?>assets/images/img_du_an/icon_vitri.svg" alt="">
                                             </div>
                                         </div>
                                         <ul class="body_tienich_full_icon_nav_all1_ul hidden_toggle_TY_375_5">
@@ -1212,7 +1137,7 @@
                                                     <span class="border_l2"></span>Thể thao
                                                 </div>
                                                 <div class="them_div_375 show_toggle_TY_375_6">
-                                                    <img src="<? echo base_url(); ?>assets/images/img_du_an/icon_vitri.png" alt="">
+                                                    <img src="<? echo base_url(); ?>assets/images/img_du_an/icon_vitri.svg" alt="">
                                                 </div>
                                             </div>
                                             <ul class="body_tienich_full_icon_nav_all1_ul hidden_toggle_TY_375_6">
@@ -1334,7 +1259,7 @@
                         Mẫu dự án
                     </div>
                     <div class="body_vitri_all_icon icon_rotate4">
-                        <img src="<? echo base_url(); ?>assets/images/img_du_an/icon_vitri.png" alt="">
+                        <img src="<? echo base_url(); ?>assets/images/img_du_an/icon_vitri.svg" alt="">
                     </div>
                 </div>
 
@@ -1415,7 +1340,7 @@
                         Tiến độ
                     </div>
                     <div class="body_vitri_all_icon icon_rotate5">
-                        <img src="<? echo base_url(); ?>assets/images/img_du_an/icon_vitri.png" alt="">
+                        <img src="<? echo base_url(); ?>assets/images/img_du_an/icon_vitri.svg" alt="">
                     </div>
                 </div>
 
@@ -1477,7 +1402,7 @@
                         Chính sách bán hàng
                     </div>
                     <div class="body_vitri_all_icon icon_rotate6">
-                        <img src="<? echo base_url(); ?>assets/images/img_du_an/icon_vitri.png" alt="">
+                        <img src="<? echo base_url(); ?>assets/images/img_du_an/icon_vitri.svg" alt="">
                     </div>
                 </div>
 
@@ -1557,7 +1482,7 @@
             <div class="body_vitri_all_top flex align_items justify_content_sb show_bg7 mr_b32px">
                 <div class="lai_xuat_heading main_color">Tính lãi suất vay</div>
                 <div class="body_vitri_all_icon icon_rotate7">
-                    <img src="<? echo base_url(); ?>assets/images/img_du_an/icon_vitri.png" alt="">
+                    <img src="<? echo base_url(); ?>assets/images/img_du_an/icon_vitri.svg" alt="">
                 </div>
             </div>
             <div class="khung_lai_xuat flex justify_content_sb mat7">
@@ -2866,6 +2791,10 @@ function click_matbang(matbang) {
 
 
 <script>
+// $('.chitiet_thugon').click(function() {
+// 	$('.ctda_show').toggleClass('xoay');
+// });
+
 // VỊ TRÍ
 $('.icon_rotate1').click(function() {
     $('.show_bg1').toggleClass('bg_thugon');

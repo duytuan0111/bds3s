@@ -52,7 +52,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 //account
 $route['default_controller'] 							= 'home';
 $route['trang-tai-khoan-dang-nhap.html']        		= 'Account/AccountLogin';
-$route['trang-dang-nhap.html']							= 'Account/Login';
+$route['trang-dang-nhap-(:num).html']					= 'Account/Login/$1';
+$route['dang-xuat.html']								= 'Account/LogOut';
 $route['trang-tai-khoan-dang-ky.html'] 		    		= 'Account/AccountRegister';
 $route['trang-dang-ky-nguoi-mua-thue.html']				= 'Account/AccountRegisterBuyer';
 $route['trang-dang-ky-nha-moi-gioi.html']  				= 'Account/AccountRegisterBroker';
@@ -62,6 +63,8 @@ $route['trang-nhan-ma-otp-(:num).html']  				= 'Account/PageOTP/$1';
 $route['quen-mat-khau-nhan-otp-(:num).html']  			= 'Account/ForgotPasswordOTP/$1/$2';
 $route['quen-mat-khau-nhap-email.html']         		= 'Account/ForgotPasswordEmail';
 $route['quen-mat-khau-update-mat-khau-(:num).html']   	= 'Account/UpdatePassword/$1';
+$route['thong-tin-ca-nhan.html']			    		= 'Account/Profile';
+$route['thay-doi-mat-khau.html']						= 'Account/ChangePassword';
 
 //PostNews
 $route['dang-tin-truoc-dang-nhap.html'] 				= 'PostNews/PostNewsBeforeLogin';
@@ -82,8 +85,8 @@ $route['chi-tiet-mua-ban-truoc-dang-nhap.html']			= 'Purchase/DetailPurchaseBefo
 
 //Dự án
 $route['danh-sach-du-an-noi-bat.html']		    		= 'Project/ListOutstandingProject';
-$route['danh-sach-du-an-moi-nhat.html']		    		= 'Project/ListProjectNew';
-$route['chi-tiet-du-an.html']		            		= 'Project/DetailProject';
+$route['danh-sach-du-an_moi_nhat.html']		    		= 'Project/ListProjectNew';
+$route['chi-tiet-du-an-(:num).html']		            = 'Project/DetailProject/$1';
 
 //chuyên gia
 $route['chuyen-gia-doanh-nghiep.html']					= 'Expert/BusinessExpert';

@@ -25,7 +25,7 @@
                 <div class="account_p account_p-Respon ">
                     <div class="account_title font_s24 text_c color_green font_w_600">Bạn là?</div>
                     <div class="account_choose-text font_s14 m_t_b_24 text_c">Chọn loại tài khoản để đăng nhập</div>
-                    <a href="trang-dang-nhap.html">
+                    <a href="trang-dang-nhap-1.html">
                         <div class="account_box d_flex bg_green">
                             <div class="account_box-w-h">
                                 <div class="account_box-icon">
@@ -35,7 +35,7 @@
                             </div>
                         </div>
                     </a>
-                    <a href="trang-dang-nhap.html">
+                    <a href="trang-dang-nhap-2.html">
                         <div class="account_box d_flex bg_green mr_t_16">
                             <div class="account_box-w-h">
                                 <div class="account_box-icon">
@@ -47,7 +47,7 @@
                             </div>
                         </div>
                     </a>
-                    <a href="trang-dang-nhap.html">
+                    <a href="trang-dang-nhap-3.html">
                         <div class="account_box d_flex bg_green mr_t_16">
                             <div class="account_box-w-h">
                                 <div class="account_box-icon">
@@ -57,7 +57,7 @@
                             </div>
                         </div>
                     </a>
-                    <a href="trang-dang-nhap.html">
+                    <a href="trang-dang-nhap-4.html">
                         <div class="account_box d_flex bg_green mr_t_16">
                             <div class="account_box-w-h">
                                 <div class="account_box-icon">

@@ -292,7 +292,7 @@ td.day .dayday{position:absolute;top:8px;margin-bottom:6px; display: flex; justi
 .hover_img_text{position:absolute;bottom:0;padding:8px 16px;color:#FFF}
 [type="date"]::-webkit-inner-spin-button{display:none}
 [type="date"]::-webkit-calendar-picker-indicator{opacity:0}
-input[type="date"]{background:red!important;border:1px solid #ccc;background:url(../images/img_sdn/days.png)!important;background-repeat:no-repeat!important;background-position:95%!important}
+input[type="date"]{background:red!important;border:1px solid #ccc;background:url(/assets/images/img_sdn/days.png)!important;background-repeat:no-repeat!important;background-position:95%!important}
 .popup_nho{z-index: 110;position:absolute;background:#FFF;width:200px;border-radius:8px;box-shadow:1px 2px 10px 0 rgba(0,0,0,0.5);top:44px;right:15px}
 .popup_nho_div1{padding:10px 16px;border-radius:8px}
 .popup_nho_div1:hover{background:#dedcdc}

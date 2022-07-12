@@ -408,8 +408,8 @@ form .khunginput {position: relative}
 @media (min-width: 1520px){
   .thongtin_noidung .khoitren .khoitrai{width:38.58%}
   .thongtin_noidung .khoitren .khoiphai{width:57.11%}
-  .chudautu_noidung .khoitrai{width:610px}
-  .chudautu_noidung .khoiphai{width:614px}
+  /* .chudautu_noidung .khoitrai{width:610px}
+  .chudautu_noidung .khoiphai{width:614px} */
   
   .ttbd_noidung .khoicon{width:49.13%}
   .ttbd_noidung .khoicon:nth-child(even){width:48.97%}

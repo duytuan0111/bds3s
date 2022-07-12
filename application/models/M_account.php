@@ -10,6 +10,7 @@ class M_Account extends CI_Model
 	protected $_table2	= 'city2';
 	protected $_table3	= 'ward';
 	protected $_table4	= 'street';
+	protected $_table5	= 'followed_user';
 	protected $column_order = array('id','name','phone','email','gender','cityID','districtID','wardID','address','userType','newTypeInterest','newType','password','active','createdDate');
     protected $order = array('id' => 'desc');
 	
@@ -31,6 +32,20 @@ class M_Account extends CI_Model
 	public function activeUser($data, $id) {
 		$this->db->where('id', $id);
 		return $this->db->update($this->_table, $data);
+	}
+	public function checkLogin($email, $pw, $userType) {
+		$this->db->select('id');
+		$this->db->where('email', $email);
+		$this->db->where('password', $pw);
+		$this->db->where('userType', $userType);
+		$this->db->where('active', 1);
+		return $this->db->get($this->_table)->num_rows();
+	}
+	public function getInfoBy($email, $pw) {
+		$this->db->select('*');
+		$this->db->where('email', $email);
+		$this->db->where('password', $pw);
+		return $this->db->get($this->_table)->row_array();
 	}
 	// tinh thanh
 	public function listProvince() {
@@ -69,6 +84,56 @@ class M_Account extends CI_Model
 	public function ForgotPasswordUpdate($id, $data) {
 		$this->db->where('id', $id);
 		return $this->db->update($this->_table, $data);
+	}
+
+	public function checkTypeUser($id) {
+		$this->db->select('*');
+		$this->db->where('id', $id);
+		return $this->db->get($this->_table)->row_array();
+	}
+
+	public function updateAccount($data, $id) {
+		$this->db->set($data);
+		$this->db->where('id', $id);
+		return $this->db->update($this->_table);
+	}
+
+	public function checkOldPW($id, $pw) {
+		$this->db->select('id');
+		$this->db->where('id', $id);
+		$this->db->where('password', $pw);
+		return $this->db->get($this->_table)->num_rows();
+	}
+	public function UpdatePassword($id, $pw) {
+		$this->db->set('password', $pw);
+		$this->db->where('id', $id);
+		return $this->db->update($this->_table);
+	}
+	public function updateAVT($id, $data) {
+		$this->db->set($data);
+		$this->db->where('id', $id);
+		return $this->db->update($this->_table);
+	}
+	public function updateImage($id, $data) {
+		$this->db->set($data);
+		$this->db->where('id', $id);
+		return $this->db->update($this->_table);
+	}
+	public function getAVTInfo($id) {
+		$this->db->select(['user_avt', 'avtDate']);
+		$this->db->where('id', $id);
+		return $this->db->get($this->_table)->row_array();
+	}
+	public function getImgInfo($id) {
+		$this->db->select(['coverImage', 'coverImageDate']);
+		$this->db->where('id', $id);
+		return $this->db->get($this->_table)->row_array();
+	}
+	public function Investor() {
+		$this->db->select(['userID', 'UserFollowed', 'companyName']);
+		$this->db->join('users', 'followed_user.userID = users.id');
+		$this->db->order_by('UserFollowed', 'DESC');
+		return $this->db->get($this->_table5)->result_array();
 	}
 }
 ?>

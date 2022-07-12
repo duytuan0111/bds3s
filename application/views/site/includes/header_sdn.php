@@ -1,5 +1,16 @@
+<?php
+	$y = date('Y', $userInfo['avtDate']);
+	$m = date('m', $userInfo['avtDate']);
+	$d = date('d', $userInfo['avtDate']);
+	$dir = "upload/".$y."/".$m."/".$d;
+	$y1 = date('Y', $userInfo['coverImageDate']);
+	$m1 = date('m', $userInfo['coverImageDate']);
+	$d1 = date('d', $userInfo['coverImageDate']);
+	$dir1 = "upload/".$y1."/".$m1."/".$d1;
+?>
 <div id="header">
     <div class="khoi_header flex align_item justify_c_sb">
+		<? if ($userInfo['userType'] == 0 || $userInfo['userType'] == 1 || $userInfo['userType'] == 2) { ?>
         <!-- TK cho thuê, người bán. nhà môi giới -->
         <div class="khoi_header1 flex">
             <div class="img_menu_3_gach">
@@ -16,8 +27,9 @@
             </div>
         </div>
         <!-- ---------------------------------------- -->
+		<? } else { ?>
         <!-- TK người mua, thuê -->
-        <div class="khoi_header_nguoimua flex hidden">
+        <div class="khoi_header_nguoimua flex">
             <div class="img_menu_3_gach">
                 <img src="<? echo base_url() ?>assets/images/img_du_an/menu2.png" alt="">
             </div>
@@ -27,7 +39,7 @@
             </div>
             <div class="khoi_header_nguoimua main_color">Quản lý thông tin</div>
         </div>
-
+		<? } ?>
         <!-- ---------------------------------------- -->
         <div class="khoi_header2">
             <div class="khoi_header2_div flex align_item">
@@ -38,7 +50,7 @@
                 <div class="khoi_header2_div2 flex align_item ">
                     <a href="dang-tin-sau-dang-nhap.html" class="khoi_header2_div2_btn flex justify_c_sb mr_r24px align_item">
                         <div class="khoi_header2_div2_btn_img">
-                            <img src="<? echo base_url() ?>assets/images/img_du_an/icon_upnews.png" alt="">
+                            <img src="<? echo base_url() ?>assets/images/img_du_an/icon_upnews.svg" alt="">
                         </div>
                         <div class="khoi_header2_div2_btn_tex">Đăng tin</div>
                     </a>
@@ -183,7 +195,14 @@
                             <img src="<? echo base_url() ?>assets/images/img_sdn/messenger_svg.svg" alt="">
                         </div>
                         <div class="khoi_header2_div2_img2 cursor_p">
-                            <img src="<? echo base_url() ?>assets/images/img_du_an/user_login_success.png" alt="">
+							<?
+							$avt = $dir."/".$userInfo['user_avt'];
+							if (file_exists($avt)) {
+							?>
+                            <img src="<?= $avt ?>" alt="">
+							<? } else { ?>
+                            <img src="/assets/images/default_avt.svg" alt="">
+							<? } ?>
                             <!-- POPUP USER -->
                             <div class="popup_user">
                                 <div class="popup_user_padding">
@@ -192,11 +211,9 @@
                                             <img src="<? echo base_url() ?>assets/images/img_sdn/user_x60.png" alt="">
                                         </div>
                                         <div class="popup_user_padding_khoi1_text">
-                                            <div class="popup_user_padding_khoi1_text1 mr_b6px fz_16_5 elipsis1">Nguyễn
-                                                Ngọc Tuyết Phương</div>
-                                            <div class="popup_user_padding_khoi1_text1 mr_b6px elipsis1">ID: 0123</div>
-                                            <div class="popup_user_padding_khoi1_text1 elipsis1">simmons@example.com
-                                            </div>
+                                            <div class="popup_user_padding_khoi1_text1 mr_b6px fz_16_5 elipsis1"><?= $userInfo['name'] ?></div>
+                                            <div class="popup_user_padding_khoi1_text1 mr_b6px elipsis1">ID: <?= $userInfo['id'] ?></div>
+                                            <div class="popup_user_padding_khoi1_text1 elipsis1"><?= $userInfo['email'] ?></div>
                                         </div>
                                     </div>
                                     <div class="border_user"></div>
@@ -209,12 +226,10 @@
                                         </ul>
                                     </div>
                                     <div class="border_user"></div>
-                                    <div class="dang_xuat cursor_p">Đăng xuất</div>
+									<a href="/dang-xuat.html"><div class="dang_xuat cursor_p">Đăng xuất</div></a>
                                 </div>
                             </div>
                             <!-- --------------- -->
-
-
                         </div>
                     </div>
                 </div>

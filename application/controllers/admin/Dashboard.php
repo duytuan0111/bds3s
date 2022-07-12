@@ -12,6 +12,7 @@ class Dashboard extends CI_Controller
 		parent::__construct();
 		$this->load->helper('cookie');
         $this->load->model('M_Dashboard');
+        $this->load->model('M_Account');
 	}
 	public function index() {
 		$this->_data['canonical']				= base_url();

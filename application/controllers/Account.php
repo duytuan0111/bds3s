@@ -11,6 +11,8 @@ class Account extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->helper('cookie');
+		$this->load->helper('images_helper');
+		$this->load->helper('func_upload_img_helper');
         $this->load->model('M_Account');
 		$this->load->model('M_otp');
 		$this->load->model('M_City');
@@ -18,7 +20,7 @@ class Account extends CI_Controller
 	}
 	public function AccountLogin() {
 		$this->_data['canonical']				= base_url();
-		$this->load->view('site/Login', $this->_data);
+		$this->load->view('site/AcountLogin', $this->_data);
 	}
     public function AccountRegister() {
 		$this->_data['canonical']				= base_url();
@@ -134,9 +136,34 @@ class Account extends CI_Controller
 		$this->_data['canonical']				= base_url();
 		$this->load->view('site/PageOTP', $this->_data);
 	}
-    public function Login() {
+    public function Login($id) {
+		$this->_data['type']						= $id;
 		$this->_data['canonical']				= base_url();
 		$this->load->view('site/Login', $this->_data);
+	}
+	public function getLogin() {
+		$array_response							= ['status' => 0, 'msg' => ''];
+		if (isset($_POST['email']) && isset($_POST['password'])) {
+			$email								= $_POST['email'];
+			$password							= $_POST['password'];
+			$userType							= $_POST['userType'];
+			$check_login						= $this->M_Account->checkLogin($email, md5($password), $userType);
+			if ($check_login > 0) {
+				$info_user						= $this->M_Account->getInfoBy($email, md5($password));
+				if (isset($_COOKIE['user_id'])) {
+					delete_cookie('user_id');
+				}
+				set_cookie('user_id', $info_user['id'], time() + 7*6000);
+				$array_response					= ['status' => 1, 'msg' => 'Đăng nhập thành công'];
+			}
+			echo json_encode($array_response);
+		}
+	}
+	public function LogOut() {
+		if (isset($_COOKIE['user_id'])) {
+			delete_cookie('user_id');
+		}
+		redirect('/');
 	}
     public function AccountRegisterEnterprise() {
 		$this->_data['list_city']				= $this->M_Account->listProvince();
@@ -215,6 +242,107 @@ class Account extends CI_Controller
 		} else {
 			echo $email['id'];
 		}
+	}
+	public function Profile() {
+		if (isset($_COOKIE['user_id']) &&  $_COOKIE['user_id'] != '') {
+			$id										= $_COOKIE['user_id'];
+			$this->_data['userInfo']				= $this->M_Account->checkTypeUser($id);
+			$this->_data['canonical']				= base_url();
+			$this->_data['city']					= $this->M_City->getList();
+			$this->_data['district']				= $this->M_City->getDistrict();
+			$this->_data['ward']					= $this->M_City->getWard();
+			$this->load->view('site/Profile', $this->_data);
+		} else {
+			redirect('/trang-tai-khoan-dang-nhap.html');
+		}
+	}
+	public function edit_account() {
+		$id						= $_COOKIE['user_id'];
+		$data = [
+			'name'				=> $_POST['name'],
+			'companyName'		=> $_POST['companyName'],
+			'phone'				=> $_POST['phone'],
+			'userURL'			=> $_POST['userURL'],
+			'AuthorCapital'		=> $_POST['AuthorCapital'],
+			'taxCode'			=> $_POST['taxCode'],
+			'field'				=> $_POST['field'],
+			'FoundedYear'		=> $_POST['FoundedYear'],
+			'gender'			=> $_POST['gender'],
+			'userBirth'			=> $_POST['userBirth'],
+			'cityID'			=> $_POST['cityID'],
+			'districtID'		=> $_POST['districtID'],
+			'wardID'			=> $_POST['wardID'],
+			'newTypeInterest'	=> $_POST['newTypeInterest'],
+			'newType'			=> $_POST['newType'],
+			'address'			=> $_POST['address'],
+			'self-describe'		=> $_POST['self-describe'],
+			'updatedDate'		=> date('Y-m-d'),
+		];
+		$update = $this->M_Account->updateAccount($data, $id);
+		echo $update;
+	}
+	public function ChangePassword() {
+		$this->load->view('site/ChangePassword', $this->_data);
+	}
+	
+	public function getUpdatePassword() {
+		$id											= $_POST['id'];
+		$oldPassword								= md5($_POST['old_password']);
+		$password									= md5($_POST['password']);
+		$check_oldPW = $this->M_Account->checkOldPW($id, $oldPassword);
+		if ($check_oldPW == 0) {
+			echo 0;
+		} else {
+			$change_password = $this->M_Account->UpdatePassword($id, $password);
+			echo 1;
+			if (isset($_COOKIE['user_id'])) {
+				delete_cookie('user_id');
+			}
+		}
+	}
+
+	public function postImg() {
+		$id	= $_COOKIE['user_id'];
+		$AVTInfo = $this->M_Account->getAVTInfo($id);
+		$filename = $AVTInfo['user_avt'];
+		$y = date('Y', $AVTInfo['avtDate']);
+		$m = date('m', $AVTInfo['avtDate']);
+		$d = date('d', $AVTInfo['avtDate']);
+		$dir = $y."/".$m."/".$d;
+		$lastAvt = "upload/".$dir."/".$filename;
+		if (file_exists($lastAvt)) {
+			unlink($lastAvt);
+		}
+		$nameFile = upLoadImg('user_avt');
+		$data = [
+			'user_avt'			=> $nameFile,
+			'avtDate'			=> time(),
+		];
+		$updateAVT = $this->M_Account->updateAVT($id, $data);
+		
+		echo 1;
+	}
+
+	public function postCoverImg() {
+		$id	= $_COOKIE['user_id'];
+		$ImgInfo = $this->M_Account->getImgInfo($id);
+		$filename = $ImgInfo['coverImage'];
+		$y = date('Y', $ImgInfo['coverImageDate']);
+		$m = date('m', $ImgInfo['coverImageDate']);
+		$d = date('d', $ImgInfo['coverImageDate']);
+		$dir = $y."/".$m."/".$d;
+		$lastImg = "upload/".$dir."/".$filename;
+		if (file_exists($lastImg)) {
+			unlink($lastImg);
+		}
+		$nameFile = upLoadImg('coverImage');
+		$data = [
+			'coverImage'		=> $nameFile,
+			'coverImageDate'	=> time(),
+		];
+		$updateImage = $this->M_Account->updateImage($id, $data);
+
+		echo 1;
 	}
 }
 ?>
