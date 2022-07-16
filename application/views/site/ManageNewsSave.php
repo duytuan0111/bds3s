@@ -200,7 +200,7 @@
                                                 <?  else: 
                                                     $arr_img = json_decode($rows['arr_img']);
                                                 ?>
-                                                    <? if($arr_img[0]!= ""):  ?>
+                                                    <? if($arr_img != '' && $arr_img[0]!= ""):  ?>
                                                         <img src="<? echo base_url(); ?>upload/<?= $y ?>/<?= $m ?>/<?= $d ?>/<?= $arr_img[0] ?>" alt="">
                                                     <? else: ?>
                                                         <img src="<? echo base_url(); ?>assets/images/img_sdn/img_tk.png" alt="">

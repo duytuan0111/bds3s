@@ -16,6 +16,8 @@ class ManageNews extends CI_Controller
 		$this->load->library('pagination');
 		$this->load->helper('func_fomatMonney');
 		$this->load->model('M_PostNews');
+		$this->load->helper('func_upload_img');
+		$this->load->helper('images_helper');
 	}
 	public function ManageNewsPurchase() {
 
@@ -346,30 +348,384 @@ class ManageNews extends CI_Controller
 		$this->load->helper(array('lich','lich2','lich3'));
 		$this->load->view('site/UpdateNewsAfterLogin', $this->_data);
 	}
+	//---------------------post news update tin đăng sau đăng nhập
+	public function PostNewsAfterLoginUpdate() {
+		$id_news					= $this->input->post('id_news');
+		$data_update = [
+			'project_name'			=> $this->input->post('project_name'),
+			'type_news' 			=> $this->input->post('type_news'),
+			'bds_type' 				=> $this->input->post('type_bds'),
+			'select_city' 		    => $this->input->post('city'),
+			'districts' 			=> $this->input->post('districts'),
+			'wards'					=> $this->input->post('wards'),
+			'street' 				=> $this->input->post('street'),
+			'addr_detail' 			=> $this->input->post('desc_addr'),
+			'price_min'				=> $this->input->post('giamin'),
+			'price_max' 			=> $this->input->post('giamax'),
+			'Gia_thoa_thuan' 		=> $this->input->post('radio_button'),
+			'Legal_stt' 		    => $this->input->post('Legal_stt'),
+			'area_min' 				=> $this->input->post('area_min'),
+			'area_max'				=> $this->input->post('area_max'),
+			'area_convert'			=> $this->input->post('area_convert'),
+			'title_news' 			=> $this->input->post('title_news'),
+			'desc_project' 			=> $this->input->post('desc_project'),
+			'floor' 				=> $this->input->post('floor'),
+			'detail_bds'			=> $this->input->post('detail_bds'),
+			'Balcony_direction'		=> $this->input->post('Balcony_direction'),
+			'direction'				=> $this->input->post('direction'),
+			'time_expired'			=> strtotime($this->input->post('time_expired')),
+			'corner' 				=> $this->input->post('corner'),
+			'bathroom' 				=> $this->input->post('bathroom'),
+			'bedroom' 				=> $this->input->post('bedroom'),
+			'Interior'				=> $this->input->post('Interior'),
+			'mattien' 				=> $this->input->post('mattien'),
+			'chieusau'				=> $this->input->post('chieusau'),
+			'duongvao' 				=> $this->input->post('duongvao'),
+			'stt_news' 				=> $this->input->post('stt_news'),
+			'date_post_news'		=> strtotime($this->input->post('date_post_news')),
+			'time_post_news' 		=> strtotime($this->input->post('time_post_news')),
+			'type'					=> 4,
+		];
+		$time_create =  $this->input->post('time_create');
+		$arr_img_old =  json_decode($this->input->post('arr_img_old'));
+		//------------
+		if(isset($_FILES['arr_img_desc']) && $arr_img_old != "")
+		{
+			$arr_img_update = UpdateUpLoadMultipleImg('arr_img_desc',$time_create);
+			$data_update['arr_img']	= json_encode(array_merge($arr_img_old, $arr_img_update));
+		}
+		elseif(isset($_FILES['arr_img_desc']) && $arr_img_old == "")
+		{
+			$data_update['arr_img']	= json_encode(UpdateUpLoadMultipleImg('arr_img_desc',$time_create));
+		}
+		$update = $this->M_ManageNews->updateNewsAfterLogin($data_update,$id_news);
+		if ($update > 0) {
+			$response['status'] = 1;
+			$response['type_news'] = $this->input->post('type_news');
+			$response['msg'] 	= 'Cập nhật tin đăng thành công';
+		}	
+		echo json_encode($response);
+	}
 	//---------------------update tin đăng dự án
 	public function UpdateNewsProject($id_news) {
-		$this->_data['city'] 					= $this->M_PostNews->listProvince();
-		$this->_data['canonical']				= base_url();
+		$this->_data['listcity'] 				= $this->M_ManageNews->getCity(0);
 		$this->_data['newsDetail'] 				= $this->M_ManageNews->NewsDetail($id_news);
+		$this->_data['listWards'] 				= $this->M_PostNews->listWards($this->_data['newsDetail']['districts']);
+		$this->_data['listStreet'] 				= $this->M_PostNews->getStreetBy($this->_data['newsDetail']['street']);
+		$this->_data['listDistricts'] 			= $this->M_PostNews->listDistricts($this->_data['newsDetail']['select_city']);
 		$this->load->helper(array('lich','lich2','lich3'));
 		$this->load->view('site/UpdateNewsProject', $this->_data);
 	}
+	//---------------------post news update tin đăng dự án
+	public function PostNewsProjectUpdate() {
+		$id_news					= $this->input->post('id_news');
+		$banner_img_old				= $this->input->post('banner_img_old');
+		$time_create				= $this->input->post('time_create');
+		$d							= date('d',$time_create);
+		$m							= date('m',$time_create);
+		$y							= date('Y',$time_create);
+		$desc_img_project_old		= $this->input->post('desc_img_project_old');
+		$project_addr_old			= $this->input->post('project_addr_old');
+		$desc_mb_project_old		= $this->input->post('desc_mb_project');
+		$img_mb_project_old			= json_decode($this->input->post('img_mb_project_old'));
+		$utilities_img_project_old	= $this->input->post('utilities_img_project_old');
+		$count_img_mb				= explode(',',$this->input->post('count_img_mb'));
+		$count_gtda					= explode(',',$this->input->post('count_gtda'));
+		$introduct_project			= json_decode($this->input->post('introduct_project'));
+		$data_update = [
+			'project_name'			=> $this->input->post('project_name'),
+			'introduce' 			=> $this->input->post('introduce'),
+			'bds_type' 				=> $this->input->post('bds_type'),
+			'select_city' 		    => $this->input->post('select_city'),
+			'districts' 			=> $this->input->post('districts'),
+			'wards' 				=> $this->input->post('wards'),
+			'street'				=> $this->input->post('street'),
+			'addr_detail' 			=> $this->input->post('addr_detail'),
+			'post_time' 			=> strtotime($this->input->post('post_time')),
+			'cdt_com_name' 			=> $this->input->post('cdt_come_name'),
+			'cdt_founding'		    => strtotime($this->input->post('cdt_founding')),
+			'cdt_phone' 			=> $this->input->post('cdt_phone'),
+			'cdt_addr_com' 			=> $this->input->post('cdt_addr_com'),
+			'cdt_project_num'		=> $this->input->post('cdt_project_num'),
+			'time_st' 			    => strtotime($this->input->post('time_st')),
+			'time_done' 			=> strtotime($this->input->post('time_done')),
+			'area_type' 			=> $this->input->post('area_type'),
+			'day_of_delivery' 		=> strtotime($this->input->post('day_of_delivery')),
+			'home_num' 		        => $this->input->post('home_num'),
+			'nhapmin' 			    => $this->input->post('nhapmin'),
+			'nhapmax' 			    => $this->input->post('nhapmax'),
+			'product_num'			=> $this->input->post('product_num'),
+			'total_investment' 		=> $this->input->post('total_investment'),
+			'quy_mo' 				=> $this->input->post('quy_mo'),
+			'progress' 			    => $this->input->post('progress'),
+			'detail_area' 		    => $this->input->post('detail_area'),
+			'status' 				=> $this->input->post('status'),
+			'desc_mb_project'		=> $this->input->post('desc_mb_project'),
+			'list_utilities'		=> $this->input->post('list_utilities'),
+			'part_name'				=> $this->input->post('part_name'),
+			'title_img_project'		=> $this->input->post('title_img_project'),
+			'title_img_vtda'		=> $this->input->post('title_img_vtda'),
+			'title_img_mbda'		=> $this->input->post('title_img_mbda'),
+			'title_img_utilities'	=> $this->input->post('title_img_utilities'),
+			'title_img_gtda'		=> $this->input->post('title_img_gtda'),
+			'time_create'			=> time(),
+			'type'					=> 1,
+			'title_mb_project'		=> $this->input->post('title_mb_project'),
+			'stt_news' 				=> $this->input->post('stt_news'),
+			'date_post_news'		=> strtotime($this->input->post('date_post_news')),
+			'time_post_news' 		=> strtotime($this->input->post('time_post_news')),
+		];
+		$response 		= ['status' => 0, 'msg' => ''];
+		$arr_desc_gtda = json_decode($this->input->post('arr_desc_gtda'));
+		//---------img banner
+		if(isset($_FILES['banner_img']))
+		{
+			if(file_exists("upload/$y/$m/$d/$banner_img_old"))
+			{
+				unlink("upload/$y/$m/$d/$banner_img_old");
+			}
+			$data_update['banner_img'] 				= upLoadImg('banner_img');
+		}
+
+		 //--------- chi tiết dự án
+		if(isset($_FILES['desc_img_project']))
+		{
+			if(file_exists("upload/$y/$m/$d/$desc_img_project_old"))
+			{
+				unlink("upload/$y/$m/$d/$desc_img_project_old");
+			}
+			$data_update['desc_project'] 			= upLoadImg('desc_img_project');
+		}
+		else
+		{
+			$data_update['desc_project']			= $this->input->post('desc_project');
+		}
+		//  //------------vị trí dự án
+		if(isset($_FILES['project_img_addr']))
+		{
+			if(file_exists("upload/$y/$m/$d/$project_addr_old"))
+			{
+				unlink("upload/$y/$m/$d/$project_addr_old");
+			}
+			$data_update['project_addr'] 			= upLoadImg('project_img_addr');
+		}
+		else
+		{
+			$data_update['project_addr']			= $this->input->post('project_addr');
+		}
+
+		//  //------------chi tiết mặt bằng dự án
+		if(isset($_FILES['desc_mb_img_project']))
+		{
+			if(file_exists("upload/$y/$m/$d/$desc_mb_project_old"))
+			{
+				unlink("upload/$y/$m/$d/$desc_mb_project_old");
+			}
+			$data_update['desc_mb_project'] 		= upLoadImg('desc_mb_img_project');
+		}
+		else
+		{
+			$data_update['desc_mb_project']			= $this->input->post('desc_mb_project');
+		}
+
+		//------------mặt bằng dự án
+		if(isset($_FILES['arr_mb_img_project']))
+		{
+			$arr_img_mb								= json_decode(upLoadMultipleImg('arr_mb_img_project'));
+			$count_arr_img 							= 0;
+			foreach($count_img_mb as $count=>$value)
+			{
+				if(isset($img_mb_project_old[$value]) && $img_mb_project_old[$value] != "")
+				{
+					if(file_exists("upload/$y/$m/$d/$img_mb_project_old[$value]"));
+					{
+						unlink("upload/$y/$m/$d/$img_mb_project_old[$value]");
+					}
+				}
+				$img_mb_project_old[$value]			= $arr_img_mb[$count_arr_img];
+				$count_arr_img++;
+			}
+			$data_update['img_mb_project']			= json_encode($img_mb_project_old);
+		}
+
+		//------------ tiện ích dự án
+		if(isset($_FILES['utilities_img_project']))
+		{
+			if(file_exists("upload/$y/$m/$d/$utilities_img_project_old"))
+			{
+				unlink("upload/$y/$m/$d/$utilities_img_project_old");
+			}
+			$data_update['desc_utilities_project'] 	= upLoadImg('utilities_img_project');
+		}
+		else
+		{
+			$data_update['desc_utilities_project']	= $this->input->post('utilities_project');
+		}
+
+
+		//------------ giới thiệu dự án
+		if(isset($_FILES['arr_img_gtda']))
+		{
+			$arr_img_gtda = json_decode(upLoadMultipleImg('arr_img_gtda'));
+		}		
+		$i = 0;
+
+		$arr_gtda = [];
+		foreach($arr_desc_gtda as $key => $value)
+		{
+			if($value != 1)
+			{
+				$arr_gtda[] = $value;
+			}
+			elseif($value == 1)
+			{
+				if(isset($count_gtda[$i]))
+				{
+					$arr_gtda[$count_gtda[$i]] = $arr_img_gtda[$i];
+					$i++;
+				}	
+			}
+		}
+		$data_update['introduct_project']	= json_encode($arr_gtda);
+		$update = $this->M_ManageNews->updateNewsAfterLogin($data_update,$id_news);
+		if ($update > 0) {
+			$response['status'] = 1;
+			$response['msg'] 	= 'Cập nhật tin đăng thành công';
+		}	
+		echo json_encode($response);	
+	}
 	//---------------------update tin đăng nhà đẹp
 	public function UpdateNewsHome($id_news) {
-		$this->_data['city'] 					= $this->M_PostNews->listProvince();
-		$this->_data['canonical']				= base_url();
 		$this->_data['newsDetail'] 				= $this->M_ManageNews->NewsDetail($id_news);
+		$this->_data['listcity'] 				= $this->M_ManageNews->getCity(0);
+		$this->_data['listDistricts'] 			= $this->M_PostNews->listDistricts($this->_data['newsDetail']['select_city']);
 		$this->load->helper(array('lich','lich2','lich3'));
 		$this->load->view('site/UpdateNewsHome', $this->_data);
 	}
 	//---------------------update tin đăng phòng đẹp
 	public function UpdateNewsRoom($id_news) {
-
-		$this->_data['city'] 					= $this->M_PostNews->listProvince();
-		$this->_data['canonical']				= base_url();
 		$this->_data['newsDetail'] 				= $this->M_ManageNews->NewsDetail($id_news);
 		$this->load->helper(array('lich','lich2','lich3'));
 		$this->load->view('site/UpdateNewsRoom', $this->_data);
+	}
+	//---------------------post news update tin đăng phòng đẹp
+	public function postNewsRoomUpdate() {
+		
+		$id_news					= $this->input->post('id_news');
+		$data_update = [
+			'ctrinh_type'			=> $this->input->post('ctrinh_type'),
+			'styles' 				=> $this->input->post('styles'),
+			'area' 					=> $this->input->post('area'),
+			'perform' 		    	=> $this->input->post('Perform'),
+			'desc_img' 		    	=> $this->input->post('desc_img'),
+			'list_color' 			=> $this->input->post('list_color'),
+			'price_min'				=> $this->input->post('price_min'),
+			'title_news' 			=> $this->input->post('title_news'),
+			'price_max' 			=> $this->input->post('price_max'),
+			'type'					=> 2,
+		];
+		$time_create =  $this->input->post('time_create');
+		$arr_img_old =  json_decode($this->input->post('arr_img_old'));
+		//------------
+		if(isset($_FILES['arr_img']) && $arr_img_old != "")
+		{
+			$arr_img_update = UpdateUpLoadMultipleImg('arr_img',$time_create);
+			$data_update['arr_img']	= json_encode(array_merge($arr_img_old, $arr_img_update));
+		}
+		elseif(isset($_FILES['arr_img_desc']) && $arr_img_old == "")
+		{
+			$data_update['arr_img']	= json_encode(UpdateUpLoadMultipleImg('arr_img_desc',$time_create));
+		}
+
+
+		$update = $this->M_ManageNews->updateNewsAfterLogin($data_update,$id_news);
+		if ($update > 0) {
+			$response['status'] = 1;
+			$response['msg'] 	= 'Cập nhật tin đăng thành công';
+		}	
+		echo json_encode($response);
+	}
+	//---------------------post news update tin đăng nhà đẹp
+	public function PostNewsHomeUpdate() {
+	
+		$id_news					= $this->input->post('id_news');
+		$banner_img_old				= $this->input->post('banner_img_old');
+		$time_create				= $this->input->post('time_create');
+		$d							= date('d',$time_create);
+		$m							= date('m',$time_create);
+		$y							= date('Y',$time_create);
+		$desc_img_project_old		= $this->input->post('desc_img_project_old');
+		$data_update = [
+			'ctrinh_type'			=> $this->input->post('ctrinh_type'),
+			'styles' 				=> $this->input->post('styles'),
+			'area' 					=> $this->input->post('area'),
+			'perform' 		    	=> $this->input->post('Perform'),
+			'list_color' 			=> $this->input->post('list_color'),
+			'price_min'				=> $this->input->post('price_min'),
+			'title_news' 			=> $this->input->post('title_news'),
+			'price_max' 			=> $this->input->post('price_max'),
+			'type_img'				=> $this->input->post('type_img'),
+			'bedroom' 				=> $this->input->post('bedroom'),
+			'time_build' 			=> $this->input->post('time_build'),
+			'project_name' 		    => $this->input->post('project_name'),
+			'select_city' 			=> $this->input->post('city'),
+			'districts'				=> $this->input->post('district'),
+			'title_img' 			=> $this->input->post('title_img'),
+			'type'					=> 3,
+		];
+		// echo "<pre>";
+		// print_r($data_update);
+		// echo "<pre>";die;
+		//--------- chi tiết dự án
+		if(isset($_FILES['desc_img_project']))
+		{
+			if(file_exists("upload/$y/$m/$d/$desc_img_project_old"))
+			{
+				unlink("upload/$y/$m/$d/$desc_img_project_old");
+			}
+			$data_update['desc_project'] 			= UpdateUpLoadImg('desc_img_project',$time_create);
+		}
+		else
+		{
+			$data_update['desc_project']			= $this->input->post('desc_project');
+		}
+		if(isset($_FILES['banner_img']))
+		{
+			unlink("upload/$y/$m/$d/$banner_img_old");
+			$data_update['banner_img']					= UpdateUpLoadImg('banner_img',$time_create);
+		}
+		// echo "<pre>";
+		// print_r($data_update);
+		// echo "<pre>";
+		//------------
+		$update = $this->M_ManageNews->updateNewsAfterLogin($data_update,$id_news);
+		if ($update > 0) {
+			$response['status'] = 1;
+			$response['msg'] 	= 'Cập nhật tin đăng thành công';
+		}	
+		echo json_encode($response);
+	}
+	//---------------------remove _img
+	public function RemoveImg() {
+
+		$id_news 	= $this->input->post('id_news');
+		$arr_img 	= json_decode($this->input->post('arr_img'));
+		$name 		= $this->input->post('name');
+		$time 		= $this->input->post('time');
+		$d			= date('d',$time);
+		$m			= date('m',$time);
+		$y			= date('Y',$time);
+		unlink("upload/$y/$m/$d/$name");
+		$arr_img_new= [];
+		foreach($arr_img as $key=> $value)
+		{
+			if($value != $name)
+			{
+				$arr_img_new [] = $value;
+			}
+		}
+		$data_update ['arr_img'] = json_encode($arr_img_new);
+		$this->M_ManageNews->updateNewsAfterLogin($data_update,$id_news);
 	}
 }
 ?>

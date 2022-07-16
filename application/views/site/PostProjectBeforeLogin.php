@@ -212,13 +212,13 @@
                             <div class="khoicon top-21 box_input_infor">
                                 <p class="font-medium height-20">Quy mô</p>
                                 <div class="khunginput top-8">
-                                    <input type="text" name="quy_mo" class="quy_mo" placeholder="Nhập quy mô dự án (m2)">
+                                    <input type="number" name="quy_mo" class="quy_mo" placeholder="Nhập quy mô dự án (m2)">
                                 </div>
                             </div>
                             <div class="khoicon top-21 box_input_infor">
                                 <p class="font-medium height-20">Diện tích xây dựng</p>
                                 <div class="khunginput top-8">
-                                    <input type="text" name="detail_area" class="detail_area" placeholder="Nhập diện tích xây dựng">
+                                    <input type="number" name="detail_area" class="detail_area" placeholder="Nhập diện tích xây dựng">
                                 </div>
                             </div>
                         </div>
@@ -270,9 +270,9 @@
                                 <p class="font-medium height-20">Tiến độ</p>
                                 <div class="top-8">
                                     <select name="progress" class="select_option progress js-states form-control">
-                                        <option value="0">Chọn tiến độ</option>
-                                        <option value="1">hehe</option>
-                                        <option value="2">haha</option>
+                                        <option selected disabled>Chọn tiến độ</option>
+                                        <option value="1">Sắp mở bán</option>
+                                        <option value="2">Đang mở bán</option>
                                     </select>
                                 </div>
                             </div>
@@ -280,9 +280,9 @@
                                 <p class="font-medium">Trạng thái</p>
                                 <div class="top-8">
                                     <select name="status" class="select_option status js-states form-control">
-                                        <option value="0">Chọn Đường/ phố</option>
-                                        <option value="1">hehe</option>
-                                        <option value="2">haha</option>
+                                        <option selected disabled>Chọn Đường/ phố</option>
+                                        <option value="1">Đang xây dựng</option>
+                                        <option value="2">Đã hoàn thiện</option>
                                     </select>
                                 </div>
                             </div>
@@ -855,7 +855,7 @@
 
                 <!-- butt dang tin -->
                 <div class="flex space butt_dangtin relative">
-                    <button type="submit" class="butt_xanh flex center-center c-pointer">
+                    <button type="submit" class="butt_xanh btn_post_now flex center-center c-pointer">
                         <p class="font-medium size-16 right-8">Đăng ngay</p>
                         <img src="<? echo base_url(); ?>assets/images/butt_dangngay.svg" alt="" class="wh-20">
                     </button>
@@ -1069,6 +1069,12 @@ $('#thongtin_loaitk').change(function() {
         $('.thongtin_msthue').addClass('hidden');
     }
 });
+var stt_news = '2';
+var date_post_news = '';
+var time_post_news = '';
+$('.btn_post_now').click(function() {
+    stt_news = 2;
+})
 $('.btn_appointment').click(function() {
     stt_news = 3;
     date_post_news = $(".date_post_news").val();

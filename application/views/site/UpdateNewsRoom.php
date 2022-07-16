@@ -26,13 +26,13 @@
                         <img src="<? echo base_url(); ?>assets/images/img_du_an/icon_right.png" class="checked" alt="">
                         <div class="body_moigioi_padding_header_tex_moigioi font_size_14">Loại đăng tin</div>
                         <img src="<? echo base_url(); ?>assets/images/img_du_an/icon_right.png" class="checked" alt="">
-                        <div class="chuxanh">Soạn tin đăng
+                        <div class="chuxanh">Cập nhật tin đăng
                         </div>
                     </div>
                 </div>
 
                 <!-- khoi noi dung -->
-                <h1 class="chuden">Soạn tin đăng</h1>
+                <h1 class="chuden">Cập nhật tin đăng</h1>
 
                 <!-- tutorial -->
                 <div class="tutorial top-24">
@@ -73,8 +73,8 @@
                             <div class="top-8">
                                 <select name="ctrinh_type" id="" class="select_option ctrinh_type js-states form-control">
                                     <option selected disabled>Chọn loại công trình</option>
-                                    <option value="1">Biệt thự</option>
-                                    <option value="2">Chung cư</option>
+                                    <option <?= ($newsDetail['ctrinh_type'] == 1) ? "selected" : "" ?> value="1">Biệt thự</option>
+                                    <option <?= ($newsDetail['ctrinh_type'] == 2) ? "selected" : "" ?> value="2">Chung cư</option>
                                 </select>
                             </div>
                         </div>
@@ -83,19 +83,19 @@
                             <div class="khoibe relative">
                                 <p class="chuden font-medium height-20 size-14">Ngân sách (VNĐ) <span class="chudo">*</span></p>
                                 <div class="khunginput khoi_gia_min top-8 input_infor_tag">
-                                    <input type="number" name="price_min" id="pcompra" class="giamin" placeholder="Nhập giá cố định">
+                                    <input type="number" name="price_min" id="pcompra" value="<?= $newsDetail['price_min'] ?>" class="giamin" placeholder="Nhập giá cố định">
                                 </div>
                                 <p class="ngansach_gia absolute size-12">
                                     <span class="ngansach_tien">0</span> <span class="ngansach_donvi">triệu VNĐ</span>
-                                    <span class="den hidden">-</span>
-                                    <span class="ngansach_max hidden">0</span> <span class="dv_max hidden">triệu VNĐ</span>
+                                    <span class="den <?= ($newsDetail['price_max'] > $newsDetail['price_min']) ? "" : "hidden" ?>">-</span>
+                                    <span class="ngansach_max <?= ($newsDetail['price_max'] > $newsDetail['price_min']) ? "" : "hidden" ?>">0</span> <span class="dv_max <?= ($newsDetail['price_max'] > $newsDetail['price_min']) ? "" : "hidden" ?>">triệu VNĐ</span>
                                 </p>
                             </div>
                             <div class="khoibe">
                                 <p class="chutrang height-20 size-14 dontlook">Don't Look</p>
-                                <button type="button" class="khoanggia font-medium size-16 c-pointer top-8">Khoảng giá</button>
-                                <div class="khunginput khoi_giamax top-8 input_infor_tag relative hidden">
-                                    <input type="number" name="" id="pventa" class="giamax " placeholder="Giá max">
+                                <button type="button" class="khoanggia <?= ($newsDetail['price_max'] > $newsDetail['price_min']) ? "hidden" : "" ?> font-medium size-16 c-pointer top-8">Khoảng giá</button>
+                                <div class="khunginput khoi_giamax top-8 input_infor_tag relative <?= ($newsDetail['price_max'] > $newsDetail['price_min']) ? "" : "hidden" ?>">
+                                    <input type="number" value="<?= $newsDetail['price_max'] ?>" name="<?= ($newsDetail['price_max'] > $newsDetail['price_min']) ? "price_max" : "" ?>" id="pventa" class="giamax " placeholder="Giá max">
                                     <img src="<? echo base_url(); ?>assets/images/delete.png" alt="" class="del_icon absolute wh-18">
                                 </div>
                             </div>
@@ -106,18 +106,18 @@
                             <div class="top-8">
                                 <select name="styles" id="" class="select_option styles js-states form-control">
                                     <option selected disabled>Chọn phong cách</option>
-                                    <option value="Đương đại">Đương đại</option>
-                                    <option value="Hiện đại">Hiện đại</option>
-                                    <option value="Tối giản">Tối giản</option>
-                                    <option value="Truyền thống">Truyền thống</option>
-                                    <option value="Cổ điển">Cổ điển</option>
-                                    <option value="Tân cổ điển">Tân cổ điển</option>
-                                    <option value="Scanvindinavian">Scanvindinavian</option>
-                                    <option value="Vintage">Vintage</option>
-                                    <option value="Retro">Retro</option>
-                                    <option value="Bohemia">Bohemia</option>
-                                    <option value="Indochine">Indochine</option>
-                                    <option value="Khác">Khác</option>
+                                    <option <?= ($newsDetail['styles'] == 'Đương đại') ? "selected" : "" ?> value="Đương đại">Đương đại</option>
+                                    <option <?= ($newsDetail['styles'] == "Hiện đại") ? "selected" : "" ?> value="Hiện đại">Hiện đại</option>
+                                    <option <?= ($newsDetail['styles'] == "Tối giản") ? "selected" : "" ?> value="Tối giản">Tối giản</option>
+                                    <option <?= ($newsDetail['styles'] == "Truyền thống") ? "selected" : "" ?> value="Truyền thống">Truyền thống</option>
+                                    <option <?= ($newsDetail['styles'] == "Cổ điển") ? "selected" : "" ?> value="Cổ điển">Cổ điển</option>
+                                    <option <?= ($newsDetail['styles'] == "Tân cổ điển") ? "selected" : "" ?> value="Tân cổ điển">Tân cổ điển</option>
+                                    <option <?= ($newsDetail['styles'] == "Scanvindinavian") ? "selected" : "" ?> value="Scanvindinavian">Scanvindinavian</option>
+                                    <option <?= ($newsDetail['styles'] == "Vintage") ? "selected" : "" ?> value="Vintage">Vintage</option>
+                                    <option <?= ($newsDetail['styles'] == "Retro") ? "selected" : "" ?> value="Retro">Retro</option>
+                                    <option <?= ($newsDetail['styles'] == "Bohemia") ? "selected" : "" ?> value="Bohemia">Bohemia</option>
+                                    <option <?= ($newsDetail['styles'] == "Indochine") ? "selected" : "" ?> value="Indochine">Indochine</option>
+                                    <option <?= ($newsDetail['styles'] == "Khác") ? "selected" : "" ?> value="Khác">Khác</option>
                                 </select>
                             </div>
                         </div>
@@ -126,11 +126,11 @@
                             <div class="top-8">
                                 <select name="area" id="" class="select_option area js-states form-control">
                                     <option disabled selected >Chọn khoảng diện tích</option>
-                                    <option value="1">Dưới 50 m2</option>
-                                    <option value="2">50 m2 - 100 m2</option>
-                                    <option value="3">100 m2 - 150 m2</option>
-                                    <option value="4">150 m2 - 300 m2</option>
-                                    <option value="5">300 m2 trở lên</option>
+                                    <option <?= ($newsDetail['area'] == 1) ? "selected" : "" ?> value="1">Dưới 50 m2</option>
+                                    <option <?= ($newsDetail['area'] == 2) ? "selected" : "" ?> value="2">50 m2 - 100 m2</option>
+                                    <option <?= ($newsDetail['area'] == 3) ? "selected" : "" ?> value="3">100 m2 - 150 m2</option>
+                                    <option <?= ($newsDetail['area'] == 4) ? "selected" : "" ?> value="4">150 m2 - 300 m2</option>
+                                    <option <?= ($newsDetail['area'] == 5) ? "selected" : "" ?> value="5">300 m2 trở lên</option>
                                 </select>
                             </div>
                         </div>
@@ -138,106 +138,106 @@
                             <div class=" top-21  flex center-height">
                                 <p class="chuden font-medium height-20 right-16 size-14">Thực hiện bởi <span class="chudo">*</span></p>
                                 <div class="flex center-center th2">
-                                    <input value = "1" type="radio" name="Perform" class="right-8">
+                                    <input <?= ($newsDetail['perform'] == 1) ? "checked" : "" ?> value = "1" type="radio" name="Perform" class="right-8">
                                     <p class="chuden font-medium height-20 size-14">Tự làm</p>
                                 </div>
                                 <div class="flex center-center">
-                                    <input type="radio" value = "2" name="Perform" class="right-8 Perform">
+                                    <input <?= ($newsDetail['perform'] == 2) ? "checked" : "" ?> type="radio" value = "2" name="Perform" class="right-8 Perform">
                                     <p class="chuden font-medium height-20 size-14">Chuyên gia</p>
                                 </div>
                             </div>
                         </div>
-
+                        <? $arr_color = json_decode($newsDetail['list_color']) ?>
                         <div class="khoicon mausac top-21 box_input_infor relative">
                             <p class="chuden font-medium height-20 size-14">Màu sắc <span class="chudo">*</span></p>
                             <div class="chonmau flex space top-8">
                                 <label for="den" class="cursor_p position_r btn_color">
                                     <div class="den"></div>
-                                    <input type="checkbox" name="color[]" value="den" class="den" id="den">
+                                    <input type="checkbox" <?= (in_array('den',$arr_color)) ? "checked" : "" ?> name="color[]" value="den" class="den" id="den">
                                     <img src="<? echo base_url(); ?>assets/images/check_sussess.png" class="img_success">
                                 </label>
 
                                 <label for="trang" class="cursor_p position_r btn_color">
                                     <div class="trang"></div>
-                                    <input type="checkbox" name="color[]" value="trang" class="trang" id="trang">
+                                    <input type="checkbox" <?= (in_array('trang',$arr_color)) ? "checked" : "" ?> name="color[]" value="trang" class="trang" id="trang">
                                     <img src="<? echo base_url(); ?>assets/images/check_sussess.png" class="img_success">
                                 </label>
 
                                 <label for="do" class="cursor_p position_r btn_color ">
                                     <div class="do"></div>
-                                    <input type="checkbox" name="color[]" value="do" class="do" id="do">
+                                    <input type="checkbox" <?= (in_array('do',$arr_color)) ? "checked" : "" ?> name="color[]" value="do" class="do" id="do">
                                     <img src="<? echo base_url(); ?>assets/images/check_sussess.png" class="img_success">
                                 </label>
 
                                 <label for="cam" class="cursor_p position_r btn_color">
                                     <div class="cam"></div>
-                                    <input type="checkbox" name="color[]" value="cam" class="cam" id="cam">
+                                    <input type="checkbox" <?= (in_array('cam',$arr_color)) ? "checked" : "" ?> name="color[]" value="cam" class="cam" id="cam">
                                     <img src="<? echo base_url(); ?>assets/images/check_sussess.png" class="img_success">
                                 </label>
 
                                 <label for="vang" class="cursor_p position_r btn_color">
                                     <div class="vang"></div>
-                                    <input type="checkbox" name="color[]" value="vang" class="vang" id="vang">
+                                    <input type="checkbox" <?= (in_array('vang',$arr_color)) ? "checked" : "" ?> name="color[]" value="vang" class="vang" id="vang">
                                     <img src="<? echo base_url(); ?>assets/images/check_sussess.png" class="img_success">
                                 </label>
 
                                 <label for="hong" class="cursor_p position_r btn_color">
                                     <div class="hong"></div>
-                                    <input type="checkbox" name="color[]" value="hong" class="hong" id="hong">
+                                    <input type="checkbox" <?= (in_array('hong',$arr_color)) ? "checked" : "" ?> name="color[]" value="hong" class="hong" id="hong">
                                     <img src="<? echo base_url(); ?>assets/images/check_sussess.png" class="img_success">
                                 </label>
                                 
                                 <label for="xanhluc" class="cursor_p position_r btn_color">
                                     <div class="xanhluc"></div>
-                                    <input type="checkbox" name="color[]" value="xanhluc" class="xanhluc" id="xanhluc">
+                                    <input type="checkbox" <?= (in_array('xanhluc',$arr_color)) ? "checked" : "" ?> name="color[]" value="xanhluc" class="xanhluc" id="xanhluc">
                                     <img src="<? echo base_url(); ?>assets/images/check_sussess.png" class="img_success">
                                 </label>
                                 
                                 <label for="xamxanh" class="cursor_p position_r btn_color">
                                     <div class="xamxanh"></div>
-                                    <input type="checkbox" name="color[]" value="xamxanh" class="xamxanh" id="xamxanh">
+                                    <input type="checkbox" <?= (in_array('xamxanh',$arr_color)) ? "checked" : "" ?> name="color[]" value="xamxanh" class="xamxanh" id="xamxanh">
                                     <img src="<? echo base_url(); ?>assets/images/check_sussess.png" class="img_success">
                                 </label>
 
                                 <label for="xanhmint" class="cursor_p position_r btn_color">
                                     <div class="xanhmint"></div> 
-                                    <input type="checkbox" name="color[]" value="xanhmint" class="xanhmint" id="xanhmint">
+                                    <input type="checkbox" <?= (in_array('xanhmint',$arr_color)) ? "checked" : "" ?> name="color[]" value="xanhmint" class="xanhmint" id="xanhmint">
                                     <img src="<? echo base_url(); ?>assets/images/check_sussess.png" class="img_success">
                                 </label>
                                 
                                 <label for="xanhduong" class="cursor_p position_r btn_color">
                                     <div class="xanhduong"></div>
-                                    <input type="checkbox" name="color[]" value="xanhduong" class="xanhduong" id="xanhduong">
+                                    <input type="checkbox" <?= (in_array('xanhduong',$arr_color)) ? "checked" : "" ?> name="color[]" value="xanhduong" class="xanhduong" id="xanhduong">
                                     <img src="<? echo base_url(); ?>assets/images/check_sussess.png" class="img_success">
                                 </label>
                                 
                                 <label for="tim" class="cursor_p position_r btn_color">
                                     <div class="tim"></div>
-                                    <input type="checkbox" name="color[]" value="tim" class="tim" id="tim">
+                                    <input type="checkbox" <?= (in_array('tim',$arr_color)) ? "checked" : "" ?> name="color[]" value="tim" class="tim" id="tim">
                                     <img src="<? echo base_url(); ?>assets/images/check_sussess.png" class="img_success">
                                 </label>
                                 
                                 <label for="xanhden" class="cursor_p position_r btn_color">
                                     <div class="xanhden"></div>
-                                    <input type="checkbox" name="color[]" value="xanhden" class="xanhden" id="xanhden">
+                                    <input type="checkbox" <?= (in_array('xanhden',$arr_color)) ? "checked" : "" ?> name="color[]" value="xanhden" class="xanhden" id="xanhden">
                                     <img src="<? echo base_url(); ?>assets/images/check_sussess.png" class="img_success">
                                 </label>
                                 
                                 <label for="xam" class="cursor_p position_r btn_color">
                                     <div class="xam"></div>
-                                    <input type="checkbox" name="color[]" value="xam" class="xam" id="xam">
+                                    <input type="checkbox" <?= (in_array('xam',$arr_color)) ? "checked" : "" ?> name="color[]" value="xam" class="xam" id="xam">
                                     <img src="<? echo base_url(); ?>assets/images/check_sussess.png" class="img_success">
                                 </label>
                                 
                                 <label for="be" class="cursor_p position_r btn_color">
                                     <div class="be"></div>
-                                    <input type="checkbox" name="color[]" value="be" class="be" id="be">
+                                    <input type="checkbox" <?= (in_array('be',$arr_color)) ? "checked" : "" ?> name="color[]" value="be" class="be" id="be">
                                     <img src="<? echo base_url(); ?>assets/images/check_sussess.png" class="img_success">
                                 </label>
                             
                                 <label for="nau" class="cursor_p position_r btn_color">
                                     <div class="nau"></div>
-                                    <input type="checkbox" name="color[]" value="nau" class="nau" id="nau">
+                                    <input type="checkbox" <?= (in_array('nau',$arr_color)) ? "checked" : "" ?> name="color[]" value="nau" class="nau" id="nau">
                                     <img src="<? echo base_url(); ?>assets/images/check_sussess.png" class="img_success">
                                 </label>
                                 
@@ -249,7 +249,7 @@
 
                     <div class="ttpd_tieude  box_input_infor">
                         <div class="khunginput input_infor_tag">
-                            <input type="text" name="title_news" class="title_news" placeholder="Nhập tiêu đề bài viết *">
+                            <input type="text" name="title_news" value="<?= $newsDetail['title_news'] ?>" class="title_news" placeholder="Nhập tiêu đề bài viết *">
                         </div>
                     </div>
                 </div>
@@ -258,7 +258,40 @@
                 <!-- add anh -->
                 <div class="tdpd_addanh top-24">
                     <div class="tdpd_khoi_to_anh">
-                        
+                        <?
+                            $d = date('d',$newsDetail['time_create']);
+                            $m = date('m',$newsDetail['time_create']);
+                            $y = date('Y',$newsDetail['time_create']);
+                            $arr_img = json_decode($newsDetail['arr_img']);
+                            foreach ($arr_img as $key=>$value):
+                        ?>
+                        <div class="khoi_add_anh flex space bot-24">
+                            <div class="tdpd_anh">
+                                <img src="<?= base_url() ?>/upload/<?= $y ?>/<?= $m ?>/<?= $d ?>/<?= $value ?>" alt="" class="anh_add tdpd_img">
+                            </div>
+                            <div class="tdpd_thongtin">
+                                <?
+                                    $desc_img = json_decode($newsDetail['desc_img']);
+                                ?>
+                                <select name="room_design" id="" class="select_option desc_img">
+                                    <option <?= ($desc_img[$key][0] == 1) ? "selected" : "" ?> value="1">Không gian</option>
+                                    <option <?= ($desc_img[$key][0] == 2) ? "selected" : "" ?> value="2">Phòng khách</option>
+                                    <option <?= ($desc_img[$key][0] == 3) ? "selected" : "" ?> value="3">Phòng bếp</option>
+                                    <option <?= ($desc_img[$key][0] == 4) ? "selected" : "" ?> value="4">Phòng ăn</option>
+                                    <option <?= ($desc_img[$key][0] == 5) ? "selected" : "" ?> value="5">Phòng ngủ</option>
+                                    <option <?= ($desc_img[$key][0] == 6) ? "selected" : "" ?> value="6">Phòng tắm</option>
+                                    <option <?= ($desc_img[$key][0] == 7) ? "selected" : "" ?> value="7">Phòng làm việc</option>
+                                    <option <?= ($desc_img[$key][0] == 8) ? "selected" : "" ?> value="8">Phòng trẻ em</option>
+                                    <option <?= ($desc_img[$key][0] == 9) ? "selected" : "" ?> value="9">Ban công</option>
+                                    <option <?= ($desc_img[$key][0] == 10) ? "selected" : "" ?> value="10">Sân vườn</option>
+                                    <option <?= ($desc_img[$key][0] == 11) ? "selected" : "" ?> value="11">Khác</option>
+                                </select>
+                                <div class="khoi_text top-16">
+                                    <textarea name="desc_room" id="" cols="30" class="desc_img" rows="10" placeholder="Nhập mô tả ảnh"><?= $desc_img[$key][1] ?></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <? endforeach ?>
                     </div>
                     <div class="khoi_butt_addanh relative">
                         
@@ -281,7 +314,7 @@
 
                 <!-- butt dang tin -->
                 <div class="tdnd_khoibutt">
-                    <button class="tdnd_butt_dangtin size-16 font-medium">Đăng tin</button>
+                    <button class="tdnd_butt_dangtin size-16 font-medium">Cập nhật</button>
                 </div>
                 <!-- end butt dang tin -->
 
@@ -457,9 +490,13 @@ var html_  = '<div class="khoi_add_anh flex space bot-24">'
             desc_img = JSON.stringify(desc_img);
 
             var data = new FormData();
+            data.append('id_news','<?= $newsDetail['id_news'] ?>');
+            data.append('arr_img_old', '<?= $newsDetail['arr_img'] ?>');
+            data.append('time_create', '<?= $newsDetail['time_create'] ?>');
             data.append('ctrinh_type', ctrinh_type);
             data.append('styles', styles);
             data.append('area', area);
+            data.append('desc_img', desc_img);
             data.append('Perform', Perform);
             data.append('list_color', list_color);
             data.append('price_min', price_min);
@@ -469,7 +506,7 @@ var html_  = '<div class="khoi_add_anh flex space bot-24">'
                 data.append('arr_img[]',$(this)[0].files[0]);
             })
             $.ajax({
-			 	url: base_url+'PostNews/addNewsRoom',
+			 	url: base_url+'admin/ManageNews/postNewsRoomUpdate',
 			 	type: 'post',
 			 	cache: false,
 			 	contentType: false,
@@ -489,6 +526,18 @@ var html_  = '<div class="khoi_add_anh flex space bot-24">'
 			});
 		}
     });
+
+    $(".btn_color").each(function(){
+        var check = $(this).find('input').is(":checked");
+        if(check)
+        {
+            $(this).children('.img_success').show();
+        }
+        else
+        {
+            $(this).children('.img_success').hide();
+        }    
+    })
 
 </script>
 

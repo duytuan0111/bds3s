@@ -40,7 +40,7 @@ $year = date('Y', time());
                                             class="dt_khoi2_noidung_khoi_click  click_toggle1 flex align_item_c jus_sb mr_b4px bg_1024">
                                             <div
                                                 class="dt_khoi2_noidung_khoi_click_text fz16_5 click_muaban_cha color_999">
-                                                Mua bán (12)
+                                                Mua bán (<?= $count_all_purchase ?>)
                                             </div>
                                             <div class="dt_khoi2_noidung_khoi_click_img ic_bottom_1024">
                                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -56,7 +56,7 @@ $year = date('Y', time());
                                         <a href="quan-ly-tin-dang-cho-thue.html"
                                             class="dt_khoi2_noidung_khoi_click  click_toggle2 flex align_item_c jus_sb mr_b4px bg_1024">
                                             <div class="dt_khoi2_noidung_khoi_click_text fz16_5 color_999">Cho thuê
-                                                (21)</div>
+                                                (<?= $count_all_lease ?>)</div>
                                             <div class="dt_khoi2_noidung_khoi_click_img add_stroke2 ic_bottom_1024">
                                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
@@ -73,7 +73,7 @@ $year = date('Y', time());
                                             <a href="quan-ly-tin-dang-du-an.html"
                                                 class="dt_khoi2_noidung_khoi_click_text fz16_5 click_muaban_cha fz14_1024 main_color">Dự
                                                 án
-                                                (12)
+                                                (<?= $countAllProject ?>)
                                             </a>
                                             <div
                                                 class="dt_khoi2_noidung_khoi_click_img add_stroke remove_stroke show_click_con5">
@@ -87,26 +87,26 @@ $year = date('Y', time());
                                         <div class="click_con">
                                             <div class="dt_khoi2_noidung_khoi_click_con c_muaban bg_click click_show_dt mr_l24px mr_b4px"
                                                 onclick="muaban(this)">
-                                                <div class="dt_khoi2_noidung_khoi_click_text_sub fz16_4">Tin đăng (22)
+                                                <div class="dt_khoi2_noidung_khoi_click_text_sub fz16_4">Tin đăng (<?= $countAllProject ?>)
                                                 </div>
                                             </div>
                                             <div class="dt_khoi2_noidung_khoi_click_con c_muaban mr_l24px click_show_lich_dt"
                                                 onclick="muaban(this)">
                                                 <div class="dt_khoi2_noidung_khoi_click_text_sub fz16_4 ">Lịch đẩy tin
-                                                    (22)
+                                                    (<?= $countAllProject ?>)
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="click_con5 hidden">
                                             <div class="dt_khoi2_noidung_khoi_click_con c_muaban bg_click click_show_dt mr_l24px mr_b4px"
                                                 onclick="muaban(this)">
-                                                <div class="dt_khoi2_noidung_khoi_click_text_sub fz16_4">Tin đăng (22)
+                                                <div class="dt_khoi2_noidung_khoi_click_text_sub fz16_4">Tin đăng (<?= $countAllProject ?>)
                                                 </div>
                                             </div>
                                             <div class="dt_khoi2_noidung_khoi_click_con c_muaban mr_l24px click_show_lich_dt"
                                                 onclick="muaban(this)">
                                                 <div class="dt_khoi2_noidung_khoi_click_text_sub fz16_4 ">Lịch đẩy tin
-                                                    (22)
+                                                    (<?= $countAllProject ?>)
                                                 </div>
                                             </div>
                                         </div>
@@ -116,7 +116,7 @@ $year = date('Y', time());
                                         <a href="quan-ly-tin-dang-thiet-ke.html"
                                             class="dt_khoi2_noidung_khoi_click  click_toggle3 flex align_item_c jus_sb mr_b4px bg_1024">
                                             <div class="dt_khoi2_noidung_khoi_click_text fz16_5 color_999">Thiết kế
-                                                đẹp</div>
+                                                đẹp (<?= $count_all_design ?>)</div>
                                             <div class="dt_khoi2_noidung_khoi_click_img add_stroke3 ic_bottom_1024">
                                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
@@ -131,7 +131,7 @@ $year = date('Y', time());
                                         <a href="quan-ly-tin-dang-tin-luu.html"
                                             class="dt_khoi2_noidung_khoi_click  click_toggle4 flex align_item_c jus_sb mr_b4px bg_1024">
                                             <div class="dt_khoi2_noidung_khoi_click_text fz16_5 color_999">Tin đã
-                                                lưu (12)</div>
+                                                lưu (<?= $count_AllSave ?>)</div>
                                             <div class="dt_khoi2_noidung_khoi_click_img add_stroke4 ic_bottom_1024">
                                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
@@ -406,12 +406,12 @@ $year = date('Y', time());
                                                                     <div class="popup_muaban_padding_div1_text">Ghim
                                                                         tin</div>
                                                                 </div>
-                                                                <div class="popup_muaban_padding_div1 flex">
+                                                                <div onclick="location.href='cap-nhat-tin-dang-du-an-<?= $rows['id_news'] ?>.html'" class="popup_muaban_padding_div1 flex">
                                                                     <div class="popup_muaban_padding_div1_img">
                                                                         <img src="<? echo base_url(); ?>assets/images/img_sdn/chinhsua.png"
                                                                             alt="">
                                                                     </div>
-                                                                    <div class="popup_muaban_padding_div1_text">
+                                                                    <div  class="popup_muaban_padding_div1_text">
                                                                         Chỉnh sửa</div>
                                                                 </div>
                                                                 <div data-id="<?= $rows['id_news'] ?>" class="btn_delete_news popup_muaban_padding_div1 flex show_popup_xoa">

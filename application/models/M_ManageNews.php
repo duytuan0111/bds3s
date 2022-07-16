@@ -356,11 +356,17 @@ class M_ManageNews extends CI_Model
         return $this->db->delete('saved_new');
     }
 
-    //---------------Chi tiết dự án
+    //---------------Chi tiết dự ánh
     public function NewsDetail($id_news)
     {
         $this->db->where('id_news',$id_news);
         return $this->db->get('post_news')->row_array();
+    }
+    //--------------- update tin đăng
+    public function updateNewsAfterLogin($data_update,$id_news)
+    {
+        $this->db->where('id_news',$id_news);
+        return $this->db->update($this->_table,$data_update);
     }
 }
 ?>

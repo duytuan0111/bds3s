@@ -471,7 +471,7 @@ $("#postNews_Home").validate({
             var title_news  = $(".title_news").val();
             var price_max   = $(".giamax").val();
             var type_img    = $(".type_img").val();
-            var bedroom     = $("input[name='bedroom']").val();
+            var bedroom     = $(".radio_bedroom.active").find("input[name='bedroom']").val();
             var time_build  = $(".time_build").val();
             var project_name= $(".project_name").val();
             var city        = $("#select_city").val();

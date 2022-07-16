@@ -364,7 +364,7 @@
                                                             <!-- khối ngày tạo,  -->
                                                             <div class="noidung_right_padding3_div3">
                                                                 <p class="muaban_ngaytao nt">Ngày tạo: <?= date('d/m/Y',$rows['time_create']) ?></p>
-                                                                <p class="muaban_ngaytao nd">Ngày đăng: <?= date('d/m/Y',$rows['date_post_news']) ?></p>
+                                                                <p class="muaban_ngaytao nd">Ngày đăng: <?= ($rows['stt_news'] == 3) ? date('d/m/Y',$rows['date_post_news']) : date('d/m/Y',$rows['time_create']) ?></p>
                                                                 <p class="muaban_ngaytao nh">Ngày hết hạn: <?= date('d/m/Y',$rows['time_expired']) ?>
                                                                 </p>
                                                             </div>
@@ -434,7 +434,7 @@
                                                                             <img src="<? echo base_url(); ?>assets/images/img_sdn/chinhsua.png"
                                                                                 alt="">
                                                                         </div>
-                                                                        <div class="popup_muaban_padding_div1_text">
+                                                                        <div onclick="location.href='cap-nhat-dang-tin-sau-dang-nhap-<?= $rows['id_news'] ?>.html'" class="popup_muaban_padding_div1_text">
                                                                             Chỉnh sửa</div>
                                                                     </div>
                                                                     <div data-id="<?= $rows['id_news'] ?>" class="popup_muaban_padding_div1 btn_delete_news flex show_popup_xoa">
@@ -458,13 +458,11 @@
                                                             <div class="noidung_right_padding3_div1_tex_address_img">
                                                                 <img src="<? echo base_url(); ?>assets/images/img_du_an/icon_vuong.png" alt="">
                                                             </div>
-                                                            <div class="noidung_right_padding3_div1_tex_diachi">1.2 - 20
-                                                                triệu/m2
-                                                            </div>
+                                                            <div class="noidung_right_padding3_div1_tex_diachi"><?= $rows['area_convert'] ?> </div>
                                                         </div>
-                                                        <div class="muaban_ngaytao nt">Ngày tạo: 20/12/2022</div>
-                                                        <div class="muaban_ngaytao nd">Ngày đăng: 20/12/2022</div>
-                                                        <div class="muaban_ngaytao nh">Ngày hết hạn: 20/12/2022</div>
+                                                        <p class="muaban_ngaytao nt">Ngày tạo: <?= date('d/m/Y',$rows['time_create']) ?></p>
+                                                        <p class="muaban_ngaytao nd">Ngày đăng: <?= ($rows['stt_news'] == 3) ? date('d/m/Y',$rows['date_post_news']) : date('d/m/Y',$rows['time_create']) ?></p>
+                                                        <p class="muaban_ngaytao nh">Ngày hết hạn: <?= date('d/m/Y',$rows['time_expired']) ?>
                                                     </div>
                                                     <div class="border_bottom_375"></div>
                                                     <div class="them_div_de_fig_375_2_suv">

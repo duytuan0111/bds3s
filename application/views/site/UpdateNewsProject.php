@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Tin đăng dự án</title>
+    <title>Cập nhật tin đăng dự án</title>
     <meta name="robots" content="noindex,nofollow" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,6 +16,11 @@
 </head>
 
 <body>
+    <?
+        $d= date('d',$newsDetail['time_create']);
+        $m= date('m',$newsDetail['time_create']);
+        $y = date('Y',$newsDetail['time_create']);
+    ?>
     <? require_once APPPATH.'views/site/includes/da_header.php' ?>
     <div class="backgroung_chinh">
         <div class="link_trang">
@@ -43,14 +48,14 @@
                                 <div class="khoicon top-21 box_input_infor">
                                     <p class="font-medium height-20">Tên dự án <span class="chudo">*</span></p>
                                     <div class="khunginput top-8 input_infor_tag">
-                                        <input type="text" name= "project_name" class="project_name" placeholder="Nhập tên dự án">
+                                        <input type="text" name= "project_name" value="<?= $newsDetail['project_name'] ?>" class="project_name" placeholder="Nhập tên dự án">
                                     </div>
                                 </div>
                                 <div class="khoicon top-21 box_input_infor">
                                     <p class="font-medium height-20">Giới thiệu <span class="chudo">*</span></p>
                                     <div class="khungtext top-8 input_infor_tag">
                                         <textarea name="introduce" id="" class="introduce" cols="30" rows="10"
-                                            placeholder="Nhập nội dung giới thiệu ngắn"></textarea>
+                                            placeholder="Nhập nội dung giới thiệu ngắn"><?= $newsDetail['introduce'] ?></textarea>
                                     </div>
                                 </div>
                                 <div class="khoicon top-21 box_input_infor">
@@ -58,14 +63,14 @@
                                     <div class="top-8">
                                         <select name="bds_type" class="select_option bds_type js-states form-control">
                                                 <option selected disabled>Chọn loại bất động sản</option>
-                                                <option value="1">Căn hộ</option>
-                                                <option value="2">Nhà riêng</option>
-                                                <option value="3">Nhà mặt phố</option>
-                                                <option value="4">Shophouse, Nhà phố thương mại</option>
-                                                <option value="5">Biệt thự liền kề</option>
-                                                <option value="6">Đất</option>
-                                                <option value="7">Đất nền dự án</option>
-                                                <option value="8">Bất động sản khác</option>
+                                                <option <?= ($newsDetail['bds_type'] == 1) ? "selected" : "" ?> value="1">Căn hộ</option>
+                                                <option <?= ($newsDetail['bds_type'] == 2) ? "selected" : "" ?> value="2">Nhà riêng</option> 
+                                                <option <?= ($newsDetail['bds_type'] == 3) ? "selected" : "" ?> value="3">Nhà mặt phố</option>
+                                                <option <?= ($newsDetail['bds_type'] == 4) ? "selected" : "" ?> value="4">Shophouse, Nhà phố thương mại</option>
+                                                <option <?= ($newsDetail['bds_type'] == 5) ? "selected" : "" ?> value="5">Biệt thự liền kề</option>
+                                                <option <?= ($newsDetail['bds_type'] == 6) ? "selected" : "" ?> value="6">Đất</option>
+                                                <option <?= ($newsDetail['bds_type'] == 7) ? "selected" : "" ?> value="7">Đất nền dự án</option>
+                                                <option <?= ($newsDetail['bds_type'] == 8) ? "selected" : "" ?> value="8">Bất động sản khác</option>
                                         </select>
                                     </div>
                                 </div>
@@ -74,8 +79,8 @@
                                     <div class="top-8">
                                         <select onchange="address(this,'districts','ajaxGetListDistricts','Chọn quận huyện','1')" name="city" id="select_city" class="select_option js-states form-control">
                                             <option selected disabled>Chọn tỉnh thành phố</option>
-                                            <? foreach($city as $cit): ?>
-                                            <option value="<?= $cit['cit_id'] ?>"><?= $cit['cit_name'] ?></option>
+                                            <? foreach($listcity as $cit): ?>
+                                            <option <?= ($newsDetail['select_city'] == $cit['cit_id']) ? "selected" : "" ?> value="<?= $cit['cit_id'] ?>"><?= $cit['cit_name'] ?></option>
                                             <? endforeach ?>
                                         </select>
                                     </div>
@@ -85,6 +90,9 @@
                                     <div class="top-8">
                                         <select onchange="address(this,'wards','ajaxGetListWards','Chọn phường xã','2')" name="districts" class="districts select_option js-states form-control">
                                             <option disabled selected>Chọn quận huyện</option>
+                                            <? foreach($listDistricts as $districts): ?>
+                                            <option <?= ($newsDetail['districts'] == $districts['cit_id']) ? "selected" : "" ?> value="<?= $districts['cit_id'] ?>"><?= $districts['cit_name'] ?></option>
+                                            <? endforeach ?>
                                         </select>
                                     </div>
                                 </div>
@@ -93,13 +101,16 @@
                                     <div class="top-8">
                                         <select  onchange="address(this,'street','getStreetBy','Chọn Đường/ phố','3')" name="wards" class="select_option wards js-states form-control">
                                             <option disabled selected>Chọn phường xã</option>
+                                            <? foreach($listWards as $wards): ?>
+                                            <option <?= ($newsDetail['wards'] == $wards['ward_id']) ? "selected" : "" ?> value="<?= $wards['ward_id'] ?>"><?= $wards['ward_name'] ?></option>
+                                            <? endforeach ?>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="khoicon top-21 box_input_infor">
                                     <div class="font-medium height-20">Ngày đăng</div>
                                     <div class="khunginput top-8">
-                                        <input name="post_time" value="<?= date('Y-m-d',time()) ?>" class="post_time" type="date">
+                                        <input name="post_time" value="<?= date('Y-m-d',$newsDetail['time_create']) ?>" class="post_time" type="date">
                                     </div>
                                 </div>
                             </div>
@@ -112,13 +123,16 @@
                                     <div class="top-8">
                                         <select name="street" class="select_option street js-states form-control">
                                             <option disabled selected>Chọn Đường/ phố</option>
+                                            <? foreach($listStreet as $street): ?>
+                                            <option <?= ($newsDetail['street'] == $street['street_id']) ? "selected" : "" ?> value="<?= $street['street_id'] ?>"><?= $street['street_name'] ?></option>
+                                            <? endforeach ?>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="khoicon top-21 box_input_infor">
                                     <div class="font-medium height-20">Địa chỉ chi tiết</div>
                                     <div class="khunginput top-8">
-                                        <input type="text" name="addr_detail" class="addr_detail" placeholder="Nhập địa chỉ chi tiết">
+                                        <input type="text" name="addr_detail" class="addr_detail" value="<?= $newsDetail['addr_detail'] ?>" placeholder="Nhập địa chỉ chi tiết">
                                     </div>
                                 </div>
                             </div>
@@ -129,7 +143,12 @@
 
                 <!-- them anh (fix) -->
                 <div class="add_anhbia top-24">
-                    <img src="<? echo base_url(); ?>assets/images/anh_rong.png" alt="" class="post_anh">
+                    <? if(file_exists('upload/'.$y.'/'.$m.'/'.$d.'/'.$newsDetail['banner_img']) && $newsDetail['banner_img'] != ''): ?>
+                        <img src="<? echo base_url(); ?>upload/<?= $y ?>/<?= $m ?>/<?= $d ?>/<?= $newsDetail['banner_img'] ?>" alt="" class="post_anh">
+                    <? else: ?>
+                        <img src="<? echo base_url(); ?>assets/images/anh_rong.png" alt="" class="post_anh">
+                    <? endif ?>
+                    
                     <div class="butt_themanh flex center-center c-pointer">
                         <img src="<? echo base_url(); ?>assets/images/tan_camera.svg" alt="" class="right-8 wh-24">
                         <p class="font-medium chuxanh">Thêm ảnh bìa</p>
@@ -146,19 +165,19 @@
                             <div class="khoicon top-21 box_input_infor">
                                 <p class="font-medium height-20">Tên công ty <span class="chudo">*</span></p>
                                 <div class="khunginput top-8 input_infor_tag">
-                                    <input type="text" name="cdt_come_name" class="cdt_come_name" placeholder="Nhập tên công ty">
+                                    <input type="text" name="cdt_come_name" value="<?= $newsDetail['cdt_com_name']?>" class="cdt_come_name" placeholder="Nhập tên công ty">
                                 </div>
                             </div>
                             <div class="khoicon top-21 box_input_infor">
                                 <p class="font-medium height-20">Số điện thoại</p>
                                 <div class="khunginput top-8">
-                                    <input type="text" name="cdt_phone" class="cdt_phone" placeholder="Nhập số điện thoại">
+                                    <input type="text" name="cdt_phone" value="<?= $newsDetail['cdt_phone']?>" class="cdt_phone" placeholder="Nhập số điện thoại">
                                 </div>
                             </div>
                             <div class="khoicon top-21 box_input_infor">
                                 <p class="font-medium height-20">Số dự án</p>
                                 <div class="khunginput top-8">
-                                    <input type="text" name="cdt_project_num" class="cdt_project_num" placeholder="Nhập số dự án">
+                                    <input type="text" name="cdt_project_num" class="cdt_project_num" value="<?= $newsDetail['cdt_project_num']?>" placeholder="Nhập số dự án">
                                 </div>
                             </div>
                         </div>
@@ -166,13 +185,13 @@
                             <div class="khoicon top-21 box_input_infor">
                                 <p class="font-medium height-20">Ngày thành lập công ty</p>
                                 <div class="khunginput top-8">
-                                    <input name="cdt_founding" class="cdt_founding" type="date">
+                                    <input name="cdt_founding" value="<?= date('Y-m-d',$newsDetail['cdt_founding']) ?>" class="cdt_founding" type="date">
                                 </div>
                             </div>
                             <div class="khoicon top-21 box_input_infor">
                                 <p class="font-medium height-20">Địa chỉ trụ sở chính</p>
                                 <div class="khunginput top-8">
-                                    <input type="text" class="cdt_addr_com" name="cdt_addr_com" placeholder="Nhập địa chỉ">
+                                    <input type="text" class="cdt_addr_com" value="<?= $newsDetail['cdt_addr_com'] ?>" name="cdt_addr_com" placeholder="Nhập địa chỉ">
                                 </div>
                             </div>
                         </div>
@@ -188,37 +207,37 @@
                             <div class="khoicon top-21 box_input_infor">
                                 <p class="font-medium height-20">Thời gian khởi công</p>
                                 <div class="khunginput top-8">
-                                    <input class="time_st" name="time_st" type="date">
+                                    <input class="time_st" value="<?= date('Y-m-d',$newsDetail['time_st']) ?>" name="time_st" type="date">
                                 </div>
                             </div>
                             <div class="khoicon top-21 box_input_infor">
                                 <p class="font-medium height-20">Các loại diện tích</p>
                                 <div class="khunginput top-8">
-                                    <input type="text" class="area_type" name="area_type" placeholder="Nhập các loại diện tích">
+                                    <input type="text" class="area_type" name="area_type" value="<?= $newsDetail['area_type'] ?>" placeholder="Nhập các loại diện tích">
                                 </div>
                             </div>
                             <div class="khoicon top-21 box_input_infor">
                                 <p class="font-medium height-20">Số tòa nhà</p>
                                 <div class="khunginput top-8">
-                                    <input type="text" name="home_num" class="home_num" placeholder="Nhập số tòa nhà">
+                                    <input type="text" name="home_num" class="home_num" value="<?= $newsDetail['home_num'] ?>" placeholder="Nhập số tòa nhà">
                                 </div>
                             </div>
                             <div class="khoicon top-21 box_input_infor">
                                 <p class="font-medium height-20">Số sản phẩm</p>
                                 <div class="khunginput top-8">
-                                    <input type="text" class="product_num" name="product_num" placeholder="Nhập số sản phẩm">
+                                    <input type="text" class="product_num" value="<?= $newsDetail['product_num'] ?>" name="product_num" placeholder="Nhập số sản phẩm">
                                 </div>
                             </div>
                             <div class="khoicon top-21 box_input_infor">
                                 <p class="font-medium height-20">Quy mô</p>
                                 <div class="khunginput top-8">
-                                    <input type="text" name="quy_mo" class="quy_mo" placeholder="Nhập quy mô dự án (m2)">
+                                    <input type="number" name="quy_mo" class="quy_mo" value="<?= $newsDetail['quy_mo'] ?>" placeholder="Nhập quy mô dự án (m2)">
                                 </div>
                             </div>
                             <div class="khoicon top-21 box_input_infor">
                                 <p class="font-medium height-20">Diện tích xây dựng</p>
                                 <div class="khunginput top-8">
-                                    <input type="text" name="detail_area" class="detail_area" placeholder="Nhập diện tích xây dựng">
+                                    <input type="number" name="detail_area" class="detail_area" value="<?= $newsDetail['detail_area'] ?>" placeholder="Nhập diện tích xây dựng">
                                 </div>
                             </div>
                         </div>
@@ -226,23 +245,23 @@
                             <div class="khoicon top-21 box_input_infor">
                                 <p class="font-medium height-20">Thời gian hoàn thành</p>
                                 <div class="khunginput top-8">
-                                    <input name="time_done" class="time_done" type="date">
+                                    <input name="time_done" class="time_done" value="<?= date('Y-m-d',$newsDetail['time_done']) ?>" type="date">
                                 </div>
                             </div>
                             <div class="khoicon top-21 box_input_infor">
                                 <p class="font-medium height-20">Ngày bàn giao <span class="chudo">*</span></p>
                                 <div class="khunginput top-8">
-                                    <input name="day_of_delivery" class="day_of_delivery" type="date">
+                                    <input name="day_of_delivery" value="<?= date('Y-m-d',$newsDetail['day_of_delivery']) ?>" class="day_of_delivery" type="date">
                                 </div>
                             </div>
                             <div class="khoicon top-21 box_input_infor relative">
                                 <p class="font-medium height-20">Khoảng giá <span class="chudo">*</span></p>
                                 <div class="khoinho flex space top-8">
                                     <div class="khunginput khoibe input_infor_tag">
-                                        <input type="text" name="price_min" class="nhapmin" placeholder="Giá min">
+                                        <input type="text" name="price_min" value="<?= $newsDetail['nhapmin'] ?>" class="nhapmin" placeholder="Giá min">
                                     </div>
                                     <div class="khunginput khoibe input_infor_tag">
-                                        <input type="text" name="price_max" class="nhapmax" placeholder="Giá max">
+                                        <input type="text" name="price_max" value="<?= $newsDetail['nhapmax'] ?>" class="nhapmax" placeholder="Giá max">
                                     </div>
                                 </div>
                                 <div class="khoigia absolute right-position-0">
@@ -257,7 +276,7 @@
                             <div class="khoicon top-21 box_input_infor relative">
                                 <p class="font-medium height-20">Tổng vốn đầu tư</p>
                                 <div class="khunginput top-8">
-                                    <input type="text" name="total_investment" class="tonggia total_investment" placeholder="Nhập số vốn đầu tư">
+                                    <input type="number" name="total_investment" value="<?= $newsDetail['total_investment']?>" class="tonggia total_investment" placeholder="Nhập số vốn đầu tư">
                                 </div>
                                 <div class="khoigia absolute right-position-0">
                                     <p>
@@ -270,9 +289,9 @@
                                 <p class="font-medium height-20">Tiến độ</p>
                                 <div class="top-8">
                                     <select name="progress" class="select_option progress js-states form-control">
-                                        <option value="0">Chọn tiến độ</option>
-                                        <option value="1">hehe</option>
-                                        <option value="2">haha</option>
+                                        <option selected disabled>Chọn tiến độ</option>
+                                        <option <?= ($newsDetail['progress'] == 1) ? "selected" : ""?> value="1">Sắp mở bán</option>
+                                        <option <?= ($newsDetail['progress'] == 2) ? "selected" : ""?> value="2">Đang mở bán</option>
                                     </select>
                                 </div>
                             </div>
@@ -280,9 +299,9 @@
                                 <p class="font-medium">Trạng thái</p>
                                 <div class="top-8">
                                     <select name="status" class="select_option status js-states form-control">
-                                        <option value="0">Chọn Đường/ phố</option>
-                                        <option value="1">hehe</option>
-                                        <option value="2">haha</option>
+                                        <option selected disabled>Chọn trạng thái</option>
+                                        <option <?= ($newsDetail['status'] == 1) ? "selected" : ""?> value="1">Đang xây dựng</option>
+                                        <option <?= ($newsDetail['status'] == 2) ? "selected" : ""?> value="2">Đã hoàn thiện</option>
                                     </select>
                                 </div>
                             </div>
@@ -316,9 +335,11 @@
                         <input type="file" class="hidden click_img_mota">
 
                         <div class="khoi_mota">
-                            <textarea name="" id="" cols="30" rows="10" class="mota_text"></textarea>
-                            <div class="thongtinctda_khoianh relative hidden">
-                                <img src="<? echo base_url(); ?>assets/images/anh_rong.png" alt="" class="mota_img anh_mota">
+                            <textarea name="" id="" cols="30" rows="10" class="mota_text <?= (file_exists('upload/'.$y.'/'.$m.'/'.$d.'/'.$newsDetail['desc_project']) && $newsDetail['desc_project'] != '') ? "hidden" : "" ?>"><?= $newsDetail['desc_project'] ?></textarea>
+                            <div class="thongtinctda_khoianh relative <?= (file_exists('upload/'.$y.'/'.$m.'/'.$d.'/'.$newsDetail['desc_project'])  && $newsDetail['desc_project'] != '') ? "" : "hidden" ?>">
+                                <?  if(file_exists('upload/'.$y.'/'.$m.'/'.$d.'/'.$newsDetail['desc_project'])): ?>
+                                <img src="<? echo base_url(); ?>upload/<?= $y ?>/<?= $m ?>/<?= $d ?>/<?= $newsDetail['desc_project'] ?>" alt="" class="mota_img anh_mota">
+                                <? endif ?>
                                 <div class="thongtinctda_khoibutton flex center-center absolute">
                                     <button type="button" class="thongtinctda_tieude_anh">Thêm tiêu đề ảnh</button>
                                     <img src="<? echo base_url(); ?>assets/images/rotate-left.png" alt="" class="wh-24 ttctda_img_left right-10">
@@ -327,8 +348,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="khoi_mota_img top-8 relative hidden">
-                            <input type="text" class="title_img_project" placeholder="Nhập tiêu đề ảnh">
+                        <div class="khoi_mota_img top-8 relative <?= ((file_exists('upload/'.$y.'/'.$m.'/'.$d.'/'.$newsDetail['desc_project']))&& $newsDetail['title_img_project'] != '') ? "" : "hidden" ?>">
+                            <input type="text" class="title_img_project" value="<?= $newsDetail['title_img_project'] ?>" placeholder="Nhập tiêu đề ảnh">
                             <img src="<? echo base_url(); ?>assets/images/remove_img.png" alt="" class="absolute thongtinctda_remove_tieudeanh wh-20">
                         </div>
                     </div>
@@ -373,9 +394,11 @@
 
                             <div class="vitriduan_mota">
                                 <div class="khoi_mota">
-                                    <textarea name="" id="" cols="30" rows="10" class="vtda_text"></textarea>
-                                    <div class="vitriduan_khoianh relative hidden">
-                                        <img src="<? echo base_url(); ?>assets/images/anh_rong.png" alt="" class="vtda_post_anh">
+                                    <textarea name="" id="" cols="30" rows="10" class="vtda_text <?= (file_exists('upload/'.$y.'/'.$m.'/'.$d.'/'.$newsDetail['project_addr']) && $newsDetail['project_addr'] != '') ? "hidden" : "" ?>"></textarea>
+                                    <div class="vitriduan_khoianh relative <?= (file_exists('upload/'.$y.'/'.$m.'/'.$d.'/'.$newsDetail['project_addr'])) ? "" : "hidden" ?>">
+                                        <? if(file_exists('upload/'.$y.'/'.$m.'/'.$d.'/'.$newsDetail['project_addr']) && $newsDetail['project_addr'] != ''): ?>
+                                        <img src="<? echo base_url(); ?>upload/<?= $y ?>/<?= $m ?>/<?= $d ?>/<?= $newsDetail['project_addr'] ?>" alt="" class="vtda_post_anh">
+                                        <? endif ?>
                                         <div class="vitriduan_khoibutton flex center-center absolute">
                                             <button type="button" class="vitriduan_tieude_anh c-pointer">Thêm tiêu đề ảnh</button>
                                             <img src="<? echo base_url(); ?>assets/images/rotate-left.png" alt=""
@@ -387,8 +410,8 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="khoi_mota_img top-8 relative hidden">
-                                    <input type="text" class="title_img_vtda" placeholder="Nhập tiêu đề ảnh">
+                                <div class="khoi_mota_img top-8 relative <?= (file_exists('upload/'.$y.'/'.$m.'/'.$d.'/'.$newsDetail['project_addr']) && $newsDetail['title_img_vtda'] != '') ? "" : "hidden" ?>">
+                                    <input type="text" class="title_img_vtda" value="<?= $newsDetail['title_img_vtda'] ?>"placeholder="Nhập tiêu đề ảnh">
                                     <img src="<? echo base_url(); ?>assets/images/remove_img.png" alt=""
                                         class="absolute vtda_remove_tieudeanh wh-20 c-pointer">
                                 </div>
@@ -399,26 +422,36 @@
                 <!-- end vi tri du an -->
                 <div class="border-375"></div>
                 <!-- mat bang du an -->
+                <?
+                    $arr_title_mb = json_decode($newsDetail['title_mb_project']);
+                    $img_mb_project = json_decode($newsDetail['img_mb_project']);
+                ?>
                 <div class="matbangduan top-24">
                     <p class="font-medium chuxanh">Mặt bằng dự án</p>
                     <div class="mbda_noidung">
+                        <? foreach($arr_title_mb as $key=>$value): ?>
                         <div class="khoi_tieude_mbda">
                             <div class="box_input_infor">
                                 <p class="font-medium chuden height-20 top-29">Tiêu đề mặt bằng dự án <span
                                         class="chudo">*</span></p>
                                 <div class="khunginput top-8 input_infor_tag">
-                                    <input class="title_mb_project" type="text" name="title_mb_project" placeholder="Nhập tiêu đề mặt bằng dự án">
+                                    <input class="title_mb_project" type="text" value="<?= $value ?>" name="title_mb_project" placeholder="Nhập tiêu đề mặt bằng dự án">
                                 </div>
                             </div>
                             <input onchange="mbda_tieude_click_anh(this)" type="file" name="mbda_tieude_click_anh[]" class="hidden mbda_tieude_click_anh">
                             <div class="mbda_khoi_anh top-24 relative">
-                                <img src="<? echo base_url(); ?>assets/images/anh_rong.png" alt="" class="mbda_post_anh">
+                                <? if( isset($img_mb_project[$key])): ?>
+                                    <img src="<? echo base_url(); ?>upload/<?= $y ?>/<?= $m ?>/<?= $d ?>/<?= $img_mb_project[$key] ?>" alt="" class="mbda_post_anh">
+                                <? else: ?>
+                                    <img src="<? echo base_url(); ?>assets/images/anh_rong.png" alt="" class="mbda_post_anh">
+                                <? endif ?>
                                 <div onclick="mbda_add_anh(this)" class="mbda_add_anh flex center-center absolute">
                                     <img src="<? echo base_url(); ?>assets/images/tan_camera.svg" alt="" class="right-8 wh-24">
                                     <p class="chuxanh">Thêm ảnh</p>
                                 </div>
                             </div>
                         </div>
+                        <? endforeach ?>
                     </div>
                     <div class="khoi_add_mbda left-22 flex top-8">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -456,10 +489,12 @@
                         </div>
                         <input type="file" class="mbda_click_anh hidden">
                         <div class="mbda_text-or-img">
-                            <textarea name="" id="" cols="30" rows="10" class="mbda_text"></textarea>
-                            <div class="mbda_khoianh relative hidden">
-                                <img src="<? echo base_url(); ?>assets/images/anh_rong.png" alt="" class="mbda_post_anh_mota">
-                                <div class="mbda_khoibutton flex center-center absolute">
+                            <textarea name="" id="" cols="30" rows="10" class="mbda_text <?= (file_exists('upload/'.$y.'/'.$m.'/'.$d.'/'.$newsDetail['desc_mb_project'])  && $newsDetail['desc_mb_project'] != '') ? 'hidden' : '' ?>"><?= $newsDetail['desc_mb_project'] ?></textarea>
+                            <div class="mbda_khoianh relative <?= (file_exists('upload/'.$y.'/'.$m.'/'.$d.'/'.$newsDetail['desc_mb_project'])) ? '' : 'hidden' ?>">
+                            <? if(file_exists('upload/'.$y.'/'.$m.'/'.$d.'/'.$newsDetail['desc_mb_project']) && $newsDetail['desc_mb_project'] != ''): ?>
+                            <img src="<? echo base_url(); ?>upload/<?= $y ?>/<?= $m ?>/<?= $d ?>/<?= $newsDetail['desc_mb_project'] ?>" alt="" class="mbda_post_anh_mota">
+                            <? endif ?>
+                            <div class="mbda_khoibutton flex center-center absolute">
                                     <button type="button" class="mbda_tieude_anh c-pointer">Thêm tiêu đề ảnh</button>
                                     <img src="<? echo base_url(); ?>assets/images/rotate-left.png" alt=""
                                         class="wh-24 mbda_img_left right-10 c-pointer">
@@ -470,8 +505,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="mbda_khoi_tieude relative hidden">
-                        <input type="text" class="title_img_mbda" placeholder="Nhập tiêu đề ảnh">
+                    <div class="mbda_khoi_tieude relative <?= (file_exists('upload/'.$y.'/'.$m.'/'.$d.'/'.$newsDetail['desc_mb_project']) && $newsDetail['title_img_mbda'] != '') ? '' : 'hidden' ?>">
+                        <input type="text" class="title_img_mbda" value ="<?= $newsDetail['title_img_mbda'] ?>" placeholder="Nhập tiêu đề ảnh">
                         <img src="<? echo base_url(); ?>assets/images/remove_img.png" alt="" class="absolute mbda_tieude_remove wh-20 c-pointer">
                     </div>
                 </div>
@@ -480,6 +515,9 @@
                 <!-- tien ich du an -->
                 <div class="tienichduan top-24">
                     <p class="font-medium chuxanh">Tiện ích dự án</p>
+                    <?
+                        $arr_utilities = explode(',',$newsDetail['list_utilities']);
+                    ?>
                     <p class="tida_title chuden top-8">Bài đăng thông tin bổ sung thường có hiệu quả hơn 40% so với bài đăng
                         thường</p>
                     <div class="tida_khoi_thongtin flex">
@@ -495,27 +533,27 @@
                                     </svg>
                                 </div>
                                 <div class="noidung_con hidden_375 flex bot-5 top-21 center-height">
-                                    <input type="checkbox" name="utilities" value ="1" class="right-9">
+                                    <input type="checkbox" <?= (in_array(1,$arr_utilities)) ? 'checked' : "" ?> name="utilities" value ="1" class="right-9">
                                     <p>Công viên</p>
                                 </div>
                                 <div class="noidung_con hidden_375 flex bot-5 top-21 center-height">
-                                    <input type="checkbox" name="utilities" value ="2" class="right-9">
+                                    <input type="checkbox" <?= (in_array(2,$arr_utilities)) ? 'checked' : "" ?> name="utilities" value ="2" class="right-9">
                                     <p>Hộp thư dân cư</p>
                                 </div>
                                 <div class="noidung_con hidden_375 flex bot-5 top-21 center-height">
-                                    <input type="checkbox" name="utilities" value ="3" class="right-9">
+                                    <input type="checkbox" <?= (in_array(3,$arr_utilities)) ? 'checked' : "" ?> name="utilities" value ="3" class="right-9">
                                     <p>Đài phun nước</p>
                                 </div>
                                 <div class="noidung_con hidden_375 flex bot-5 top-21 center-height">
-                                    <input type="checkbox" name="utilities" value ="4" class="right-9">
+                                    <input type="checkbox" <?= (in_array(4,$arr_utilities)) ? 'checked' : "" ?> name="utilities" value ="4" class="right-9">
                                     <p>Ghế công cộng</p>
                                 </div>
                                 <div class="noidung_con hidden_375 flex bot-5 top-21 center-height">
-                                    <input type="checkbox" name="utilities" value ="5" class="right-9">
+                                    <input type="checkbox" <?= (in_array(5,$arr_utilities)) ? 'checked' : "" ?> name="utilities" value ="5" class="right-9">
                                     <p>Chỗ để xe miễn phí</p>
                                 </div>
                                 <div class="noidung_con hidden_375 flex bot-5 top-21 center-height">
-                                    <input type="checkbox" name="utilities" value ="6" class="right-9">
+                                    <input type="checkbox" <?= (in_array(6,$arr_utilities)) ? 'checked' : "" ?> name="utilities" value ="6" class="right-9">
                                     <p>Chỗ để xe công cộng miễn phí</p>
                                 </div>
                             </div>
@@ -530,23 +568,23 @@
                                     </svg>
                                 </div>
                                 <div class="noidung_con hidden_375 flex bot-5 top-21 center-height">
-                                    <input type="checkbox" name="utilities" value ="7" class="right-9">
+                                    <input type="checkbox" <?= (in_array(7,$arr_utilities)) ? 'checked' : "" ?> name="utilities" value ="7" class="right-9">
                                     <p>Rap chiếu phim</p>
                                 </div>
                                 <div class="noidung_con hidden_375 flex bot-5 top-21 center-height">
-                                    <input type="checkbox" name="utilities" value ="8" class="right-9">
+                                    <input type="checkbox" <?= (in_array(8,$arr_utilities)) ? 'checked' : "" ?> name="utilities" value ="8" class="right-9">
                                     <p>Spa làm đẹp</p>
                                 </div>
                                 <div class="noidung_con hidden_375 flex bot-5 top-21 center-height">
-                                    <input type="checkbox" name="utilities" value ="9" class="right-9">
+                                    <input type="checkbox" <?= (in_array(9,$arr_utilities)) ? 'checked' : "" ?> name="utilities" value ="9" class="right-9">
                                     <p>Khu vui chơi trẻ em</p>
                                 </div>
                                 <div class="noidung_con hidden_375 flex bot-5 top-21 center-height">
-                                    <input type="checkbox" name="utilities" value ="10" class="right-9">
+                                    <input type="checkbox" <?= (in_array(10,$arr_utilities)) ? 'checked' : "" ?> name="utilities" value ="10" class="right-9">
                                     <p>Khu thư giãn người già</p>
                                 </div>
                                 <div class="noidung_con hidden_375 flex bot-5 top-21 center-height">
-                                    <input type="checkbox" name="utilities" value ="11" class="right-9">
+                                    <input type="checkbox" <?= (in_array(11,$arr_utilities)) ? 'checked' : "" ?> name="utilities" value ="11" class="right-9">
                                     <p>Công viên nước</p>
                                 </div>
                             </div>
@@ -564,19 +602,19 @@
                                     </svg>
                                 </div>
                                 <div class="noidung_con hidden_375 flex bot-5 top-21 center-height">
-                                    <input type="checkbox" name="utilities" value ="12" class="right-9">
+                                    <input type="checkbox" <?= (in_array(12,$arr_utilities)) ? 'checked' : "" ?> name="utilities" value ="12" class="right-9">
                                     <p>Nhà thuốc</p>
                                 </div>
                                 <div class="noidung_con hidden_375 flex bot-5 top-21 center-height">
-                                    <input type="checkbox" name="utilities" value ="13" class="right-9">
+                                    <input type="checkbox" <?= (in_array(13,$arr_utilities)) ? 'checked' : "" ?> name="utilities" value ="13" class="right-9">
                                     <p>Bệnh viện</p>
                                 </div>
                                 <div class="noidung_con hidden_375 flex bot-5 top-21 center-height">
-                                    <input type="checkbox" name="utilities" value ="14" class="right-9">
+                                    <input type="checkbox" <?= (in_array(14,$arr_utilities)) ? 'checked' : "" ?> name="utilities" value ="14" class="right-9">
                                     <p>Trường cấp 1,2,3</p>
                                 </div>
                                 <div class="noidung_con hidden_375 flex bot-5 top-21 center-height">
-                                    <input type="checkbox" name="utilities" value ="15" class="right-9">
+                                    <input type="checkbox" <?= (in_array(15,$arr_utilities)) ? 'checked' : "" ?> name="utilities" value ="15" class="right-9">
                                     <p>Trường mần non</p>
                                 </div>
                             </div>
@@ -591,27 +629,27 @@
                                     </svg>
                                 </div>
                                 <div class="noidung_con hidden_375 flex bot-5 top-21 center-height">
-                                    <input type="checkbox" name="utilities" value ="16" class="right-9">
+                                    <input type="checkbox" <?= (in_array(16,$arr_utilities)) ? 'checked' : "" ?> name="utilities" value ="16" class="right-9">
                                     <p>Quán bar</p>
                                 </div>
                                 <div class="noidung_con hidden_375 flex bot-5 top-21 center-height">
-                                    <input type="checkbox" name="utilities" value ="17" class="right-9">
+                                    <input type="checkbox" <?= (in_array(17,$arr_utilities)) ? 'checked' : "" ?> name="utilities" value ="17" class="right-9">
                                     <p>Nhà hàng</p>
                                 </div>
                                 <div class="noidung_con hidden_375 flex bot-5 top-21 center-height">
-                                    <input type="checkbox" name="utilities" value ="18" class="right-9">
+                                    <input type="checkbox" <?= (in_array(18,$arr_utilities)) ? 'checked' : "" ?> name="utilities" value ="18" class="right-9">
                                     <p>Trung tâm thương mại</p>
                                 </div>
                                 <div class="noidung_con hidden_375 flex bot-5 top-21 center-height">
-                                    <input type="checkbox" name="utilities" value ="19" class="right-9">
+                                    <input type="checkbox" <?= (in_array(19,$arr_utilities)) ? 'checked' : "" ?> name="utilities" value ="19" class="right-9">
                                     <p>Cây ATM</p>
                                 </div>
                                 <div class="noidung_con hidden_375 flex bot-5 top-21 center-height">
-                                    <input type="checkbox" name="utilities" value ="20" class="right-9">
+                                    <input type="checkbox" <?= (in_array(20,$arr_utilities)) ? 'checked' : "" ?> name="utilities" value ="20" class="right-9">
                                     <p>Ngân hàng</p>
                                 </div>
                                 <div class="noidung_con hidden_375 flex bot-5 top-21 center-height">
-                                    <input type="checkbox" name="utilities" value ="21" class="right-9">
+                                    <input type="checkbox" <?= (in_array(21,$arr_utilities)) ? 'checked' : "" ?> name="utilities" value ="21" class="right-9">
                                     <p>Coffee shop</p>
                                 </div>
                             </div>
@@ -629,27 +667,27 @@
                                     </svg>
                                 </div>
                                 <div class="noidung_con hidden_375 flex bot-5 top-21 center-height">
-                                    <input type="checkbox" name="utilities" value ="22" class="right-9">
+                                    <input type="checkbox" <?= (in_array(22,$arr_utilities)) ? 'checked' : "" ?> name="utilities" value ="22" class="right-9">
                                     <p>Máy báo khói</p>
                                 </div>
                                 <div class="noidung_con hidden_375 flex bot-5 top-21 center-height">
-                                    <input type="checkbox" name="utilities" value ="23" class="right-9">
+                                    <input type="checkbox" <?= (in_array(23,$arr_utilities)) ? 'checked' : "" ?> name="utilities" value ="23" class="right-9">
                                     <p>Bình chữa cháy</p>
                                 </div>
                                 <div class="noidung_con hidden_375 flex bot-5 top-21 center-height">
-                                    <input type="checkbox" name="utilities" value ="24" class="right-9">
+                                    <input type="checkbox" <?= (in_array(24,$arr_utilities)) ? 'checked' : "" ?> name="utilities" value ="24" class="right-9">
                                     <p>Camera an ninh</p>
                                 </div>
                                 <div class="noidung_con hidden_375 flex bot-5 top-21 center-height">
-                                    <input type="checkbox" name="utilities" value ="25" class="right-9">
+                                    <input type="checkbox" <?= (in_array(25,$arr_utilities)) ? 'checked' : "" ?> name="utilities" value ="25" class="right-9">
                                     <p>Máy báo khí CO</p>
                                 </div>
                                 <div class="noidung_con hidden_375 flex bot-5 top-21 center-height">
-                                    <input type="checkbox" name="utilities" value ="26" class="right-9">
+                                    <input type="checkbox" <?= (in_array(26,$arr_utilities)) ? 'checked' : "" ?> name="utilities" value ="26" class="right-9">
                                     <p>Bảo vệ an ninh</p>
                                 </div>
                                 <div class="noidung_con hidden_375 flex bot-5 top-21 center-height">
-                                    <input type="checkbox" name="utilities" value ="27" class="right-9">
+                                    <input type="checkbox" <?= (in_array(27,$arr_utilities)) ? 'checked' : "" ?> name="utilities" value ="27" class="right-9">
                                     <p>Dọn vệ sinh</p>
                                 </div>
                             </div>
@@ -664,23 +702,23 @@
                                     </svg>
                                 </div>
                                 <div class="noidung_con hidden_375 flex bot-5 top-21 center-height">
-                                    <input type="checkbox" name="utilities" value ="28" class="right-9">
+                                    <input type="checkbox" <?= (in_array(28,$arr_utilities)) ? 'checked' : "" ?> name="utilities" value ="28" class="right-9">
                                     <p>Bể bơi</p>
                                 </div>
                                 <div class="noidung_con hidden_375 flex bot-5 top-21 center-height">
-                                    <input type="checkbox" name="utilities" value ="29" class="right-9">
+                                    <input type="checkbox" <?= (in_array(29,$arr_utilities)) ? 'checked' : "" ?> name="utilities" value ="29" class="right-9">
                                     <p>Bóng rổ</p>
                                 </div>
                                 <div class="noidung_con hidden_375 flex bot-5 top-21 center-height">
-                                    <input type="checkbox" name="utilities" value ="30" class="right-9">
+                                    <input type="checkbox" <?= (in_array(30,$arr_utilities)) ? 'checked' : "" ?> name="utilities" value ="30" class="right-9">
                                     <p>Bóng đá</p>
                                 </div>
                                 <div class="noidung_con hidden_375 flex bot-5 top-21 center-height">
-                                    <input type="checkbox" name="utilities" value ="31" class="right-9">
+                                    <input type="checkbox" <?= (in_array(31,$arr_utilities)) ? 'checked' : "" ?> name="utilities" value ="31" class="right-9">
                                     <p>Cầu lông</p>
                                 </div>
                                 <div class="noidung_con hidden_375 flex bot-5 top-21 center-height">
-                                    <input type="checkbox" name="utilities" value ="32" class="right-9">
+                                    <input type="checkbox" <?= (in_array(32,$arr_utilities)) ? 'checked' : "" ?> name="utilities" value ="32" class="right-9">
                                     <p>Sân golf</p>
                                 </div>
                             </div>
@@ -698,23 +736,23 @@
                                     </svg>
                                 </div>
                                 <div class="noidung_con hidden_375 flex bot-5 top-21 center-height">
-                                    <input type="checkbox" name="utilities" value ="33" class="right-9">
+                                    <input type="checkbox" <?= (in_array(33,$arr_utilities)) ? 'checked' : "" ?> name="utilities" value ="33" class="right-9">
                                     <p>Bể bơi</p>
                                 </div>
                                 <div class="noidung_con hidden_375 flex bot-5 top-21 center-height">
-                                    <input type="checkbox" name="utilities" value ="34" class="right-9">
+                                    <input type="checkbox" <?= (in_array(34,$arr_utilities)) ? 'checked' : "" ?> name="utilities" value ="34" class="right-9">
                                     <p>Bóng rổ</p>
                                 </div>
                                 <div class="noidung_con hidden_375 flex bot-5 top-21 center-height">
-                                    <input type="checkbox" name="utilities" value ="35" class="right-9">
+                                    <input type="checkbox" <?= (in_array(35,$arr_utilities)) ? 'checked' : "" ?> name="utilities" value ="35" class="right-9">
                                     <p>Bóng đá</p>
                                 </div>
                                 <div class="noidung_con hidden_375 flex bot-5 top-21 center-height">
-                                    <input type="checkbox" name="utilities" value ="36" class="right-9">
+                                    <input type="checkbox" <?= (in_array(36,$arr_utilities)) ? 'checked' : "" ?> name="utilities" value ="36" class="right-9">
                                     <p>Cầu lông</p>
                                 </div>
                                 <div class="noidung_con hidden_375 flex bot-5 top-21 center-height">
-                                    <input type="checkbox" name="utilities" value ="37" class="right-9">
+                                    <input type="checkbox" <?= (in_array(37,$arr_utilities)) ? 'checked' : "" ?> name="utilities" value ="37" class="right-9">
                                     <p>Sân golf</p>
                                 </div>
                             </div>
@@ -754,11 +792,13 @@
                         </div>
                         <input type="file" class="hidden tida_click_anh">
                         <div class="tida_text_or_img">
-                            <textarea name="" id="" cols="30" rows="10" class="tida_text"></textarea>
-                            <div class="tida_khoianh relative hidden">
-                                <img src="<? echo base_url(); ?>assets/images/anh_rong.png" alt="" class="tida_post_anh">
+                            <textarea name="" id="" cols="30" rows="10" class="tida_text <?= (file_exists('upload/'.$y.'/'.$m.'/'.$d.'/'.$newsDetail['desc_utilities_project']) && $newsDetail['desc_utilities_project'] != '') ? "hidden" : "" ?>"><?= $newsDetail['desc_utilities_project'] ?></textarea>
+                            <div class="tida_khoianh relative <?= (file_exists('upload/'.$y.'/'.$m.'/'.$d.'/'.$newsDetail['desc_utilities_project'])) ? "" : "hidden" ?>">
+                            <? if(file_exists('upload/'.$y.'/'.$m.'/'.$d.'/'.$newsDetail['desc_utilities_project']) && $newsDetail['desc_utilities_project'] != ''): ?>
+                            <img src="<? echo base_url(); ?>upload/<?= $y ?>/<?= $m ?>/<?= $d ?>/<?= $newsDetail['desc_utilities_project'] ?>" alt="" class="tida_post_anh">
+                            <? endif ?>
                                 <div class="tida_khoibutton flex center-center absolute">
-                                    <button class="tida_tieude_anh c-pointer">Thêm tiêu đề ảnh</button>
+                                    <button type="button" class="tida_tieude_anh c-pointer">Thêm tiêu đề ảnh</button>
                                     <img src="<? echo base_url(); ?>assets/images/rotate-left.png" alt=""
                                         class="wh-24 tida_img_left right-10 c-pointer">
                                     <img src="<? echo base_url(); ?>assets/images/rotate-right.png" alt=""
@@ -768,8 +808,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="tida_khoi_tieude relative hidden">
-                        <input type="text" class="title_img_utilities" placeholder="Nhập tiêu đề ảnh">
+                    <div class="tida_khoi_tieude relative <?= (file_exists('upload/'.$y.'/'.$m.'/'.$d.'/'.$newsDetail['desc_utilities_project']) && $newsDetail['title_img_utilities']) ? "" : "hidden" ?>">
+                        <input type="text" class="title_img_utilities" value="<?= $newsDetail['title_img_utilities']?>" placeholder="Nhập tiêu đề ảnh">
                         <img src="<? echo base_url(); ?>assets/images/remove_img.png" alt="" class="absolute tida_tieude_remove wh-20 c-pointer">
                     </div>
                 </div>
@@ -777,11 +817,18 @@
 
                 <!-- gioi thieu du an -->
                 <div class="khoi_gioithieuduan">
+                    <?
+                        $arr_introduct = json_decode($newsDetail['introduct_project']);
+                        $arr_part_name = explode(',',$newsDetail['part_name']); 
+                        $title_img_gtda = json_decode($newsDetail['title_img_gtda']);
+                        $count = 0;
+                        foreach ($arr_introduct as $key=>$value):
+                    ?>
                     <div class="gioithieuduan top-24">
                         <div class="box_input_infor">
-                            <p class="font-medium chuden">Tên đầu mục <span class="chudo">*</span></p>
+                            <p class="font-medium chuden">Tên đầu mục<span class="chudo">*</span></p>
                             <div class="khunginput top-8 input_infor_tag">
-                                <input type="text" class="part_name" name="part_name" placeholder="Nhập tên đầu mục">
+                                <input type="text" class="part_name" value="<?= $arr_part_name[$key]?>" name="part_name" placeholder="Nhập tên đầu mục">
                             </div>
                         </div>
                         <div class="gtda_khoimota relative top-24">
@@ -817,9 +864,11 @@
                             </div>
                             <input onchange="gtda_click_anh(this)" type="file" class="hidden gtda_click_anh">
                             <div class="gtda_text_or_img">
-                                <textarea name="" id="" cols="30" rows="10" class="gtda_text"></textarea>
-                                <div class="gtda_khoianh relative hidden">
-                                    <img src="<? echo base_url(); ?>assets/images/anh_rong.png" alt="" class="gtda_post_anh">
+                                <textarea name="" id="" cols="30" rows="10" class="gtda_text <?= (file_exists('upload/'.$y.'/'.$m.'/'.$d.'/'.$value) && $value != '') ? 'hidden' : "" ?>"><?= $value ?></textarea>
+                                <div class="gtda_khoianh relative <?= (file_exists('upload/'.$y.'/'.$m.'/'.$d.'/'.$value) && $value != '') ? '' : "hidden" ?>">
+                                    
+                                    <img src="<? echo base_url(); ?>upload/<?= $y ?>/<?= $m ?>/<?= $d ?>/<?= $value ?>" alt="" class="gtda_post_anh">
+                                    
                                     <div class="gtda_khoibutton flex center-center absolute">
                                         <button type="button" onclick="show_gtda(this)" class="gtda_tieude_anh c-pointer">Thêm tiêu đề ảnh</button>
                                         <img onclick="gtda_img_left(this)" src="<? echo base_url(); ?>assets/images/rotate-left.png" alt=""
@@ -830,12 +879,19 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="gtda_khoi_tieude relative top-8 hidden">
-                                <input type="text" class="title_img_gtda" placeholder="Nhập tiêu đề ảnh">
+                            <div class="gtda_khoi_tieude relative top-8 <?= (file_exists('upload/'.$y.'/'.$m.'/'.$d.'/'.$value) && isset($title_img_gtda[$count])) ? '' : "hidden" ?>">
+                                <input type="text" class="title_img_gtda" value="<?= (isset($title_img_gtda[$count])) ? $title_img_gtda[$count] : "" ?>" placeholder="Nhập tiêu đề ảnh">
                                 <img src="<? echo base_url(); ?>assets/images/remove_img.png" alt="" onclick="hide_gtda(this)"  class="absolute gtda_tieude_remove wh-20 c-pointer">
                             </div>
+                            <!-- <?
+                                if(file_exists('upload/'.$y.'/'.$m.'/'.$d.'/'.$value) &&  isset($title_img_gtda[$count])) 
+                                {
+                                    $count++;
+                                }
+                            ?> -->
                         </div>
                     </div>
+                    <? endforeach ?>
                 </div>
                 <!-- end gioi thieu du an -->
                 <div class="border-375"></div>
@@ -854,8 +910,8 @@
                 <!-- end add muc gioi thieu du an -->
 
                 <!-- butt dang tin -->
-                <div class="flex space butt_dangtin relative">
-                    <button type="submit" class="butt_xanh flex center-center c-pointer">
+                <div class="flex space butt_dangtin relative <?= ($newsDetail['stt_news'] == 2 ) ? '' : 'hidden' ?>">
+                    <button type="submit" class="butt_xanh btn_post_now flex center-center c-pointer">
                         <p class="font-medium size-16 right-8">Đăng ngay</p>
                         <img src="<? echo base_url(); ?>assets/images/butt_dangngay.svg" alt="" class="wh-20">
                     </button>
@@ -870,8 +926,8 @@
                 <!-- end butt dang tin -->
 
                 <!-- butt hen lich dang tin -->
-                <div class="flex space butt_henlich relative hidden">
-                    <button class="butt_xanh flex center-center c-pointer">
+                <div class="flex space butt_henlich relative <?= ($newsDetail['stt_news'] == 3 ) ? '' : 'hidden' ?>">
+                    <button class="butt_xanh btn_appointment flex center-center c-pointer">
                         <p class="font-medium size-16 right-8">Hẹn lịch đăng tin</p>
                         <img src="<? echo base_url(); ?>assets/images/clock_henlich.png" alt="" class="wh-20">
                     </button>
@@ -906,10 +962,10 @@
                                     khách hàng hơn hoặc tự chọn ngày giờ đăng tin trong tương lại.</div>
                                 <div class="lenlich_input top-32 flex space">
                                     <div class="khunginput">
-                                        <input class="date_post_news" type="date">
+                                        <input class="date_post_news" value="<?= date('Y-m-d',$newsDetail['date_post_news']) ?>" type="date">
                                     </div>
                                     <div class="khunginput">
-                                        <input class="time_post_news" type="time">
+                                        <input class="time_post_news" value="<?= date('H:i',$newsDetail['time_post_news']) ?>" type="time">
                                     </div>
                                 </div>
                                 <div class="khoi_butt top-32 flex center-center">
@@ -1069,6 +1125,14 @@ $('#thongtin_loaitk').change(function() {
         $('.thongtin_msthue').addClass('hidden');
     }
 });
+var stt_news = 2;
+var date_post_news = 0;
+var time_post_news = 0;
+$('.btn_post_now').click(function() {
+    stt_news = 2;
+    date_post_news = 0;
+    time_post_news = 0;
+})
 $('.btn_appointment').click(function() {
     stt_news = 3;
     date_post_news = $(".date_post_news").val();
@@ -1139,8 +1203,11 @@ $("#post_news_project").validate({
             var title_img_vtda 	        = $('.title_img_vtda').val();
             var title_img_mbda 	        = $('.title_img_mbda').val();
             var title_img_utilities 	= $('.title_img_utilities').val();
-
+            var count_img_mb = [];
+            var count_gtda = [];
             var title_img_gtda = [];
+            var s2= 0;
+            var sz= 0;
             $(".title_img_gtda").each(function(){
                 if($(this).val() != "")
                 {
@@ -1229,6 +1296,15 @@ $("#post_news_project").validate({
             gtda_text = JSON.stringify(gtda_text);
 
             var data = new FormData();
+            data.append('id_news','<?= $newsDetail['id_news'] ?>');
+            data.append('time_create','<?= $newsDetail['time_create'] ?>');
+            data.append('banner_img_old','<?= $newsDetail['banner_img'] ?>');
+            data.append('desc_img_project_old','<?= $newsDetail['desc_project'] ?>');
+            data.append('project_addr_old','<?= $newsDetail['project_addr'] ?>');
+            data.append('desc_mb_project_old','<?= $newsDetail['desc_mb_project'] ?>');
+            data.append('img_mb_project_old','<?= $newsDetail['img_mb_project'] ?>');
+            data.append('utilities_img_project_old','<?= $newsDetail['desc_utilities_project'] ?>');
+            data.append('introduct_project','<?= $newsDetail['introduct_project'] ?>');
             data.append('project_name', project_name);
             data.append('introduce', introduce);
             data.append('bds_type', bds_type);
@@ -1272,11 +1348,24 @@ $("#post_news_project").validate({
             data.append('date_post_news', date_post_news);
             data.append('time_post_news', time_post_news);
             $(".mbda_tieude_click_anh").each(function(){
-                data.append('arr_mb_img_project[]', $(this)[0].files[0]);
+                
+                if($(this)[0].files[0])
+                {
+                    count_img_mb.push(s2);
+                    data.append('arr_mb_img_project[]', $(this)[0].files[0]);
+                }
+                s2++;
             });
+            data.append('count_img_mb', count_img_mb);
             $(".gtda_click_anh").each(function(){
-                data.append('arr_img_gtda[]', $(this)[0].files[0]);
+                if($(this)[0].files[0])
+                {
+                    count_gtda.push(sz);
+                    data.append('arr_img_gtda[]', $(this)[0].files[0]);
+                }
+                sz++;
             })
+            data.append('count_gtda',count_gtda);
             data.append('arr_desc_gtda',arr_desc_gtda);
             data.append('gtda_text',gtda_text);
             data.append('desc_mb_img_project',desc_mb_img_project);
@@ -1286,7 +1375,7 @@ $("#post_news_project").validate({
             data.append('part_name', part_name);
 
             $.ajax({
-			 	url: base_url+'PostNews/addNewsProject',
+			 	url: base_url+'admin/ManageNews/postNewsProjectUpdate',
 			 	type: 'post',
 			 	cache: false,
 			 	contentType: false,

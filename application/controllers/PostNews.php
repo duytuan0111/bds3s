@@ -63,11 +63,11 @@ class PostNews extends CI_Controller
 			$data_insert['arr_img'] = upLoadMultipleImg('arr_img_desc');
 		}		
 		$insert = $this->M_PostNews->insertNewsAfterLogin($data_insert);
-		// if ($insert > 0) {
-		// 	$response['status'] = 1;
-		// 	$response['msg'] 	= 'Đăng tin thành công';
-		// }	
-		// echo json_encode($response);
+		if ($insert > 0) {
+			$response['status'] = 1;
+			$response['msg'] 	= 'Đăng tin thành công';
+		}	
+		echo json_encode($response);
 
 	}
     public function PostHomeDesignBeforeLogin() {
@@ -154,7 +154,7 @@ class PostNews extends CI_Controller
 				'street'				=> $this->input->post('street'),
 				'addr_detail' 			=> $this->input->post('addr_detail'),
 				'post_time' 			=> strtotime($this->input->post('post_time')),
-				'cdt_com_name' 		=> $this->input->post('cdt_come_name'),
+				'cdt_com_name' 			=> $this->input->post('cdt_come_name'),
 				'cdt_founding'		    => strtotime($this->input->post('cdt_founding')),
 				'cdt_phone' 			=> $this->input->post('cdt_phone'),
 				'cdt_addr_com' 			=> $this->input->post('cdt_addr_com'),
@@ -187,6 +187,7 @@ class PostNews extends CI_Controller
 				'date_post_news'		=> strtotime($this->input->post('date_post_news')),
 				'time_post_news' 		=> strtotime($this->input->post('time_post_news')),
 			];
+
 			$response 		= ['status' => 0, 'msg' => ''];
 			$arr_desc_gtda = json_decode($this->input->post('arr_desc_gtda'));
 			//---------img banner
@@ -277,6 +278,7 @@ class PostNews extends CI_Controller
 			'styles' 				=> $this->input->post('styles'),
 			'area' 					=> $this->input->post('area'),
 			'perform' 		    	=> $this->input->post('Perform'),
+			'desc_img' 		    	=> $this->input->post('desc_img'),
 			'list_color' 			=> $this->input->post('list_color'),
 			'price_min'				=> $this->input->post('price_min'),
 			'title_news' 			=> $this->input->post('title_news'),

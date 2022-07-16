@@ -186,7 +186,7 @@
                                                 <div class=" mr_t_8 w_60 m_r_16">
                                                     <div class="box_input_infor">
                                                         <div class="khung_input input_infor_tag  mr_t_0 btn_opacity btn_tat btn_nhap_gia position_r <?= ($newsDetail['Gia_thoa_thuan'] == 1) ? "opacity_click" : "" ?>">
-                                                            <input type="number" id="number" class="" value="<?= ($newsDetail['Gia_thoa_thuan'] == 1) ? "" : $newsDetail['price_min'] ?>" name="giamin" placeholder="Nhập giá cố định">
+                                                            <input type="number" <?= ($newsDetail['Gia_thoa_thuan'] == 1) ? "disabled" : "" ?> id="number" class="" value="<?= ($newsDetail['Gia_thoa_thuan'] == 1) ? "" : $newsDetail['price_min'] ?>" name="giamin" placeholder="Nhập giá cố định">
                                                             <div class="dangtin_mota-thue-thang position_a font_s14 color_grey3 hidden"><span class="position_r z_index_1">Tháng</span> </div>
                                                         </div>
                                                         <div class="btn_opacity mr_t_6 font_s12 line_h14 color_grey">
@@ -204,12 +204,13 @@
                                                     </div>
                                                 </div>
                                                 <div class="dangtin_mota-dong1-khoanggia w_40 mr_t_8">
-                                                    <? if(($newsDetail['price_max'] > $newsDetail['price_min'])): ?>
-                                                    <div class="dangtin_btn-khoanggia <?= ($newsDetail['Gia_thoa_thuan'] == 1) ? "" : "hidden" ?> <?= ($newsDetail['Gia_thoa_thuan'] == 1) ? "opacity_click" : "" ?> btn_tat_khoanggia chuxanh_nentrang pa_10_0 btn_opacity cursor_p" id="gia_open_khoanggia">
+                                                    <? if($newsDetail['price_max'] == 'undefined'): ?>
+                                                    <div class="dangtin_btn-khoanggia  <?= ($newsDetail['Gia_thoa_thuan'] == 1 ) ? "opacity_click" : "" ?>  btn_tat_khoanggia chuxanh_nentrang pa_10_0 btn_opacity cursor_p" id="gia_open_khoanggia">
                                                         <p class="font_s16 line_h19 font_w500">Khoảng giá</p>
                                                     </div>
                                                     <? endif ?>
                                                     <div>
+                                                    <? if($newsDetail['price_max'] != 'undefined'): ?>
                                                     <div class="btn_gia_max <?= ($newsDetail['price_max'] < $newsDetail['price_min'] || $newsDetail['Gia_thoa_thuan'] == 1) ? "hidden" : "" ?> mr_t_0 khung_input pos_re box_input_infor input_infor_tag">
                                                         <input type="number" name="" class="" value="<?= $newsDetail['price_max'] ?>" placeholder="Giá max" id="number_max">
                                                         <span class="img_delete_mo cursor_p"><img src="<? echo base_url() ?>assets/images/delete.png" alt=""></span>
@@ -217,6 +218,7 @@
                                                             <p class="ren_number_max">0 triệu</p>
                                                         </div>
                                                     </div>
+                                                    <? endif ?>
                                                     </div>
                                                 </div>
                                             </div>
@@ -308,7 +310,7 @@
                                     <div class="dangtin_mo_ta_dong7-tang">
                                         <p class="font_w500 font_s16 line_h20 color_grey">Tầng căn hộ</p>
                                         <div class="khung_input mr_t_8">
-                                            <input type="text" value="<?= $newsDetail['floor'] ?>" class="floor" placeholder="Nhập số tầng căn hộ">
+                                            <input type="text"  placeholder="Nhập số tầng căn hộ">
                                         </div>
                                     </div>
                                     <div class="dangtin_mo_ta_dong7-balcony mr_t_21">
@@ -334,19 +336,19 @@
                                         <div class="dong7-numbers-rom_left">
                                             <p class="font_w500 font_s16 line_h20 color_grey">Số phòng tắm</p>
                                             <div class="dong7-numbers-rom_left-value d_flex mr_t_8">
-                                                <div data-id="1" class="dong-numbers-rom-value-item <?= ($newsDetail['bathroom'] == '1') ? "chutrang_nenxanh" : "" ?> radio_bathroom cursor_p">1</div>
-                                                <div data-id="2" class="dong-numbers-rom-value-item <?= ($newsDetail['bathroom'] == '2') ? "chutrang_nenxanh" : "" ?> radio_bathroom cursor_p">2</div>
-                                                <div data-id="3" class="dong-numbers-rom-value-item <?= ($newsDetail['bathroom'] == '3') ? "chutrang_nenxanh" : "" ?> radio_bathroom cursor_p">3</div>
-                                                <div data-id="4+" class="dong-numbers-rom-value-item <?= ($newsDetail['bathroom'] == '4+') ? "chutrang_nenxanh" : "" ?> radio_bathroom cursor_p">4+</div>
+                                                <div data-id="1" class="dong-numbers-rom-value-item cursor_p">1</div>
+                                                <div data-id="2" class="dong-numbers-rom-value-item cursor_p">2</div>
+                                                <div data-id="3" class="dong-numbers-rom-value-item cursor_p">3</div>
+                                                <div data-id="4+" class="dong-numbers-rom-value-item cursor_p">4+</div>
                                             </div>
                                         </div>
                                         <div class="dong7-numbers-rom_right">
                                             <p class="font_w500 font_s16 line_h20 color_grey">Số phòng ngủ</p>
                                             <div class="dong7-numbers-rom_right-value d_flex mr_t_8">
-                                                <div data-id="1" class="dong-numbers-rom-value-item <?= ($newsDetail['bedroom'] == '1') ? "chutrang_nenxanh" : "" ?> radio_bedroom cursor_p">1</div>
-                                                <div data-id="2" class="dong-numbers-rom-value-item <?= ($newsDetail['bedroom'] == '2') ? "chutrang_nenxanh" : "" ?> radio_bedroom cursor_p">2</div>
-                                                <div data-id="3" class="dong-numbers-rom-value-item <?= ($newsDetail['bedroom'] == '3') ? "chutrang_nenxanh" : "" ?> radio_bedroom cursor_p">3</div>
-                                                <div data-id="4+" class="dong-numbers-rom-value-item <?= ($newsDetail['bedroom'] == '4+') ? "chutrang_nenxanh" : "" ?> radio_bedroom cursor_p">4+</div>
+                                                <div data-id="1" class="dong-numbers-rom-value-item cursor_p">1</div>
+                                                <div data-id="2" class="dong-numbers-rom-value-item cursor_p">2</div>
+                                                <div data-id="3" class="dong-numbers-rom-value-item cursor_p">3</div>
+                                                <div data-id="4+" class="dong-numbers-rom-value-item cursor_p">4+</div>
                                             </div>
                                         </div>
                                     </div>
@@ -363,19 +365,19 @@
                                     <div class="dangtin_mota-dong8-facade">
                                         <p class="font_w500 font_s16 line_h20 color_grey">Mặt tiền (m)</p>
                                         <div class="khung_input mr_t_8">
-                                            <input type="text" class="mattien" value="<?= $newsDetail['mattien'] ?>" placeholder="Nhập">
+                                            <input type="text" class="mattien8" value="<?= $newsDetail['mattien'] ?>" placeholder="Nhập">
                                         </div>
                                     </div>
                                     <div class="dangtin_mota-dong8-facade mr_t_21">
                                         <p class="font_w500 font_s16 line_h20 color_grey">Đường vào (m)</p>
                                         <div class="khung_input mr_t_8">
-                                            <input type="text" class="duongvao" value="<?= $newsDetail['duongvao'] ?>" placeholder="Nhập">
+                                            <input type="text" class="duongvao8" value="<?= $newsDetail['duongvao'] ?>" placeholder="Nhập">
                                         </div>
                                     </div>
                                     <div class="dangtin_mota-dong8-facade mr_t_21">
                                         <p class="font_w500 font_s16 line_h20 color_grey">Số tầng</p>
                                         <div class="khung_input mr_t_8">
-                                            <input type="text" value="<?= $newsDetail['floor'] ?>" class="floor" placeholder="Nhập">
+                                            <input type="text" class="floor" value="<?= $newsDetail['floor'] ?>" placeholder="Nhập">
                                         </div>
                                     </div>
                                 </div>
@@ -383,19 +385,19 @@
                                     <div class="dong-numbers-rom_left">
                                         <p class="font_w500 font_s16 line_h20 color_grey">Số phòng tắm</p>
                                         <div class="dong8-numbers-rom_left-value d_flex mr_t_8">
-                                            <div class="dong-numbers-rom-value-item cursor_p <?= ($newsDetail['bathroom'] == '1') ? "chutrang_nenxanh" : "" ?> radio_bathroom">1</div>
-                                            <div class="dong-numbers-rom-value-item cursor_p <?= ($newsDetail['bathroom'] == '2') ? "chutrang_nenxanh" : "" ?> radio_bathroom">2</div>
-                                            <div class="dong-numbers-rom-value-item cursor_p <?= ($newsDetail['bathroom'] == '3') ? "chutrang_nenxanh" : "" ?> radio_bathroom">3</div>
-                                            <div class="dong-numbers-rom-value-item cursor_p <?= ($newsDetail['bathroom'] == '4+') ? "chutrang_nenxanh" : "" ?> radio_bathroom">4+</div>
+                                            <div data-id='1' class="dong-numbers-rom-value-item cursor_p <?= ($newsDetail['bathroom'] == '1') ? "chutrang_nenxanh" : "" ?> radio_bathroom">1</div>
+                                            <div data-id='2' class="dong-numbers-rom-value-item cursor_p <?= ($newsDetail['bathroom'] == '2') ? "chutrang_nenxanh" : "" ?> radio_bathroom">2</div>
+                                            <div data-id='3' class="dong-numbers-rom-value-item cursor_p <?= ($newsDetail['bathroom'] == '3') ? "chutrang_nenxanh" : "" ?> radio_bathroom">3</div>
+                                            <div data-id='4+' class="dong-numbers-rom-value-item cursor_p <?= ($newsDetail['bathroom'] == '4+') ? "chutrang_nenxanh" : "" ?> radio_bathroom">4+</div>
                                         </div>
                                     </div>
                                     <div class="dong-numbers-rom_right mr_t_21">
                                         <p class="font_w500 font_s16 line_h20 color_grey">Số phòng ngủ</p>
                                         <div class="dong8-numbers-rom_right-value d_flex mr_t_8">
-                                            <div class="dong-numbers-rom-value-item cursor_p <?= ($newsDetail['bedroom'] == '1') ? "chutrang_nenxanh" : "" ?> radio_bedroom cursor_p">1</div>
-                                            <div class="dong-numbers-rom-value-item cursor_p <?= ($newsDetail['bedroom'] == '2') ? "chutrang_nenxanh" : "" ?> radio_bedroom cursor_p">2</div>
-                                            <div class="dong-numbers-rom-value-item cursor_p <?= ($newsDetail['bedroom'] == '3') ? "chutrang_nenxanh" : "" ?> radio_bedroom cursor_p">3</div>
-                                            <div class="dong-numbers-rom-value-item cursor_p <?= ($newsDetail['bedroom'] == '4+') ? "chutrang_nenxanh" : "" ?> radio_bedroom cursor_p">4+</div>
+                                            <div data-id='1' class="dong-numbers-rom-value-item cursor_p <?= ($newsDetail['bedroom'] == '1') ? "chutrang_nenxanh" : "" ?> radio_bedroom cursor_p">1</div>
+                                            <div data-id='2' class="dong-numbers-rom-value-item cursor_p <?= ($newsDetail['bedroom'] == '2') ? "chutrang_nenxanh" : "" ?> radio_bedroom cursor_p">2</div>
+                                            <div data-id='3' class="dong-numbers-rom-value-item cursor_p <?= ($newsDetail['bedroom'] == '3') ? "chutrang_nenxanh" : "" ?> radio_bedroom cursor_p">3</div>
+                                            <div data-id='4+' class="dong-numbers-rom-value-item cursor_p <?= ($newsDetail['bedroom'] == '4+') ? "chutrang_nenxanh" : "" ?> radio_bedroom cursor_p">4+</div>
                                         </div>
                                     </div>
                                     <div class="dong7-numbers-rom_right_furniture mr_t_21">
@@ -411,13 +413,13 @@
                                     <div class="dangtin_mota-dong8-facade">
                                         <p class="font_w500 font_s16 line_h20 color_grey">Mặt tiền (m)</p>
                                         <div class="khung_input mr_t_8">
-                                            <input type="number" class="mattien" value="<?= $newsDetail['mattien'] ?>" placeholder="Nhập">
+                                            <input type="number" class="mattien9" value="<?= $newsDetail['mattien'] ?>" placeholder="Nhập">
                                         </div>
                                     </div>
                                     <div class="dangtin_mota-dong8-facade mr_t_21">
                                         <p class="font_w500 font_s16 line_h20 color_grey">Đường vào (m)</p>
                                         <div class="khung_input mr_t_8">
-                                            <input type="number" class="duongvao" value="<?= $newsDetail['duongvao'] ?>"  placeholder="Nhập">
+                                            <input type="number" class="duongvao9" value="<?= $newsDetail['duongvao'] ?>"  placeholder="Nhập">
                                         </div>
                                     </div>
                                 </div>
@@ -464,7 +466,7 @@
                                             if($arr_img != ""):
                                             foreach($arr_img as $key=>$value): 
                                         ?>
-                                        <figure>
+                                        <figure data-name="<?= $value ?>" data-time="<?= $newsDetail['time_create'] ?>">
                                             <img src="<?= base_url() ?>upload/<?= $y ?>/<?= $m ?>/<?= $d ?>/<?= $value ?>">
                                             <figcaption>
                                                 <div>
@@ -876,7 +878,7 @@
                     <div class="dangtin_btn-dang-hen">
                         <div class="dangtin_btn-luu-dang d_flex align_c flex_center mr_t_32">
                             <button type="submit" class="dangtin_btn-dang chutrang_nenxanh pa_11_0 d_flex cursor_p">
-                                <p class="font_s16 line_h19 font_w500 mr_r_8">Đăng ngay</p>
+                                <p class="font_s16 line_h19 font_w500 mr_r_8">Cập nhật</p>
                                 <div class="d_flex">
                                     <img src="<? echo base_url() ?>assets/images/mui_ten_xanh.png" alt="">
                                 </div>
@@ -906,10 +908,10 @@
                             </div>
                             <div class="popup_dangtin_input d_flex mr_t_32">
                                 <div class="popup_dangtin_input_left khung_input pos_re mr_r_12 mr_t_0">
-                                    <input class ="date_post_news" type="date">
+                                    <input class ="date_post_news" <? if(($newsDetail['stt_news'] == 3)):?> value="<?= date('Y-m-d',$newsDetail['date_post_news']) ?>" <? endif ?> type="date">
                                 </div>
                                 <div class="popup_dangtin_input_right khung_input pos_re mr_l_12 mr_t_0">
-                                    <input type="time" class="time_post_news" value="<?= date('H:i',time()) ?>">
+                                    <input type="time" class="time_post_news" <? if(($newsDetail['stt_news'] == 3)):?> value="<? echo date('H:i',$newsDetail['time_post_news']) ?>"<? endif ?>>
                                 </div>
                             </div>
                             <div class="popup_dangtin-lenlich-btn d_flex w_100 flex_center mr_t_32">
@@ -1009,6 +1011,9 @@
     CKEDITOR.replace('tdn_mota');
 </script>
 <script>
+    <? if($newsDetail['Gia_thoa_thuan'] == 1): ?>
+    $('#gia_open_khoanggia').off('click');
+    <? endif ?>
     $(".select_option").select2({
         width: "100%",
     });
@@ -1155,7 +1160,26 @@
     });
     // --xoa
     $('.dangtin_icon_upload_xoa').click(function() {
+        var time = $(this).parents("figure").attr('data-time');
+        var name = $(this).parents("figure").attr('data-name');
         $(this).parents("figure").remove();
+        $.ajax({
+			 	url: base_url+'admin/ManageNews/RemoveImg',
+			 	type: 'post',
+			 	data:{
+                    time:time,
+                    name:name,
+                    arr_img:'<?= $newsDetail['arr_img'] ?>',
+                    id_news:'<?= $newsDetail['id_news'] ?>'
+                },
+			 	success: function(response) {
+                    
+			 	},
+			 	error: function(xhr) {
+			 		alert('Error');
+			 	}
+			});
+        
     });
     // hover
     $('figure').click(function() {
@@ -1504,6 +1528,7 @@
 
         },
         submitHandler: function() {
+            var id_news       = '<?= $newsDetail['id_news'] ?>';
             var project_name  = $(".project_name").val();
             var type_news     = $("input[name='type_news']:checked").val();
             var type_bds      = $(".type_bds").val();
@@ -1528,18 +1553,31 @@
             var bedroom       = $(".radio_bedroom.chutrang_nenxanh").attr('data-id');
             var Interior      = $(".Interior").val();
             var arr_img_desc  = $("#file_input").prop('files');
-            var mattien       = $(".mattien").val();
             var chieusau      = $(".chieusau").val();
-            var duongvao      = $(".duongvao").val();
+            if(type_bds == 2 || type_bds == 3 || type_bds == 4 || type_bds == 5)
+            {
+                var mattien       = $(".mattien8").val();
+                var duongvao      = $(".duongvao8").val();
+            }
+            else
+            {
+                var mattien       = $(".mattien9").val();
+                var duongvao      = $(".duongvao9").val();
+            }
             var area_convert  = $(".ren_number_dt_2 span").text();
             var time_expired  = $(".time_expired").val();
+            var detail_bds    = $('#onclick_chonloai_bds').val();
 
             var data = new FormData();
+            data.append('id_news', id_news);
             data.append('project_name', project_name);
             data.append('type_news', type_news);
+            data.append('detail_bds',detail_bds);
             data.append('type_bds', type_bds);
             data.append('city', city);
+            data.append('time_create', <?= $newsDetail['time_create'] ?>);
             data.append('districts', districts);
+            data.append('arr_img_old', '<?= $newsDetail['arr_img'] ?>');
             data.append('wards', wards);
             data.append('street', street);
             data.append('desc_addr', desc_addr);
@@ -1570,7 +1608,7 @@
             data.append('chieusau',chieusau);
             data.append('duongvao',duongvao);
             $.ajax({
-			 	url: base_url+'PostNews/addNewsAfterLogin',
+			 	url: base_url+'admin/ManageNews/PostNewsAfterLoginUpdate',
 			 	type: 'post',
 			 	cache: false,
 			 	contentType: false,

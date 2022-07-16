@@ -555,6 +555,12 @@ $('.dong-numbers-rom-value-item').on('click', function () {
 
 $('#onclick_chonloai_after').change(function () {
   var value = $(this).val();
+  // var html = "";
+  // if(value == 1)
+  // {
+  //   html += '<option value=""></option>'
+  // }
+
   if (value == 1) {
     $('.dangtin_form-after').removeClass('hidden');
     $('.dangtin_mo_ta_dong7').toggleClass('hidden')
@@ -564,6 +570,7 @@ $('#onclick_chonloai_after').change(function () {
     $('.dangtin_khunginput_chonloai').addClass('w_50');
     $('.dangtin_khunginput_chonloai').addClass('mr_r_12');
     $('.dangtin_khunginput_chonloai-hien').removeClass('hidden');
+  
   } else if (value == 2 || value == 3 || value == 4 || value == 5) {
     $('.dangtin_form-after').removeClass('hidden');
     $('.dangtin_mota-dong8').removeClass('hidden')
@@ -573,6 +580,10 @@ $('#onclick_chonloai_after').change(function () {
     $('.dangtin_khunginput_chonloai').addClass('w_50');
     $('.dangtin_khunginput_chonloai').addClass('mr_r_12');
     $('.dangtin_khunginput_chonloai-hien').removeClass('hidden');
+    $('.dangtin_mota-dong9').find('.mattien').attr('disabled', true);
+    $('.dangtin_mota-dong9').find('.duongvao').attr('disabled', true);
+    $('.dangtin_mota-dong8').find('.mattien').attr('disabled', false);
+    $('.dangtin_mota-dong8').find('.duongvao').attr('disabled', false);
   }
   else if(value == 6 || value == 7 || value == 8) {
     $('.dangtin_form-after').addClass('hidden');
@@ -583,6 +594,10 @@ $('#onclick_chonloai_after').change(function () {
     $('.dangtin_khunginput_chonloai').addClass('w_50');
     $('.dangtin_khunginput_chonloai').addClass('mr_r_12');
     $('.dangtin_khunginput_chonloai-hien').removeClass('hidden');
+    $('.dangtin_mota-dong8').find('.mattien').attr('disabled', true);
+    $('.dangtin_mota-dong8').find('.duongvao').attr('disabled', true);
+    $('.dangtin_mota-dong9').find('.mattien').attr('disabled', false);
+    $('.dangtin_mota-dong9').find('.duongvao').attr('disabled', false);
   }
 })
 function btn_dangngay(g) {

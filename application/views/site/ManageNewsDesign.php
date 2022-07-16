@@ -231,7 +231,7 @@
                                                 <img src="<? echo base_url(); ?>assets/images/img_sdn/hover_icon_3cham.png" alt="">
                                             </div>
                                             <div class="popup_nho hidden">
-                                                <div class="popup_nho_div1 flex">
+                                                <div onclick="location.href='cap-nhat-tin-dang-<?= ($rows['type'] == 2) ? 'phong-dep' : 'nha-dep' ?>-<?= $rows['id_news'] ?>.html'" class="popup_nho_div1 cursor_p flex">
                                                     <div class="popup_nho_div1_icon mr_r8px">
                                                         <img src="<? echo base_url(); ?>assets/images/img_sdn/chinhsua.png" alt="">
                                                     </div>
