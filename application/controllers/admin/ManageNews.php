@@ -356,6 +356,7 @@ class ManageNews extends CI_Controller
 			'type_news' 			=> $this->input->post('type_news'),
 			'bds_type' 				=> $this->input->post('type_bds'),
 			'select_city' 		    => $this->input->post('city'),
+			'arr_checkbox_detail' 	=> $this->input->post('arr_checkbox_detail'),
 			'districts' 			=> $this->input->post('districts'),
 			'wards'					=> $this->input->post('wards'),
 			'street' 				=> $this->input->post('street'),
@@ -375,6 +376,9 @@ class ManageNews extends CI_Controller
 			'direction'				=> $this->input->post('direction'),
 			'time_expired'			=> strtotime($this->input->post('time_expired')),
 			'corner' 				=> $this->input->post('corner'),
+			'check_bathroom' 		=> $this->input->post('check_bathroom'),
+            'check_bedroom' 		=> $this->input->post('check_bedroom'),
+			'elevator_number' 		=> $this->input->post('elevator_number'),
 			'bathroom' 				=> $this->input->post('bathroom'),
 			'bedroom' 				=> $this->input->post('bedroom'),
 			'Interior'				=> $this->input->post('Interior'),
@@ -708,24 +712,149 @@ class ManageNews extends CI_Controller
 	//---------------------remove _img
 	public function RemoveImg() {
 
-		$id_news 	= $this->input->post('id_news');
-		$arr_img 	= json_decode($this->input->post('arr_img'));
-		$name 		= $this->input->post('name');
-		$time 		= $this->input->post('time');
-		$d			= date('d',$time);
-		$m			= date('m',$time);
-		$y			= date('Y',$time);
+		$id_news 			= $this->input->post('id_news');
+		$arr_img 			= json_decode($this->input->post('arr_img'));
+		$arr_delete_img 	= json_decode($this->input->post('arr_delete_img'));
+		$name 				= $this->input->post('name');
+		$time 				= $this->input->post('time');
+		$d					= date('d',$time);
+		$m					= date('m',$time);
+		$y					= date('Y',$time);
 		unlink("upload/$y/$m/$d/$name");
 		$arr_img_new= [];
 		foreach($arr_img as $key=> $value)
 		{
-			if($value != $name)
+			if(!in_array($value,$arr_delete_img))
 			{
 				$arr_img_new [] = $value;
 			}
 		}
 		$data_update ['arr_img'] = json_encode($arr_img_new);
 		$this->M_ManageNews->updateNewsAfterLogin($data_update,$id_news);
+	}
+	//---------------------RenderPopupPostNews
+	public function RenderPopupPostNews() {
+
+		$id_user                                = isset($_COOKIE['id_user']) ? $_COOKIE['id'] : 30;	
+		$id_news 								= $this->input->post('id_news');
+		$this->_data['NewsDetail']				= $this->M_ManageNews->NewsDetail($id_news);
+		$this->_data['point']              		= $this->M_ManageNews->GetPointUser($id_user);
+		$dayNumber = strtotime(date('Y-m-d',$this->_data['NewsDetail']['time_expired'])) - strtotime(date('Y-m-d',$this->_data['NewsDetail']['time_create']));
+		$response = [
+			'title'         		=> $this->_data['NewsDetail']['project_name'],
+			'time_create'         	=> date('d/m/Y',($this->_data['NewsDetail']['time_create'])),
+			'time_expired'         	=> date('d/m/Y',$this->_data['NewsDetail']['time_expired']),
+			'dayNumber'         	=> $dayNumber/86400,
+			'point'         		=> $this->_data['point']['point'],
+		];
+		echo json_encode($response);
+	}
+	//---------------------PushNews
+	public function PushNews() {
+
+		$id_user	= isset($_COOKIE['user_id']) ? $_COOKIE['user_id'] : 30;
+		$pointUser  = $this->M_ManageNews->GetPointUser($id_user)['point'];
+		$data_insert = [
+			'newsID'				=> $this->input->post('id_news'),
+			'point' 		    	=> $this->input->post('point'),
+			'userID'	 			=> isset($_COOKIE['user_id']) ? $_COOKIE['user_id'] : 30,
+			'push_time_cr'			=> time(),
+		];	
+		$data_update = [
+			'point' 		    	=> ($pointUser - $this->input->post('point')),
+			'updatedDate'			=> time(),
+		];	
+		
+		$arr_time = json_decode($this->input->post('arr_time'));
+		$arr_date = json_decode($this->input->post('arr_date'));
+
+		foreach($arr_time as $key => $value) {
+			$arr_time_push[] = strtotime($value);
+			$arr_date_push[] = strtotime($arr_date[$key]);
+		}
+		$arr_date_push = json_encode($arr_date_push);
+		$arr_time_push = json_encode($arr_time_push);
+
+		$data_insert ['push_news_time'] 	= $arr_time_push;
+		$data_insert ['push_news_date'] 	= $arr_date_push;
+		//----------------Lưu lịch đẩy tin--------------------------------------------------------
+		$insert_push  = $this->M_ManageNews->PushNews($data_insert);
+		//----------------Trừ điểm đẩy tin--------------------------------------------------------
+		$update_point = $this->M_ManageNews->UpdatePointUser($data_update,$id_user);
+		if($insert_push > 0 && $update_point > 0)
+		{
+			$response['status'] = 1;
+			$response['msg'] 	= 'Đẩy tin đăng thành công';
+		}
+		echo json_encode($response);
+	}
+
+	//---------------------NewsPushCalendar
+	public function NewsPushCalendar() {
+		$rowperpage  = 10;
+		if ($this->uri->segment(2)) {
+			$page = $this->uri->segment(2);
+		} else {
+			$page = 0;
+		}
+		if ($page != 0) {
+			$page        = ($page - 1) * $rowperpage;
+		}
+		$keyword 	= isset($_GET['key']) ? $_GET['key'] : ''; //tìm kiếm
+		$cit_id		= isset($_GET['id_cit']) ? $_GET['id_cit'] : ''; //tìm kiếm
+		$stt 		= isset($_GET['style']) ? $_GET['style'] : ''; //tìm kiếm
+		$time 		= isset($_GET['time']) ? $_GET['time'] : ''; //tìm 
+		if($time != '')
+		{
+			$time		= explode('-',$time);
+			$time_st	= strtotime(str_replace('/','-',$time[0]));
+			$time_end	= strtotime(str_replace('/','-',$time[1]));
+		}
+		else
+		{
+			$time_end = '';
+			$time_st = '';
+		}
+		$type = isset($_GET['type']) ? $_GET['type'] : ''; //tìm kiếm
+
+		$this->_data['newsSave']				= $this->M_ManageNews->GetNewsPushCalendar($page, $rowperpage,$keyword,$stt,$cit_id,$time_st,$time_end,$type);
+		$count_alls								= $this->M_ManageNews->CountNewsPushCalendar($keyword,$stt,$cit_id,$time_st,$time_end,$type);
+		$this->_data['type_news'] 				= ['1'=>'Dự án','2'=>'Phòng đẹp','3'=>'Nhà đẹp','4'=>'Mua, thuê'];
+		$config['base_url']             		= base_url() . 'quan-ly-tin-dang-tin-luu.html';
+		$this->_data['count_AllSave'] 			=   $this->M_ManageNews->count_AllSave();
+		$this->_data['newsPurchase']			=	$this->M_ManageNews->getNewsPurchase($page, $rowperpage,$keyword,$stt,$cit_id);
+		$this->_data['count_save_purchase'] 	= 	$this->M_ManageNews->countSavePurchase();
+		$this->_data['count_all_purchase'] 		= 	$this->M_ManageNews->countAllPurchase();
+		$this->_data['count_all_lease'] 		= 	$this->M_ManageNews->countAllLease();
+		$this->_data['count_all_design'] 		=   $this->M_ManageNews->count_All_Design();
+		$this->_data['countAllProject'] 		=   $this->M_ManageNews->countAllProject();
+		$config["total_rows"] 			= $count_alls;
+		$config["per_page"] 			= $rowperpage;
+		$config['num_links'] 			= 2;
+		$config['use_page_numbers'] 	= TRUE;
+
+		$config['first_link'] 		= 'Đầu';
+		$config['last_link'] 		= 'Cuối';
+		$config['full_tag_open']    = '<div class="body_phantrang_img mr_t24px w100pt flex juss_tify_end"><nav><ul class="pagination body_phantrang_number flex">';
+		$config['full_tag_close']   = '</ul></nav></div>';
+		$config['num_tag_open']     = '<li class="page-item phantrang_number mr_r8px"><span class="page-link">';
+		$config['num_tag_close']    = '</span></li>';
+		$config['cur_tag_open']     = '<li class="page-item phantrang_number mr_r8px page_active"><span class="page-link">';
+		$config['cur_tag_close']    = '</span></li>';
+		$config['next_tag_open']    = '<li class="page-item phantrang_number mr_r8px"><span class="page-link">';
+		$config['next_tag_close']  	= '<span aria-hidden="true"></span></span></li>';
+		$config['prev_tag_open']    = '<li class="page-item phantrang_number mr_r8px"><span class="page-link">';
+		$config['prev_tag_close'] 	= '</span></li>';
+		$config['first_tag_open']   = '<li class="page-item phantrang_number mr_r8px"><span class="page-link">';
+		$config['first_tag_close'] 	= '</span></li>';
+		$config['last_tag_open']    = '<li class="page-item phantrang_number mr_r8px"><span class="page-link">';
+		$config['last_tag_close'] 	= '</span></li>';
+		// Initialize
+		$this->pagination->initialize($config);
+		$this->_data['pagination'] = $this->pagination->create_links();
+		$this->_data['canonical']				= base_url();
+		$this->load->helper(array('lich','lich2','lich3'));
+		$this->load->view('site/NewsPushCalendar', $this->_data);
 	}
 }
 ?>

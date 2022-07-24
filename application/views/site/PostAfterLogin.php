@@ -65,7 +65,7 @@
                                     <div class="d_flex align_c">
                                         <span class="mr_r_17 font_s14 line_h16 font_w500 color_grey">Loại hình <span class="chudo">*</span></span>
                                         <span class="dangtin-left-radio d_flex align_c mr_r_17">
-                                            <input type="radio" value="1" name="type_news" id="check_mua">
+                                            <input type="radio" value="1" checked name="type_news" id="check_mua">
                                             <span class="mr_l_9 font_s14 line_h16 font_w500 color_grey">Mua bán</span>
                                         </span>
                                         <span class="dangtin-left-radio d_flex align_c">
@@ -95,8 +95,7 @@
                                         <p class="line_h20 font_s16 font_w500 color_grey">Bất động sản chi tiết <span class="chudo">*</span></p>
                                         <div class="khung_input mr_t_8">
                                             <select name="" id="onclick_chonloai_bds" class="size-14 select_option">
-                                                <option selected disabled value="" class="">Bất động sản chi tiết</option>
-                                                <option value="1">Bất động sản chi tiết</option>
+                                                <option selected disabled >Bất động sản chi tiết</option>
                                                 <option value="2">Căn hộ mini</option>
                                                 <option value="3">Căn hộ trung cấp</option>
                                                 <option value="4">Căn hộ cao cấp</option>
@@ -104,6 +103,9 @@
                                                 <option value="6">Căn hộ Duplex</option>
                                                 <option value="7">Căn hộ Skyvilla</option>
                                                 <option value="8">Căn hộ loft house</option>
+                                                <option value="9">Căn hộ Studio</option>
+                                                <option value="10">Căn hộ Condotel</option>
+                                                <option value="11">Căn hộ officetel</option>
                                             </select>
                                         </div>
                                     </div>
@@ -297,7 +299,7 @@
                                     <div class="dangtin_mo_ta_dong7-tang">
                                         <p class="font_w500 font_s16 line_h20 color_grey">Tầng căn hộ</p>
                                         <div class="khung_input mr_t_8">
-                                            <input type="text" placeholder="Nhập số tầng căn hộ">
+                                            <input type="number" class="apartment_floor" placeholder="Nhập số tầng căn hộ">
                                         </div>
                                     </div>
                                     <div class="dangtin_mo_ta_dong7-balcony mr_t_21">
@@ -342,7 +344,7 @@
                                     <div class="dong7-numbers-rom_right_furniture mr_t_21">
                                         <p class="font_w500 font_s16 line_h20 color_grey">Nội thất</p>
                                         <div class="khung_input mr_t_8">
-                                            <input type="text" placeholder="Nhập">
+                                            <input type="text" class='Interior7' placeholder="Nhập">
                                         </div>
                                     </div>
                                 </div>
@@ -364,7 +366,7 @@
                                     <div class="dangtin_mota-dong8-facade mr_t_21">
                                         <p class="font_w500 font_s16 line_h20 color_grey">Số tầng</p>
                                         <div class="khung_input mr_t_8">
-                                            <input type="text" class="floor" placeholder="Nhập">
+                                            <input type="text" class="floor8" placeholder="Nhập">
                                         </div>
                                     </div>
                                 </div>
@@ -390,7 +392,7 @@
                                     <div class="dong7-numbers-rom_right_furniture mr_t_21">
                                         <p class="font_w500 font_s16 line_h20 color_grey">Nội thất</p>
                                         <div class="khung_input mr_t_8">
-                                            <input type="text" class="Interior" placeholder="Nhập">
+                                            <input type="text" class="Interior8" placeholder="Nhập">
                                         </div>
                                     </div>
                                 </div>
@@ -415,6 +417,80 @@
                                         <p class="font_w500 font_s16 line_h20 color_grey">Chiều sâu</p>
                                         <div class="khung_input mr_t_8">
                                             <input type="number" class="chieusau" placeholder="Nhập">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="dangtin_mota-dong10 d_flex space_b  mr_t_45 w_100 hidden">
+                                <div class="dangtin_mota-dong8-left dangtin_mo_ta_dong_chung">
+                                    <div class="dangtin_mota-dong8-facade">
+                                        <p class="font_w500 font_s16 line_h20 color_grey">Tầng văn phòng</p>
+                                        <div class="khung_input mr_t_8">
+                                            <input type="number" class="floor10" placeholder="Nhập">
+                                        </div>
+                                    </div>
+                                    <div class="dangtin_mota-dong8-facade mr_t_21">
+                                        <p class="font_w500 font_s16 line_h20 color_grey">Nội thất</p>
+                                        <div class="khung_input mr_t_8">
+                                            <input type="text" class="Interior10" placeholder="Nhập">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="dangtin_mota-dong8-right dangtin_mo_ta_dong_chung">
+                                    <div class="dong7-numbers-rom_right_furniture">
+                                        <p class="font_w500 font_s16 line_h20 color_grey">Số thang máy</p>
+                                        <div class="khung_input mr_t_8">
+                                            <input type="number" class="elevator_number" placeholder="Nhập">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="dangtin_mo_ta_dong11 d_flex space_b mr_t_45 w_100 hidden">
+                                <div class="dangtin_mo_ta_dong7-trai dangtin_mo_ta_dong_chung">
+                                    <div class="dangtin_mo_ta_dong7-tang">
+                                        <p class="font_w500 font_s16 line_h20 color_grey">Tầng</p>
+                                        <div class="khung_input mr_t_8">
+                                            <input type="text" class="floor11" placeholder="Nhập">
+                                        </div>
+                                    </div>
+                                    <div class="dangtin_mo_ta_dong7-balcony mr_t_21">
+                                        <p class="font_w500 font_s16 line_h20 color_grey">Nội thất</p>
+                                        <div class="khung_input mr_t_8">
+                                            <input type="text" class="Interior11" placeholder="Nhập">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="dangtin_mo_ta_dong7-right dangtin_mo_ta_dong_chung">
+                                    <div class="dangtin_mo_ta_dong7-numbers-rom">
+                                        <div class="dong7-numbers-rom_left">
+                                            <p class="font_w500 font_s16 line_h20 color_grey">phòng tắm</p>
+                                            <div class="dong7-numbers-rom_left-value d_flex mr_t_18">
+                                                <div class="dangtin_mo_ta_dong7-corner d_flex align_c">
+                                                    <div class="dong7-corner-true d_flex align_c mr-50 ">
+                                                        <div><input type="radio" class="check_bathroom" value="1" name="check_bathroom"></div>
+                                                        <div class="font_w500 font_s14 line_h16 color_grey mr_l_9">có</div>
+                                                    </div>
+                                                    <div class="dong7-corner-false d_flex align_c">
+                                                        <div><input type="radio" value="2" class="check_bathroom" name="check_bathroom"></div>
+                                                        <div class="font_w500 font_s14 line_h16 color_grey mr_l_9">không</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="dong7-numbers-rom_right mr_t_21">
+                                            <p class="font_w500 font_s16 line_h20 color_grey">phòng ngủ</p>
+                                            <div class="dong7-numbers-rom_right-value d_flex mr_t_18">
+                                                <div class="dangtin_mo_ta_dong7-corner d_flex align_c">
+                                                    <div class="dong7-corner-true d_flex align_c mr-50 ">
+                                                        <div><input type="radio" class="check_bedroom" value="1" name="check_bedroom"></div>
+                                                        <div class="font_w500 font_s14 line_h16 color_grey mr_l_9">có</div>
+                                                    </div>
+                                                    <div class="dong7-corner-false d_flex align_c">
+                                                        <div><input type="radio" value="2" class="check_bedroom" name="check_bedroom"></div>
+                                                        <div class="font_w500 font_s14 line_h16 color_grey mr_l_9">không</div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -484,14 +560,14 @@
                         <p class="font_w500 font_s16 line_h24 color_green">Thông tin bổ sung</p>
                         <div class="font_s16 line_h24 color_grey mr_t_8">Bài đăng thông tim bổ sung thường có hiệu quả hơn 40% sơ với bài đăng thường</div>
                         <div class="dangtin_after_bosung d_flex flex_w">
-                            <div class="dangtin_after_bosung-item_dong d_flex">
+                            <div class="dangtin_after_bosung-item_dong checkboxes_room d_flex">
                                 <div class="post_additional_total--left">
-                                    <p class="font_w500 font_s18 line_h24 color_grey">Phòng khách</p>
+                                    <p class="font_w500  font_s18 line_h24 color_grey">Phòng khách</p>
                                     <div class="detail__post_additional_total additional_hidden ">
                                         <div class="dangtin_after_bosung-item_dong-name d_flex mr_t_19 align_c">
                                             <div class="checkbox-container mr_r_9">
                                                 <label class="checkbox-label-phanquyen">
-                                                    <input type="checkbox">
+                                                    <input value="1.1" class="checkbox_detail" type="checkbox">
                                                     <span class="checkbox-custom"></span>
                                                 </label>
                                             </div>
@@ -500,7 +576,7 @@
                                         <div class="dangtin_after_bosung-item_dong-name d_flex mr_t_22 align_c">
                                             <div class="checkbox-container mr_r_9">
                                                 <label class="checkbox-label-phanquyen">
-                                                    <input type="checkbox">
+                                                    <input value="1.2" class="checkbox_detail" type="checkbox">
                                                     <span class="checkbox-custom"></span>
                                                 </label>
                                             </div>
@@ -509,7 +585,7 @@
                                         <div class="dangtin_after_bosung-item_dong-name d_flex mr_t_22 align_c">
                                             <div class="checkbox-container mr_r_9">
                                                 <label class="checkbox-label-phanquyen">
-                                                    <input type="checkbox">
+                                                    <input value="1.3" class="checkbox_detail" type="checkbox">
                                                     <span class="checkbox-custom"></span>
                                                 </label>
                                             </div>
@@ -518,7 +594,7 @@
                                         <div class="dangtin_after_bosung-item_dong-name d_flex mr_t_22 align_c">
                                             <div class="checkbox-container mr_r_9">
                                                 <label class="checkbox-label-phanquyen">
-                                                    <input type="checkbox">
+                                                    <input value="1.4" class="checkbox_detail" type="checkbox">
                                                     <span class="checkbox-custom"></span>
                                                 </label>
                                             </div>
@@ -530,14 +606,14 @@
                                     <img src="<? echo base_url() ?>assets/images/arrow_updown.png" alt="">
                                 </div>
                             </div>
-                            <div class="dangtin_after_bosung-item_dong d_flex">
+                            <div class="dangtin_after_bosung-item_dong checkboxes_room d_flex">
                                 <div class="post_additional_total--left">
-                                    <p class="font_w500 font_s18 line_h24 color_grey">Phòng ngủ</p>
+                                    <p class="font_w500 font_s18  line_h24 color_grey">Phòng ngủ</p>
                                     <div class="detail__post_additional_total additional_hidden ">
                                         <div class="dangtin_after_bosung-item_dong-name d_flex mr_t_19 align_c">
                                             <div class="checkbox-container mr_r_9">
                                                 <label class="checkbox-label-phanquyen">
-                                                    <input type="checkbox">
+                                                    <input value="2.1" class="checkbox_detail" type="checkbox">
                                                     <span class="checkbox-custom"></span>
                                                 </label>
                                             </div>
@@ -546,7 +622,7 @@
                                         <div class="dangtin_after_bosung-item_dong-name d_flex mr_t_22 align_c">
                                             <div class="checkbox-container mr_r_9">
                                                 <label class="checkbox-label-phanquyen">
-                                                    <input type="checkbox">
+                                                    <input value="2.2" class="checkbox_detail" type="checkbox">
                                                     <span class="checkbox-custom"></span>
                                                 </label>
                                             </div>
@@ -555,7 +631,7 @@
                                         <div class="dangtin_after_bosung-item_dong-name d_flex mr_t_22 align_c">
                                             <div class="checkbox-container mr_r_9">
                                                 <label class="checkbox-label-phanquyen">
-                                                    <input type="checkbox">
+                                                    <input value="2.3" class="checkbox_detail" type="checkbox">
                                                     <span class="checkbox-custom"></span>
                                                 </label>
                                             </div>
@@ -564,7 +640,7 @@
                                         <div class="dangtin_after_bosung-item_dong-name d_flex mr_t_22 align_c">
                                             <div class="checkbox-container mr_r_9">
                                                 <label class="checkbox-label-phanquyen">
-                                                    <input type="checkbox">
+                                                    <input value="2.4" class="checkbox_detail" class="checkbox_detail" type="checkbox">
                                                     <span class="checkbox-custom"></span>
                                                 </label>
                                             </div>
@@ -576,14 +652,14 @@
                                     <img src="<? echo base_url() ?>assets/images/arrow_updown.png" alt="">
                                 </div>
                             </div>
-                            <div class="dangtin_after_bosung-item_dong d_flex">
+                            <div class="dangtin_after_bosung-item_dong checkboxes_room d_flex">
                                 <div class="post_additional_total--left">
-                                    <p class="font_w500 font_s18 line_h24 color_grey">Phòng bếp</p>
+                                    <p class="font_w500 font_s18 line_h24  color_grey">Phòng bếp</p>
                                     <div class="detail__post_additional_total additional_hidden ">
                                         <div class="dangtin_after_bosung-item_dong-name d_flex mr_t_19 align_c">
                                             <div class="checkbox-container mr_r_9">
                                                 <label class="checkbox-label-phanquyen">
-                                                    <input type="checkbox">
+                                                    <input value="3.1" class="checkbox_detail" type="checkbox">
                                                     <span class="checkbox-custom"></span>
                                                 </label>
                                             </div>
@@ -592,7 +668,7 @@
                                         <div class="dangtin_after_bosung-item_dong-name d_flex mr_t_22 align_c">
                                             <div class="checkbox-container mr_r_9">
                                                 <label class="checkbox-label-phanquyen">
-                                                    <input type="checkbox">
+                                                    <input value="3.2" class="checkbox_detail" type="checkbox">
                                                     <span class="checkbox-custom"></span>
                                                 </label>
                                             </div>
@@ -601,7 +677,7 @@
                                         <div class="dangtin_after_bosung-item_dong-name d_flex mr_t_22 align_c">
                                             <div class="checkbox-container mr_r_9">
                                                 <label class="checkbox-label-phanquyen">
-                                                    <input type="checkbox">
+                                                    <input value="3.3" class="checkbox_detail" type="checkbox">
                                                     <span class="checkbox-custom"></span>
                                                 </label>
                                             </div>
@@ -610,7 +686,7 @@
                                         <div class="dangtin_after_bosung-item_dong-name d_flex mr_t_22 align_c">
                                             <div class="checkbox-container mr_r_9">
                                                 <label class="checkbox-label-phanquyen">
-                                                    <input type="checkbox">
+                                                    <input value="3.4" class="checkbox_detail" type="checkbox">
                                                     <span class="checkbox-custom"></span>
                                                 </label>
                                             </div>
@@ -622,14 +698,14 @@
                                     <img src="<? echo base_url() ?>assets/images/arrow_updown.png" alt="">
                                 </div>
                             </div>
-                            <div class="dangtin_after_bosung-item_dong d_flex">
+                            <div class="dangtin_after_bosung-item_dong checkboxes_room d_flex">
                                 <div class="post_additional_total--left">
-                                    <p class="font_w500 font_s18 line_h24 color_grey">Phòng tắm</p>
+                                    <p class="font_w500 font_s18  line_h24 color_grey">Phòng tắm</p>
                                     <div class="detail__post_additional_total additional_hidden ">
                                         <div class="dangtin_after_bosung-item_dong-name d_flex mr_t_19 align_c">
                                             <div class="checkbox-container mr_r_9">
                                                 <label class="checkbox-label-phanquyen">
-                                                    <input type="checkbox">
+                                                    <input value="4.1" class="checkbox_detail" type="checkbox">
                                                     <span class="checkbox-custom"></span>
                                                 </label>
                                             </div>
@@ -638,7 +714,7 @@
                                         <div class="dangtin_after_bosung-item_dong-name d_flex mr_t_22 align_c">
                                             <div class="checkbox-container mr_r_9">
                                                 <label class="checkbox-label-phanquyen">
-                                                    <input type="checkbox">
+                                                    <input value="4.2" class="checkbox_detail" type="checkbox">
                                                     <span class="checkbox-custom"></span>
                                                 </label>
                                             </div>
@@ -647,7 +723,7 @@
                                         <div class="dangtin_after_bosung-item_dong-name d_flex mr_t_22 align_c">
                                             <div class="checkbox-container mr_r_9">
                                                 <label class="checkbox-label-phanquyen">
-                                                    <input type="checkbox">
+                                                    <input value="4.3" class="checkbox_detail" type="checkbox">
                                                     <span class="checkbox-custom"></span>
                                                 </label>
                                             </div>
@@ -656,7 +732,7 @@
                                         <div class="dangtin_after_bosung-item_dong-name d_flex mr_t_22 align_c">
                                             <div class="checkbox-container mr_r_9">
                                                 <label class="checkbox-label-phanquyen">
-                                                    <input type="checkbox">
+                                                    <input value="4.4" class="checkbox_detail" type="checkbox">
                                                     <span class="checkbox-custom"></span>
                                                 </label>
                                             </div>
@@ -665,7 +741,7 @@
                                         <div class="dangtin_after_bosung-item_dong-name d_flex mr_t_22 align_c">
                                             <div class="checkbox-container mr_r_9">
                                                 <label class="checkbox-label-phanquyen">
-                                                    <input type="checkbox">
+                                                    <input value="4.5" class="checkbox_detail" type="checkbox">
                                                     <span class="checkbox-custom"></span>
                                                 </label>
                                             </div>
@@ -675,7 +751,7 @@
                                     <div class="dangtin_after_bosung-item_dong-name d_flex mr_t_22 align_c">
                                         <div class="checkbox-container mr_r_9">
                                             <label class="checkbox-label-phanquyen">
-                                                <input type="checkbox">
+                                                <input value="4.6" class="checkbox_detail" type="checkbox">
                                                 <span class="checkbox-custom"></span>
                                             </label>
                                         </div>
@@ -693,7 +769,7 @@
                                         <div class="dangtin_after_bosung-item_dong-name d_flex mr_t_19 align_c">
                                             <div class="checkbox-container mr_r_9">
                                                 <label class="checkbox-label-phanquyen">
-                                                    <input type="checkbox">
+                                                    <input value="5.1" class="checkbox_detail" type="checkbox">
                                                     <span class="checkbox-custom"></span>
                                                 </label>
                                             </div>
@@ -702,7 +778,7 @@
                                         <div class="dangtin_after_bosung-item_dong-name d_flex mr_t_22 align_c">
                                             <div class="checkbox-container mr_r_9">
                                                 <label class="checkbox-label-phanquyen">
-                                                    <input type="checkbox">
+                                                    <input value="5.2" class="checkbox_detail" type="checkbox">
                                                     <span class="checkbox-custom"></span>
                                                 </label>
                                             </div>
@@ -711,7 +787,7 @@
                                         <div class="dangtin_after_bosung-item_dong-name d_flex mr_t_22 align_c">
                                             <div class="checkbox-container mr_r_9">
                                                 <label class="checkbox-label-phanquyen">
-                                                    <input type="checkbox">
+                                                    <input value="5.3" class="checkbox_detail" type="checkbox">
                                                     <span class="checkbox-custom"></span>
                                                 </label>
                                             </div>
@@ -720,7 +796,7 @@
                                         <div class="dangtin_after_bosung-item_dong-name d_flex mr_t_22 align_c">
                                             <div class="checkbox-container mr_r_9">
                                                 <label class="checkbox-label-phanquyen">
-                                                    <input type="checkbox">
+                                                    <input value="5.4" class="checkbox_detail" type="checkbox">
                                                     <span class="checkbox-custom"></span>
                                                 </label>
                                             </div>
@@ -739,7 +815,7 @@
                                         <div class="dangtin_after_bosung-item_dong-name d_flex mr_t_19 align_c">
                                             <div class="checkbox-container mr_r_9">
                                                 <label class="checkbox-label-phanquyen">
-                                                    <input type="checkbox">
+                                                    <input value="10.1" class="checkbox_detail" type="checkbox">
                                                     <span class="checkbox-custom"></span>
                                                 </label>
                                             </div>
@@ -748,7 +824,7 @@
                                         <div class="dangtin_after_bosung-item_dong-name d_flex mr_t_22 align_c">
                                             <div class="checkbox-container mr_r_9">
                                                 <label class="checkbox-label-phanquyen">
-                                                    <input type="checkbox">
+                                                    <input value="10.2" class="checkbox_detail" type="checkbox">
                                                     <span class="checkbox-custom"></span>
                                                 </label>
                                             </div>
@@ -757,7 +833,7 @@
                                         <div class="dangtin_after_bosung-item_dong-name d_flex mr_t_22 align_c">
                                             <div class="checkbox-container mr_r_9">
                                                 <label class="checkbox-label-phanquyen">
-                                                    <input type="checkbox">
+                                                    <input value="10.3" class="checkbox_detail" type="checkbox">
                                                     <span class="checkbox-custom"></span>
                                                 </label>
                                             </div>
@@ -766,7 +842,7 @@
                                         <div class="dangtin_after_bosung-item_dong-name d_flex mr_t_22 align_c">
                                             <div class="checkbox-container mr_r_9">
                                                 <label class="checkbox-label-phanquyen">
-                                                    <input type="checkbox">
+                                                    <input value="10.4" class="checkbox_detail" type="checkbox">
                                                     <span class="checkbox-custom"></span>
                                                 </label>
                                             </div>
@@ -775,7 +851,7 @@
                                         <div class="dangtin_after_bosung-item_dong-name d_flex mr_t_22 align_c">
                                             <div class="checkbox-container mr_r_9">
                                                 <label class="checkbox-label-phanquyen">
-                                                    <input type="checkbox">
+                                                    <input value="10.5" class="checkbox_detail" type="checkbox">
                                                     <span class="checkbox-custom"></span>
                                                 </label>
                                             </div>
@@ -784,7 +860,7 @@
                                         <div class="dangtin_after_bosung-item_dong-name d_flex mr_t_22 align_c">
                                             <div class="checkbox-container mr_r_9">
                                                 <label class="checkbox-label-phanquyen">
-                                                    <input type="checkbox">
+                                                    <input value="10.6" class="checkbox_detail" type="checkbox">
                                                     <span class="checkbox-custom"></span>
                                                 </label>
                                             </div>
@@ -803,7 +879,7 @@
                                         <div class="dangtin_after_bosung-item_dong-name d_flex mr_t_19 align_c">
                                             <div class="checkbox-container mr_r_9">
                                                 <label class="checkbox-label-phanquyen">
-                                                    <input type="checkbox">
+                                                    <input value="6.1" class="checkbox_detail" type="checkbox">
                                                     <span class="checkbox-custom"></span>
                                                 </label>
                                             </div>
@@ -812,7 +888,7 @@
                                         <div class="dangtin_after_bosung-item_dong-name d_flex mr_t_22 align_c">
                                             <div class="checkbox-container mr_r_9">
                                                 <label class="checkbox-label-phanquyen">
-                                                    <input type="checkbox">
+                                                    <input value="6.2" class="checkbox_detail" type="checkbox">
                                                     <span class="checkbox-custom"></span>
                                                 </label>
                                             </div>
@@ -821,7 +897,7 @@
                                         <div class="dangtin_after_bosung-item_dong-name d_flex mr_t_22 align_c">
                                             <div class="checkbox-container mr_r_9">
                                                 <label class="checkbox-label-phanquyen">
-                                                    <input type="checkbox">
+                                                    <input value="6.3" class="checkbox_detail" type="checkbox">
                                                     <span class="checkbox-custom"></span>
                                                 </label>
                                             </div>
@@ -830,7 +906,7 @@
                                         <div class="dangtin_after_bosung-item_dong-name d_flex mr_t_22 align_c">
                                             <div class="checkbox-container mr_r_9">
                                                 <label class="checkbox-label-phanquyen">
-                                                    <input type="checkbox">
+                                                    <input value="6.4" class="checkbox_detail" type="checkbox">
                                                     <span class="checkbox-custom"></span>
                                                 </label>
                                             </div>
@@ -839,7 +915,7 @@
                                         <div class="dangtin_after_bosung-item_dong-name d_flex mr_t_22 align_c">
                                             <div class="checkbox-container mr_r_9">
                                                 <label class="checkbox-label-phanquyen">
-                                                    <input type="checkbox">
+                                                    <input value="6.5" class="checkbox_detail" type="checkbox">
                                                     <span class="checkbox-custom"></span>
                                                 </label>
                                             </div>
@@ -858,7 +934,7 @@
                                         <div class="dangtin_after_bosung-item_dong-name d_flex mr_t_19 align_c">
                                             <div class="checkbox-container mr_r_9">
                                                 <label class="checkbox-label-phanquyen">
-                                                    <input type="checkbox">
+                                                    <input value="7.1" class="checkbox_detail" type="checkbox">
                                                     <span class="checkbox-custom"></span>
                                                 </label>
                                             </div>
@@ -867,7 +943,7 @@
                                         <div class="dangtin_after_bosung-item_dong-name d_flex mr_t_22 align_c">
                                             <div class="checkbox-container mr_r_9">
                                                 <label class="checkbox-label-phanquyen">
-                                                    <input type="checkbox">
+                                                    <input value="7.2" class="checkbox_detail" type="checkbox">
                                                     <span class="checkbox-custom"></span>
                                                 </label>
                                             </div>
@@ -876,7 +952,7 @@
                                         <div class="dangtin_after_bosung-item_dong-name d_flex mr_t_22 align_c">
                                             <div class="checkbox-container mr_r_9">
                                                 <label class="checkbox-label-phanquyen">
-                                                    <input type="checkbox">
+                                                    <input value="7.3" class="checkbox_detail" type="checkbox">
                                                     <span class="checkbox-custom"></span>
                                                 </label>
                                             </div>
@@ -885,7 +961,7 @@
                                         <div class="dangtin_after_bosung-item_dong-name d_flex mr_t_22 align_c">
                                             <div class="checkbox-container mr_r_9">
                                                 <label class="checkbox-label-phanquyen">
-                                                    <input type="checkbox">
+                                                    <input value="7.4" class="checkbox_detail" type="checkbox">
                                                     <span class="checkbox-custom"></span>
                                                 </label>
                                             </div>
@@ -894,7 +970,7 @@
                                         <div class="dangtin_after_bosung-item_dong-name d_flex mr_t_22 align_c">
                                             <div class="checkbox-container mr_r_9">
                                                 <label class="checkbox-label-phanquyen">
-                                                    <input type="checkbox">
+                                                    <input value="7.5" class="checkbox_detail" type="checkbox">
                                                     <span class="checkbox-custom"></span>
                                                 </label>
                                             </div>
@@ -913,7 +989,7 @@
                                         <div class="dangtin_after_bosung-item_dong-name d_flex mr_t_19 align_c">
                                             <div class="checkbox-container mr_r_9">
                                                 <label class="checkbox-label-phanquyen">
-                                                    <input type="checkbox">
+                                                    <input value="8.1" class="checkbox_detail" type="checkbox">
                                                     <span class="checkbox-custom"></span>
                                                 </label>
                                             </div>
@@ -922,7 +998,7 @@
                                         <div class="dangtin_after_bosung-item_dong-name d_flex mr_t_22 align_c">
                                             <div class="checkbox-container mr_r_9">
                                                 <label class="checkbox-label-phanquyen">
-                                                    <input type="checkbox">
+                                                    <input value="8.2" class="checkbox_detail" type="checkbox">
                                                     <span class="checkbox-custom"></span>
                                                 </label>
                                             </div>
@@ -931,7 +1007,7 @@
                                         <div class="dangtin_after_bosung-item_dong-name d_flex mr_t_22 align_c">
                                             <div class="checkbox-container mr_r_9">
                                                 <label class="checkbox-label-phanquyen">
-                                                    <input type="checkbox">
+                                                    <input value="8.3" class="checkbox_detail" type="checkbox">
                                                     <span class="checkbox-custom"></span>
                                                 </label>
                                             </div>
@@ -940,7 +1016,7 @@
                                         <div class="dangtin_after_bosung-item_dong-name d_flex mr_t_22 align_c">
                                             <div class="checkbox-container mr_r_9">
                                                 <label class="checkbox-label-phanquyen">
-                                                    <input type="checkbox">
+                                                    <input value="8.4" class="checkbox_detail" type="checkbox">
                                                     <span class="checkbox-custom"></span>
                                                 </label>
                                             </div>
@@ -949,7 +1025,7 @@
                                         <div class="dangtin_after_bosung-item_dong-name d_flex mr_t_22 align_c">
                                             <div class="checkbox-container mr_r_9">
                                                 <label class="checkbox-label-phanquyen">
-                                                    <input type="checkbox">
+                                                    <input value="8.5" class="checkbox_detail" type="checkbox">
                                                     <span class="checkbox-custom"></span>
                                                 </label>
                                             </div>
@@ -962,13 +1038,13 @@
                                 </div>
                             </div>
                             <div class="dangtin_after_bosung-item_dong d_flex">
-                                <div class="post_additional_total--left">
+                                <div class="post_additional_total--left div_office">
                                     <p class="font_w500 font_s18 line_h24 color_grey">Văn phòng</p>
                                     <div class="detail__post_additional_total additional_hidden ">
                                         <div class="dangtin_after_bosung-item_dong-name d_flex mr_t_19 align_c">
                                             <div class="checkbox-container mr_r_9">
                                                 <label class="checkbox-label-phanquyen">
-                                                    <input type="checkbox">
+                                                    <input value="9.1" class="checkbox_detail" type="checkbox">
                                                     <span class="checkbox-custom"></span>
                                                 </label>
                                             </div>
@@ -977,7 +1053,7 @@
                                         <div class="dangtin_after_bosung-item_dong-name d_flex mr_t_22 align_c">
                                             <div class="checkbox-container mr_r_9">
                                                 <label class="checkbox-label-phanquyen">
-                                                    <input type="checkbox">
+                                                    <input value="9.2" class="checkbox_detail" type="checkbox">
                                                     <span class="checkbox-custom"></span>
                                                 </label>
                                             </div>
@@ -986,7 +1062,7 @@
                                         <div class="dangtin_after_bosung-item_dong-name d_flex mr_t_22 align_c">
                                             <div class="checkbox-container mr_r_9">
                                                 <label class="checkbox-label-phanquyen">
-                                                    <input type="checkbox">
+                                                    <input value="9.3" class="checkbox_detail" type="checkbox">
                                                     <span class="checkbox-custom"></span>
                                                 </label>
                                             </div>
@@ -995,7 +1071,7 @@
                                         <div class="dangtin_after_bosung-item_dong-name d_flex mr_t_22 align_c">
                                             <div class="checkbox-container mr_r_9">
                                                 <label class="checkbox-label-phanquyen">
-                                                    <input type="checkbox">
+                                                    <input value="9.4" class="checkbox_detail" type="checkbox">
                                                     <span class="checkbox-custom"></span>
                                                 </label>
                                             </div>
@@ -1145,6 +1221,39 @@
     CKEDITOR.replace('tdn_mota');
 </script>
 <script>
+    $('input[name="type_news"]').click(function() {
+        if($(this).val() == 1)
+        {
+            var otions_bds = '<option selected disabled>Chọn loại bất động sản</option>';
+                otions_bds += '<option value="1">Căn hộ</option>'                            
+                otions_bds += '<option value="2">Nhà riêng</option>'                               
+                otions_bds += '<option value="3">Nhà mặt phố</option>'                                
+                otions_bds += '<option value="4">Shophouse, Nhà phố thương mại</option>'                                
+                otions_bds += '<option value="5">Biệt thự liền kề</option>'                                 
+                otions_bds += '<option value="6">Đất</option>'                                 
+                otions_bds += '<option value="7">Đất nền dự án</option>'                             
+                otions_bds += '<option value="8">Bất động sản khác</option>'
+            $('select[name="type_bds"]').children().remove(); 
+            $('select[name="type_bds"]').append(otions_bds);                                                                                                                        
+        }
+        else
+        {
+            var otions_bds = '<option selected disabled>Chọn loại bất động sản</option>';
+                otions_bds += '<option value="1">Căn hộ</option>'                            
+                otions_bds += '<option value="2">Căn hộ dịch vụ</option>'                               
+                otions_bds += '<option value="3">Nhà riêng</option>'                                
+                otions_bds += '<option value="4">Nhà mặt phố</option>'                                
+                otions_bds += '<option value="5">Shophouse, Nhà phố thương mại</option>'                                 
+                otions_bds += '<option value="6">Biệt thự liền kề</option>'                                 
+                otions_bds += '<option value="7">Nhà trọ, phòng trọ</option>'                             
+                otions_bds += '<option value="8">Văn phòng</option>'
+                otions_bds += '<option value="9">Cửa hàng, mặt bằng bán lẻ</option>'                                 
+                otions_bds += '<option value="10">Đất, nhà xưởng, kho bãi</option>'                                                             
+                otions_bds += '<option value="11">Bất động sản khác</option>'
+            $('select[name="type_bds"]').children().remove(); 
+            $('select[name="type_bds"]').append(otions_bds);     
+        }
+    })
     $(".select_option").select2({
         width: "100%",
     });
@@ -1567,6 +1676,7 @@
             var districts     = $(".districts").val();
             var wards         = $(".wards").val();
             var street        = $(".street").val();
+            var elevator_number = $('.elevator_number').val();
             var desc_addr     = $(".desc_addr").val();
             var giamin        = $("input[name='giamin']").val();
             var giamax        = $("input[name='giamax']").val();
@@ -1577,24 +1687,67 @@
             var area_max      = $("input[name='area_max']").val();
             var title_news    = $(".title_news").val();
             var desc_project  = CKEDITOR.instances['tdn_mota'].getData();
-            var floor         = $(".floor").val();
             var Balcony_direction = $(".Balcony_direction").val();
             var corner        = $(".corner").val();
+            var check_bathroom= $(".check_bathroom:checked").val();
+            var check_bedroom = $(".check_bedroom:checked").val();
             var bathroom      = $(".radio_bathroom.chutrang_nenxanh").attr('data-id');
             var bedroom       = $(".radio_bedroom.chutrang_nenxanh").attr('data-id');
             var Interior      = $(".Interior").val();
             var arr_img_desc  = $("#file_input").prop('files');
 
-            if(type_bds == 2 || type_bds == 3 || type_bds == 4 || type_bds == 5)
+            if(type_news == 1)
             {
-                var mattien       = $(".mattien8").val();
-                var duongvao      = $(".duongvao8").val();
+                if(type_bds == 1)
+                {
+                    var floor         = $('.apartment_floor').val();
+                    var Interior      = $(".Interior7").val();
+                }
+
+                if(type_bds == 2 || type_bds == 3 || type_bds == 4 || type_bds == 5)
+                {
+                    var Interior      = $(".Interior8").val();
+                    var floor         = $(".floor8").val();
+                    var mattien       = $(".mattien8").val();
+                    var duongvao      = $(".duongvao8").val();
+                }
+                else
+                {
+                    var mattien       = $(".mattien9").val();
+                    var duongvao      = $(".duongvao9").val();
+                }
             }
-            else
+            else if(type_news == 2)
             {
-                var mattien       = $(".mattien9").val();
-                var duongvao      = $(".duongvao9").val();
+                if(type_bds == 1 || type_bds == 2)
+                {
+                    var floor         = $('.apartment_floor').val();
+                    var Interior      = $(".Interior7").val();
+                }
+                if(type_bds == 6 || type_bds == 3 || type_bds == 4 || type_bds == 5)
+                {
+                    var mattien       = $(".mattien8").val();
+                    var duongvao      = $(".duongvao8").val();
+                    var floor         = $('.floor8').val();
+                    var Interior      = $(".Interior8").val();
+                }
+                else if(type_bds == 7)
+                {
+                    var Interior      = $(".Interior11").val();
+                    var floor         = $(".floor11").val();
+                }
+                else if(type_bds == 8)
+                {
+                    var Interior      = $(".Interior10").val();
+                    var floor         = $(".floor10").val();
+                }
+                else
+                {
+                    var mattien       = $(".mattien9").val();
+                    var duongvao      = $(".duongvao9").val();
+                }
             }
+
 
 
             var chieusau      = $(".chieusau").val();
@@ -1602,8 +1755,16 @@
             var time_expired  = $(".time_expired").val();
             var detail_bds      = $("#onclick_chonloai_bds").val(); 
 
+            var arr_checkbox_detail = [];
+            $('.checkbox_detail').each(function(){
+                if($(this).is(':checked'))
+                {
+                    arr_checkbox_detail.push($(this).val());
+                }
+            })
             var data = new FormData();
             data.append('project_name', project_name);
+            data.append('arr_checkbox_detail', JSON.stringify(arr_checkbox_detail));
             data.append('type_news', type_news);
             data.append('type_bds', type_bds);
             data.append('detail_bds', detail_bds);
@@ -1623,6 +1784,7 @@
             data.append('floor', floor);
             data.append('Balcony_direction', Balcony_direction);
             data.append('direction', direction);
+            data.append('elevator_number', elevator_number);
             data.append('corner', corner);
             data.append('time_expired',time_expired);
             data.append('bathroom', bathroom);
@@ -1632,6 +1794,8 @@
             data.append('date_post_news', date_post_news);
             data.append('time_post_news', time_post_news);
             data.append('area_convert', area_convert);
+            data.append('check_bathroom' ,check_bathroom);
+            data.append('check_bedroom' ,check_bedroom);
             $.each(arr_img_desc, function( index, value ) {
                 data.append('arr_img_desc[]' ,value);
             });

@@ -75,11 +75,12 @@
                                     </div>
                                 </div>
                                 <div class="the-input d_flex mr_r_54 the-input_xuong_res ">
-                                    <div class="dangtin_khunginput_chonloai  mr_t_17 w_50 box_input_infor">
+                                    <div class="dangtin_khunginput_chonloai  mr_t_17 <?= ($newsDetail['type_news'] == 2 && ($newsDetail['bds_type'] == 7 || $newsDetail['bds_type'] == 9 || $newsDetail['bds_type'] == 10 || $newsDetail['bds_type'] == 11) ? 'w_100' : 'w_50') ?> box_input_infor">
                                         <p class="line_h20 font_s16 font_w500 color_grey">Loại bất động sản<span class="chudo">*</span></p>
                                         <div class="khung_input mr_t_8">
                                             <select name="type_bds" id="onclick_chonloai_after" class="size-14 type_bds select_option">
                                                 <option selected disabled>Chọn loại bất động sản</option>
+                                                <? if($newsDetail['type_news'] == 1): ?>
                                                 <option <?= ($newsDetail['bds_type'] == 1) ? "selected" : "" ?> value="1">Căn hộ</option>
                                                 <option <?= ($newsDetail['bds_type'] == 2) ? "selected" : "" ?> value="2">Nhà riêng</option>
                                                 <option <?= ($newsDetail['bds_type'] == 3) ? "selected" : "" ?> value="3">Nhà mặt phố</option>
@@ -88,22 +89,72 @@
                                                 <option <?= ($newsDetail['bds_type'] == 6) ? "selected" : "" ?> value="6">Đất</option>
                                                 <option <?= ($newsDetail['bds_type'] == 7) ? "selected" : "" ?> value="7">Đất nền dự án</option>
                                                 <option <?= ($newsDetail['bds_type'] == 8) ? "selected" : "" ?> value="8">Bất động sản khác</option>
+                                                <? else: ?>
+                                                        <option <?= ($newsDetail['bds_type'] == 1) ? "selected" : "" ?> value="1">Căn hộ</option>                           
+                                                        <option <?= ($newsDetail['bds_type'] == 2) ? "selected" : "" ?> value="2">Căn hộ dịch vụ</option>                             
+                                                        <option <?= ($newsDetail['bds_type'] == 3) ? "selected" : "" ?> value="3">Nhà riêng</option>                             
+                                                        <option <?= ($newsDetail['bds_type'] == 4) ? "selected" : "" ?> value="4">Nhà mặt phố</option>                              
+                                                        <option <?= ($newsDetail['bds_type'] == 5) ? "selected" : "" ?> value="5">Shophouse, Nhà phố thương mại</option>                             
+                                                        <option <?= ($newsDetail['bds_type'] == 6) ? "selected" : "" ?> value="6">Biệt thự liền kề</option>                              
+                                                        <option <?= ($newsDetail['bds_type'] == 7) ? "selected" : "" ?> value="7">Nhà trọ, phòng trọ</option>                           
+                                                        <option <?= ($newsDetail['bds_type'] == 8) ? "selected" : "" ?> value="8">Văn phòng</option>
+                                                        <option <?= ($newsDetail['bds_type'] == 9) ? "selected" : "" ?> value="9">Cửa hàng, mặt bằng bán lẻ</option>                                
+                                                        <option <?= ($newsDetail['bds_type'] == 10) ? "selected" : "" ?> value="10">Đất, nhà xưởng, kho bãi</option>                                                          
+                                                        <option <?= ($newsDetail['bds_type'] == 11) ? "selected" : "" ?> value="11">Bất động sản khác</option>
+                                                <? endif ?>
                                             </select>
                                         </div>
                                     </div>
-                                    <div class=" mr_t_17 w_50 mr_l_12 dangtin_khunginput_chonloai-hien box_input_infor">
+                                    <div class=" mr_t_17 w_50 mr_l_12 dangtin_khunginput_chonloai-hien box_input_infor <?= ($newsDetail['type_news'] == 2 && ($newsDetail['bds_type'] == 7 || $newsDetail['bds_type'] == 9 || $newsDetail['bds_type'] == 10 || $newsDetail['bds_type'] == 11) ? 'hidden' : '') ?>">
                                         <p class="line_h20 font_s16 font_w500 color_grey">Bất động sản chi tiết <span class="chudo">*</span></p>
                                         <div class="khung_input mr_t_8">
                                             <select name="" id="onclick_chonloai_bds" class="size-14 select_option">
                                                 <option selected disabled value="" class="">Bất động sản chi tiết</option>
-                                                <option <?= ($newsDetail['detail_bds'] == 1) ? "selected" : "" ?> value="1">Bất động sản chi tiết</option>
-                                                <option <?= ($newsDetail['detail_bds'] == 2) ? "selected" : "" ?> value="2">Căn hộ mini</option>
-                                                <option <?= ($newsDetail['detail_bds'] == 3) ? "selected" : "" ?> value="3">Căn hộ trung cấp</option>
-                                                <option <?= ($newsDetail['detail_bds'] == 4) ? "selected" : "" ?> value="4">Căn hộ cao cấp</option>
-                                                <option <?= ($newsDetail['detail_bds'] == 5) ? "selected" : "" ?> value="5">Căn hộ Penthouse</option>
-                                                <option <?= ($newsDetail['detail_bds'] == 6) ? "selected" : "" ?> value="6">Căn hộ Duplex</option>
-                                                <option <?= ($newsDetail['detail_bds'] == 7) ? "selected" : "" ?> value="7">Căn hộ Skyvilla</option>
-                                                <option <?= ($newsDetail['detail_bds'] == 8) ? "selected" : "" ?> value="8">Căn hộ loft house</option>
+                                                <? if($newsDetail['type_news'] == 1 && ($newsDetail['bds_type'] == 1 || $newsDetail['bds_type'] == 2 || $newsDetail['bds_type'] == 3 || $newsDetail['bds_type'] == 4)): ?>
+                                                <option <?= ($newsDetail['detail_bds'] == "Căn hộ mini") ? "selected" : "" ?> value="Căn hộ mini">Căn hộ mini</option>
+                                                <option <?= ($newsDetail['detail_bds'] == "Căn hộ trung cấp") ? "selected" : "" ?> value="Căn hộ trung cấp">Căn hộ trung cấp</option>
+                                                <option <?= ($newsDetail['detail_bds'] == "Căn hộ cao cấp") ? "selected" : "" ?> value="Căn hộ cao cấp">Căn hộ cao cấp</option>
+                                                <option <?= ($newsDetail['detail_bds'] == "Căn hộ Penthouse") ? "selected" : "" ?> value="Căn hộ Penthouse">Căn hộ Penthouse</option>
+                                                <option <?= ($newsDetail['detail_bds'] == "Căn hộ Duplex") ? "selected" : "" ?> value="Căn hộ Duplex">Căn hộ Duplex</option>
+                                                <option <?= ($newsDetail['detail_bds'] == "Căn hộ Skyvilla") ? "selected" : "" ?> value="Căn hộ Skyvilla">Căn hộ Skyvilla</option>
+                                                <option <?= ($newsDetail['detail_bds'] == "Căn hộ loft house") ? "selected" : "" ?> value="Căn hộ loft house">Căn hộ loft house</option>
+                                                <option <?= ($newsDetail['detail_bds'] == "Căn hộ Studio") ? "selected" : "" ?> value="Căn hộ Studio">Căn hộ Studio</option>
+                                                <option <?= ($newsDetail['detail_bds'] == "Căn hộ Condotel") ? "selected" : "" ?> value="Căn hộ Condotel">Căn hộ Condotel</option>
+                                                <option <?= ($newsDetail['detail_bds'] == "Căn hộ officetel") ? "selected" : "" ?> value="Căn hộ officetel">Căn hộ officetel</option>
+                                                <? elseif($newsDetail['bds_type'] == 1 && ($newsDetail['bds_type'] == 5)): ?>
+                                                <option <?= ($newsDetail['detail_bds'] == "Biệt thự nghỉ dưỡng") ? "selected" : "" ?> value="Biệt thự nghỉ dưỡng">Biệt thự nghỉ dưỡng</option>
+                                                <option <?= ($newsDetail['detail_bds'] == "Biệt thự đơn lập") ? "selected" : "" ?> value="Biệt thự đơn lập">Biệt thự đơn lập</option>
+                                                <option <?= ($newsDetail['detail_bds'] == "Biệt thự song lập") ? "selected" : "" ?> value="Biệt thự song lập">Biệt thự song lập</option>
+                                                <option <?= ($newsDetail['detail_bds'] == "Biệt thự tứ lập") ? "selected" : "" ?> value="Biệt thự tứ lập">Biệt thự tứ lập</option>
+                                                <? elseif($newsDetail['bds_type'] == 1 && ($newsDetail['bds_type'] == 6 || $newsDetail['bds_type'] == 7)): ?>
+                                                <option <?= ($newsDetail['detail_bds'] == "Đất thổ cư") ? "selected" : "" ?> value="Đất thổ cư">Đất thổ cư</option>
+                                                <option <?= ($newsDetail['detail_bds'] == "Đất công nghiệp") ? "selected" : "" ?> value="Đất công nghiệp">Đất công nghiệp</option>
+                                                <option <?= ($newsDetail['detail_bds'] == "Đất nông, lâm nghiệp") ? "selected" : "" ?> value="Đất nông, lâm nghiệp">Đất nông, lâm nghiệp</option>
+                                                <? elseif($newsDetail['bds_type'] == 1 && ($newsDetail['bds_type'] == 8)): ?>
+                                                <option <?= ($newsDetail['detail_bds'] == "Nhà xưởng kho bãi") ? "selected" : "" ?> value="Nhà xưởng kho bãi">Nhà xưởng kho bãi</option>
+                                                <option <?= ($newsDetail['detail_bds'] == "Khách sạn") ? "selected" : "" ?> value="Khách sạn">Khách sạn</option>
+                                                <option <?= ($newsDetail['detail_bds'] == "Trang trại") ? "selected" : "" ?> value="Trang trại">Trang trại</option>
+                                                <option <?= ($newsDetail['detail_bds'] == "Nhà trọ, phòng trọ") ? "selected" : "" ?> value="Nhà trọ, phòng trọ">Nhà trọ, phòng trọ</option>
+                                                <option <?= ($newsDetail['detail_bds'] == "Mặt bằng văn phòng") ? "selected" : "" ?> value="Mặt bằng văn phòng">Mặt bằng văn phòng</option>
+                                                <? elseif($newsDetail['bds_type'] == 2 && ($newsDetail['bds_type'] == 1 || $newsDetail['bds_type'] == 2 || $newsDetail['bds_type'] == 3 || $newsDetail['bds_type'] == 4 || $newsDetail['bds_type'] == 5)): ?>
+                                                <option <?= ($newsDetail['detail_bds'] == "Căn hộ mini") ? "selected" : "" ?> value="Căn hộ mini">Căn hộ mini</option>
+                                                <option <?= ($newsDetail['detail_bds'] == "Căn hộ trung cấp") ? "selected" : "" ?> value="Căn hộ trung cấp">Căn hộ trung cấp</option>
+                                                <option <?= ($newsDetail['detail_bds'] == "Căn hộ cao cấp") ? "selected" : "" ?> value="Căn hộ cao cấp">Căn hộ cao cấp</option>
+                                                <option <?= ($newsDetail['detail_bds'] == "Căn hộ Penthouse") ? "selected" : "" ?> value="Căn hộ Penthouse">Căn hộ Penthouse</option>
+                                                <option <?= ($newsDetail['detail_bds'] == "Căn hộ Duplex") ? "selected" : "" ?> value="Căn hộ Duplex">Căn hộ Duplex</option>
+                                                <option <?= ($newsDetail['detail_bds'] == "Căn hộ Skyvilla") ? "selected" : "" ?> value="Căn hộ Skyvilla">Căn hộ Skyvilla</option>
+                                                <option <?= ($newsDetail['detail_bds'] == "Căn hộ loft house") ? "selected" : "" ?> value="Căn hộ loft house">Căn hộ loft house</option>
+                                                <option <?= ($newsDetail['detail_bds'] == "Căn hộ Studio") ? "selected" : "" ?> value="Căn hộ Studio">Căn hộ Studio</option>
+                                                <option <?= ($newsDetail['detail_bds'] == "Căn hộ Condotel") ? "selected" : "" ?> value="Căn hộ Condotel">Căn hộ Condotel</option>
+                                                <option  <?= ($newsDetail['detail_bds'] == "Căn hộ officetel") ? "selected" : "" ?> value="Căn hộ officetel">Căn hộ officetel</option>
+                                                <? elseif($newsDetail['bds_type'] == 2 && ($newsDetail['bds_type'] == 6)): ?>
+                                                <option <?= ($newsDetail['detail_bds'] == "Biệt thự nghỉ dưỡng") ? "selected" : "" ?> value="Biệt thự nghỉ dưỡng">Biệt thự nghỉ dưỡng</option>
+                                                <option <?= ($newsDetail['detail_bds'] == "Biệt thự đơn lập") ? "selected" : "" ?> value="Biệt thự đơn lập">Biệt thự đơn lập</option>
+                                                <option <?= ($newsDetail['detail_bds'] == "Biệt thự song lập") ? "selected" : "" ?> value="Biệt thự song lập">Biệt thự song lập</option>
+                                                <option <?= ($newsDetail['detail_bds'] == "Biệt thự tứ lập") ? "selected" : "" ?> value="Biệt thự tứ lập">Biệt thự tứ lập</option>
+                                                <? elseif($newsDetail['bds_type'] == 2 && ($newsDetail['bds_type'] == 8)): ?>
+                                                <option value="Co-working Space">Co-working Space</option>
+                                                <? endif ?>
                                             </select>
                                         </div>
                                     </div>
@@ -304,19 +355,31 @@
                                     <textarea name="tdn_mota" class="tdn_mota" id="" cols="30" rows="5" placeholder="Nhập nội dung"><?= $newsDetail['desc_project'] ?></textarea>
                                 </div>
                             </div>
+
+                            <?
+                                $arr_type_bds2_1 = [1,2];
+                                $arr_type_bds2_2 = [3,4,5,6];
+                                $arr_type_bds2_3 = [7];
+                                $arr_type_bds2_4 = [8];
+                                $arr_type_bds2_5 = [10,11];
+
+                                $arr_type_bds1_1 = [1];
+                                $arr_type_bds1_2 = [3,4,5,2];
+                                $arr_type_bds1_3 = [6,7,8];
+                            ?>
                             <div class="dangtin_mota-gachchan mr_t_16 position_r"></div>
-                            <div class="dangtin_mo_ta_dong7 d_flex space_b hidden mr_t_45 w_100">
+                            <div class="dangtin_mo_ta_dong7 d_flex space_b <?= (($newsDetail['type_news'] == 1 && (in_array($newsDetail['bds_type'],$arr_type_bds1_1))) || ($newsDetail['type_news'] == 2 && (in_array($newsDetail['bds_type'],$arr_type_bds2_1)))) ? '' : "hidden" ?> mr_t_45 w_100">
                                 <div class="dangtin_mo_ta_dong7-trai dangtin_mo_ta_dong_chung">
                                     <div class="dangtin_mo_ta_dong7-tang">
                                         <p class="font_w500 font_s16 line_h20 color_grey">Tầng căn hộ</p>
                                         <div class="khung_input mr_t_8">
-                                            <input type="text"  placeholder="Nhập số tầng căn hộ">
+                                            <input type="number" value="<?= $newsDetail['floor'] ?>" class="apartment_floor" placeholder="Nhập số tầng căn hộ">
                                         </div>
                                     </div>
                                     <div class="dangtin_mo_ta_dong7-balcony mr_t_21">
                                         <p class="font_w500 font_s16 line_h20 color_grey">Hướng ban công</p>
                                         <div class="khung_input mr_t_8">
-                                            <input type="text" value="<?= $newsDetail['Balcony_direction'] ?>" class="Balcony_direction" placeholder="Nhập hướng ban công">
+                                            <input type="text" value="<?= ($newsDetail['Balcony_direction']) ?>" class="Balcony_direction" placeholder="Nhập hướng ban công">
                                         </div>
                                     </div>
                                     <div class="dangtin_mo_ta_dong7-corner d_flex mr_t_26 align_c">
@@ -336,48 +399,48 @@
                                         <div class="dong7-numbers-rom_left">
                                             <p class="font_w500 font_s16 line_h20 color_grey">Số phòng tắm</p>
                                             <div class="dong7-numbers-rom_left-value d_flex mr_t_8">
-                                                <div data-id="1" class="dong-numbers-rom-value-item cursor_p">1</div>
-                                                <div data-id="2" class="dong-numbers-rom-value-item cursor_p">2</div>
-                                                <div data-id="3" class="dong-numbers-rom-value-item cursor_p">3</div>
-                                                <div data-id="4+" class="dong-numbers-rom-value-item cursor_p">4+</div>
+                                            <div data-id='1' class="dong-numbers-rom-value-item cursor_p <?= ($newsDetail['bathroom'] == '1') ? "chutrang_nenxanh" : "" ?> radio_bathroom">1</div>
+                                            <div data-id='2' class="dong-numbers-rom-value-item cursor_p <?= ($newsDetail['bathroom'] == '2') ? "chutrang_nenxanh" : "" ?> radio_bathroom">2</div>
+                                            <div data-id='3' class="dong-numbers-rom-value-item cursor_p <?= ($newsDetail['bathroom'] == '3') ? "chutrang_nenxanh" : "" ?> radio_bathroom">3</div>
+                                            <div data-id='4+' class="dong-numbers-rom-value-item cursor_p <?= ($newsDetail['bathroom'] == '4+') ? "chutrang_nenxanh" : "" ?> radio_bathroom">4+</div>
                                             </div>
                                         </div>
                                         <div class="dong7-numbers-rom_right">
                                             <p class="font_w500 font_s16 line_h20 color_grey">Số phòng ngủ</p>
                                             <div class="dong7-numbers-rom_right-value d_flex mr_t_8">
-                                                <div data-id="1" class="dong-numbers-rom-value-item cursor_p">1</div>
-                                                <div data-id="2" class="dong-numbers-rom-value-item cursor_p">2</div>
-                                                <div data-id="3" class="dong-numbers-rom-value-item cursor_p">3</div>
-                                                <div data-id="4+" class="dong-numbers-rom-value-item cursor_p">4+</div>
+                                            <div data-id='1' class="dong-numbers-rom-value-item cursor_p <?= ($newsDetail['bedroom'] == '1') ? "chutrang_nenxanh" : "" ?> radio_bedroom cursor_p">1</div>
+                                            <div data-id='2' class="dong-numbers-rom-value-item cursor_p <?= ($newsDetail['bedroom'] == '2') ? "chutrang_nenxanh" : "" ?> radio_bedroom cursor_p">2</div>
+                                            <div data-id='3' class="dong-numbers-rom-value-item cursor_p <?= ($newsDetail['bedroom'] == '3') ? "chutrang_nenxanh" : "" ?> radio_bedroom cursor_p">3</div>
+                                            <div data-id='4+' class="dong-numbers-rom-value-item cursor_p <?= ($newsDetail['bedroom'] == '4+') ? "chutrang_nenxanh" : "" ?> radio_bedroom cursor_p">4+</div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="dong7-numbers-rom_right_furniture mr_t_21">
                                         <p class="font_w500 font_s16 line_h20 color_grey">Nội thất</p>
                                         <div class="khung_input mr_t_8">
-                                            <input type="text" placeholder="Nhập">
+                                            <input type="text" class="Interior7" value="<?= ($newsDetail['Interior'] != 'undefined') ? $newsDetail['Interior'] : '' ?>" placeholder="Nhập">
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="dangtin_mota-dong8 d_flex space_b <?= ($newsDetail['bds_type'] == 2 || $newsDetail['bds_type'] == 3 || $newsDetail['bds_type'] == 4 || $newsDetail['bds_type'] == 5) ? '' : "hidden" ?> mr_t_45 w_100">
+                            <div class="dangtin_mota-dong8 d_flex space_b <?= (($newsDetail['type_news'] == 1 && (in_array($newsDetail['bds_type'],$arr_type_bds1_2))) || ($newsDetail['type_news'] == 2 && (in_array($newsDetail['bds_type'],$arr_type_bds2_2)))) ? '' : "hidden" ?> mr_t_45 w_100">
                                 <div class="dangtin_mota-dong8-left dangtin_mo_ta_dong_chung">
                                     <div class="dangtin_mota-dong8-facade">
                                         <p class="font_w500 font_s16 line_h20 color_grey">Mặt tiền (m)</p>
                                         <div class="khung_input mr_t_8">
-                                            <input type="text" class="mattien8" value="<?= $newsDetail['mattien'] ?>" placeholder="Nhập">
+                                            <input type="text" class="mattien8" value="<?= ($newsDetail['mattien'] != 'undefined') ? $newsDetail['mattien'] : '' ?>" placeholder="Nhập">
                                         </div>
                                     </div>
                                     <div class="dangtin_mota-dong8-facade mr_t_21">
                                         <p class="font_w500 font_s16 line_h20 color_grey">Đường vào (m)</p>
                                         <div class="khung_input mr_t_8">
-                                            <input type="text" class="duongvao8" value="<?= $newsDetail['duongvao'] ?>" placeholder="Nhập">
+                                            <input type="text" class="duongvao8" value="<?= ($newsDetail['duongvao'] != 'undefined') ? $newsDetail['duongvao'] : '' ?>" placeholder="Nhập">
                                         </div>
                                     </div>
                                     <div class="dangtin_mota-dong8-facade mr_t_21">
                                         <p class="font_w500 font_s16 line_h20 color_grey">Số tầng</p>
                                         <div class="khung_input mr_t_8">
-                                            <input type="text" class="floor" value="<?= $newsDetail['floor'] ?>" placeholder="Nhập">
+                                            <input type="text" class="floor8" value="<?= $newsDetail['floor'] ?>" placeholder="Nhập">
                                         </div>
                                     </div>
                                 </div>
@@ -403,23 +466,23 @@
                                     <div class="dong7-numbers-rom_right_furniture mr_t_21">
                                         <p class="font_w500 font_s16 line_h20 color_grey">Nội thất</p>
                                         <div class="khung_input mr_t_8">
-                                            <input type="text" value="<?= $newsDetail['Interior'] ?>" class="Interior" placeholder="Nhập">
+                                            <input type="text" value="<?= ($newsDetail['Interior'] != 'undefined') ? $newsDetail['Interior'] : '' ?>" class="Interior8" placeholder="Nhập">
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="dangtin_mota-dong9 d_flex space_b <?= ($newsDetail['bds_type'] == 6 || $newsDetail['bds_type'] == 7 || $newsDetail['bds_type'] == 8) ? '' : "hidden" ?> mr_t_45 w_100">
+                            <div class="dangtin_mota-dong9 d_flex space_b <?= (($newsDetail['type_news'] == 1 &&(in_array($newsDetail['bds_type'],$arr_type_bds1_3))) || ($newsDetail['type_news'] == 2 && (in_array($newsDetail['bds_type'],$arr_type_bds2_5)))) ? '' : "hidden" ?> mr_t_45 w_100">
                                 <div class="dangtin_mota-dong8-left dangtin_mo_ta_dong_chung">
                                     <div class="dangtin_mota-dong8-facade">
                                         <p class="font_w500 font_s16 line_h20 color_grey">Mặt tiền (m)</p>
                                         <div class="khung_input mr_t_8">
-                                            <input type="number" class="mattien9" value="<?= $newsDetail['mattien'] ?>" placeholder="Nhập">
+                                            <input type="number" class="mattien9" value="<?= ($newsDetail['mattien'] != 'undefined') ? $newsDetail['mattien'] : '' ?>" placeholder="Nhập">
                                         </div>
                                     </div>
                                     <div class="dangtin_mota-dong8-facade mr_t_21">
                                         <p class="font_w500 font_s16 line_h20 color_grey">Đường vào (m)</p>
                                         <div class="khung_input mr_t_8">
-                                            <input type="number" class="duongvao9" value="<?= $newsDetail['duongvao'] ?>"  placeholder="Nhập">
+                                            <input type="number" class="duongvao9" value="<?= ($newsDetail['duongvao'] != 'undefined') ? $newsDetail['duongvao'] : '' ?>"  placeholder="Nhập">
                                         </div>
                                     </div>
                                 </div>
@@ -428,6 +491,80 @@
                                         <p class="font_w500 font_s16 line_h20 color_grey">Chiều sâu</p>
                                         <div class="khung_input mr_t_8">
                                             <input type="number" class="chieusau" value="<?= $newsDetail['chieusau'] ?>"  placeholder="Nhập">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="dangtin_mota-dong10 d_flex space_b  mr_t_45 w_100 <?= (($newsDetail['type_news'] == 2 && in_array($newsDetail['bds_type'],$arr_type_bds2_4))) ? '' : "hidden" ?>">
+                                <div class="dangtin_mota-dong8-left dangtin_mo_ta_dong_chung">
+                                    <div class="dangtin_mota-dong8-facade">
+                                        <p class="font_w500 font_s16 line_h20 color_grey">Tầng văn phòng</p>
+                                        <div class="khung_input mr_t_8">
+                                            <input type="number" value="<?= $newsDetail['floor'] ?>" class="floor10" placeholder="Nhập">
+                                        </div>
+                                    </div>
+                                    <div class="dangtin_mota-dong8-facade mr_t_21">
+                                        <p class="font_w500 font_s16 line_h20 color_grey">Nội thất</p>
+                                        <div class="khung_input mr_t_8">
+                                            <input type="text" value="<?= ($newsDetail['Interior'] != 'undefined') ? $newsDetail['Interior'] : '' ?>" class="Interior10" placeholder="Nhập">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="dangtin_mota-dong8-right dangtin_mo_ta_dong_chung">
+                                    <div class="dong7-numbers-rom_right_furniture">
+                                        <p class="font_w500 font_s16 line_h20 color_grey">Số thang máy</p>
+                                        <div class="khung_input mr_t_8">
+                                            <input type="number" value="<?= $newsDetail['elevator_number'] ?>" class="elevator_number" placeholder="Nhập">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="dangtin_mo_ta_dong11 d_flex space_b mr_t_45 w_100 <?= (($newsDetail['type_news'] == 2 && in_array($newsDetail['bds_type'],$arr_type_bds2_3))) ? '' : "hidden" ?>">
+                                <div class="dangtin_mo_ta_dong7-trai dangtin_mo_ta_dong_chung">
+                                    <div class="dangtin_mo_ta_dong7-tang">
+                                        <p class="font_w500 font_s16 line_h20 color_grey">Tầng</p>
+                                        <div class="khung_input mr_t_8">
+                                            <input type="text" class="floor11" value="<?= ($newsDetail['floor']) ?>" placeholder="Nhập">
+                                        </div>
+                                    </div>
+                                    <div class="dangtin_mo_ta_dong7-balcony mr_t_21">
+                                        <p class="font_w500 font_s16 line_h20 color_grey">Nội thất</p>
+                                        <div class="khung_input mr_t_8">
+                                            <input type="text" value="<?= ($newsDetail['Interior'] != 'undefined') ? $newsDetail['Interior'] : '' ?>" class="Interior11" placeholder="Nhập">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="dangtin_mo_ta_dong7-right dangtin_mo_ta_dong_chung">
+                                    <div class="dangtin_mo_ta_dong7-numbers-rom">
+                                        <div class="dong7-numbers-rom_left">
+                                            <p class="font_w500 font_s16 line_h20 color_grey">phòng tắm</p>
+                                            <div class="dong7-numbers-rom_left-value d_flex mr_t_18">
+                                                <div class="dangtin_mo_ta_dong7-corner d_flex align_c">
+                                                    <div class="dong7-corner-true d_flex align_c mr-50 ">
+                                                        <div><input <?= ($newsDetail['check_bathroom'] == 1) ? 'checked' : '' ?> type="radio" class="check_bathroom" value="1" name="check_bathroom"></div>
+                                                        <div class="font_w500 font_s14 line_h16 color_grey mr_l_9">có</div>
+                                                    </div>
+                                                    <div class="dong7-corner-false d_flex align_c">
+                                                        <div><input type="radio" <?= ($newsDetail['check_bathroom'] == 2) ? 'checked' : '' ?> value="2" class="check_bathroom" name="check_bathroom"></div>
+                                                        <div class="font_w500 font_s14 line_h16 color_grey mr_l_9">không</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="dong7-numbers-rom_right mr_t_21">
+                                            <p class="font_w500 font_s16 line_h20 color_grey">phòng ngủ</p>
+                                            <div class="dong7-numbers-rom_right-value d_flex mr_t_18">
+                                                <div class="dangtin_mo_ta_dong7-corner d_flex align_c">
+                                                    <div class="dong7-corner-true d_flex align_c mr-50 ">
+                                                        <div><input type="radio" class="check_bedroom" <?= ($newsDetail['check_bedroom'] == 1) ? 'checked' : '' ?> value="1" name="check_bedroom"></div>
+                                                        <div class="font_w500 font_s14 line_h16 color_grey mr_l_9">có</div>
+                                                    </div>
+                                                    <div class="dong7-corner-false d_flex align_c">
+                                                        <div><input type="radio" value="2" <?= ($newsDetail['check_bedroom'] == 2) ? 'checked' : '' ?> class="check_bedroom" name="check_bedroom"></div>
+                                                        <div class="font_w500 font_s14 line_h16 color_grey mr_l_9">không</div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -501,18 +638,19 @@
                             </div>
                         </div>
                     </div>
-                    <div class="dangtin_form dangtin_form-after back_w border_r_8 mr_t_24 pa_24_32 box_shadow_10 hidden">
+                    
+                    <div class="dangtin_form dangtin_form-after back_w border_r_8 mr_t_24 pa_24_32 box_shadow_10 <?= (($newsDetail['type_news'] == 1 && ( $newsDetail['bds_type'] != 6 || $newsDetail['bds_type'] != 7 || $newsDetail['bds_type'] != 8)) || ($newsDetail['type_news'] == 2 && ( $newsDetail['bds_type'] != 10 || $newsDetail['bds_type'] != 7 || $newsDetail['bds_type'] != 11 || $newsDetail['bds_type'] != 9))) ? '' : "hidden" ?>">
                         <p class="font_w500 font_s16 line_h24 color_green">Thông tin bổ sung</p>
                         <div class="font_s16 line_h24 color_grey mr_t_8">Bài đăng thông tim bổ sung thường có hiệu quả hơn 40% sơ với bài đăng thường</div>
-                        <div class="dangtin_after_bosung d_flex space_b flex_w">
-                            <div class="dangtin_after_bosung-item_dong d_flex">
+                        <div class="dangtin_after_bosung d_flex flex_w">
+                            <div class="dangtin_after_bosung-item_dong checkboxes_room <?= ($newsDetail['type_news'] == 2 && ( $newsDetail['bds_type'] = 8)) ? 'hidden' : '' ?>  d_flex">
                                 <div class="post_additional_total--left">
-                                    <p class="font_w500 font_s18 line_h24 color_grey">Phòng khách</p>
+                                    <p class="font_w500  font_s18 line_h24 color_grey">Phòng khách</p>
                                     <div class="detail__post_additional_total additional_hidden ">
                                         <div class="dangtin_after_bosung-item_dong-name d_flex mr_t_19 align_c">
                                             <div class="checkbox-container mr_r_9">
                                                 <label class="checkbox-label-phanquyen">
-                                                    <input type="checkbox">
+                                                    <input value="1.1" class="checkbox_detail" <?= (in_array('1.1',json_decode(($newsDetail['arr_checkbox_detail'])))) ? 'checked' : '' ?> type="checkbox">
                                                     <span class="checkbox-custom"></span>
                                                 </label>
                                             </div>
@@ -521,25 +659,71 @@
                                         <div class="dangtin_after_bosung-item_dong-name d_flex mr_t_22 align_c">
                                             <div class="checkbox-container mr_r_9">
                                                 <label class="checkbox-label-phanquyen">
-                                                    <input type="checkbox">
+                                                    <input value="1.2" class="checkbox_detail" <?= (in_array('1.2',json_decode(($newsDetail['arr_checkbox_detail'])))) ? 'checked' : '' ?> type="checkbox">
                                                     <span class="checkbox-custom"></span>
                                                 </label>
                                             </div>
-                                            <p class="font_s16 line_h24 color_grey">Tủ trang trí</p>
+                                            <p class="font_s16 line_h24 color_grey">Tivi</p>
                                         </div>
                                         <div class="dangtin_after_bosung-item_dong-name d_flex mr_t_22 align_c">
                                             <div class="checkbox-container mr_r_9">
                                                 <label class="checkbox-label-phanquyen">
-                                                    <input type="checkbox">
+                                                    <input value="1.3" class="checkbox_detail" <?= (in_array('1.3',json_decode(($newsDetail['arr_checkbox_detail'])))) ? 'checked' : '' ?> type="checkbox">
                                                     <span class="checkbox-custom"></span>
                                                 </label>
                                             </div>
-                                            <p class="font_s16 line_h24 color_grey">Tủ trang trí</p>
+                                            <p class="font_s16 line_h24 color_grey">Bàn ghế P.khách </p>
                                         </div>
                                         <div class="dangtin_after_bosung-item_dong-name d_flex mr_t_22 align_c">
                                             <div class="checkbox-container mr_r_9">
                                                 <label class="checkbox-label-phanquyen">
-                                                    <input type="checkbox">
+                                                    <input value="1.4" class="checkbox_detail" <?= (in_array('1.4',json_decode(($newsDetail['arr_checkbox_detail'])))) ? 'checked' : '' ?> type="checkbox">
+                                                    <span class="checkbox-custom"></span>
+                                                </label>
+                                            </div>
+                                            <p class="font_s16 line_h24 color_grey">Toilet chung</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="post_additional_total--right">
+                                    <img src="<? echo base_url() ?>assets/images/arrow_updown.png" alt="">
+                                </div>
+                            </div>
+                            <div class="dangtin_after_bosung-item_dong checkboxes_room <?= ($newsDetail['type_news'] == 2 && ( $newsDetail['bds_type'] = 8)) ? 'hidden' : '' ?>  d_flex">
+                                <div class="post_additional_total--left">
+                                    <p class="font_w500 font_s18  line_h24 color_grey">Phòng ngủ</p>
+                                    <div class="detail__post_additional_total additional_hidden ">
+                                        <div class="dangtin_after_bosung-item_dong-name d_flex mr_t_19 align_c">
+                                            <div class="checkbox-container mr_r_9">
+                                                <label class="checkbox-label-phanquyen">
+                                                    <input value="2.1" class="checkbox_detail" <?= (in_array('2.1',json_decode(($newsDetail['arr_checkbox_detail'])))) ? 'checked' : '' ?> type="checkbox">
+                                                    <span class="checkbox-custom"></span>
+                                                </label>
+                                            </div>
+                                            <p class="font_s16 line_h24 color_grey">Giường</p>
+                                        </div>
+                                        <div class="dangtin_after_bosung-item_dong-name d_flex mr_t_22 align_c">
+                                            <div class="checkbox-container mr_r_9">
+                                                <label class="checkbox-label-phanquyen">
+                                                    <input value="2.2" class="checkbox_detail" <?= (in_array('2.2',json_decode(($newsDetail['arr_checkbox_detail'])))) ? 'checked' : '' ?> type="checkbox">
+                                                    <span class="checkbox-custom"></span>
+                                                </label>
+                                            </div>
+                                            <p class="font_s16 line_h24 color_grey">Bàn phấn</p>
+                                        </div>
+                                        <div class="dangtin_after_bosung-item_dong-name d_flex mr_t_22 align_c">
+                                            <div class="checkbox-container mr_r_9">
+                                                <label class="checkbox-label-phanquyen">
+                                                    <input value="2.3" class="checkbox_detail" <?= (in_array('2.3',json_decode(($newsDetail['arr_checkbox_detail'])))) ? 'checked' : '' ?> type="checkbox">
+                                                    <span class="checkbox-custom"></span>
+                                                </label>
+                                            </div>
+                                            <p class="font_s16 line_h24 color_grey">Tủ quần áo</p>
+                                        </div>
+                                        <div class="dangtin_after_bosung-item_dong-name d_flex mr_t_22 align_c">
+                                            <div class="checkbox-container mr_r_9">
+                                                <label class="checkbox-label-phanquyen">
+                                                    <input value="2.4" class="checkbox_detail" <?= (in_array('2.4',json_decode(($newsDetail['arr_checkbox_detail'])))) ? 'checked' : '' ?> class="checkbox_detail" <?= (in_array('3.2',json_decode(($newsDetail['arr_checkbox_detail'])))) ? 'checked' : '' ?> type="checkbox">
                                                     <span class="checkbox-custom"></span>
                                                 </label>
                                             </div>
@@ -551,14 +735,60 @@
                                     <img src="<? echo base_url() ?>assets/images/arrow_updown.png" alt="">
                                 </div>
                             </div>
-                            <div class="dangtin_after_bosung-item_dong d_flex">
+                            <div class="dangtin_after_bosung-item_dong checkboxes_room <?= ($newsDetail['type_news'] == 2 && ( $newsDetail['bds_type'] = 8)) ? 'hidden' : '' ?>  d_flex">
                                 <div class="post_additional_total--left">
-                                    <p class="font_w500 font_s18 line_h24 color_grey">Phòng khách</p>
+                                    <p class="font_w500 font_s18 line_h24  color_grey">Phòng bếp</p>
                                     <div class="detail__post_additional_total additional_hidden ">
                                         <div class="dangtin_after_bosung-item_dong-name d_flex mr_t_19 align_c">
                                             <div class="checkbox-container mr_r_9">
                                                 <label class="checkbox-label-phanquyen">
-                                                    <input type="checkbox">
+                                                    <input value="3.1" class="checkbox_detail" <?= (in_array('3.1',json_decode(($newsDetail['arr_checkbox_detail'])))) ? 'checked' : '' ?> type="checkbox">
+                                                    <span class="checkbox-custom"></span>
+                                                </label>
+                                            </div>
+                                            <p class="font_s16 line_h24 color_grey">Bàn ăn</p>
+                                        </div>
+                                        <div class="dangtin_after_bosung-item_dong-name d_flex mr_t_22 align_c">
+                                            <div class="checkbox-container mr_r_9">
+                                                <label class="checkbox-label-phanquyen">
+                                                    <input value="3.2" class="checkbox_detail" <?= (in_array('3.2',json_decode(($newsDetail['arr_checkbox_detail'])))) ? 'checked' : '' ?> type="checkbox">
+                                                    <span class="checkbox-custom"></span>
+                                                </label>
+                                            </div>
+                                            <p class="font_s16 line_h24 color_grey">Máy hút mùi</p>
+                                        </div>
+                                        <div class="dangtin_after_bosung-item_dong-name d_flex mr_t_22 align_c">
+                                            <div class="checkbox-container mr_r_9">
+                                                <label class="checkbox-label-phanquyen">
+                                                    <input value="3.3" class="checkbox_detail" <?= (in_array('3.3',json_decode(($newsDetail['arr_checkbox_detail'])))) ? 'checked' : '' ?> type="checkbox">
+                                                    <span class="checkbox-custom"></span>
+                                                </label>
+                                            </div>
+                                            <p class="font_s16 line_h24 color_grey">Tủ bếp</p>
+                                        </div>
+                                        <div class="dangtin_after_bosung-item_dong-name d_flex mr_t_22 align_c">
+                                            <div class="checkbox-container mr_r_9">
+                                                <label class="checkbox-label-phanquyen">
+                                                    <input value="3.4" class="checkbox_detail" <?= (in_array('3.4',json_decode(($newsDetail['arr_checkbox_detail'])))) ? 'checked' : '' ?> type="checkbox">
+                                                    <span class="checkbox-custom"></span>
+                                                </label>
+                                            </div>
+                                            <p class="font_s16 line_h24 color_grey">Tủ lạnh</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="post_additional_total--right">
+                                    <img src="<? echo base_url() ?>assets/images/arrow_updown.png" alt="">
+                                </div>
+                            </div>
+                            <div class="dangtin_after_bosung-item_dong checkboxes_room <?= ($newsDetail['type_news'] == 2 && ( $newsDetail['bds_type'] = 8)) ? 'hidden' : '' ?>  d_flex">
+                                <div class="post_additional_total--left">
+                                    <p class="font_w500 font_s18  line_h24 color_grey">Phòng tắm</p>
+                                    <div class="detail__post_additional_total additional_hidden ">
+                                        <div class="dangtin_after_bosung-item_dong-name d_flex mr_t_19 align_c">
+                                            <div class="checkbox-container mr_r_9">
+                                                <label class="checkbox-label-phanquyen">
+                                                    <input value="4.1" class="checkbox_detail" <?= (in_array('4.1',json_decode(($newsDetail['arr_checkbox_detail'])))) ? 'checked' : '' ?> type="checkbox">
                                                     <span class="checkbox-custom"></span>
                                                 </label>
                                             </div>
@@ -567,29 +797,93 @@
                                         <div class="dangtin_after_bosung-item_dong-name d_flex mr_t_22 align_c">
                                             <div class="checkbox-container mr_r_9">
                                                 <label class="checkbox-label-phanquyen">
-                                                    <input type="checkbox">
+                                                    <input value="4.2" class="checkbox_detail" <?= (in_array('4.2',json_decode(($newsDetail['arr_checkbox_detail'])))) ? 'checked' : '' ?> type="checkbox">
                                                     <span class="checkbox-custom"></span>
                                                 </label>
                                             </div>
-                                            <p class="font_s16 line_h24 color_grey">Tủ trang trí</p>
+                                            <p class="font_s16 line_h24 color_grey">Bồn rửa mặt</p>
                                         </div>
                                         <div class="dangtin_after_bosung-item_dong-name d_flex mr_t_22 align_c">
                                             <div class="checkbox-container mr_r_9">
                                                 <label class="checkbox-label-phanquyen">
-                                                    <input type="checkbox">
+                                                    <input value="4.3" class="checkbox_detail" <?= (in_array('4.3',json_decode(($newsDetail['arr_checkbox_detail'])))) ? 'checked' : '' ?> type="checkbox">
                                                     <span class="checkbox-custom"></span>
                                                 </label>
                                             </div>
-                                            <p class="font_s16 line_h24 color_grey">Tủ trang trí</p>
+                                            <p class="font_s16 line_h24 color_grey">Vòi hoa sen</p>
                                         </div>
                                         <div class="dangtin_after_bosung-item_dong-name d_flex mr_t_22 align_c">
                                             <div class="checkbox-container mr_r_9">
                                                 <label class="checkbox-label-phanquyen">
-                                                    <input type="checkbox">
+                                                    <input value="4.4" class="checkbox_detail" <?= (in_array('4.4',json_decode(($newsDetail['arr_checkbox_detail'])))) ? 'checked' : '' ?> type="checkbox">
                                                     <span class="checkbox-custom"></span>
                                                 </label>
                                             </div>
-                                            <p class="font_s16 line_h24 color_grey">Tủ trang trí</p>
+                                            <p class="font_s16 line_h24 color_grey">Bồn tắm</p>
+                                        </div>
+                                        <div class="dangtin_after_bosung-item_dong-name d_flex mr_t_22 align_c">
+                                            <div class="checkbox-container mr_r_9">
+                                                <label class="checkbox-label-phanquyen">
+                                                    <input value="4.5" class="checkbox_detail" <?= (in_array('4.5',json_decode(($newsDetail['arr_checkbox_detail'])))) ? 'checked' : '' ?> type="checkbox">
+                                                    <span class="checkbox-custom"></span>
+                                                </label>
+                                            </div>
+                                            <p class="font_s16 line_h24 color_grey">Bình nóng lạnh</p>
+                                        </div>
+                                    </div>
+                                    <div class="dangtin_after_bosung-item_dong-name d_flex mr_t_22 align_c">
+                                        <div class="checkbox-container mr_r_9">
+                                            <label class="checkbox-label-phanquyen">
+                                                <input value="4.6" class="checkbox_detail" <?= (in_array('4.6',json_decode(($newsDetail['arr_checkbox_detail'])))) ? 'checked' : '' ?> type="checkbox">
+                                                <span class="checkbox-custom"></span>
+                                            </label>
+                                        </div>
+                                        <p class="font_s16 line_h24 color_grey">Bồn cầu</p>
+                                    </div>
+                                </div>
+                                <div class="post_additional_total--right">
+                                    <img src="<? echo base_url() ?>assets/images/arrow_updown.png" alt="">
+                                </div>
+                            </div>
+                            <div class="dangtin_after_bosung-item_dong d_flex">
+                                <div class="post_additional_total--left">
+                                    <p class="font_w500 font_s18 line_h24 color_grey">An toàn nhà ỏ</p>
+                                    <div class="detail__post_additional_total additional_hidden ">
+                                        <div class="dangtin_after_bosung-item_dong-name d_flex mr_t_19 align_c">
+                                            <div class="checkbox-container mr_r_9">
+                                                <label class="checkbox-label-phanquyen">
+                                                    <input value="5.1" class="checkbox_detail" <?= (in_array('5.1',json_decode(($newsDetail['arr_checkbox_detail'])))) ? 'checked' : '' ?> type="checkbox">
+                                                    <span class="checkbox-custom"></span>
+                                                </label>
+                                            </div>
+                                            <p class="font_s16 line_h24 color_grey">Máy báo khói</p>
+                                        </div>
+                                        <div class="dangtin_after_bosung-item_dong-name d_flex mr_t_22 align_c">
+                                            <div class="checkbox-container mr_r_9">
+                                                <label class="checkbox-label-phanquyen">
+                                                    <input value="5.2" class="checkbox_detail" <?= (in_array('5.2',json_decode(($newsDetail['arr_checkbox_detail'])))) ? 'checked' : '' ?> type="checkbox">
+                                                    <span class="checkbox-custom"></span>
+                                                </label>
+                                            </div>
+                                            <p class="font_s16 line_h24 color_grey">Bình chữa cháy</p>
+                                        </div>
+                                        <div class="dangtin_after_bosung-item_dong-name d_flex mr_t_22 align_c">
+                                            <div class="checkbox-container mr_r_9">
+                                                <label class="checkbox-label-phanquyen">
+                                                    <input value="5.3" class="checkbox_detail" <?= (in_array('5.3',json_decode(($newsDetail['arr_checkbox_detail'])))) ? 'checked' : '' ?> type="checkbox">
+                                                    <span class="checkbox-custom"></span>
+                                                </label>
+                                            </div>
+                                            <p class="font_s16 line_h24 color_grey">Camera an ninh</p>
+                                        </div>
+                                        <div class="dangtin_after_bosung-item_dong-name d_flex mr_t_22 align_c">
+                                            <div class="checkbox-container mr_r_9">
+                                                <label class="checkbox-label-phanquyen">
+                                                    <input value="5.4" class="checkbox_detail" <?= (in_array('5.4',json_decode(($newsDetail['arr_checkbox_detail'])))) ? 'checked' : '' ?> type="checkbox">
+                                                    <span class="checkbox-custom"></span>
+                                                </label>
+                                            </div>
+                                            <p class="font_s16 line_h24 color_grey">Máy báo khí CO</p>
                                         </div>
                                     </div>
                                 </div>
@@ -599,43 +893,61 @@
                             </div>
                             <div class="dangtin_after_bosung-item_dong d_flex">
                                 <div class="post_additional_total--left">
-                                    <p class="font_w500 font_s18 line_h24 color_grey">Phòng khách</p>
+                                    <p class="font_w500 font_s18 line_h24 color_grey">Tiêu dùng, ẩm thực</p>
                                     <div class="detail__post_additional_total additional_hidden ">
                                         <div class="dangtin_after_bosung-item_dong-name d_flex mr_t_19 align_c">
                                             <div class="checkbox-container mr_r_9">
                                                 <label class="checkbox-label-phanquyen">
-                                                    <input type="checkbox">
+                                                    <input value="10.1" class="checkbox_detail" <?= (in_array('10.1',json_decode(($newsDetail['arr_checkbox_detail'])))) ? 'checked' : '' ?> type="checkbox">
                                                     <span class="checkbox-custom"></span>
                                                 </label>
                                             </div>
-                                            <p class="font_s16 line_h24 color_grey">Tủ trang trí</p>
+                                            <p class="font_s16 line_h24 color_grey">Quán bar</p>
                                         </div>
                                         <div class="dangtin_after_bosung-item_dong-name d_flex mr_t_22 align_c">
                                             <div class="checkbox-container mr_r_9">
                                                 <label class="checkbox-label-phanquyen">
-                                                    <input type="checkbox">
+                                                    <input value="10.2" class="checkbox_detail" <?= (in_array('10.2',json_decode(($newsDetail['arr_checkbox_detail'])))) ? 'checked' : '' ?> type="checkbox">
                                                     <span class="checkbox-custom"></span>
                                                 </label>
                                             </div>
-                                            <p class="font_s16 line_h24 color_grey">Tủ trang trí</p>
+                                            <p class="font_s16 line_h24 color_grey">Nhà hàng</p>
                                         </div>
                                         <div class="dangtin_after_bosung-item_dong-name d_flex mr_t_22 align_c">
                                             <div class="checkbox-container mr_r_9">
                                                 <label class="checkbox-label-phanquyen">
-                                                    <input type="checkbox">
+                                                    <input value="10.3" class="checkbox_detail" <?= (in_array('10.3',json_decode(($newsDetail['arr_checkbox_detail'])))) ? 'checked' : '' ?> type="checkbox">
                                                     <span class="checkbox-custom"></span>
                                                 </label>
                                             </div>
-                                            <p class="font_s16 line_h24 color_grey">Tủ trang trí</p>
+                                            <p class="font_s16 line_h24 color_grey">Trung tâm thương mai</p>
                                         </div>
                                         <div class="dangtin_after_bosung-item_dong-name d_flex mr_t_22 align_c">
                                             <div class="checkbox-container mr_r_9">
                                                 <label class="checkbox-label-phanquyen">
-                                                    <input type="checkbox">
+                                                    <input value="10.4" class="checkbox_detail" <?= (in_array('10.4',json_decode(($newsDetail['arr_checkbox_detail'])))) ? 'checked' : '' ?> type="checkbox">
                                                     <span class="checkbox-custom"></span>
                                                 </label>
                                             </div>
-                                            <p class="font_s16 line_h24 color_grey">Tủ trang trí</p>
+                                            <p class="font_s16 line_h24 color_grey">Cây ATM</p>
+                                        </div>
+                                        <div class="dangtin_after_bosung-item_dong-name d_flex mr_t_22 align_c">
+                                            <div class="checkbox-container mr_r_9">
+                                                <label class="checkbox-label-phanquyen">
+                                                    <input value="10.5" class="checkbox_detail" <?= (in_array('10.5',json_decode(($newsDetail['arr_checkbox_detail'])))) ? 'checked' : '' ?> type="checkbox">
+                                                    <span class="checkbox-custom"></span>
+                                                </label>
+                                            </div>
+                                            <p class="font_s16 line_h24 color_grey">Ngân hàng</p>
+                                        </div>
+                                        <div class="dangtin_after_bosung-item_dong-name d_flex mr_t_22 align_c">
+                                            <div class="checkbox-container mr_r_9">
+                                                <label class="checkbox-label-phanquyen">
+                                                    <input value="10.6" class="checkbox_detail" <?= (in_array('10.6',json_decode(($newsDetail['arr_checkbox_detail'])))) ? 'checked' : '' ?> type="checkbox">
+                                                    <span class="checkbox-custom"></span>
+                                                </label>
+                                            </div>
+                                            <p class="font_s16 line_h24 color_grey">Coffee shop</p>
                                         </div>
                                     </div>
                                 </div>
@@ -645,43 +957,52 @@
                             </div>
                             <div class="dangtin_after_bosung-item_dong d_flex">
                                 <div class="post_additional_total--left">
-                                    <p class="font_w500 font_s18 line_h24 color_grey">Phòng khách</p>
+                                    <p class="font_w500 font_s18 line_h24 color_grey">Thể thao</p>
                                     <div class="detail__post_additional_total additional_hidden ">
                                         <div class="dangtin_after_bosung-item_dong-name d_flex mr_t_19 align_c">
                                             <div class="checkbox-container mr_r_9">
                                                 <label class="checkbox-label-phanquyen">
-                                                    <input type="checkbox">
+                                                    <input value="6.1" class="checkbox_detail" <?= (in_array('6.1',json_decode(($newsDetail['arr_checkbox_detail'])))) ? 'checked' : '' ?> type="checkbox">
                                                     <span class="checkbox-custom"></span>
                                                 </label>
                                             </div>
-                                            <p class="font_s16 line_h24 color_grey">Tủ trang trí</p>
+                                            <p class="font_s16 line_h24 color_grey">Bể bơi</p>
                                         </div>
                                         <div class="dangtin_after_bosung-item_dong-name d_flex mr_t_22 align_c">
                                             <div class="checkbox-container mr_r_9">
                                                 <label class="checkbox-label-phanquyen">
-                                                    <input type="checkbox">
+                                                    <input value="6.2" class="checkbox_detail" <?= (in_array('6.2',json_decode(($newsDetail['arr_checkbox_detail'])))) ? 'checked' : '' ?> type="checkbox">
                                                     <span class="checkbox-custom"></span>
                                                 </label>
                                             </div>
-                                            <p class="font_s16 line_h24 color_grey">Tủ trang trí</p>
+                                            <p class="font_s16 line_h24 color_grey">Bóng rổ</p>
                                         </div>
                                         <div class="dangtin_after_bosung-item_dong-name d_flex mr_t_22 align_c">
                                             <div class="checkbox-container mr_r_9">
                                                 <label class="checkbox-label-phanquyen">
-                                                    <input type="checkbox">
+                                                    <input value="6.3" class="checkbox_detail" <?= (in_array('6.3',json_decode(($newsDetail['arr_checkbox_detail'])))) ? 'checked' : '' ?> type="checkbox">
                                                     <span class="checkbox-custom"></span>
                                                 </label>
                                             </div>
-                                            <p class="font_s16 line_h24 color_grey">Tủ trang trí</p>
+                                            <p class="font_s16 line_h24 color_grey">Bóng đá</p>
                                         </div>
                                         <div class="dangtin_after_bosung-item_dong-name d_flex mr_t_22 align_c">
                                             <div class="checkbox-container mr_r_9">
                                                 <label class="checkbox-label-phanquyen">
-                                                    <input type="checkbox">
+                                                    <input value="6.4" class="checkbox_detail" <?= (in_array('6.4',json_decode(($newsDetail['arr_checkbox_detail'])))) ? 'checked' : '' ?> type="checkbox">
                                                     <span class="checkbox-custom"></span>
                                                 </label>
                                             </div>
-                                            <p class="font_s16 line_h24 color_grey">Tủ trang trí</p>
+                                            <p class="font_s16 line_h24 color_grey">Cầu lông</p>
+                                        </div>
+                                        <div class="dangtin_after_bosung-item_dong-name d_flex mr_t_22 align_c">
+                                            <div class="checkbox-container mr_r_9">
+                                                <label class="checkbox-label-phanquyen">
+                                                    <input value="6.5" class="checkbox_detail" <?= (in_array('6.5',json_decode(($newsDetail['arr_checkbox_detail'])))) ? 'checked' : '' ?> type="checkbox">
+                                                    <span class="checkbox-custom"></span>
+                                                </label>
+                                            </div>
+                                            <p class="font_s16 line_h24 color_grey">Sân golf</p>
                                         </div>
                                     </div>
                                 </div>
@@ -691,43 +1012,52 @@
                             </div>
                             <div class="dangtin_after_bosung-item_dong d_flex">
                                 <div class="post_additional_total--left">
-                                    <p class="font_w500 font_s18 line_h24 color_grey">Phòng khách</p>
+                                    <p class="font_w500 font_s18 line_h24 color_grey">Tiện nghi khác</p>
                                     <div class="detail__post_additional_total additional_hidden ">
                                         <div class="dangtin_after_bosung-item_dong-name d_flex mr_t_19 align_c">
                                             <div class="checkbox-container mr_r_9">
                                                 <label class="checkbox-label-phanquyen">
-                                                    <input type="checkbox">
+                                                    <input value="7.1" class="checkbox_detail" <?= (in_array('7.1',json_decode(($newsDetail['arr_checkbox_detail'])))) ? 'checked' : '' ?> type="checkbox">
                                                     <span class="checkbox-custom"></span>
                                                 </label>
                                             </div>
-                                            <p class="font_s16 line_h24 color_grey">Tủ trang trí</p>
+                                            <p class="font_s16 line_h24 color_grey">Ban công</p>
                                         </div>
                                         <div class="dangtin_after_bosung-item_dong-name d_flex mr_t_22 align_c">
                                             <div class="checkbox-container mr_r_9">
                                                 <label class="checkbox-label-phanquyen">
-                                                    <input type="checkbox">
+                                                    <input value="7.2" class="checkbox_detail" <?= (in_array('7.2',json_decode(($newsDetail['arr_checkbox_detail'])))) ? 'checked' : '' ?> type="checkbox">
                                                     <span class="checkbox-custom"></span>
                                                 </label>
                                             </div>
-                                            <p class="font_s16 line_h24 color_grey">Tủ trang trí</p>
+                                            <p class="font_s16 line_h24 color_grey">Thang máy</p>
                                         </div>
                                         <div class="dangtin_after_bosung-item_dong-name d_flex mr_t_22 align_c">
                                             <div class="checkbox-container mr_r_9">
                                                 <label class="checkbox-label-phanquyen">
-                                                    <input type="checkbox">
+                                                    <input value="7.3" class="checkbox_detail" <?= (in_array('7.3',json_decode(($newsDetail['arr_checkbox_detail'])))) ? 'checked' : '' ?> type="checkbox">
                                                     <span class="checkbox-custom"></span>
                                                 </label>
                                             </div>
-                                            <p class="font_s16 line_h24 color_grey">Tủ trang trí</p>
+                                            <p class="font_s16 line_h24 color_grey">Lối đi cho người khuyết tật</p>
                                         </div>
                                         <div class="dangtin_after_bosung-item_dong-name d_flex mr_t_22 align_c">
                                             <div class="checkbox-container mr_r_9">
                                                 <label class="checkbox-label-phanquyen">
-                                                    <input type="checkbox">
+                                                    <input value="7.4" class="checkbox_detail" <?= (in_array('7.4',json_decode(($newsDetail['arr_checkbox_detail'])))) ? 'checked' : '' ?> type="checkbox">
                                                     <span class="checkbox-custom"></span>
                                                 </label>
                                             </div>
-                                            <p class="font_s16 line_h24 color_grey">Tủ trang trí</p>
+                                            <p class="font_s16 line_h24 color_grey">Chỗ để xe miễn phí</p>
+                                        </div>
+                                        <div class="dangtin_after_bosung-item_dong-name d_flex mr_t_22 align_c">
+                                            <div class="checkbox-container mr_r_9">
+                                                <label class="checkbox-label-phanquyen">
+                                                    <input value="7.5" class="checkbox_detail" <?= (in_array('7.5',json_decode(($newsDetail['arr_checkbox_detail'])))) ? 'checked' : '' ?> type="checkbox">
+                                                    <span class="checkbox-custom"></span>
+                                                </label>
+                                            </div>
+                                            <p class="font_s16 line_h24 color_grey">Để xe công cộng miễn phí</p>
                                         </div>
                                     </div>
                                 </div>
@@ -737,43 +1067,52 @@
                             </div>
                             <div class="dangtin_after_bosung-item_dong d_flex">
                                 <div class="post_additional_total--left">
-                                    <p class="font_w500 font_s18 line_h24 color_grey">Phòng khách</p>
+                                    <p class="font_w500 font_s18 line_h24 color_grey">Giải trí</p>
                                     <div class="detail__post_additional_total additional_hidden ">
                                         <div class="dangtin_after_bosung-item_dong-name d_flex mr_t_19 align_c">
                                             <div class="checkbox-container mr_r_9">
                                                 <label class="checkbox-label-phanquyen">
-                                                    <input type="checkbox">
+                                                    <input value="8.1" class="checkbox_detail" <?= (in_array('8.1',json_decode(($newsDetail['arr_checkbox_detail'])))) ? 'checked' : '' ?> type="checkbox">
                                                     <span class="checkbox-custom"></span>
                                                 </label>
                                             </div>
-                                            <p class="font_s16 line_h24 color_grey">Tủ trang trí</p>
+                                            <p class="font_s16 line_h24 color_grey">Rạp chiếu phim</p>
                                         </div>
                                         <div class="dangtin_after_bosung-item_dong-name d_flex mr_t_22 align_c">
                                             <div class="checkbox-container mr_r_9">
                                                 <label class="checkbox-label-phanquyen">
-                                                    <input type="checkbox">
+                                                    <input value="8.2" class="checkbox_detail" <?= (in_array('8.2',json_decode(($newsDetail['arr_checkbox_detail'])))) ? 'checked' : '' ?> type="checkbox">
                                                     <span class="checkbox-custom"></span>
                                                 </label>
                                             </div>
-                                            <p class="font_s16 line_h24 color_grey">Tủ trang trí</p>
+                                            <p class="font_s16 line_h24 color_grey">Spa làm đẹp</p>
                                         </div>
                                         <div class="dangtin_after_bosung-item_dong-name d_flex mr_t_22 align_c">
                                             <div class="checkbox-container mr_r_9">
                                                 <label class="checkbox-label-phanquyen">
-                                                    <input type="checkbox">
+                                                    <input value="8.3" class="checkbox_detail" <?= (in_array('8.3',json_decode(($newsDetail['arr_checkbox_detail'])))) ? 'checked' : '' ?> type="checkbox">
                                                     <span class="checkbox-custom"></span>
                                                 </label>
                                             </div>
-                                            <p class="font_s16 line_h24 color_grey">Tủ trang trí</p>
+                                            <p class="font_s16 line_h24 color_grey">Khu vui chơi trẻ em</p>
                                         </div>
                                         <div class="dangtin_after_bosung-item_dong-name d_flex mr_t_22 align_c">
                                             <div class="checkbox-container mr_r_9">
                                                 <label class="checkbox-label-phanquyen">
-                                                    <input type="checkbox">
+                                                    <input value="8.4" class="checkbox_detail" <?= (in_array('8.4',json_decode(($newsDetail['arr_checkbox_detail'])))) ? 'checked' : '' ?> type="checkbox">
                                                     <span class="checkbox-custom"></span>
                                                 </label>
                                             </div>
-                                            <p class="font_s16 line_h24 color_grey">Tủ trang trí</p>
+                                            <p class="font_s16 line_h24 color_grey">Khu thư giãn người già</p>
+                                        </div>
+                                        <div class="dangtin_after_bosung-item_dong-name d_flex mr_t_22 align_c">
+                                            <div class="checkbox-container mr_r_9">
+                                                <label class="checkbox-label-phanquyen">
+                                                    <input value="8.5" class="checkbox_detail" <?= (in_array('8.5',json_decode(($newsDetail['arr_checkbox_detail'])))) ? 'checked' : '' ?> type="checkbox">
+                                                    <span class="checkbox-custom"></span>
+                                                </label>
+                                            </div>
+                                            <p class="font_s16 line_h24 color_grey">Công viên nước</p>
                                         </div>
                                     </div>
                                 </div>
@@ -782,90 +1121,44 @@
                                 </div>
                             </div>
                             <div class="dangtin_after_bosung-item_dong d_flex">
-                                <div class="post_additional_total--left">
-                                    <p class="font_w500 font_s18 line_h24 color_grey">Phòng khách</p>
+                                <div class="post_additional_total--left div_office <?= ($newsDetail['type_news'] == 2 && $newsDetail['bds_type'] = 8) ? '' : 'hidden' ?>">
+                                    <p class="font_w500 font_s18 line_h24 color_grey">Văn phòng</p>
                                     <div class="detail__post_additional_total additional_hidden ">
                                         <div class="dangtin_after_bosung-item_dong-name d_flex mr_t_19 align_c">
                                             <div class="checkbox-container mr_r_9">
                                                 <label class="checkbox-label-phanquyen">
-                                                    <input type="checkbox">
+                                                    <input value="9.1" class="checkbox_detail" <?= (in_array('9.1',json_decode(($newsDetail['arr_checkbox_detail'])))) ? 'checked' : '' ?> type="checkbox">
                                                     <span class="checkbox-custom"></span>
                                                 </label>
                                             </div>
-                                            <p class="font_s16 line_h24 color_grey">Tủ trang trí</p>
+                                            <p class="font_s16 line_h24 color_grey">Điều hòa</p>
                                         </div>
                                         <div class="dangtin_after_bosung-item_dong-name d_flex mr_t_22 align_c">
                                             <div class="checkbox-container mr_r_9">
                                                 <label class="checkbox-label-phanquyen">
-                                                    <input type="checkbox">
+                                                    <input value="9.2" class="checkbox_detail" <?= (in_array('9.2',json_decode(($newsDetail['arr_checkbox_detail'])))) ? 'checked' : '' ?> type="checkbox">
                                                     <span class="checkbox-custom"></span>
                                                 </label>
                                             </div>
-                                            <p class="font_s16 line_h24 color_grey">Tủ trang trí</p>
+                                            <p class="font_s16 line_h24 color_grey">Máy phát điện</p>
                                         </div>
                                         <div class="dangtin_after_bosung-item_dong-name d_flex mr_t_22 align_c">
                                             <div class="checkbox-container mr_r_9">
                                                 <label class="checkbox-label-phanquyen">
-                                                    <input type="checkbox">
+                                                    <input value="9.3" class="checkbox_detail" <?= (in_array('9.3',json_decode(($newsDetail['arr_checkbox_detail'])))) ? 'checked' : '' ?> type="checkbox">
                                                     <span class="checkbox-custom"></span>
                                                 </label>
                                             </div>
-                                            <p class="font_s16 line_h24 color_grey">Tủ trang trí</p>
+                                            <p class="font_s16 line_h24 color_grey">Rèm cửa</p>
                                         </div>
                                         <div class="dangtin_after_bosung-item_dong-name d_flex mr_t_22 align_c">
                                             <div class="checkbox-container mr_r_9">
                                                 <label class="checkbox-label-phanquyen">
-                                                    <input type="checkbox">
+                                                    <input value="9.4" class="checkbox_detail" <?= (in_array('9.4',json_decode(($newsDetail['arr_checkbox_detail'])))) ? 'checked' : '' ?> type="checkbox">
                                                     <span class="checkbox-custom"></span>
                                                 </label>
                                             </div>
-                                            <p class="font_s16 line_h24 color_grey">Tủ trang trí</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="post_additional_total--right">
-                                    <img src="<? echo base_url() ?>assets/images/arrow_updown.png" alt="">
-                                </div>
-                            </div>
-                            <div class="dangtin_after_bosung-item_dong d_flex">
-                                <div class="post_additional_total--left">
-                                    <p class="font_w500 font_s18 line_h24 color_grey">Phòng khách</p>
-                                    <div class="detail__post_additional_total additional_hidden ">
-                                        <div class="dangtin_after_bosung-item_dong-name d_flex mr_t_19 align_c">
-                                            <div class="checkbox-container mr_r_9">
-                                                <label class="checkbox-label-phanquyen">
-                                                    <input type="checkbox">
-                                                    <span class="checkbox-custom"></span>
-                                                </label>
-                                            </div>
-                                            <p class="font_s16 line_h24 color_grey">Tủ trang trí</p>
-                                        </div>
-                                        <div class="dangtin_after_bosung-item_dong-name d_flex mr_t_22 align_c">
-                                            <div class="checkbox-container mr_r_9">
-                                                <label class="checkbox-label-phanquyen">
-                                                    <input type="checkbox">
-                                                    <span class="checkbox-custom"></span>
-                                                </label>
-                                            </div>
-                                            <p class="font_s16 line_h24 color_grey">Tủ trang trí</p>
-                                        </div>
-                                        <div class="dangtin_after_bosung-item_dong-name d_flex mr_t_22 align_c">
-                                            <div class="checkbox-container mr_r_9">
-                                                <label class="checkbox-label-phanquyen">
-                                                    <input type="checkbox">
-                                                    <span class="checkbox-custom"></span>
-                                                </label>
-                                            </div>
-                                            <p class="font_s16 line_h24 color_grey">Tủ trang trí</p>
-                                        </div>
-                                        <div class="dangtin_after_bosung-item_dong-name d_flex mr_t_22 align_c">
-                                            <div class="checkbox-container mr_r_9">
-                                                <label class="checkbox-label-phanquyen">
-                                                    <input type="checkbox">
-                                                    <span class="checkbox-custom"></span>
-                                                </label>
-                                            </div>
-                                            <p class="font_s16 line_h24 color_grey">Tủ trang trí</p>
+                                            <p class="font_s16 line_h24 color_grey">Trần thả</p>
                                         </div>
                                     </div>
                                 </div>
@@ -1009,6 +1302,39 @@
 <script src="<? echo base_url();?>ckeditor/ckeditor.js"></script>
 <script>
     CKEDITOR.replace('tdn_mota');
+    $('input[name="type_news"]').click(function() {
+        if($(this).val() == 1)
+        {
+            var otions_bds = '<option selected disabled>Chọn loại bất động sản</option>';
+                otions_bds += '<option value="1">Căn hộ</option>'                            
+                otions_bds += '<option value="2">Nhà riêng</option>'                               
+                otions_bds += '<option value="3">Nhà mặt phố</option>'                                
+                otions_bds += '<option value="4">Shophouse, Nhà phố thương mại</option>'                                
+                otions_bds += '<option value="5">Biệt thự liền kề</option>'                                 
+                otions_bds += '<option value="6">Đất</option>'                                 
+                otions_bds += '<option value="7">Đất nền dự án</option>'                             
+                otions_bds += '<option value="8">Bất động sản khác</option>'
+            $('select[name="type_bds"]').children().remove(); 
+            $('select[name="type_bds"]').append(otions_bds);                                                                                                                        
+        }
+        else
+        {
+            var otions_bds = '<option selected disabled>Chọn loại bất động sản</option>';
+                otions_bds += '<option value="1">Căn hộ</option>'                            
+                otions_bds += '<option value="2">Căn hộ dịch vụ</option>'                               
+                otions_bds += '<option value="3">Nhà riêng</option>'                                
+                otions_bds += '<option value="4">Nhà mặt phố</option>'                                
+                otions_bds += '<option value="5">Shophouse, Nhà phố thương mại</option>'                                 
+                otions_bds += '<option value="6">Biệt thự liền kề</option>'                                 
+                otions_bds += '<option value="7">Nhà trọ, phòng trọ</option>'                             
+                otions_bds += '<option value="8">Văn phòng</option>'
+                otions_bds += '<option value="9">Cửa hàng, mặt bằng bán lẻ</option>'                                 
+                otions_bds += '<option value="10">Đất, nhà xưởng, kho bãi</option>'                                                             
+                otions_bds += '<option value="11">Bất động sản khác</option>'
+            $('select[name="type_bds"]').children().remove(); 
+            $('select[name="type_bds"]').append(otions_bds);     
+        }
+    })
 </script>
 <script>
     <? if($newsDetail['Gia_thoa_thuan'] == 1): ?>
@@ -1159,14 +1485,17 @@
         rotate(degreen, b);
     });
     // --xoa
+    var arr_delete_img = [];
     $('.dangtin_icon_upload_xoa').click(function() {
         var time = $(this).parents("figure").attr('data-time');
         var name = $(this).parents("figure").attr('data-name');
+        arr_delete_img.push(name);
         $(this).parents("figure").remove();
         $.ajax({
 			 	url: base_url+'admin/ManageNews/RemoveImg',
 			 	type: 'post',
 			 	data:{
+                    arr_delete_img:JSON.stringify(arr_delete_img),
                     time:time,
                     name:name,
                     arr_img:'<?= $newsDetail['arr_img'] ?>',
@@ -1348,6 +1677,7 @@
     });
 
     $('#number ,#number_dt_1,#number_max,#number_dt_2').on('keyup', function() {
+
         var giacodinh = Number($('#number').val());
         var dientich1 = Number($('#number_dt_1').val());
         if (dientich1 != 0 || dientich1 != '') {
@@ -1546,30 +1876,85 @@
             var area_max      = $("input[name='area_max']").val();
             var title_news    = $(".title_news").val();
             var desc_project  = CKEDITOR.instances['tdn_mota'].getData();
-            var floor         = $(".floor").val();
             var Balcony_direction = $(".Balcony_direction").val();
             var corner        = $(".corner").val();
+            var check_bathroom= $(".check_bathroom:checked").val();
+            var check_bedroom = $(".check_bedroom:checked").val();
             var bathroom      = $(".radio_bathroom.chutrang_nenxanh").attr('data-id');
             var bedroom       = $(".radio_bedroom.chutrang_nenxanh").attr('data-id');
-            var Interior      = $(".Interior").val();
             var arr_img_desc  = $("#file_input").prop('files');
             var chieusau      = $(".chieusau").val();
-            if(type_bds == 2 || type_bds == 3 || type_bds == 4 || type_bds == 5)
+            var elevator_number = $('.elevator_number').val();
+
+
+            if(type_news == 1)
             {
-                var mattien       = $(".mattien8").val();
-                var duongvao      = $(".duongvao8").val();
+                if(type_bds == 1)
+                {
+                    var floor         = $('.apartment_floor').val();
+                    var Interior      = $(".Interior7").val();
+                }
+
+                if(type_bds == 2 || type_bds == 3 || type_bds == 4 || type_bds == 5)
+                {
+                    var Interior      = $(".Interior8").val();
+                    var floor         = $(".floor8").val();
+                    var mattien       = $(".mattien8").val();
+                    var duongvao      = $(".duongvao8").val();
+                }
+                else
+                {
+                    var mattien       = $(".mattien9").val();
+                    var duongvao      = $(".duongvao9").val();
+                }
             }
-            else
+            else if(type_news == 2)
             {
-                var mattien       = $(".mattien9").val();
-                var duongvao      = $(".duongvao9").val();
+                if(type_bds == 1 || type_bds == 2)
+                {
+                    var floor         = $('.apartment_floor').val();
+                    var Interior      = $(".Interior7").val();
+                }
+                if(type_bds == 6 || type_bds == 3 || type_bds == 4 || type_bds == 5)
+                {
+                    var mattien       = $(".mattien8").val();
+                    var duongvao      = $(".duongvao8").val();
+                    var floor         = $('.floor8').val();
+                    var Interior      = $(".Interior8").val();
+                }
+                else if(type_bds == 7)
+                {
+                    var Interior      = $(".Interior11").val();
+                    var floor         = $(".floor11").val();
+                }
+                else if(type_bds == 8)
+                {
+                    var Interior      = $(".Interior10").val();
+                    var floor         = $(".floor10").val();
+                }
+                else
+                {
+                    var mattien       = $(".mattien9").val();
+                    var duongvao      = $(".duongvao9").val();
+                }
             }
+
+
             var area_convert  = $(".ren_number_dt_2 span").text();
             var time_expired  = $(".time_expired").val();
             var detail_bds    = $('#onclick_chonloai_bds').val();
 
+            var arr_checkbox_detail = [];
+            $('.checkbox_detail').each(function(){
+                if($(this).is(':checked'))
+                {
+                    arr_checkbox_detail.push($(this).val());
+                }
+            })
+
             var data = new FormData();
             data.append('id_news', id_news);
+            data.append('arr_checkbox_detail', JSON.stringify(arr_checkbox_detail));
             data.append('project_name', project_name);
             data.append('type_news', type_news);
             data.append('detail_bds',detail_bds);
@@ -1580,6 +1965,7 @@
             data.append('arr_img_old', '<?= $newsDetail['arr_img'] ?>');
             data.append('wards', wards);
             data.append('street', street);
+            data.append('elevator_number', elevator_number);
             data.append('desc_addr', desc_addr);
             data.append('giamin', giamin);
             data.append('giamax', giamax);
@@ -1598,6 +1984,8 @@
             data.append('bedroom', bedroom);
             data.append('Interior', Interior);
             data.append('stt_news', stt_news);
+            data.append('check_bathroom' ,check_bathroom);
+            data.append('check_bedroom' ,check_bedroom);
             data.append('date_post_news', date_post_news);
             data.append('time_post_news', time_post_news);
             data.append('area_convert', area_convert);

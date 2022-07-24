@@ -447,13 +447,6 @@ $('.back').click(function(){
     $('.popup_xoa').addClass('hidden');
 })
 
-// POPUP ĐẨY TIN CON / PAGE QUẢN LÝ TIN ĐĂNG
-// MỞ
-$('.show_popup_daytincon').click(function(){
-    $('.popup_daytin_con').removeClass('hidden');
-    // $('.popup_daytin').addClass('hidden');
-
-})
 // ĐÓNG
 $('.back_daytin_con').click(function(){
     $('.popup_daytin_con').addClass('hidden');

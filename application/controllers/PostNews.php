@@ -22,6 +22,7 @@ class PostNews extends CI_Controller
 	}
 	public function addNewsAfterLogin() {
 		$data_insert = [
+			'customer'				=> isset($_COOKIE['user_id']) ? $_COOKIE['user_id'] : 30,
 			'project_name'			=> $this->input->post('project_name'),
 			'type_news' 			=> $this->input->post('type_news'),
 			'bds_type' 				=> $this->input->post('type_bds'),
@@ -33,6 +34,7 @@ class PostNews extends CI_Controller
 			'price_min'				=> $this->input->post('giamin'),
 			'price_max' 			=> $this->input->post('giamax'),
 			'Gia_thoa_thuan' 		=> $this->input->post('radio_button'),
+			'arr_checkbox_detail' 	=> $this->input->post('arr_checkbox_detail'),
 			'Legal_stt' 		    => $this->input->post('Legal_stt'),
 			'area_min' 				=> $this->input->post('area_min'),
 			'area_max'				=> $this->input->post('area_max'),
@@ -45,7 +47,10 @@ class PostNews extends CI_Controller
 			'direction'				=> $this->input->post('direction'),
 			'time_expired'			=> strtotime($this->input->post('time_expired')),
 			'corner' 				=> $this->input->post('corner'),
+			'check_bathroom' 		=> $this->input->post('check_bathroom'),
+            'check_bedroom' 		=> $this->input->post('check_bedroom'),
 			'bathroom' 				=> $this->input->post('bathroom'),
+			'elevator_number' 		=> $this->input->post('elevator_number'),
 			'bedroom' 				=> $this->input->post('bedroom'),
 			'Interior'				=> $this->input->post('Interior'),
 			'mattien' 				=> $this->input->post('mattien'),
@@ -58,6 +63,9 @@ class PostNews extends CI_Controller
 			'type'					=> 4,
 		];
 		//------------
+		// echo "<pre>";
+		// print_r($data_insert);
+		// echo "</pre>";die;
 		if(isset($_FILES['arr_img_desc']))
 		{
 			$data_insert['arr_img'] = upLoadMultipleImg('arr_img_desc');
@@ -77,6 +85,7 @@ class PostNews extends CI_Controller
 	}
 	public function addNewsHome() {
 		$data_insert = [
+			'customer'				=> isset($_COOKIE['user_id']) ? $_COOKIE['user_id'] : 30,
 			'ctrinh_type'			=> $this->input->post('ctrinh_type'),
 			'styles' 				=> $this->input->post('styles'),
 			'area' 					=> $this->input->post('area'),
@@ -145,6 +154,7 @@ class PostNews extends CI_Controller
 	public function addNewsProject() {
 
 			$data_insert = [
+				'customer'				=> isset($_COOKIE['user_id']) ? $_COOKIE['user_id'] : 30,
 				'project_name'			=> $this->input->post('project_name'),
 				'introduce' 			=> $this->input->post('introduce'),
 				'bds_type' 				=> $this->input->post('bds_type'),
@@ -187,7 +197,6 @@ class PostNews extends CI_Controller
 				'date_post_news'		=> strtotime($this->input->post('date_post_news')),
 				'time_post_news' 		=> strtotime($this->input->post('time_post_news')),
 			];
-
 			$response 		= ['status' => 0, 'msg' => ''];
 			$arr_desc_gtda = json_decode($this->input->post('arr_desc_gtda'));
 			//---------img banner
@@ -274,6 +283,7 @@ class PostNews extends CI_Controller
 	public function addNewsRoom() {
 
 		$data_insert = [
+			'customer'				=> isset($_COOKIE['user_id']) ? $_COOKIE['user_id'] : 30,
 			'ctrinh_type'			=> $this->input->post('ctrinh_type'),
 			'styles' 				=> $this->input->post('styles'),
 			'area' 					=> $this->input->post('area'),

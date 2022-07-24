@@ -63,6 +63,13 @@ $route['quen-mat-khau-nhan-otp-(:num).html']  			= 'Account/ForgotPasswordOTP/$1
 $route['quen-mat-khau-nhap-email.html']         		= 'Account/ForgotPasswordEmail';
 $route['quen-mat-khau-update-mat-khau-(:num).html']   	= 'Account/UpdatePassword/$1';
 $route['thong-tin-ca-nhan.html']   	                    = 'Account/UpdatePassword/$1';
+$route['quan-ly-ho-so.html']		                    = 'Account/ProfileManagement';
+$route['quan-ly-ho-so.html/(:any)']		                = 'Account/ProfileManagement/$1';
+$route['khach-hang-tiem-nang.html']		                = 'Account/PotentialCustomers';
+$route['khach-hang-tiem-nang.html/(:any)']		        = 'Account/PotentialCustomers/$1';
+$route['thong-tin-nguoi-mua-thue-(:any).html']		    = 'Account/TenantInformation/$1';
+$route['khach-hang-tu-diem.html']		                = 'Account/GetCustomerFromPoints';
+$route['khach-hang-tu-diem.html/(:any)']		        = 'Account/GetCustomerFromPoints/$1';
 
 //PostNews
 $route['dang-tin-truoc-dang-nhap.html'] 				= 'PostNews/PostNewsBeforeLogin';
@@ -78,6 +85,7 @@ $route['cap-nhat-dang-tin-sau-dang-nhap-(:num).html']   = 'admin/ManageNews/Upda
 $route['cap-nhat-tin-dang-du-an-(:num).html'] 		    = 'admin/ManageNews/UpdateNewsProject/$1';
 $route['cap-nhat-tin-dang-nha-dep-(:num).html'] 		= 'admin/ManageNews/UpdateNewsHome/$1';
 $route['cap-nhat-tin-dang-phong-dep-(:num).html'] 		= 'admin/ManageNews/UpdateNewsRoom/$1';
+$route['lich-day-tin-mua-ban.html'] 		            = 'admin/ManageNews/NewsPushCalendar';
 
 //Cho thuê
 $route['cho-thue-truoc-dang-nhap.html']					= 'Lease/LeaseBeforeLogin';
@@ -127,11 +135,9 @@ $route['quy-dinh-bao-mat.html']				    		= 'Connect/PrivacyPolicy';
 $route['quy-trinh-giai-quyet-tranh-chap.html']  		= 'Connect/DisputeResolutionProcess';
 
 //----------------------------admin-------------------
-
 $route['tong-quan.html']		                		= 'admin/Dashboard';
 // ví tiền
-
-$route['vi-3s.html']		                    		= 'admin/Wallet/Wallet3s';
+$route['vi-3s.html']		                    		= 'admin/Wallet/Wallet3s'; 
 $route['nap-tien-vao-vi.html']		            		= 'admin/Wallet/WalletDeposit';
 $route['mua-dich-vu.html']		                		= 'admin/Wallet/BuyService';
 $route['mua-goi-ghim-tin-dang.html']		    		= 'admin/Wallet/BuyPacketNews';

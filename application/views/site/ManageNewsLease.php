@@ -259,7 +259,7 @@
                                                     <!-- khối ảnh, -->
                                                     <div class="dt_khoi2_noidung_right_padding3_sub_2 mr_r16px">
                                                         <div class="noidung_right_padding3_sub_img mr_b8px">
-                                                            <? if($arr_img != ""): ?>
+                                                            <? if($arr_img != "" && isset($arr_img[0])): ?>
                                                             <img src="<? echo base_url(); ?>upload/<?= $y ?>/<?= $m ?>/<?= $d ?>/<?= $arr_img[0] ?>" alt="">
                                                             <? else: ?>
                                                             <img src="<? echo base_url(); ?>assets/images/img_sdn/bg_none.png" alt="">
@@ -338,7 +338,9 @@
                                                                                 alt="">
                                                                         </div>
                                                                         <div class="noidung_right_padding3_div1_tex_diachi">
-                                                                            <?
+                                                                        <?
+                                                                            if($rows['Gia_thoa_thuan'] == 0)
+                                                                            {
                                                                                 if($rows['price_max'] == 0)
                                                                                 {
                                                                                     echo fomatMoney($rows['price_min']).' tỷ';
@@ -347,6 +349,11 @@
                                                                                 {
                                                                                     echo fomatMoney($rows['price_min']).'  -  '.fomatMoney($rows['price_max']).' tỷ';
                                                                                 }
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                echo "Giá thỏa thuận";
+                                                                            }
                                                                             ?>
                                                                         </div>
                                                                     </div>

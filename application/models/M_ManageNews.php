@@ -368,5 +368,82 @@ class M_ManageNews extends CI_Model
         $this->db->where('id_news',$id_news);
         return $this->db->update($this->_table,$data_update);
     }
+    //---------------Chi tiết dự ánh
+    public function GetPointUser($id_user)
+    {
+        $this->db->select('point');
+        $this->db->join('wallet', 'wallet.userID = users.id');
+        $this->db->where('users.id',$id_user);
+        return $this->db->get('users')->row_array();
+    }
+    //--------------- pushNews
+    public function pushNews($data_insert)
+    {
+        $this->db->insert('push_news',$data_insert);
+        return $this->db->insert_id();
+    }
+    //--------------- update point user
+    public function UpdatePointUser($data_update,$id_user)
+    {
+        $this->db->where('userID',$id_user);
+        return $this->db->update('wallet',$data_update);
+    }
+    //--------------- CountNewsPushCalendar
+    public function CountNewsPushCalendar($keyword,$style,$cit_id,$time_st,$time_end,$type) {
+        $this->db->select('*');
+        if ($style != '') {
+            $this->db->where('styles',$style);
+        }   
+        if ($keyword != '') {
+            $this->db->like('title_news', $keyword);
+        }
+        
+        if ($cit_id != '') {
+            $this->db->where('post_news.select_city', $cit_id);
+        }
+        if ($time_st != '') {
+            $this->db->where('(post_news.time_create) >=',$time_st);
+            $this->db->where('(post_news.time_create) <=',($time_end));
+        }
+        if($type == 3)
+        {
+            $this->db->where('(type = 2 or type = 3)');
+        }
+        elseif($type != 0)
+        {
+            $this->db->where('type',$type);
+        }
+        $this->db->join('post_news', 'post_news.id_news = push_news.newsID');
+        return $this->db->get('push_news')->num_rows();
+    }
+    //--------------- GetNewsPushCalendar
+    public function GetNewsPushCalendar($offset, $perpage,$keyword,$style,$cit_id,$time_st,$time_end,$type) {
+    
+        if ($style != '') {
+            $this->db->where('post_news.styles',$style);
+        }
+        if ($cit_id != '') {
+            $this->db->where('post_news.select_city', $cit_id);
+        }
+        if ($keyword != '') {
+            $this->db->like('desc_project', $keyword);
+        }
+        if ($time_st != '') {
+            $this->db->where('(post_news.time_create) >=',$time_st);
+            $this->db->where('(post_news.time_create) <=',($time_end));
+        }
+        if($type == 3)
+        {
+            $this->db->where('(type = 2 or type = 3)');
+        }
+        elseif($type != 0)
+        {
+            $this->db->where('type',$type);
+        }
+        $this->db->join('post_news', 'post_news.id_news = push_news.newsID');
+        $this->db->limit($perpage, $offset);
+        $this->db->order_by('push_news.push_newsID', 'desc');
+        return $this->db->get('push_news')->result_array();
+    }
 }
 ?>
